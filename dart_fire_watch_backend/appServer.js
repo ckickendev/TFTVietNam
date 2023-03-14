@@ -7,7 +7,7 @@ require("dotenv").config();
 
 class AppServer {
   _app = express();
-  _port = 5000;
+  _port = 5001;
 
   constructor(controllers = []) {
     this.loadDatabase();
@@ -47,6 +47,7 @@ class AppServer {
       autoCreate: true,
       autoIndex: true,
     });
+    mongoose.set('strictQuery', true);
   };
 
   startListening() {

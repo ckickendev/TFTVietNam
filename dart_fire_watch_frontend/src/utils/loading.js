@@ -1,10 +1,11 @@
 import React from "react";
 import "./loading.scss";
 
-export const Loading = () => {
+export const Loading = (props) => {
+  const opacity = props.opacity || 1;
   return (
     <div className="overlay_utils">
-      <div className="overlay">
+      <div className="overlay" style={{opacity: opacity}}>  
         <div className="overlay__inner">
           <div className="overlay__content">
             <span className="spinner"></span>

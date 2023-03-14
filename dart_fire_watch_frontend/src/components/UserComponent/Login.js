@@ -35,7 +35,7 @@ export const Login = (props) => {
 
   return (
     <div className="container">
-      {loading && <Loading />}
+      {loading && <Loading opacity={0.4} />}
       <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
         <h1>Login</h1>
         <button onClick={() => props.changeAuthen(2)}>SignUp</button>

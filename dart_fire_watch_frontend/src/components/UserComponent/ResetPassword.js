@@ -30,7 +30,7 @@ export const ResetPassword = (props) => {
   };
   return (
     <div className="container">
-      {loading && <Loading />}
+      {loading && <Loading opacity={0.4} />}
       <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
         <h1>Enter your email to reset password</h1>
         <div className="mb-3">

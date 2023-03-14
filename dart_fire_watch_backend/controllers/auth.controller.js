@@ -66,7 +66,7 @@ class AuthController extends Controller {
         userInfo: userInfo,
       });
     } catch (e) {
-      next(new ServerException(error.message));
+      res.status(404).json({ error: e.message });
     }
   }
 

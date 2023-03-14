@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../utils/loading";
 
 export const Home = () => {
-  const ROOT_BACKEND = "http://localhost:5000";
+  const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const Home = () => {
     };
 
     getToken();
-  }, [navigate]);
+  }, []);
 
   return <div>{loading ? <Loading /> : <h1>Welcome {user}</h1>}</div>;
 };
