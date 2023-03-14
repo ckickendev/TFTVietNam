@@ -7,6 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import './styles/CommonCss.scss'
 import { Home } from "./components/Home";
 import { Authentication } from './components/AuthComponent/Authentication';
 import { NotFoundPage } from './components/ErrorPage/NotFoundPage';

@@ -1,0 +1,55 @@
+.navbar_component_wrapper {
+    .dropdown-item {
+        font-size: 16px;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(39, 39, 40);
+    }
+
+    .navbar {
+        background-color: rgb(34, 34, 34);
+        color: rgb(230, 230, 230);
+        height: 100%;
+        display: block;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin: 0px auto !important;
+    }
+
+    .logo-container {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding-top: 8px;
+        font-weight: 700;
+        font-family: sofia-pro, sans-serif;
+    }
+
+    #basic-navbar-nav {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    #basic-nav-dropdown {
+        border-bottom: 0px solid rgb(203, 180, 108);
+    }
+
+    .nav-pills .nav-link {
+        color: rgb(230, 230, 230);
+        font-size: 16px;
+        font-weight: 400;
+        padding: 18px 15px 15px;
+        height: 100%;
+        border-radius: 0px;
+        border-bottom: 3px solid rgb(34, 34, 34);
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        z-index: 100000;
+        background-color: rgb(39, 39, 40);
+        margin-top: 0px;
+        padding: 0px;
+        border-radius: 5px;
+    }
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../utils/loading";
+import { HomePageComponent } from "./HomePage/HomePageComponent";
 
 export const Home = () => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
@@ -29,5 +30,5 @@ export const Home = () => {
     getToken();
   }, []);
 
-  return <div>{loading ? <Loading /> : <h1>Welcome {user}</h1>}</div>;
+  return <div>{loading ? <Loading /> : <HomePageComponent />}</div>;
 };
