@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import authStore from "../store/authStore";
 import { Loading } from "../utils/loading";
 import { HomePageComponent } from "./HomePage/HomePageComponent";
 
@@ -19,6 +20,8 @@ export const Home = () => {
       await axios
         .get(`${ROOT_BACKEND}/auth/whoAmI`, { headers })
         .then((response) => {
+          authStore.setIsAuth(true);
+          authStore.setWhoAmI(response.data.userInfo.email)
           setUser(response.data.userInfo.email);
         })
         .catch((error) => {

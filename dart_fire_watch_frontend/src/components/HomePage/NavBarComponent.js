@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import "./NavBarComponent.scss";
+import userStore from "../../store/authStore";
+import authStore from "../../store/authStore";
+import { FormControl, InputLabel, MenuItem, Select, Avatar } from "@mui/material";
 
 export const NavBarComponent = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  useEffect(() => {
+    setIsAuth(userStore.getIsAuth());
+  }, []);
+
   return (
     <>
       <div className="navbar_component_wrapper">
@@ -14,7 +22,7 @@ export const NavBarComponent = () => {
                 width={50}
                 height={50}
                 alt="MetaTFT Logo"
-              />{" "}
+              />
             </a>
             <h2 className="logo-container">
               <a className="LogoText" href="https://www.metatft.com/">
@@ -50,19 +58,7 @@ export const NavBarComponent = () => {
                     href="https://www.metatft.com/#"
                   >
                     <div style={{ display: "inline-block" }}>
-                      Game Modes{" "}
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        viewBox="0 0 24 24"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ marginLeft: "-5px", marginRight: "-15px" }}
-                      >
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                      </svg>
+                      Game Modes
                     </div>
                   </a>
                   <div
@@ -126,19 +122,7 @@ export const NavBarComponent = () => {
                     href="https://www.metatft.com/#"
                   >
                     <div style={{ display: "inline-block" }}>
-                      Stats{" "}
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        viewBox="0 0 24 24"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ marginLeft: "-5px", marginRight: "-15px" }}
-                      >
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                      </svg>
+                      Stats
                       <span
                         className="NewHighlight"
                         style={{ marginRight: "-20px" }}
@@ -254,19 +238,7 @@ export const NavBarComponent = () => {
                     href="https://www.metatft.com/#"
                   >
                     <div style={{ display: "inline-block" }}>
-                      Players{" "}
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        viewBox="0 0 24 24"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ marginLeft: "-5px", marginRight: "-15px" }}
-                      >
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                      </svg>
+                      Players
                     </div>
                   </a>
                   <div
@@ -340,19 +312,7 @@ export const NavBarComponent = () => {
                     href="https://www.metatft.com/#"
                   >
                     <div style={{ display: "inline-block" }}>
-                      Tools{" "}
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        viewBox="0 0 24 24"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ marginLeft: "-5px", marginRight: "-15px" }}
-                      >
-                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                      </svg>
+                      Tools
                     </div>
                   </a>
                   <div
@@ -479,13 +439,13 @@ export const NavBarComponent = () => {
               <div className="IconNavContainer">
                 <a
                   id="PatreonNavBarImgContainer"
-                  href="https://www.metatft.com/patreon"
+                  href="https://www.metatft.com/icons/patreon"
                 >
                   <img
                     alt="Support us on Patreon"
                     className="NavBarImg"
                     id="PatreonNavBarImg"
-                    src="https://www.metatft.com/Patreon_120.png"
+                    src="https://www.metatft.com/icons/Patreon_120.png"
                   />
                 </a>
                 <a
@@ -497,56 +457,78 @@ export const NavBarComponent = () => {
                     alt="Join Discord"
                     className="NavBarImg"
                     id="DiscordNavBarImg"
-                    src="https://www.metatft.com/Discord.svg"
+                    src="https://www.metatft.com/icons/Discord.svg"
                   />
                 </a>
-                <div className="LanguageSelect css-b62m3t-container">
-                  <span
-                    id="react-select-2-live-region"
-                    className="css-7pg0cj-a11yText"
-                  />
-                  <span
-                    aria-live="polite"
-                    aria-atomic="false"
-                    aria-relevant="additions text"
-                    className="css-7pg0cj-a11yText"
-                  />
-                  <div className=" css-ubrold-control">
-                    <div className=" css-17qfj6q">
-                      <div className=" css-s4uipr-singleValue">
-                        <span className="fi fi-us" />
-                        <span className="LanguageLabel">en</span>
+                {authStore.getIsAuth() ? (
+                  <div className="nav-item nav-avatar dropdown">
+                    <a
+                      id="basic-nav-dropdown"
+                      aria-expanded="true"
+                      className="dropdown-toggle nav-link"
+                      tabIndex={0}
+                    >
+                      <div style={{ display: "inline-block" }}>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="/static/images/avatar/1.jpg"
+                        />
                       </div>
-                      <input
-                        id="react-select-2-input"
+                    </a>
+                    <div
+                      data-bs-popper="static"
+                      className="dropdown-menu"
+                      aria-labelledby="basic-nav-dropdown"
+                    >
+                      <a
+                        data-rr-ui-dropdown-item
+                        className="dropdown-item"
+                        role="button"
                         tabIndex={0}
-                        inputMode="none"
-                        aria-autocomplete="list"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                        role="combobox"
-                        aria-readonly="true"
-                        className="css-1hac4vs-dummyInput"
-                        defaultValue
+                        href="https://www.metatft.com/#"
                       />
-                    </div>
-                    <div className=" css-1wy0on6">
-                      <span className=" css-1okebmr-indicatorSeparator" />
-                      <div className=" css-1ft063h" aria-hidden="true">
-                        <svg
-                          height={20}
-                          width={20}
-                          viewBox="0 0 20 20"
-                          aria-hidden="true"
-                          focusable="false"
-                          className="css-8mmkcg"
-                        >
-                          <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
-                        </svg>
-                      </div>
+                      <a
+                        data-rr-ui-event-key="/hyper-roll-comps"
+                        className="nav-link"
+                        href="https://www.metatft.com/hyper-roll-comps"
+                      >
+                        Information
+                      </a>
+                      <hr className="dropdown-divider" role="separator" />
+                      <a
+                        className="dropdown-item"
+                        role="button"
+                        tabIndex={0}
+                        href="https://www.metatft.com/#"
+                      />
+                      <a
+                        className="nav-link"
+                        href="https://www.metatft.com/double-up-comps"
+                      >
+                        LogOut
+                      </a>
+                      <hr className="dropdown-divider" role="separator" />
+                      <a
+                        className="dropdown-item"
+                        role="button"
+                        tabIndex={0}
+                        href="https://www.metatft.com/#"
+                      />
+                      <a
+                        className="nav-link"
+                        href="https://www.metatft.com/pbe-comps"
+                      >
+                        PBE Comps
+                      </a>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="login_space">
+                    <Button variant="contained" color="success">
+                      Login
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
