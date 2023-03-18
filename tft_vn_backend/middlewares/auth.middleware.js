@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { ConsoleLogger } = require("../core");
 require("dotenv").config();
-const { ForbiddenException, NotFoundException } = require("../exceptions");
+const { NotFoundException } = require("../exceptions");
 const { User } = require("../models");
 
 async function AuthMiddleware(req, res, next) {
