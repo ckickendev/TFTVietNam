@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import "./NavBarComponent.scss";
-import userStore from "../../store/authStore";
 import authStore from "../../store/authStore";
 import { FormControl, InputLabel, MenuItem, Select, Avatar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const NavBarComponent = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  useEffect(() => {
-    setIsAuth(userStore.getIsAuth());
-  }, []);
+  const navigate = useNavigate();
 
+  const onLogin = () => {
+    navigate('/auth');
+  }
   return (
     <>
       <div className="navbar_component_wrapper">
@@ -523,7 +523,7 @@ export const NavBarComponent = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="login_space">
+                  <div onClick={onLogin} className="login_space">
                     <Button variant="contained" color="success">
                       Login
                     </Button>
