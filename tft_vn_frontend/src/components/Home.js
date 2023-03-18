@@ -25,7 +25,6 @@ export const Home = () => {
           setUser(response.data.userInfo.email);
         })
         .catch((error) => {
-          navigate("/auth");
         });
       setLoading(false);
     };
