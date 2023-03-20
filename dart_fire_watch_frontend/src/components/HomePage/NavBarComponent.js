@@ -2,30 +2,39 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import "./NavBarComponent.scss";
 import authStore from "../../store/authStore";
-import { FormControl, InputLabel, MenuItem, Select, Avatar } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Avatar,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { DropdownItem } from "./NavBarComponent/DropdownItem";
+import { NavBarAvatar } from "./NavBarComponent/NavBarAvatar";
 
 export const NavBarComponent = () => {
   const navigate = useNavigate();
+  const ROOT_URL = process.env.ROOT_BACKEND;
 
   const onLogin = () => {
-    navigate('/auth');
-  }
+    navigate("/auth");
+  };
   return (
     <>
       <div className="navbar_component_wrapper">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="navbar_container container">
-            <a href="https://www.metatft.com/" className="navbar-brand">
+            <a href={ROOT_URL} className="navbar-brand">
               <img
-                src="https://www.metatft.com/logo.svg"
+                src={`${ROOT_URL}` + "/logo.svg"}
                 width={50}
                 height={50}
                 alt="MetaTFT Logo"
               />
             </a>
             <h2 className="logo-container">
-              <a className="LogoText" href="https://www.metatft.com/">
+              <a className="LogoText" href={`${ROOT_URL}`}>
                 MetaTFT
               </a>
             </h2>
@@ -43,7 +52,7 @@ export const NavBarComponent = () => {
                   <a
                     data-rr-ui-event-key="/comps"
                     className="nav-link"
-                    href="https://www.metatft.com/comps"
+                    href={`${ROOT_URL}` + "/comps"}
                   >
                     Comps
                   </a>
@@ -55,61 +64,35 @@ export const NavBarComponent = () => {
                     role="button"
                     className="dropdown-toggle nav-link"
                     tabIndex={0}
-                    href="https://www.metatft.com/#"
+                    href={`${ROOT_URL}`}
                   >
-                    <div style={{ display: "inline-block" }}>
-                      Game Modes
-                    </div>
+                    <div style={{ display: "inline-block" }}>Game Modes</div>
                   </a>
                   <div
                     data-bs-popper="static"
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/hyper-roll-comps"
-                      className="nav-link"
-                      href="https://www.metatft.com/hyper-roll-comps"
+                    <DropdownItem
+                      dataRR="data-rr-ui-dropdown-item"
+                      linkHref={`${ROOT_URL}`}
                     >
                       Hyper Roll
-                    </a>
+                    </DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/double-up-comps"
-                      className="nav-link"
-                      href="https://www.metatft.com/double-up-comps"
+                    <DropdownItem
+                      dataRR="data-rr-ui-dropdown-item"
+                      linkHref={"`${ROOT_URL}`/double-up-comps"}
                     >
-                      Double Up
-                    </a>
+                      Double up
+                    </DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/pbe-comps"
-                      className="nav-link"
-                      href="https://www.metatft.com/pbe-comps"
+                    <DropdownItem
+                      dataRR="data-rr-ui-dropdown-item"
+                      linkHref={`${ROOT_URL}` / +"double-up-comps"}
                     >
                       PBE Comps
-                    </a>
+                    </DropdownItem>
                   </div>
                 </div>
                 <div className="nav-item dropdown">
@@ -119,7 +102,7 @@ export const NavBarComponent = () => {
                     role="button"
                     className="dropdown-toggle nav-link"
                     tabIndex={0}
-                    href="https://www.metatft.com/#"
+                    href={`${ROOT_URL}`}
                   >
                     <div style={{ display: "inline-block" }}>
                       Stats
@@ -136,81 +119,29 @@ export const NavBarComponent = () => {
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/items"
-                      className="nav-link"
-                      href="https://www.metatft.com/items"
-                    >
-                      Items
-                    </a>
+                    <DropdownItem>Items</DropdownItem>
+                    <hr className="dropdown-divider" role="separator" />
+                    <DropdownItem>Units</DropdownItem>
+                    <hr className="dropdown-divider" role="separator" />
+                    <DropdownItem>Traits</DropdownItem>
+                    <hr className="dropdown-divider" role="separator" />
+                    <DropdownItem>Auguments</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
                     <a
                       data-rr-ui-dropdown-item
                       className="dropdown-item"
                       role="button"
                       tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/units"
-                      className="nav-link"
-                      href="https://www.metatft.com/units"
-                    >
-                      Units
-                    </a>
-                    <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/traits"
-                      className="nav-link"
-                      href="https://www.metatft.com/traits"
-                    >
-                      Traits
-                    </a>
-                    <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/augments"
-                      className="nav-link"
-                      href="https://www.metatft.com/augments"
-                    >
-                      Augments
-                    </a>
-                    <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
+                      href={`${ROOT_URL}`}
                     />
                     <a
                       data-rr-ui-event-key="/early-comps"
                       className="nav-link"
-                      href="https://www.metatft.com/early-comps"
+                      href={`${ROOT_URL}` + "/early-comps"}
                     >
-                      Early Comps<span className="NewHighlight">New!</span>
+                      Early Csomps<span className="NewHighlight">New!</span>
                       <img
-                        src="https://www.metatft.com/patreon_logo2.png"
+                        src={`${ROOT_URL}` + "/patreon_logo2.png"}
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"
                       />
@@ -235,71 +166,32 @@ export const NavBarComponent = () => {
                     role="button"
                     className="dropdown-toggle nav-link"
                     tabIndex={0}
-                    href="https://www.metatft.com/#"
+                    href={`${ROOT_URL}`}
                   >
-                    <div style={{ display: "inline-block" }}>
-                      Players
-                    </div>
+                    <div style={{ display: "inline-block" }}>Players</div>
                   </a>
                   <div
                     data-bs-popper="static"
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/rising"
-                      className="nav-link"
-                      href="https://www.metatft.com/rising"
-                    >
-                      Rising
-                    </a>
+                    <DropdownItem title="Rising" />
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/onetricks"
-                      className="nav-link"
-                      href="https://www.metatft.com/onetricks"
-                    >
-                      One Tricks{" "}
+                    <DropdownItem>
+                      One Tricks
                       <img
-                        src="https://www.metatft.com/patreon_logo2.png"
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"
                       />
-                    </a>
+                    </DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/hyper-roll-onetricks"
-                      className="nav-link"
-                      href="https://www.metatft.com/hyper-roll-onetricks"
-                    >
-                      Hyper Roll One Tricks{" "}
+                    <DropdownItem>
+                      Hyper Roll One Tricks
                       <img
-                        src="https://www.metatft.com/patreon_logo2.png"
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"
                       />
-                    </a>
+                    </DropdownItem>
                   </div>
                 </div>
                 <div className="nav-item dropdown">
@@ -309,127 +201,34 @@ export const NavBarComponent = () => {
                     role="button"
                     className="dropdown-toggle nav-link"
                     tabIndex={0}
-                    href="https://www.metatft.com/#"
+                    href="`${ROOT_URL}`/#"
                   >
-                    <div style={{ display: "inline-block" }}>
-                      Tools
-                    </div>
+                    <div style={{ display: "inline-block" }}>Tools</div>
                   </a>
                   <div
                     data-bs-popper="static"
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/download"
-                      className="nav-link"
-                      href="https://www.metatft.com/download"
-                    >
-                      In-Game App
-                    </a>
+                    <DropdownItem>In-Game App</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/loaded-dice"
-                      className="nav-link"
-                      href="https://www.metatft.com/loaded-dice"
-                    >
-                      Loaded Dice
-                    </a>
+                    <DropdownItem>Loaded Dice</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/tome-of-traits"
-                      className="nav-link"
-                      href="https://www.metatft.com/tome-of-traits"
-                    >
-                      Tome of Traits
-                    </a>
+                    <DropdownItem>Tome of Traits</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/twitch-extension"
-                      className="nav-link"
-                      href="https://www.metatft.com/twitch-extension"
-                    >
-                      Twitch Extension
-                    </a>
+                    <DropdownItem>Twitch Extension</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/win-chance"
-                      className="nav-link"
-                      href="https://www.metatft.com/win-chance"
-                    >
-                      Win Chance
-                    </a>
+                    <DropdownItem> Win Chance</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/new-set"
-                      className="nav-link"
-                      href="https://www.metatft.com/new-set"
-                    >
-                      Set 8.5 Update
-                    </a>
+                    <DropdownItem>Set 8.5 Update</DropdownItem>
                     <hr className="dropdown-divider" role="separator" />
-                    <a
-                      data-rr-ui-dropdown-item
-                      className="dropdown-item"
-                      role="button"
-                      tabIndex={0}
-                      href="https://www.metatft.com/#"
-                    />
-                    <a
-                      data-rr-ui-event-key="/tft-vods"
-                      className="nav-link"
-                      href="https://www.metatft.com/tft-vods"
-                    >
-                      Vod Library
-                    </a>
+                    <DropdownItem>Vod Library</DropdownItem>
                   </div>
                 </div>
               </div>
               <div id="DownloadButtonNavContainer">
                 <div className="DownloadButtonNavContainer">
-                  <a href="https://www.metatft.com/download">
+                  <a href="`${ROOT_URL}`/download">
                     <Button variant="contained" color="success" size="small">
                       Download App
                     </Button>
@@ -439,13 +238,13 @@ export const NavBarComponent = () => {
               <div className="IconNavContainer">
                 <a
                   id="PatreonNavBarImgContainer"
-                  href="https://www.metatft.com/icons/patreon"
+                  href="`${ROOT_URL}`/icons/patreon"
                 >
                   <img
                     alt="Support us on Patreon"
                     className="NavBarImg"
                     id="PatreonNavBarImg"
-                    src="https://www.metatft.com/icons/Patreon_120.png"
+                    src="`${ROOT_URL}`/icons/Patreon_120.png"
                   />
                 </a>
                 <a
@@ -457,71 +256,11 @@ export const NavBarComponent = () => {
                     alt="Join Discord"
                     className="NavBarImg"
                     id="DiscordNavBarImg"
-                    src="https://www.metatft.com/icons/Discord.svg"
+                    src="`${ROOT_URL}`/icons/Discord.svg"
                   />
                 </a>
                 {authStore.getIsAuth() ? (
-                  <div className="nav-item nav-avatar dropdown">
-                    <a
-                      id="basic-nav-dropdown"
-                      aria-expanded="true"
-                      className="dropdown-toggle nav-link"
-                      tabIndex={0}
-                    >
-                      <div style={{ display: "inline-block" }}>
-                        <Avatar
-                          alt="Remy Sharp"
-                          src="/static/images/avatar/1.jpg"
-                        />
-                      </div>
-                    </a>
-                    <div
-                      data-bs-popper="static"
-                      className="dropdown-menu"
-                      aria-labelledby="basic-nav-dropdown"
-                    >
-                      <a
-                        data-rr-ui-dropdown-item
-                        className="dropdown-item"
-                        role="button"
-                        tabIndex={0}
-                        href="https://www.metatft.com/#"
-                      />
-                      <a
-                        data-rr-ui-event-key="/hyper-roll-comps"
-                        className="nav-link"
-                        href="https://www.metatft.com/hyper-roll-comps"
-                      >
-                        Information
-                      </a>
-                      <hr className="dropdown-divider" role="separator" />
-                      <a
-                        className="dropdown-item"
-                        role="button"
-                        tabIndex={0}
-                        href="https://www.metatft.com/#"
-                      />
-                      <a
-                        className="nav-link"
-                        href="https://www.metatft.com/double-up-comps"
-                      >
-                        LogOut
-                      </a>
-                      <hr className="dropdown-divider" role="separator" />
-                      <a
-                        className="dropdown-item"
-                        role="button"
-                        tabIndex={0}
-                        href="https://www.metatft.com/#"
-                      />
-                      <a
-                        className="nav-link"
-                        href="https://www.metatft.com/pbe-comps"
-                      >
-                        PBE Comps
-                      </a>
-                    </div>
-                  </div>
+                  <NavBarAvatar />
                 ) : (
                   <div onClick={onLogin} className="login_space">
                     <Button variant="contained" color="success">
@@ -548,14 +287,14 @@ export const NavBarComponent = () => {
       >
         Looking for comps to play on PBE? Take a look at our{" "}
         <a
-          href="https://www.metatft.com/pbe-comps"
+          href="`${ROOT_URL}`/pbe-comps"
           style={{ textDecoration: "underline", color: "rgb(34, 34, 34)" }}
         >
           Set 8.5 PBE Comps Tier List
         </a>
         , and check out the
         <a
-          href="https://www.metatft.com/new-set"
+          href="`${ROOT_URL}`/new-set"
           style={{ textDecoration: "underline", color: "rgb(34, 34, 34)" }}
         >
           new changes here

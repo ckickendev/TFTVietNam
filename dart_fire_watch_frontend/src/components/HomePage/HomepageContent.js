@@ -4,7 +4,7 @@ export const HomepageContent = () => {
   const small_bg_7 = "https://cdn.metatft.com/file/metatft/home/set7_bg.webp";
   return (
     <div className="MetaTFTLayout2" style={{ minHeight: "2000px" }}>
-      <div className="container">
+      <div className="container" style={{minHeight: "100vh"}}>
         <div className="HomePage">
           <div className="HomePageBanner" width={1110} height={500}>
             <img alt="HomePageBg" className="HomePageBg" src={small_bg_7} />
@@ -101,7 +101,7 @@ export const HomepageContent = () => {
             </div>
           </div>
           <div className="HomePageDiscoverContainer">
-            <div className="HomePageGetStartedTitle">Discover MetaTFT</div>
+            <div className="HomePageGetStartedTitle"></div>
             <div className="HomePageTabContainer">
               <ul className="HomePageTabMain nav nav-tabs">
                 <li className="HomePageTabItem nav-item">

@@ -31,7 +31,7 @@ export const SignUp = (props) => {
     });
   };
   return (
-    <div className="container">
+    <div className="container" style={{minHeight: "100vh"}}>
       {loading && <Loading opacity={0.4} />}
       <form action={`${ROOT_BACKEND}/auth/signup`} method="POST">
         <h1>Sign Up</h1>

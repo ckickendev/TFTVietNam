@@ -1,7 +1,7 @@
 import { makeObservable, observable } from "mobx";
 
 class AuthStore {
-  isAuth = false;
+  isAuth = true;
   whoAmI = "";
 
   setIsAuth = (auth) => {
