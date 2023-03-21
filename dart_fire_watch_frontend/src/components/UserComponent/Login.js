@@ -12,6 +12,14 @@ export const Login = (props) => {
   const submitLogin = async (e) => {
     e.preventDefault();
     try {
+      if (!loginInfo.email || !loginInfo.password || !loginInfo.rePassword) {
+        setError("Email and password must not be null");
+        return;
+      }
+      if(loginInfo.password !== loginInfo.rePassword) {
+        setError("Re-password must be match with password");
+        return;
+      }
       setLoading(true);
       const res = await axios.post(`${ROOT_BACKEND}/auth/login`, loginInfo);
       localStorage.setItem("access_token", res.data.data.access_token);
@@ -19,10 +27,10 @@ export const Login = (props) => {
       navigate("/home");
     } catch (err) {
       setLoading(false);
-      if (err.response.data.error) {
-        setError(err.response.data.error);
+      if (err?.response?.data?.error) {
+        setError(err?.response?.data?.error);
       } else {
-        setError(err.message);
+        setError(err?.message);
       }
     }
   };

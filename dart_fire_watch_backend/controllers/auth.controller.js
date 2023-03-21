@@ -93,39 +93,25 @@ class AuthController extends Controller {
   }
 
   async validateBeforeRegister(req, res, next) {
+    let errorMessage = "Some Error is occurs";
     try {
-      const { email, password } = req.body;
+      // const { email, password } = req.body;
 
-      let errorMessage = "";
+      // const user = await User.findOne({ email: email });
+      // if (user) {
+      //   errorMessage = "User exist"
+      // }
 
-      if (!email || !password) {
-        if (!email) {
-          errorMessage = "Email cannot empty";
-        }
-        if (!password) {
-          errorMessage = "Password cannot empty";
-        }
-      }
+      // if (email.length < 6) {
+      //   errorMessage = "Email size must larger than 6";
+      // }
 
-      const user = await User.findOne({ email: email });
-      if (user) {
-        throw new NotFoundException("User exist!");
-      }
-
-      if (email.length < 6) {
-        errorMessage = "Email size must larger than 6";
-      }
-
-      if (password.length < 6) {
-        errorMessage = "Password size must larger than 6";
-      }
-
-      if (errorMessage) {
-        throw new NotFoundException(errorMessage, errorMessage);
-      }
+      // if (password.length < 6) {
+      //   errorMessage = "Password size must larger than 6";
+      // }
       next();
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(500).json({ error: errorMessage });
     }
   }
 
