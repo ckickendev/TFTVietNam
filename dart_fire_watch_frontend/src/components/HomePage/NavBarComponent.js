@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import "./NavBarComponent.scss";
 import authStore from "../../store/authStore";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Avatar,
-} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { DropdownItem } from "./NavBarComponent/DropdownItem";
 import { NavBarAvatar } from "./NavBarComponent/NavBarAvatar";
+import SupportIcon from '@mui/icons-material/Support';
 
 export const NavBarComponent = () => {
   const navigate = useNavigate();
@@ -27,7 +21,7 @@ export const NavBarComponent = () => {
           <div className="navbar_container container">
             <a href={ROOT_URL} className="navbar-brand">
               <img
-                src={`${ROOT_URL}` + "/logo.svg"}
+                src="./images/logoforapp.png"
                 width={50}
                 height={50}
                 alt="MetaTFT Logo"
@@ -240,12 +234,7 @@ export const NavBarComponent = () => {
                   id="PatreonNavBarImgContainer"
                   href="`${ROOT_URL}`/icons/patreon"
                 >
-                  <img
-                    alt="Support us on Patreon"
-                    className="NavBarImg"
-                    id="PatreonNavBarImg"
-                    src="`${ROOT_URL}`/icons/Patreon_120.png"
-                  />
+                  <SupportIcon color="success" />
                 </a>
                 <a
                   href="https://discord.com/invite/RqN3qPy"
@@ -256,7 +245,7 @@ export const NavBarComponent = () => {
                     alt="Join Discord"
                     className="NavBarImg"
                     id="DiscordNavBarImg"
-                    src="`${ROOT_URL}`/icons/Discord.svg"
+                    src="./images/discord_icon.png"
                   />
                 </a>
                 {authStore.getIsAuth() ? (

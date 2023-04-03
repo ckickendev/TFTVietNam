@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../../utils/loading";
 import { FootContent } from "../HomePage/FootContent";
 import { NavBarComponent } from "../HomePage/NavBarComponent";
+import { ConfirmSignup } from "../UserComponent/ConfirmSignup";
 import { Login } from "../UserComponent/Login";
 import { ResetPassword } from "../UserComponent/ResetPassword";
 import { SignUp } from "../UserComponent/SignUp";
+import { AuthenticationContainer } from "../UserComponent/AuthenticationContainer";
 import "./authenStyles.scss";
 
 export const Authentication = () => {
@@ -17,11 +19,15 @@ export const Authentication = () => {
 
   const renderCore = () => {
     return authenState === 1 ? (
-      <Login changeAuthen={changeAuthen} />
+      <Login setLoading={setLoading} changeAuthen={changeAuthen} />
     ) : authenState === 2 ? (
-      <SignUp changeAuthen={changeAuthen} />
+      // <SignUp setLoading={setLoading} changeAuthen={changeAuthen} />
+      <ConfirmSignup setLoading={setLoading} changeAuthen={changeAuthen} />
+
     ) : authenState === 3 ? (
-      <ResetPassword changeAuthen={changeAuthen} />
+      <ResetPassword setLoading={setLoading} changeAuthen={changeAuthen} />
+    ) : authenState === 4 ? (
+      <ConfirmSignup setLoading={setLoading} changeAuthen={changeAuthen} />
     ) : (
       <Loading opacity={1} />
     );
@@ -30,10 +36,6 @@ export const Authentication = () => {
     const getToken = async () => {
       setLoading(true);
       const token = localStorage.getItem("access_token");
-      // if(!token) {
-      //   setLoading(false);
-      //   return;
-      // }
       const headers = {
         Authorization: `Bearer ${token}`,
       };
@@ -56,12 +58,18 @@ export const Authentication = () => {
   };
 
   return (
+    
     <div className="header-container">
       <div id="root">
         <div id="page-container">
           <NavBarComponent />
-          <div id="content-wrap" >
-            {renderCore()}
+          <div id="content-wrap">
+            <AuthenticationContainer
+              loading={loading}
+              changeAuthen={changeAuthen}
+              authenState={authenState}
+              renderCore={renderCore}
+            />
             <FootContent />
           </div>
         </div>

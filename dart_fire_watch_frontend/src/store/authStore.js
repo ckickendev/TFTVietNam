@@ -1,5 +1,3 @@
-import { makeObservable, observable } from "mobx";
-
 class AuthStore {
   isAuth = true;
   whoAmI = "";

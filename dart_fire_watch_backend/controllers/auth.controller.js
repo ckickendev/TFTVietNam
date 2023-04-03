@@ -7,7 +7,7 @@ const {
   ServerException,
 } = require("../exceptions");
 const { User } = require("../models");
-const userServices = require("../services/user.services"); 
+const userServices = require("../services/user.services");
 const authServices = require("../services/auth.services");
 const AuthMiddleware = require("../middlewares/auth.middleware");
 
@@ -51,6 +51,7 @@ class AuthController extends Controller {
       res.json({
         status: 200,
         message: "Create Success",
+        user: email
       });
     } catch (error) {
       res.status(404).json({ error: error.message });
@@ -78,7 +79,7 @@ class AuthController extends Controller {
       if (!user) {
         throw new NotFoundException("User not found");
       }
-      const isPasswordTrue = await bcrypt.compare(password, user.password);
+      const isPasswordTrue = bcrypt.compare(password, user.password);
       if (!isPasswordTrue) {
         throw new BadRequestException(
           "Password not matching!",
@@ -95,20 +96,12 @@ class AuthController extends Controller {
   async validateBeforeRegister(req, res, next) {
     let errorMessage = "Some Error is occurs";
     try {
-      // const { email, password } = req.body;
-
-      // const user = await User.findOne({ email: email });
-      // if (user) {
-      //   errorMessage = "User exist"
-      // }
-
-      // if (email.length < 6) {
-      //   errorMessage = "Email size must larger than 6";
-      // }
-
-      // if (password.length < 6) {
-      //   errorMessage = "Password size must larger than 6";
-      // }
+      const { email, password } = req.body;
+      const user = await User.findOne({ email: email });
+      if (user) {
+        errorMessage = "User exist";
+        throw ServerException("User exist");
+      }
       next();
     } catch (err) {
       res.status(500).json({ error: errorMessage });
@@ -126,7 +119,6 @@ class AuthController extends Controller {
 
   resetPasswordLink = async (req, res, next) => {
     console.log(req.query.token);
-    
   };
 
   initController() {

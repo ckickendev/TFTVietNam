@@ -1,7 +1,14 @@
 import { Avatar } from "@mui/material";
 import React from "react";
+import authStore from "../../../store/authStore";
+
 
 export const NavBarAvatar = () => {
+  const handleLogout = () => {
+    localStorage.clear("access_token");
+    localStorage.clear("user_signup");
+    authStore.setIsAuth(true);
+  };
   return (
     <div className="nav-item nav-avatar dropdown">
       <a
@@ -40,9 +47,13 @@ export const NavBarAvatar = () => {
           tabIndex={0}
           href="https://www.metatft.com/#"
         />
-        <a className="nav-link" href="https://www.metatft.com/double-up-comps">
+        <div
+          className="nav-link"
+          href="https://www.metatft.com/double-up-comps"
+          onClick={handleLogout}
+        >
           LogOut
-        </a>
+        </div>
         <hr className="dropdown-divider" role="separator" />
         <a
           className="dropdown-item"

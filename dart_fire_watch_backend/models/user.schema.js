@@ -11,6 +11,8 @@ const userSchema = new Schema(
       username: String,
       password: String,
       email: String,
+      activate: Boolean,
+      activate_code: String
     },
     {
       timestamps: true,

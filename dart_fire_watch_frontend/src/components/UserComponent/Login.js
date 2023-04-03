@@ -1,25 +1,23 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loading } from "../../utils/loading";
+import EmailIcon from "@mui/icons-material/Email";
+import KeyIcon from "@mui/icons-material/Key";
 
 export const Login = (props) => {
+  const setLoading = props.setLoading;
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const submitLogin = async (e) => {
     e.preventDefault();
     try {
-      if (!loginInfo.email || !loginInfo.password || !loginInfo.rePassword) {
+      if (!loginInfo.email || !loginInfo.password) {
         setError("Email and password must not be null");
         return;
       }
-      if(loginInfo.password !== loginInfo.rePassword) {
-        setError("Re-password must be match with password");
-        return;
-      }
+      setError("");
       setLoading(true);
       const res = await axios.post(`${ROOT_BACKEND}/auth/login`, loginInfo);
       localStorage.setItem("access_token", res.data.data.access_token);
@@ -42,49 +40,35 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="container" style={{minHeight: "100vh"}}>
-      {loading && <Loading opacity={0.4} />}
-      <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
-        <h1>Login</h1>
-        <button onClick={() => props.changeAuthen(2)}>SignUp</button>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            value={loginInfo.email}
-            onChange={(e) => changeValue(e, "email")}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            value={loginInfo.password}
-            onChange={(e) => changeValue(e, "password")}
-          />
-        </div>
-        <p>{error}</p>
-        <button type="submit" onClick={submitLogin} className="btn btn-primary">
-          Submit
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => props.changeAuthen(3)}
-        >
-          Fotget Pass
-        </button>
-      </form>
-    </div>
+    <form action={`${ROOT_BACKEND}/auth/login`} method="post">
+      <h3 class="legend">Login Here</h3>
+      <div class="input">
+        <EmailIcon color="action" />
+        <input
+          name="email"
+          type="email"
+          value={loginInfo.email}
+          placeholder={"Enter your email"}
+          onChange={(e) => changeValue(e, "email")}
+        />
+      </div>
+      <div class="input">
+        <KeyIcon color="action" />
+        <input
+          name="password"
+          type="password"
+          value={loginInfo.password}
+          placeholder={"Enter your password"}
+          onChange={(e) => changeValue(e, "password")}
+        />
+      </div>
+      <p className="text text-danger">{error}</p>
+      <button type="submit" onClick={submitLogin} class="btn submit">
+        Login
+      </button>
+      <div onClick={() => props.changeAuthen(3)} class="bottom-text">
+        Forgot Password?
+      </div>
+    </form>
   );
 };

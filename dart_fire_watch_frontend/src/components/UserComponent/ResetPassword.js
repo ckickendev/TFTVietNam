@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Loading } from "../../utils/loading";
+import EmailIcon from '@mui/icons-material/Email';
 export const ResetPassword = (props) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [emailReset, setEmailReset] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const setLoading = props.setLoading;
   const submitReset = async (e) => {
     e.preventDefault();
     if (!emailReset) {
@@ -17,7 +17,7 @@ export const ResetPassword = (props) => {
       const res = await axios.post(`${ROOT_BACKEND}/auth/resetpassword`, {
         email: emailReset,
       });
-      setError(res.message)
+      setError(res.message);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -29,35 +29,27 @@ export const ResetPassword = (props) => {
     }
   };
   return (
-    <div className="container" style={{minHeight: "100vh"}}>
-      {loading && <Loading opacity={0.4} />}
-      <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
-        <h1>Enter your email to reset password</h1>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            value={emailReset}
-            onChange={(e) => setEmailReset(e.target.value)}
-          />
-        </div>
-        <p>{error}</p>
-        <button type="submit" onClick={submitReset} className="btn btn-primary">
-          Send email for reset password
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => props.changeAuthen(1)}
-        >
-          Return to login
-        </button>
-      </form>
-    </div>
+    <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
+      <h3 class="legend last">Reset Password</h3>
+      <p class="para-style">
+        Enter your email address below and we'll send you an email with
+        instructions.
+      </p>
+      <div class="input">
+        <EmailIcon color="action" />
+        <input
+          type="email"
+          placeholder="Enter your email here"
+          name="email"
+          required=""
+          value={emailReset}
+          onChange={(e) => setEmailReset(e.target.value)}
+        />
+      </div>
+      <p>{error}</p>
+      <button type="submit" onClick={submitReset} class="btn submit last-btn">
+        Reset
+      </button>
+    </form>
   );
 };

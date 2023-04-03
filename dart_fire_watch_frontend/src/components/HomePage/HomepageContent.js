@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 
 export const HomepageContent = () => {
@@ -16,21 +17,10 @@ export const HomepageContent = () => {
               <h3 className="HomePageBannerSubTitle">
                 Up to date for Patch 13.5
               </h3>
-              ß
               <div className="HomePageBannerButtons">
                 <div className="HomePageBannerButtonContainer">
                   <a href="https://www.metatft.com/comps">
-                    <button
-                      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-j4v4ss"
-                      tabIndex={0}
-                      type="button"
-                      style={{
-                        filter: "drop-shadow(rgba(0, 0, 0, 0.25) 4px 4px 4px)",
-                      }}
-                    >
-                      View Comps
-                      <span className="MuiTouchRipple-root css-w0pj6f" />
-                    </button>
+                    <Button variant="contained" color="success" >View Comps</Button>
                   </a>
                 </div>
                 <div
@@ -38,17 +28,9 @@ export const HomepageContent = () => {
                   id="HomeDownloadButton"
                 >
                   <a href="https://www.metatft.com/download">
-                    <button
-                      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-7ecgqv"
-                      tabIndex={0}
-                      type="button"
-                      style={{
-                        filter: "drop-shadow(rgba(0, 0, 0, 0.25) 4px 4px 4px)",
-                      }}
-                    >
+                    <Button variant="contained" color="warning">
                       Download App
-                      <span className="MuiTouchRipple-root css-w0pj6f" />
-                    </button>
+                    </Button>
                   </a>
                 </div>
               </div>
@@ -59,7 +41,7 @@ export const HomepageContent = () => {
               <img
                 alt="Happy Pengu"
                 className="HomePageSummaryImg"
-                src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/happy_pengu.webp"
+                src="./images/happy_pengu.webp"
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Accurate and Unbiased</div>
@@ -74,7 +56,7 @@ export const HomepageContent = () => {
               <img
                 alt="Cheer Pengu"
                 className="HomePageSummaryImg"
-                src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/cheer_pengu.webp"
+                src="./images/cheer_pengu.webp"
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Up to Date</div>
@@ -89,7 +71,7 @@ export const HomepageContent = () => {
               <img
                 alt="Dab Pengu"
                 className="HomePageSummaryImg"
-                src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/dab_pengu.webp"
+                src="./images/dab_pengu.webp"
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Get the Advantage</div>
