@@ -12,15 +12,17 @@ import { Home } from "./components/Home";
 import { Authentication } from './components/AuthComponent/Authentication';
 import { NotFoundPage } from './components/ErrorPage/NotFoundPage';
 import { AccessForbidden } from './components/ErrorPage/AccessForbidden';
+import { Admin } from './components/AdminPanel/admin';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" exact errorElement={<NotFoundPage />} >
+    <Route path="/" >
       <Route path="auth" element={<Authentication />} />
       <Route path="" element={<Home />} />
       <Route path="home" element={<Home />} />
       <Route path="notfound" element={<NotFoundPage />}  />
       <Route path="forbidden" element={<AccessForbidden />}  />
+      <Route path="admin" element={<Admin />}  />
     </Route>
   )
 );

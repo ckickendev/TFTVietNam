@@ -51,7 +51,7 @@ class AuthController extends Controller {
       res.json({
         status: 200,
         message: "Create Success",
-        user: email
+        user: email,
       });
     } catch (error) {
       res.status(404).json({ error: error.message });
@@ -108,6 +108,25 @@ class AuthController extends Controller {
     }
   }
 
+  async confirmSignup(req, res) {
+    const info_access = req.body;
+    if (!info_access.token || !info_access.user_authen) {
+      res.status(500).json({ error: "Some error occurs" });
+    }
+    try {
+      const { token, user_authen } = req.body;
+      const confirmToken = await userServices.confirmToken(token, user_authen);
+      if(confirmToken) {
+        res.status(200).json({ status: "Confirmed, your can login now" });
+      }
+      res
+        .status(500)
+        .json({ status: "Your code is not match, please check again" });
+    } catch (err) {
+      res.status(500).json({ error: "Some error occurs" });
+    }
+  }
+
   resetPass = async (req, res, next) => {
     const email = req.body.email;
     await userServices.resetpassword(email);
@@ -132,6 +151,7 @@ class AuthController extends Controller {
       this.validateBeforeRegister,
       this.register
     );
+    this._router.post(`${this._rootPath}/confirmSignup`, this.confirmSignup);
     this._router.get(`${this._rootPath}/whoAmI`, AuthMiddleware, this.WhoAmI);
     this._router.get(
       `${this._rootPath}/resetpasswordlink`,

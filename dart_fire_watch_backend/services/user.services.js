@@ -59,7 +59,20 @@ class UserService extends Service {
       // userUpdate.save();
     } catch (e) {
       throw new ServerException("Error", e.message);
+    }ß
+  }
+
+  async confirmToken(email, token) {
+    console.log(email, token);
+    const user = await User.findOne({ email: email });
+    console.log(user);
+    if ((user.activate_code = token)) {
+      user.activate = true;
+      user.activate_code = "";
+      await user.save();
+      return true;
     }
+    return false;
   }
 }
 
