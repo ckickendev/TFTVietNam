@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import authStore from "../store/authStore";
-import { Loading } from "../utils/loading";
 import { HomePageComponent } from "./HomePage/HomePageComponent";
+import { LoadingCustom } from "../utils/LoadingCustom";
 
 export const Home = () => {
-  const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   useEffect(() => {
     const getToken = async () => {
       setLoading(true);
@@ -22,7 +20,7 @@ export const Home = () => {
         .then((response) => {
           authStore.setIsAuth(true);
           authStore.setWhoAmI(response.data.userInfo.email)
-          setUser(response.data.userInfo.email);
+          // setUser(response.data.userInfo.email);
         })
         .catch((error) => {
           authStore.setIsAuth(false);
@@ -32,7 +30,7 @@ export const Home = () => {
     };
 
     getToken();
-  }, []);
+  },);
 
-  return <div>{loading ? <Loading /> : <HomePageComponent />}</div>;
+  return <div>{loading ? <LoadingCustom /> : <HomePageComponent />}</div>;
 };

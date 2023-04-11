@@ -30,12 +30,12 @@ export const ResetPassword = (props) => {
   };
   return (
     <form action={`${ROOT_BACKEND}/auth/login`} method="POST">
-      <h3 class="legend last">Reset Password</h3>
-      <p class="para-style">
+      <h3 className="legend last">Reset Password</h3>
+      <p className="para-style">
         Enter your email address below and we'll send you an email with
         instructions.
       </p>
-      <div class="input">
+      <div className="input">
         <EmailIcon color="action" />
         <input
           type="email"
@@ -47,7 +47,7 @@ export const ResetPassword = (props) => {
         />
       </div>
       <p>{error}</p>
-      <button type="submit" onClick={submitReset} class="btn submit last-btn">
+      <button type="submit" onClick={submitReset} className="btn submit last-btn">
         Reset
       </button>
     </form>

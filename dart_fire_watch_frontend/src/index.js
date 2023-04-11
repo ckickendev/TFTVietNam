@@ -13,6 +13,7 @@ import { Authentication } from './components/AuthComponent/Authentication';
 import { NotFoundPage } from './components/ErrorPage/NotFoundPage';
 import { AccessForbidden } from './components/ErrorPage/AccessForbidden';
 import { Admin } from './components/AdminPanel/admin';
+import { ConfirmSignUpByLink } from './components/AuthComponent/UserComponent/ConfirmSignUpByLink';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="notfound" element={<NotFoundPage />}  />
       <Route path="forbidden" element={<AccessForbidden />}  />
       <Route path="admin" element={<Admin />}  />
+      <Route path="confirm_register" element={<ConfirmSignUpByLink />}  />
     </Route>
   )
 );

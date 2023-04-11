@@ -14,13 +14,13 @@ class UserService extends Service {
   async register(email, password) {
     try {
       const numberTokenGenerate = makeRandomNumber(6);
-      console.log("no vao day");
+      const randomLink = process.env.ROOT_FRONTEND + "/confirm_register?link=" + makeRandomString(100) + "&access_token=" + numberTokenGenerate + "&email=" + email;
       const passwordEncrypt = await bcrypt.hash(password, 10);
 
-      sendEmailHandler({
+      await sendEmailHandler({
         to: email,
         subject: "Please enter this code to confirm register account",
-        html: emailTemplate(numberTokenGenerate),
+        html: emailTemplate(numberTokenGenerate, randomLink),
         GOOGLE_MAILER_CLIENT_ID: process.env.GOOGLE_MAILER_CLIENT_ID,
         GOOGLE_MAILER_CLIENT_SECRET: process.env.GOOGLE_MAILER_CLIENT_SECRET,
         GOOGLE_MAILER_REFRESH_TOKEN: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
@@ -32,9 +32,10 @@ class UserService extends Service {
         activate: false,
         activate_code: numberTokenGenerate,
       });
-
+      
       newUser.save();
     } catch (e) {
+      console.log(e);
       throw new ServerException("Error", e.message);
     }
   }
@@ -62,11 +63,11 @@ class UserService extends Service {
     }ß
   }
 
-  async confirmToken(email, token) {
-    console.log(email, token);
+  async confirmToken(token, email) {
+    console.log(token, email);
     const user = await User.findOne({ email: email });
     console.log(user);
-    if ((user.activate_code = token)) {
+    if ((user.activate_code == token)) {
       user.activate = true;
       user.activate_code = "";
       await user.save();

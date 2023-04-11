@@ -1,7 +1,7 @@
 import React from "react";
 import "./loading.scss";
 
-export const Loading = (props) => {
+export const LoadingCustom = (props) => {
   const opacity = props.opacity || 1;
   return (
     <div className="overlay_utils">

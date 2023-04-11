@@ -1,4 +1,4 @@
-const emailTemplate = (token) => {
+const emailTemplate = (token, link) => {
   return `<div width="100%" style="margin: 0; background-color: #f0f2f3">
     <div
       style="margin: auto; max-width: 600px; padding-top: 50px"
@@ -121,6 +121,12 @@ const emailTemplate = (token) => {
                 ${token}
               </div>
               <div>(This code is valid for 10 minutes)</div>
+              <p>Or you can click <a href=${link} style="
+              color: red;
+              font-family: 'Amazon Ember', 'Helvetica Neue', Roboto, Arial,
+                sans-serif;
+              font-size: 14px;
+            " >here</a> to activate now</p>
             </td>
           </tr>
           <tr>

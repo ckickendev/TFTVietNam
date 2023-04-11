@@ -3,14 +3,14 @@ import "./test.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LockResetIcon from "@mui/icons-material/LockReset";
-import { Loading } from "../../utils/loading";
+import { LoadingCustom } from "../../../utils/LoadingCustom";
 
-export const AuthenticationContainer = (props) => {
+export const AuthenticationPage = (props) => {
   const authenState = props.authenState;
   const loading = props.loading;
   return (
     <>
-      {loading && <Loading opacity={0.4} />}
+      {loading && <LoadingCustom opacity={0.4} />}
       <div className="test">
         <div className="main-bg">
           <h1>Welcome to TFT</h1>
@@ -21,7 +21,7 @@ export const AuthenticationContainer = (props) => {
                 <div className="section_authen_state">
                   <div name="sections" id="option1" checked="" />
                   <label
-                    for="option1"
+                    htmlFor="option1"
                     className={`icon_left_authen ${
                       authenState === 1 ? "section_authen_active" : ""
                     } `}
@@ -37,7 +37,7 @@ export const AuthenticationContainer = (props) => {
                 <div className="section_authen_state">
                   <div name="sections" id="option2" />
                   <label
-                    for="option2"
+                    htmlFor="option2"
                     className={`icon_left_authen ${
                       authenState === 2 || authenState === 4 ? "section_authen_active" : ""
                     } `}
@@ -53,7 +53,7 @@ export const AuthenticationContainer = (props) => {
                 <div className="section_authen_state">
                   <div name="sections" id="option3" />
                   <label
-                    for="option3"
+                    htmlFor="option3"
                     className={`icon_left_authen ${
                       authenState === 3 || authenState === 5 ? "section_authen_active" : ""
                     } `}

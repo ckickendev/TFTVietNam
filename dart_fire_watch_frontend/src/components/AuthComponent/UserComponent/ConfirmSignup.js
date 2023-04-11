@@ -3,12 +3,10 @@ import TextRotationNoneIcon from "@mui/icons-material/TextRotationNone";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 export const ConfirmSignup = (props) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const confirmCode = async (e) => {
     e.preventDefault();
@@ -18,21 +16,27 @@ export const ConfirmSignup = (props) => {
         return;
       }
       setError("");
-      setLoading(true);
+      props.setLoading(true);
       const loginInfo = {
         token,
-        user_authen: localStorage.getItem('user_signup'),
+        user_authen: localStorage.getItem("user_signup"),
       };
       const res = await axios.post(
         `${ROOT_BACKEND}/auth/confirmSignup`,
         loginInfo
       );
-      console.log(res); 
-      // localStorage.setItem("access_token", res.data.data.access_token);
-      setLoading(false);
-      // navigate("/home");
+      setError(res.data.message);
+      props.setLoading(false);
+      if(res.status == 200){
+        props.setLoading(true);
+        setTimeout(() => {
+          props.changeAuthen(1);
+        }, 1000)
+        localStorage.removeItem("user_signup");
+        props.setLoading(false);
+      }
     } catch (err) {
-      setLoading(false);
+      props.setLoading(false);
       if (err?.response?.data?.error) {
         setError(err?.response?.data?.error);
       } else {
@@ -51,7 +55,7 @@ export const ConfirmSignup = (props) => {
         <input
           type="email"
           placeholder="Enter your code here"
-          name="email"
+          name="token"
           required=""
           value={token}
           onChange={(e) => setToken(e.target.value)}

@@ -5,11 +5,11 @@ import authStore from "../../store/authStore";
 import { useNavigate } from "react-router-dom";
 import { DropdownItem } from "./NavBarComponent/DropdownItem";
 import { NavBarAvatar } from "./NavBarComponent/NavBarAvatar";
-import SupportIcon from '@mui/icons-material/Support';
+import SupportIcon from "@mui/icons-material/Support";
 
 export const NavBarComponent = () => {
   const navigate = useNavigate();
-  const ROOT_URL = process.env.ROOT_BACKEND;
+  const ROOT_URL = process.env.REACT_APP_ROOT_BACKEND;
 
   const onLogin = () => {
     navigate("/auth");
@@ -46,7 +46,7 @@ export const NavBarComponent = () => {
                   <a
                     data-rr-ui-event-key="/comps"
                     className="nav-link"
-                    href={`${ROOT_URL}` + "/comps"}
+                    href={`${ROOT_URL}/comps`}
                   >
                     Comps
                   </a>
@@ -67,24 +67,15 @@ export const NavBarComponent = () => {
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <DropdownItem
-                      dataRR="data-rr-ui-dropdown-item"
-                      linkHref={`${ROOT_URL}`}
-                    >
+                    <DropdownItem linkHref={`${ROOT_URL}`}>
                       Hyper Roll
                     </DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
-                    <DropdownItem
-                      dataRR="data-rr-ui-dropdown-item"
-                      linkHref={"`${ROOT_URL}`/double-up-comps"}
-                    >
+                    <hr className="dropdown-divider" />
+                    <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
                       Double up
                     </DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
-                    <DropdownItem
-                      dataRR="data-rr-ui-dropdown-item"
-                      linkHref={`${ROOT_URL}` / +"double-up-comps"}
-                    >
+                    <hr className="dropdown-divider" />
+                    <DropdownItem linkHref={`${ROOT_URL}` / +"double-up-comps"}>
                       PBE Comps
                     </DropdownItem>
                   </div>
@@ -114,13 +105,13 @@ export const NavBarComponent = () => {
                     aria-labelledby="basic-nav-dropdown"
                   >
                     <DropdownItem>Items</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Units</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Traits</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Auguments</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <a
                       data-rr-ui-dropdown-item
                       className="dropdown-item"
@@ -131,11 +122,11 @@ export const NavBarComponent = () => {
                     <a
                       data-rr-ui-event-key="/early-comps"
                       className="nav-link"
-                      href={`${ROOT_URL}` + "/early-comps"}
+                      href={`${ROOT_URL}/early-comps`}
                     >
                       Early Csomps<span className="NewHighlight">New!</span>
                       <img
-                        src={`${ROOT_URL}` + "/patreon_logo2.png"}
+                        src={`${ROOT_URL}/patreon_logo2.png`}
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"
                       />
@@ -170,7 +161,7 @@ export const NavBarComponent = () => {
                     aria-labelledby="basic-nav-dropdown"
                   >
                     <DropdownItem title="Rising" />
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>
                       One Tricks
                       <img
@@ -178,7 +169,7 @@ export const NavBarComponent = () => {
                         alt="Patreon Feature"
                       />
                     </DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>
                       Hyper Roll One Tricks
                       <img
@@ -195,7 +186,7 @@ export const NavBarComponent = () => {
                     role="button"
                     className="dropdown-toggle nav-link"
                     tabIndex={0}
-                    href="`${ROOT_URL}`/#"
+                    href={`${ROOT_URL}`}
                   >
                     <div style={{ display: "inline-block" }}>Tools</div>
                   </a>
@@ -205,24 +196,24 @@ export const NavBarComponent = () => {
                     aria-labelledby="basic-nav-dropdown"
                   >
                     <DropdownItem>In-Game App</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Loaded Dice</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Tome of Traits</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Twitch Extension</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem> Win Chance</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Set 8.5 Update</DropdownItem>
-                    <hr className="dropdown-divider" role="separator" />
+                    <hr className="dropdown-divider" />
                     <DropdownItem>Vod Library</DropdownItem>
                   </div>
                 </div>
               </div>
               <div id="DownloadButtonNavContainer">
                 <div className="DownloadButtonNavContainer">
-                  <a href="`${ROOT_URL}`/download">
+                  <a href={`${ROOT_URL}/download`}>
                     <Button variant="contained" color="success" size="small">
                       Download App
                     </Button>

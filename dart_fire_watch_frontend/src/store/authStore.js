@@ -1,6 +1,12 @@
+import {makeAutoObservable} from "mobx"
+
 class AuthStore {
   isAuth = true;
   whoAmI = "";
+
+  constructor() {
+    makeAutoObservable(this);
+  }
 
   setIsAuth = (auth) => {
     this.isAuth = auth;

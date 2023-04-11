@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
+import { validateEmail, validatePassword } from "../../../utils/function";
 
 export const Login = (props) => {
   const setLoading = props.setLoading;
@@ -13,17 +14,22 @@ export const Login = (props) => {
   const submitLogin = async (e) => {
     e.preventDefault();
     try {
-      if (!loginInfo.email || !loginInfo.password) {
-        setError("Email and password must not be null");
+      if(!validateEmail(loginInfo.email).isValid || !validatePassword(loginInfo.password).isValid) {
+        setError("Email and password is not match with syntax, check again");
         return;
       }
       setError("");
       setLoading(true);
       const res = await axios.post(`${ROOT_BACKEND}/auth/login`, loginInfo);
-      localStorage.setItem("access_token", res.data.data.access_token);
-      setLoading(false);
-      navigate("/home");
+      console.log("res 1 ne", res);
+      if(res.data){
+        localStorage.setItem("access_token", res.data.data.access_token);
+        setLoading(false);
+        navigate("/home");
+      }
+      return;
     } catch (err) {
+      console.log("res 2 ne", err);
       setLoading(false);
       if (err?.response?.data?.error) {
         setError(err?.response?.data?.error);
@@ -41,8 +47,8 @@ export const Login = (props) => {
 
   return (
     <form action={`${ROOT_BACKEND}/auth/login`} method="post">
-      <h3 class="legend">Login Here</h3>
-      <div class="input">
+      <h3 className="legend">Login Here</h3>
+      <div className="input">
         <EmailIcon color="action" />
         <input
           name="email"
@@ -52,7 +58,7 @@ export const Login = (props) => {
           onChange={(e) => changeValue(e, "email")}
         />
       </div>
-      <div class="input">
+      <div className="input">
         <KeyIcon color="action" />
         <input
           name="password"
@@ -63,10 +69,10 @@ export const Login = (props) => {
         />
       </div>
       <p className="text text-danger">{error}</p>
-      <button type="submit" onClick={submitLogin} class="btn submit">
+      <button type="submit" onClick={submitLogin} className="btn submit">
         Login
       </button>
-      <div onClick={() => props.changeAuthen(3)} class="bottom-text">
+      <div onClick={() => props.changeAuthen(3)} className="bottom-text">
         Forgot Password?
       </div>
     </form>

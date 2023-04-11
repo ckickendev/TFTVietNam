@@ -47,9 +47,9 @@ export const SignUp = (props) => {
   };
   return (
     <form action={`${ROOT_BACKEND}/auth/signup`} method="POST">
-      <h3 class="legend">Register Here</h3>
+      <h3 className="legend">Register Here</h3>
       <div className="mb-3">
-        <div class="input">
+        <div className="input">
           <EmailIcon color="action" />
 
           <input
@@ -62,7 +62,7 @@ export const SignUp = (props) => {
           />
         </div>
       </div>
-      <div class="input">
+      <div className="input">
         <KeyIcon color="action" />
 
         <input
@@ -74,7 +74,7 @@ export const SignUp = (props) => {
           onChange={(e) => changeValue(e, "password")}
         />
       </div>
-      <div class="input">
+      <div className="input">
         <KeyIcon color="action" />
 
         <input
@@ -88,7 +88,7 @@ export const SignUp = (props) => {
       </div>
       <p>{error}</p>
 
-      <button type="submit" onClick={submitLogin} class="btn submit">
+      <button type="submit" onClick={submitLogin} className="btn submit">
         Register
       </button>
     </form>

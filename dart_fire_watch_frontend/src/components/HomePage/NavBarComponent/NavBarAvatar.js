@@ -2,7 +2,6 @@ import { Avatar } from "@mui/material";
 import React from "react";
 import authStore from "../../../store/authStore";
 
-
 export const NavBarAvatar = () => {
   const handleLogout = () => {
     localStorage.clear("access_token");
@@ -15,38 +14,23 @@ export const NavBarAvatar = () => {
         id="basic-nav-dropdown"
         aria-expanded="true"
         className="dropdown-toggle nav-link"
-        tabIndex={0}
+        href="http://localhost:3000/"
       >
         <div style={{ display: "inline-block" }}>
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         </div>
       </a>
-      <div
-        data-bs-popper="static"
-        className="dropdown-menu"
-        aria-labelledby="basic-nav-dropdown"
-      >
+      <div data-bs-popper="static" className="dropdown-menu">
         <a
-          data-rr-ui-dropdown-item
           className="dropdown-item"
           role="button"
-          tabIndex={0}
-          href="https://www.metatft.com/#"
+          href="https://www.metatft.com/double-up-comps"
         />
-        <a
-          data-rr-ui-event-key="/hyper-roll-comps"
-          className="nav-link"
-          href="https://www.metatft.com/hyper-roll-comps"
-        >
+        <a className="nav-link" href="http://localhost:3000/">
           Information
         </a>
-        <hr className="dropdown-divider" role="separator" />
-        <a
-          className="dropdown-item"
-          role="button"
-          tabIndex={0}
-          href="https://www.metatft.com/#"
-        />
+        <hr className="dropdown-divider" />
+        <a className="dropdown-item" role="button"  href="#" />
         <div
           className="nav-link"
           href="https://www.metatft.com/double-up-comps"
@@ -55,13 +39,8 @@ export const NavBarAvatar = () => {
           LogOut
         </div>
         <hr className="dropdown-divider" role="separator" />
-        <a
-          className="dropdown-item"
-          role="button"
-          tabIndex={0}
-          href="https://www.metatft.com/#"
-        />
-        <a className="nav-link" href="https://www.metatft.com/pbe-comps">
+        <a className="dropdown-item" role="button"  href="#" />
+        <a className="nav-link" href="#">
           PBE Comps
         </a>
       </div>

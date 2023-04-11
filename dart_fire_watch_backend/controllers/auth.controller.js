@@ -5,6 +5,7 @@ const {
   NotFoundException,
   BadRequestException,
   ServerException,
+  ForbiddenException,
 } = require("../exceptions");
 const { User } = require("../models");
 const userServices = require("../services/user.services");
@@ -29,6 +30,7 @@ class AuthController extends Controller {
       const token = await authServices.generateToken(payload);
       const refreshToken = await authServices.generateRefreshToken(payload);
       ConsoleLogger.info(token);
+      console.log(1);
       return res.json({
         status: 200,
         message: "Login Success",
@@ -39,6 +41,7 @@ class AuthController extends Controller {
         },
       });
     } catch (err) {
+      console.log(2);
       next(new ServerException(err.message));
     }
   }
@@ -79,16 +82,23 @@ class AuthController extends Controller {
       if (!user) {
         throw new NotFoundException("User not found");
       }
-      const isPasswordTrue = bcrypt.compare(password, user.password);
+      const isPasswordTrue = await bcrypt.compare(password, user.password);
+      console.log(isPasswordTrue);
       if (!isPasswordTrue) {
         throw new BadRequestException(
-          "Password not matching!",
           "Password not matching!"
         );
       }
+      if(!user.activate) {
+        throw new ForbiddenException(
+          "Your account is not activate, please check your mail to activate your account!"
+        );
+      }
       req.user = user;
+      console.log("beforelogin 1");
       next();
     } catch (error) {
+      console.log("beforelogin 2");
       res.status(500).json({ error: error.message });
     }
   }
@@ -111,19 +121,27 @@ class AuthController extends Controller {
   async confirmSignup(req, res) {
     const info_access = req.body;
     if (!info_access.token || !info_access.user_authen) {
-      res.status(500).json({ error: "Some error occurs" });
+      res.status(500).json({ error: "Some error occurs, please try again" });
     }
     try {
       const { token, user_authen } = req.body;
+      console.log("token, user_authen", token, user_authen);
       const confirmToken = await userServices.confirmToken(token, user_authen);
-      if(confirmToken) {
-        res.status(200).json({ status: "Confirmed, your can login now" });
+      if (confirmToken) {
+        console.log(true);
+        res.json({
+          status: 200,
+          message: "Confirm Success !",
+          user: user_authen,
+        });
+      } else {
+        console.log(false);
+        res
+          .status(500)
+          .json({ error: "Your code is not match, please check again" });
       }
-      res
-        .status(500)
-        .json({ status: "Your code is not match, please check again" });
     } catch (err) {
-      res.status(500).json({ error: "Some error occurs" });
+      res.status(500).json({ error: "Some error occurs, please try again" });
     }
   }
 
