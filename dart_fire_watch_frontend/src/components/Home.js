@@ -7,9 +7,10 @@ import { LoadingCustom } from "../utils/LoadingCustom";
 export const Home = () => {
   // const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
-  const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
+  
   useEffect(() => {
     const getToken = async () => {
+      const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
       setLoading(true);
       const token = localStorage.getItem("access_token");
       const headers = {
@@ -30,7 +31,7 @@ export const Home = () => {
     };
 
     getToken();
-  },);
+  }, []);
 
   return <div>{loading ? <LoadingCustom /> : <HomePageComponent />}</div>;
 };

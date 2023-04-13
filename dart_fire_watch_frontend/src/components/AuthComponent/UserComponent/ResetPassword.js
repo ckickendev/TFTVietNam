@@ -17,15 +17,11 @@ export const ResetPassword = (props) => {
       const res = await axios.post(`${ROOT_BACKEND}/auth/resetpassword`, {
         email: emailReset,
       });
-      setError(res.message);
+      setError(res.data.message);
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      if (err?.response?.data?.error) {
-        setError(err.response.data.error);
-      } else {
-        setError(err.message);
-      }
+      setError(err?.response?.data?.error || err.message);
     }
   };
   return (
@@ -46,7 +42,7 @@ export const ResetPassword = (props) => {
           onChange={(e) => setEmailReset(e.target.value)}
         />
       </div>
-      <p>{error}</p>
+      <p className="text-success"> {error}</p>
       <button type="submit" onClick={submitReset} className="btn submit last-btn">
         Reset
       </button>

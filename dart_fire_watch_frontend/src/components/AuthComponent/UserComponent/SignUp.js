@@ -32,11 +32,7 @@ export const SignUp = (props) => {
       props.changeAuthen(4);
     } catch (err) {
       setLoading(false);
-      if (err?.response?.data?.error) {
-        setError(err?.response?.data?.error);
-      } else {
-        setError(err?.message);
-      }
+      setError(err?.response?.data?.error || err?.message);
     }
   };
   const changeValue = (e, field) => {
@@ -86,11 +82,11 @@ export const SignUp = (props) => {
           onChange={(e) => changeValue(e, "rePassword")}
         />
       </div>
-      <p>{error}</p>
+      <p className="text-danger">{error}</p>
 
       <button type="submit" onClick={submitLogin} className="btn submit">
         Register
       </button>
     </form>
   );
-};                  
+};

@@ -37,11 +37,7 @@ export const ConfirmSignup = (props) => {
       }
     } catch (err) {
       props.setLoading(false);
-      if (err?.response?.data?.error) {
-        setError(err?.response?.data?.error);
-      } else {
-        setError(err?.message);
-      }
+      setError(err?.response?.data?.error || err?.message)
     }
   };
   return (

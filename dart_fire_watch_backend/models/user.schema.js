@@ -12,7 +12,8 @@ const userSchema = new Schema(
       password: String,
       email: String,
       activate: Boolean,
-      activate_code: String
+      activate_code: String,
+      token_reset_pass: String,
     },
     {
       timestamps: true,

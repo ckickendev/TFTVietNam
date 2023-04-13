@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import DialogCustom from "../../../utils/DialogCustom";
 import { LoadingCustom } from "../../../utils/LoadingCustom";
@@ -9,13 +9,15 @@ export const ConfirmSignUpByLink = () => {
   const [isConfirm, setIsConfirm] = useState(false);
   const [title, setTittle] = useState();
   const [content, setContent] = useState();
+  const [aggreeTitle, setAggreeTittle] = useState("Return to login");
+  const navigate = useNavigate();
 
-
-  const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
 
   useEffect(() => {
     async function handleConfirm() {
-      const queryParameters = new URLSearchParams(window.location.search)
+      
+      const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
+      const queryParameters = new URLSearchParams(window.location.search);
       const access_token = queryParameters.get("access_token");
       const email = queryParameters.get("email");
       const loginInfo = {
@@ -28,29 +30,44 @@ export const ConfirmSignUpByLink = () => {
             `${ROOT_BACKEND}/auth/confirmSignup`,
             loginInfo
           );
-          console.log(res);
-          if(res.data) {
+          console.log("go 1,", res);
+          if (res.data) {
             setTittle("Your account is register successfully");
-            setContent("You can login right now, you will redirect to login in some minutes...")
+            setContent(
+              "You can login right now, you will redirect to login in some minutes..."
+            );
             setLoading(true);
             setIsConfirm(true);
+            setTimeout(() => {
+              navigate("/home");
+            }, 3000);
           }
         }
       } catch (err) {
-        console.log(err);
+        setAggreeTittle("Go to home page");
+
+        setIsConfirm(true);
+        setTittle(err?.response?.data?.error || err.message);
       }
     }
     handleConfirm();
-  }, []);
+  });
+
+  const confirmToHomePage = () => {
+    navigate("/home");
+  };
 
   return (
     <>
       {loading || <LoadingCustom opacity={1} />}
-      {isConfirm || (
+      {isConfirm && (
         <DialogCustom
           isOpen={true}
           title={title}
           content={content}
+          hiddenDisaggree={true}
+          aggreeTitle={aggreeTitle}
+          confirmHandler={confirmToHomePage}
         />
       )}
     </>

@@ -1,17 +1,17 @@
 import React from "react";
 import "./loading.scss";
+import { Backdrop, CircularProgress } from "@mui/material";
 
 export const LoadingCustom = (props) => {
   const opacity = props.opacity || 1;
   return (
-    <div className="overlay_utils">
-      <div className="overlay" style={{opacity: opacity}}>  
-        <div className="overlay__inner">
-          <div className="overlay__content">
-            <span className="spinner"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Backdrop
+      sx={{ ...props.sx, color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={props.isOpen}
+      onClick={props.handleClick}
+      style={{ opacity: opacity }}
+    >
+      <CircularProgress color="inherit" />
+    </Backdrop>
   );
 };

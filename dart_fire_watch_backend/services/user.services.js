@@ -1,9 +1,9 @@
 const { Service } = require("../core");
 const { User } = require("../models");
 const { makeRandomNumber, makeRandomString } = require("../utils/function");
-const { ServerException } = require("../exceptions");
+const { ServerException, ForbiddenException } = require("../exceptions");
 const sendEmailHandler = require("../utils/sendEmailOptions");
-const { emailTemplate } = require("../utils/emailTemplate");
+const { confirmTokenEmail, confirmRegiter } = require("../utils/emailTemplate");
 const bcrypt = require("bcrypt");
 class UserService extends Service {
   async getAllUser() {
@@ -14,13 +14,20 @@ class UserService extends Service {
   async register(email, password) {
     try {
       const numberTokenGenerate = makeRandomNumber(6);
-      const randomLink = process.env.ROOT_FRONTEND + "/confirm_register?link=" + makeRandomString(100) + "&access_token=" + numberTokenGenerate + "&email=" + email;
+      const randomLink =
+        process.env.ROOT_FRONTEND +
+        "/confirm_register?link=" +
+        makeRandomString(100) +
+        "&access_token=" +
+        numberTokenGenerate +
+        "&email=" +
+        email;
       const passwordEncrypt = await bcrypt.hash(password, 10);
 
       await sendEmailHandler({
         to: email,
         subject: "Please enter this code to confirm register account",
-        html: emailTemplate(numberTokenGenerate, randomLink),
+        html: confirmTokenEmail(numberTokenGenerate, randomLink),
         GOOGLE_MAILER_CLIENT_ID: process.env.GOOGLE_MAILER_CLIENT_ID,
         GOOGLE_MAILER_CLIENT_SECRET: process.env.GOOGLE_MAILER_CLIENT_SECRET,
         GOOGLE_MAILER_REFRESH_TOKEN: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
@@ -32,7 +39,6 @@ class UserService extends Service {
         activate: false,
         activate_code: numberTokenGenerate,
       });
-      
       newUser.save();
     } catch (e) {
       console.log(e);
@@ -41,39 +47,57 @@ class UserService extends Service {
   }
 
   async resetpassword(email) {
-    const tokenGenerate = makeRandomString(10);
+    const tokenGenerate = makeRandomString(50);
     const linkResetPassword =
-      process.env.ROOT_BACKEND +
-      "/auth/resetpasswordlink?token=" +
+      process.env.ROOT_FRONTEND +
+      "/reset-password-link?token_access=" +
       tokenGenerate;
     try {
       await sendEmailHandler({
         to: email,
         subject: "Your link to reset your password",
-        html: `<h1>Here is your link <a href="${linkResetPassword}" >Click here</a> </h1> `,
+        html: confirmRegiter(linkResetPassword),
         GOOGLE_MAILER_CLIENT_ID: process.env.GOOGLE_MAILER_CLIENT_ID,
         GOOGLE_MAILER_CLIENT_SECRET: process.env.GOOGLE_MAILER_CLIENT_SECRET,
         GOOGLE_MAILER_REFRESH_TOKEN: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
       });
       const userUpdate = await User.findOne({ email: email });
-      userUpdate.tokenResetPassword = tokenGenerate;
-      // userUpdate.save();
+      userUpdate.token_reset_pass = tokenGenerate;
+      userUpdate.save();
     } catch (e) {
       throw new ServerException("Error", e.message);
-    }ß
+    }
   }
 
   async confirmToken(token, email) {
-    console.log(token, email);
     const user = await User.findOne({ email: email });
-    console.log(user);
-    if ((user.activate_code == token)) {
+    if (user.activate) {
+      throw new ForbiddenException(
+        "Your account (" +
+          email +
+          ") is activated before, return to login now !"
+      );
+    }
+    if (user.activate_code == token) {
       user.activate = true;
       user.activate_code = "";
       await user.save();
       return true;
     }
     return false;
+  }
+
+  async confirmTokenAccess(access_token) {
+    const user = await User.findOne({ token_reset_pass: access_token });
+    if (user.id) {
+      return true;
+    }
+    return false;
+  }
+
+  async confirmNewPassword(access_token, new_password) {
+    const user = await User.findOne({token_reset_pass: access_token});
+    user.password = bcrypt()
   }
 }
 

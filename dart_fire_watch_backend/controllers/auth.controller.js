@@ -6,6 +6,7 @@ const {
   BadRequestException,
   ServerException,
   ForbiddenException,
+  UnauthorizedException,
 } = require("../exceptions");
 const { User } = require("../models");
 const userServices = require("../services/user.services");
@@ -85,11 +86,9 @@ class AuthController extends Controller {
       const isPasswordTrue = await bcrypt.compare(password, user.password);
       console.log(isPasswordTrue);
       if (!isPasswordTrue) {
-        throw new BadRequestException(
-          "Password not matching!"
-        );
+        throw new BadRequestException("Password not matching!");
       }
-      if(!user.activate) {
+      if (!user.activate) {
         throw new ForbiddenException(
           "Your account is not activate, please check your mail to activate your account!"
         );
@@ -138,27 +137,70 @@ class AuthController extends Controller {
         console.log(false);
         res
           .status(500)
-          .json({ error: "Your code is not match, please check again" });
+          .json({ error: "Your code/link is not match, please check again" });
       }
     } catch (err) {
-      res.status(500).json({ error: "Some error occurs, please try again" });
+      res.status(500).json({ error: err.message });
     }
   }
 
   resetPass = async (req, res, next) => {
-    const email = req.body.email;
-    await userServices.resetpassword(email);
-    return res.json({
-      status: 200,
-      message: "Email sent, check your email ",
-    });
+    try {
+      const email = req.body.email;
+      await userServices.resetpassword(email);
+      return res.json({
+        status: 200,
+        message: "Email sent,please check your email !",
+      });
+    } catch (err) {
+      return res.json({
+        status: 500,
+        error: "Some errors is occurs, please check again ",
+      });
+    }
   };
 
-  resetPasswordLink = async (req, res, next) => {
-    console.log(req.query.token);
+  confirmNewPassword = async (req, res, next) => {
+    try {
+      const { access_token, new_password } = req.body;
+      await userServices.confirmNewPassword(access_token, new_password);
+      return res.json({
+        status: 200,
+        message:
+          "Password changed, please return to homepage and check again !",
+      });
+    } catch (err) {
+      return res.json({
+        status: 500,
+        error: err.message || "Some error is occurs",
+      });
+    }
+  };
+
+  confirmTokenAccess = async (req, res, next) => {
+    try {
+      const { access_token } = req.body;
+      const isExistToken = await userServices.confirmTokenAccess(access_token);
+      if (isExistToken) {
+        return res.json({
+          status: 200,
+        });
+      } else {
+        throw new UnauthorizedException(
+          "Your link is invalid or expired, please try again! "
+        );
+      }
+    } catch (err) {
+      return res.json({
+        status: 500,
+        error: err.message || "Some error is occurs",
+      });
+    }
   };
 
   initController() {
+    this._router.get(`${this._rootPath}/whoAmI`, AuthMiddleware, this.WhoAmI);
+    this._router.post(`${this._rootPath}/confirmSignup`, this.confirmSignup);
     this._router.post(
       `${this._rootPath}/login`,
       this.validateBeforeLogin,
@@ -169,13 +211,15 @@ class AuthController extends Controller {
       this.validateBeforeRegister,
       this.register
     );
-    this._router.post(`${this._rootPath}/confirmSignup`, this.confirmSignup);
-    this._router.get(`${this._rootPath}/whoAmI`, AuthMiddleware, this.WhoAmI);
-    this._router.get(
-      `${this._rootPath}/resetpasswordlink`,
-      this.resetPasswordLink
+    this._router.post(
+      `${this._rootPath}/confirm-token-access`,
+      this.confirmTokenAccess
     );
     this._router.post(`${this._rootPath}/resetpassword`, this.resetPass);
+    this._router.post(
+      `${this._rootPath}/confirm-new-password`,
+      this.confirmNewPassword
+    );
   }
 }
 

@@ -31,11 +31,7 @@ export const Login = (props) => {
     } catch (err) {
       console.log("res 2 ne", err);
       setLoading(false);
-      if (err?.response?.data?.error) {
-        setError(err?.response?.data?.error);
-      } else {
-        setError(err?.message);
-      }
+      setError(err?.response?.data?.error || err.message);
     }
   };
   const changeValue = (e, field) => {
