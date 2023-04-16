@@ -153,10 +153,7 @@ class AuthController extends Controller {
         message: "Email sent,please check your email !",
       });
     } catch (err) {
-      return res.json({
-        status: 500,
-        error: "Some errors is occurs, please check again ",
-      });
+      res.status(500).json({ error: "Some errors is occurs, please check again " });
     }
   };
 
@@ -170,16 +167,16 @@ class AuthController extends Controller {
           "Password changed, please return to homepage and check again !",
       });
     } catch (err) {
-      return res.json({
-        status: 500,
-        error: err.message || "Some error is occurs",
-      });
+      return res.status(500).json({ error: err.message || "Some error is occurs" });
     }
   };
 
   confirmTokenAccess = async (req, res, next) => {
     try {
       const { access_token } = req.body;
+      if(!access_token) {
+        throw new NotFoundException("Your token is invalid");
+      }
       const isExistToken = await userServices.confirmTokenAccess(access_token);
       if (isExistToken) {
         return res.json({
@@ -191,10 +188,7 @@ class AuthController extends Controller {
         );
       }
     } catch (err) {
-      return res.json({
-        status: 500,
-        error: err.message || "Some error is occurs",
-      });
+      return res.status(500).json({ error: err.message || "Some error is occurs" });
     }
   };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import "./NavBarComponent.scss";
+import "./HomePageComponent.scss"
 import authStore from "../../store/authStore";
 import { useNavigate } from "react-router-dom";
 import { DropdownItem } from "./NavBarComponent/DropdownItem";

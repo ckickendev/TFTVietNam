@@ -3,16 +3,18 @@ import "../authenStyles.scss";
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
 import { LoadingCustom } from "../../../utils/LoadingCustom";
+import DialogCustom from "../../../utils/DialogCustom";
+import { validatePassword } from "../../../utils/function";
 
 export const ResetPasswordByLink = () => {
   const [loading, setLoading] = useState(true);
   const [loadingBackground, setLoadingBackground] = useState(true);
   const [error, setError] = useState();
+  const [errorLink, setErrorLink] = useState(false);
   const [newPassword, setNewPassword] = useState("");
 
   useEffect(() => {
     async function confirmTokenAccess() {
-      console.log("hello");
       const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
       const queryParameters = new URLSearchParams(window.location.search);
       const access_token = queryParameters.get("token_access");
@@ -20,7 +22,7 @@ export const ResetPasswordByLink = () => {
         if (access_token) {
           const res = await axios.post(
             `${ROOT_BACKEND}/auth/confirm-token-access`,
-            access_token
+            { access_token }
           );
           if (res.data) {
             console.log(res);
@@ -30,8 +32,8 @@ export const ResetPasswordByLink = () => {
         }
       } catch (err) {
         setLoadingBackground(false);
-        setLoading(false);
-        console.log("err 2", err);
+        setLoading(true);
+        setErrorLink(true);
       }
     }
     confirmTokenAccess();
@@ -39,14 +41,24 @@ export const ResetPasswordByLink = () => {
 
   const handleChangePassword = async () => {
     setLoading(true);
+    const validatePass = validatePassword(
+      newPassword,
+      "Your password not match with syntax, check again!"
+    );
+    if (!validatePass.isValid) {
+      setError(validatePass.message);
+      setLoading(false);
+      return;
+    }
+    setError("");
     try {
       const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
       const queryParameters = new URLSearchParams(window.location.search);
       const access_token = queryParameters.get("token_access");
       const data = {
         access_token,
-        new_password: newPassword
-      }
+        new_password: newPassword,
+      };
       if (access_token) {
         console.log("newPassword", newPassword);
         const res = await axios.post(
@@ -54,7 +66,7 @@ export const ResetPasswordByLink = () => {
           data
         );
         if (res.data) {
-          console.log(res);
+          setError(res.data.message);
           setLoading(false);
         }
       }
@@ -67,13 +79,21 @@ export const ResetPasswordByLink = () => {
 
   return (
     <>
-      {
-        <LoadingCustom
-          opacity={1}
-          isOpen={loading}
-          sx={loadingBackground && { backgroundColor: "#444" }}
+      <LoadingCustom
+        opacity={1}
+        isOpen={loading}
+        sx={loadingBackground && { backgroundColor: "#444" }}
+      />
+
+      {errorLink && (
+        <DialogCustom
+          hiddenDisaggree={true}
+          hiddenAggree={true}
+          isOpen={errorLink}
+          title="Your link is invalid or expired"
+          content="Please check again your email again, if your email is valid, please send another change password request"
         />
-      }
+      )}
       <div className="reset-password-link">
         <div className="main-bg">
           <div className="reset-password  d-flex justify-content-center align-items-center flex-column pt-3">
@@ -91,7 +111,9 @@ export const ResetPasswordByLink = () => {
               size="small"
               type="password"
               value={newPassword}
-              onChange={(e) => {setNewPassword(e.target.value)}}
+              onChange={(e) => {
+                setNewPassword(e.target.value);
+              }}
             />
             <p className="text text-light mt-4">{error}</p>
             <Button

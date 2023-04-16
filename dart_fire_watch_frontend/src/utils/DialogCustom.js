@@ -10,8 +10,8 @@ import { useState } from "react";
 
 export default function DialogCustom({
   isOpen,
-  confirmHandler = {},
-  cancelHandler = {},
+  confirmHandler = () => {},
+  cancelHandler = () => {},
   title,
   content,
   hiddenDisaggree = false,

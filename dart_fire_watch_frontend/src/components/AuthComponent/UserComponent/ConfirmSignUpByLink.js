@@ -59,7 +59,7 @@ export const ConfirmSignUpByLink = () => {
 
   return (
     <>
-      {loading || <LoadingCustom opacity={1} />}
+      <LoadingCustom opacity={1} isOpen={true} />
       {isConfirm && (
         <DialogCustom
           isOpen={true}

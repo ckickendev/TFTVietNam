@@ -10,7 +10,7 @@ export const AuthenticationPage = (props) => {
   const loading = props.loading;
   return (
     <>
-      {loading && <LoadingCustom opacity={0.4} />}
+      <LoadingCustom opacity={0.4} isOpen={loading} />
       <div className="test">
         <div className="main-bg">
           <h1>Welcome to TFT</h1>

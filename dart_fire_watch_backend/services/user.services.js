@@ -89,6 +89,7 @@ class UserService extends Service {
 
   async confirmTokenAccess(access_token) {
     const user = await User.findOne({ token_reset_pass: access_token });
+    console.log("user confrim token", user);
     if (user.id) {
       return true;
     }
@@ -97,7 +98,11 @@ class UserService extends Service {
 
   async confirmNewPassword(access_token, new_password) {
     const user = await User.findOne({token_reset_pass: access_token});
-    user.password = bcrypt()
+    console.log(user);
+    const newPassword = await bcrypt.hash(new_password, 10);
+    user.password = newPassword;
+    user.token_reset_pass = "";
+    user.save();
   }
 }
 

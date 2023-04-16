@@ -36,7 +36,7 @@ export const Authentication = () => {
         );
       }
       default: {
-        return <LoadingCustom opacity={1} />;
+        return <LoadingCustom isOpen={true} opacity={1} />;
       }
     }
   };
