@@ -10,7 +10,7 @@ import SupportIcon from "@mui/icons-material/Support";
 
 export const NavBarComponent = () => {
   const navigate = useNavigate();
-  const ROOT_URL = process.env.REACT_APP_ROOT_BACKEND;
+  const ROOT_URL = process.env.REACT_APP_ROOT_FRONTEND;
 
   const onLogin = () => {
     navigate("/auth");

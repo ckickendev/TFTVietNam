@@ -10,6 +10,10 @@ const userSchema = new Schema(
       },
       username: String,
       password: String,
+      role: {
+        type: Number, 
+        default: 0
+      },
       email: String,
       activate: Boolean,
       activate_code: String,

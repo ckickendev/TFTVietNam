@@ -11,7 +11,7 @@ const {
 const { User } = require("../models");
 const userServices = require("../services/user.services");
 const authServices = require("../services/auth.services");
-const AuthMiddleware = require("../middlewares/auth.middleware");
+const { AuthMiddleware } = require("../middlewares/auth.middleware");
 
 class AuthController extends Controller {
   _rootPath = "/auth";
@@ -153,7 +153,9 @@ class AuthController extends Controller {
         message: "Email sent,please check your email !",
       });
     } catch (err) {
-      res.status(500).json({ error: "Some errors is occurs, please check again " });
+      res
+        .status(500)
+        .json({ error: "Some errors is occurs, please check again " });
     }
   };
 
@@ -167,14 +169,16 @@ class AuthController extends Controller {
           "Password changed, please return to homepage and check again !",
       });
     } catch (err) {
-      return res.status(500).json({ error: err.message || "Some error is occurs" });
+      return res
+        .status(500)
+        .json({ error: err.message || "Some error is occurs" });
     }
   };
 
   confirmTokenAccess = async (req, res, next) => {
     try {
       const { access_token } = req.body;
-      if(!access_token) {
+      if (!access_token) {
         throw new NotFoundException("Your token is invalid");
       }
       const isExistToken = await userServices.confirmTokenAccess(access_token);
@@ -188,7 +192,9 @@ class AuthController extends Controller {
         );
       }
     } catch (err) {
-      return res.status(500).json({ error: err.message || "Some error is occurs" });
+      return res
+        .status(500)
+        .json({ error: err.message || "Some error is occurs" });
     }
   };
 

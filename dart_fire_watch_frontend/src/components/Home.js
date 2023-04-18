@@ -19,11 +19,14 @@ export const Home = () => {
       await axios
         .get(`${ROOT_BACKEND}/auth/whoAmI`, { headers })
         .then((response) => {
+          console.log("res", response);
           authStore.setIsAuth(true);
           authStore.setWhoAmI(response.data.userInfo.email)
           // setUser(response.data.userInfo.email);
         })
         .catch((error) => {
+          console.log("res", false);
+
           authStore.setIsAuth(false);
           authStore.setWhoAmI("")
         });

@@ -7,12 +7,11 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import "./styles/CommonCss.scss";
 import { Home } from "./components/Home";
 import { Authentication } from "./components/AuthComponent/Authentication";
 import { NotFoundPage } from "./components/ErrorPage/NotFoundPage";
 import { AccessForbidden } from "./components/ErrorPage/AccessForbidden";
-import { Admin } from "./components/AdminPanel/admin";
+import { Admin } from "./components/AdminPanel/AdminPanel";
 import { ConfirmSignUpByLink } from "./components/AuthComponent/UserComponent/ConfirmSignUpByLink";
 import { ResetPasswordByLink } from "./components/AuthComponent/UserComponent/ResetPasswordByLink";
 
@@ -31,10 +30,13 @@ const router = createBrowserRouter(
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+const root = document.getElementById("root")!;
+
+ReactDOM.createRoot(root).render(
+  //disable strict mode to negate render twice
+  // <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 reportWebVitals();

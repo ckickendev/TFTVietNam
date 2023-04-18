@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { LeftPanel } from "./LeftPanel";
-import { RightPanel } from "./RightPanel";
+import { LeftPanel } from "./LeftPanel.tsx";
+import { RightPanel } from "./RightPanel.js";
 import "./admin.scss";
-import { ChampionAdmin } from "./ChampionAdmin";
-import { ItemAdmin } from "./ItemAdmin";
+import { ItemAdmin } from "./ItemAdmin.js";
 import TraitAdmin from "./TraitAdmin.tsx";
-import { NavBarComponent } from "../HomePage/NavBarComponent";
+import { NavBarComponent } from "../HomePage/NavBarComponent.js";
+import { ChampionAdmin } from "./ChampionAdmin/ChampionAdmin.tsx";
 
 export const Admin = () => {
   const [onStatus, setOnStatus] = useState(0);
