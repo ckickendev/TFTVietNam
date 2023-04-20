@@ -32,8 +32,7 @@ class AuthController extends Controller {
       const refreshToken = await authServices.generateRefreshToken(payload);
       ConsoleLogger.info(token);
       console.log(1);
-      return res.json({
-        status: 200,
+      return res.status(200).json({
         message: "Login Success",
         data: {
           access_token: token,
@@ -42,8 +41,7 @@ class AuthController extends Controller {
         },
       });
     } catch (err) {
-      console.log(2);
-      next(new ServerException(err.message));
+      res.status(500).json({ error: err.message });
     }
   }
 
@@ -52,8 +50,7 @@ class AuthController extends Controller {
     console.log(email, password);
     try {
       await userServices.register(email, password);
-      res.json({
-        status: 200,
+      return res.status(200).json({
         message: "Create Success",
         user: email,
       });
@@ -65,8 +62,7 @@ class AuthController extends Controller {
   async WhoAmI(req, res, next) {
     const userInfo = req.userInfo;
     try {
-      return res.json({
-        status: 200,
+      return res.status(200).json({
         message: "success",
         userInfo: userInfo,
       });
@@ -78,7 +74,6 @@ class AuthController extends Controller {
   async validateBeforeLogin(req, res, next) {
     try {
       const { email, password } = req.body;
-      console.log(email, password);
       const user = await User.findOne({ email: email });
       if (!user) {
         throw new NotFoundException("User not found");
@@ -94,10 +89,8 @@ class AuthController extends Controller {
         );
       }
       req.user = user;
-      console.log("beforelogin 1");
       next();
     } catch (error) {
-      console.log("beforelogin 2");
       res.status(500).json({ error: error.message });
     }
   }
@@ -124,17 +117,13 @@ class AuthController extends Controller {
     }
     try {
       const { token, user_authen } = req.body;
-      console.log("token, user_authen", token, user_authen);
       const confirmToken = await userServices.confirmToken(token, user_authen);
       if (confirmToken) {
         console.log(true);
-        res.json({
-          status: 200,
-          message: "Confirm Success !",
-          user: user_authen,
-        });
+        res
+          .status(200)
+          .json({ message: "Confirm Success !", user: user_authen });
       } else {
-        console.log(false);
         res
           .status(500)
           .json({ error: "Your code/link is not match, please check again" });
@@ -148,7 +137,7 @@ class AuthController extends Controller {
     try {
       const email = req.body.email;
       await userServices.resetpassword(email);
-      return res.json({
+      return res.status(200).json({
         status: 200,
         message: "Email sent,please check your email !",
       });
@@ -163,8 +152,7 @@ class AuthController extends Controller {
     try {
       const { access_token, new_password } = req.body;
       await userServices.confirmNewPassword(access_token, new_password);
-      return res.json({
-        status: 200,
+      return res.status(200).json({
         message:
           "Password changed, please return to homepage and check again !",
       });
@@ -183,8 +171,8 @@ class AuthController extends Controller {
       }
       const isExistToken = await userServices.confirmTokenAccess(access_token);
       if (isExistToken) {
-        return res.json({
-          status: 200,
+        return res.status(200).json({
+          message: "Confirm Success !",
         });
       } else {
         throw new UnauthorizedException(
