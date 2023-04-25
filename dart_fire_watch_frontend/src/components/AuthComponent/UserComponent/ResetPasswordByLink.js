@@ -77,6 +77,10 @@ export const ResetPasswordByLink = () => {
     setLoading(false);
   };
 
+  const closeDialog = () => {
+    setErrorLink(false);
+  };
+
   return (
     <>
       <LoadingCustom
@@ -87,8 +91,10 @@ export const ResetPasswordByLink = () => {
 
       {errorLink && (
         <DialogCustom
-          hiddenDisaggree={true}
-          hiddenAggree={true}
+          onClose={closeDialog}
+          confirmHandler={closeDialog}
+          cancelHandler={closeDialog}
+          displayDisaggree={false}
           isOpen={errorLink}
           title="Your link is invalid or expired"
           content="Please check again your email again, if your email is valid, please send another change password request"

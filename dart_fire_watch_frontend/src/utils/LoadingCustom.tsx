@@ -1,8 +1,14 @@
-import React from "react";
 import "./loading.scss";
 import { Backdrop, CircularProgress } from "@mui/material";
 
-export const LoadingCustom = (props) => {
+interface ILoadingCustome {
+  opacity?: number,
+  sx?: object,
+  handleClick? : () => void
+  isOpen: boolean
+} 
+
+export const LoadingCustom = (props: ILoadingCustome) => {
   const opacity = props.opacity || 1;
   return (
     <Backdrop

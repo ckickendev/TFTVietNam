@@ -12,10 +12,8 @@ export const ConfirmSignUpByLink = () => {
   const [aggreeTitle, setAggreeTittle] = useState("Return to login");
   const navigate = useNavigate();
 
-
   useEffect(() => {
     async function handleConfirm() {
-      
       const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
       const queryParameters = new URLSearchParams(window.location.search);
       const access_token = queryParameters.get("access_token");
@@ -59,13 +57,16 @@ export const ConfirmSignUpByLink = () => {
 
   return (
     <>
-      <LoadingCustom opacity={1} isOpen={true} />
+      <LoadingCustom opacity={1} isOpen={isConfirm} />
       {isConfirm && (
         <DialogCustom
-          isOpen={true}
+          onClose={() => {
+            setIsConfirm(false);
+          }}
+          isOpen={isConfirm}
           title={title}
           content={content}
-          hiddenDisaggree={true}
+          displayDisaggree={false}
           aggreeTitle={aggreeTitle}
           confirmHandler={confirmToHomePage}
         />

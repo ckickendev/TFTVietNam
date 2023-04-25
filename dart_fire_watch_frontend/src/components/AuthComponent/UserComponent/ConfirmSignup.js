@@ -27,17 +27,17 @@ export const ConfirmSignup = (props) => {
       );
       setError(res.data.message);
       props.setLoading(false);
-      if(res.status == 200){
+      if (res.status == 200) {
         props.setLoading(true);
         setTimeout(() => {
           props.changeAuthen(1);
-        }, 1000)
+        }, 1000);
         localStorage.removeItem("user_signup");
         props.setLoading(false);
       }
     } catch (err) {
       props.setLoading(false);
-      setError(err?.response?.data?.error || err?.message)
+      setError(err?.response?.data?.error || err?.message);
     }
   };
   return (

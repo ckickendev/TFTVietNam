@@ -8,36 +8,47 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
+interface IDialogCustome {
+  isOpen: boolean;
+  confirmHandler?: () => void;
+  cancelHandler?: () => void;
+  onClose?: () => void;
+  title: string;
+  content: string;
+  displayDisaggree?: boolean;
+  displayAggree?: boolean;
+  disaggreeTitle?: string;
+  aggreeTitle?: string;
+}
+
 export default function DialogCustom({
   isOpen,
-  confirmHandler = () => {},
-  cancelHandler = () => {},
-  title,
-  content,
-  hiddenDisaggree = false,
-  hiddenAggree = false,
+  confirmHandler,
+  cancelHandler,
+  title = "Some error is occur",
+  content = "Please check again",
+  displayDisaggree = true,
+  displayAggree = true,
   disaggreeTitle = "Disaggree",
-  aggreeTitle="Aggree"
-}) {
-  const [open, setOpen] = useState(isOpen);
-
+  aggreeTitle = "Aggree",
+  onClose,
+}: IDialogCustome) {
   const handleAggree = () => {
-    setOpen(false);
-    confirmHandler();
+    confirmHandler && confirmHandler();
   };
 
   const handleDisaggree = () => {
-    setOpen(false);
-    cancelHandler();
+    cancelHandler && cancelHandler();
   };
 
   return (
     <div>
       <Dialog
-        open={open}
-        onClose={handleDisaggree}
+        open={isOpen}
+        onClose={onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        sx={{textAlign: 'center'}}
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
@@ -46,10 +57,10 @@ export default function DialogCustom({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {hiddenDisaggree || (
+          {displayDisaggree && (
             <Button onClick={handleDisaggree}>{disaggreeTitle}</Button>
           )}
-          {hiddenAggree || (
+          {displayAggree && (
             <Button onClick={handleAggree} autoFocus>
               {aggreeTitle}
             </Button>
