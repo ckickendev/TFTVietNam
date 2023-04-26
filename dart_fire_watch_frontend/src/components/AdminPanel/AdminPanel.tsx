@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./admin.scss";
 import NavigationPanel from "./NavigationPanel";
 import { DefaultPanel } from "./DefaultPanel";
 import { ItemAdmin } from "./ItemAdmin";
 import TraitAdmin from "./TraitAdmin";
-import { NavBarComponent } from "../HomePage/NavBarComponent.js";
+import { NavBarComponent } from "../AuthComponent/NavBarComponent";
 import { ChampionAdmin } from "./ChampionAdmin/ChampionAdmin";
 import { observer } from "mobx-react";
-import { Button } from "react-bootstrap";
 import { LoadingCustom } from "../../utils/LoadingCustom";
 
 export const Admin = observer(({ loadingStore }: any) => {

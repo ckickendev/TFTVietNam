@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
-import { validateEmail, validatePassword } from "../../../utils/function";
+import { validateEmail, validatePassword } from "../../utils/function";
 
 export const Login = (props: any) => {
   const setLoading = props.setLoading;

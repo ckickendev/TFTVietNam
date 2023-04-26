@@ -3,7 +3,7 @@ import "./authentication_style.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LockResetIcon from "@mui/icons-material/LockReset";
-import { LoadingCustom } from "../../../utils/LoadingCustom";
+import { LoadingCustom } from "../../utils/LoadingCustom";
 
 export const AuthenticationPage = (props: any) => {
   const authenState = props.authenState;

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../authenStyles.scss";
+import "./authenStyles.scss";
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
-import { LoadingCustom } from "../../../utils/LoadingCustom";
-import DialogCustom from "../../../utils/DialogCustom";
-import { validatePassword } from "../../../utils/function";
+import { validatePassword } from "../../utils/function";
+import { LoadingCustom } from "../../utils/LoadingCustom";
+import DialogCustom from "../../utils/DialogCustom";
+
 
 export const ResetPasswordByLink = () => {
   const [loading, setLoading] = useState(true);

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import DialogCustom from "../../../utils/DialogCustom";
-import { LoadingCustom } from "../../../utils/LoadingCustom";
+import DialogCustom from "../../utils/DialogCustom";
+import { LoadingCustom } from "../../utils/LoadingCustom";
 
 export const ConfirmSignUpByLink = () => {
-  const [loading, setLoading] = useState(false);
   const [isConfirm, setIsConfirm] = useState(false);
   const [title, setTittle] = useState("");
   const [content, setContent] = useState("");
@@ -34,7 +33,6 @@ export const ConfirmSignUpByLink = () => {
             setContent(
               "You can login right now, you will redirect to login in some minutes..."
             );
-            setLoading(true);
             setIsConfirm(true);
             setTimeout(() => {
               navigate("/home");

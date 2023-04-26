@@ -12,9 +12,9 @@ import { Authentication } from "./components/AuthComponent/Authentication";
 import { NotFoundPage } from "./components/ErrorPage/NotFoundPage";
 import { AccessForbidden } from "./components/ErrorPage/AccessForbidden";
 import { Admin } from "./components/AdminPanel/AdminPanel";
-import { ConfirmSignUpByLink } from "./components/AuthComponent/UserComponent/ConfirmSignUpByLink";
-import { ResetPasswordByLink } from "./components/AuthComponent/UserComponent/ResetPasswordByLink";
 import loadingStore from "./store/loadingStore";
+import { ConfirmSignUpByLink } from "./components/AuthComponent/ConfirmSignUpByLink";
+import { ResetPasswordByLink } from "./components/AuthComponent/ResetPasswordByLink";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

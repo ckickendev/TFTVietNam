@@ -3,7 +3,7 @@ import React from "react";
 interface IDropdownItem {
   linkHref?: string;
   title?: string;
-  children?: string | JSX.Element | JSX.Element[] |undefined | (string | Element);
+  children?: string | JSX.Element | JSX.Element[] |undefined;
 
 }
 

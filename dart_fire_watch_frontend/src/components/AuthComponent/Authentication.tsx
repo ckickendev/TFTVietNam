@@ -2,14 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./authenStyles.scss";
-import { Login } from "./UserComponent/Login";
-import { SignUp } from "./UserComponent/SignUp";
-import { ResetPassword } from "./UserComponent/ResetPassword";
-import { ConfirmSignup } from "./UserComponent/ConfirmSignup";
-import { NavBarComponent } from "../HomePage/NavBarComponent";
-import { AuthenticationPage } from "./UserComponent/AuthenticationPage";
+import { NavBarComponent } from "./NavBarComponent";
 import { FootContent } from "../HomePage/FootContent";
 import { LoadingCustom } from "../../utils/LoadingCustom";
+import { Login } from "./Login";
+import { SignUp } from "./SignUp";
+import { ResetPassword } from "./ResetPassword";
+import { ConfirmSignup } from "./ConfirmSignup";
+import { AuthenticationPage } from "./AuthenticationPage";
 
 export const Authentication = () => {
   const [authenState, setAuthenState] = useState(1);
