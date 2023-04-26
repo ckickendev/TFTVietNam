@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import TextRotationNoneIcon from "@mui/icons-material/TextRotationNone";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-export const ConfirmSignup = (props) => {
+export const ConfirmSignup = (props: any) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [token, setToken] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const confirmCode = async (e) => {
+  const confirmCode = async (e: any) => {
     e.preventDefault();
     try {
       if (!token) {
@@ -35,30 +33,34 @@ export const ConfirmSignup = (props) => {
         localStorage.removeItem("user_signup");
         props.setLoading(false);
       }
-    } catch (err) {
+    } catch (err: any) {
       props.setLoading(false);
       setError(err?.response?.data?.error || err?.message);
     }
   };
   return (
     <form action={`${ROOT_BACKEND}/auth/confirm_signin`} method="POST">
-      <h3 class="legend last">Enter your code</h3>
-      <p class="para-style">
+      <h3 className="legend last">Enter your code</h3>
+      <p className="para-style">
         Please check your email and enter your code you recieved
       </p>
-      <div class="input">
+      <div className="input">
         <TextRotationNoneIcon color="action" />
         <input
           type="email"
           placeholder="Enter your code here"
           name="token"
-          required=""
+          required={true}
           value={token}
           onChange={(e) => setToken(e.target.value)}
         />
       </div>
       <p>{error}</p>
-      <button type="submit" onClick={confirmCode} class="btn submit last-btn">
+      <button
+        type="submit"
+        onClick={confirmCode}
+        className="btn submit last-btn"
+      >
         Confirm
       </button>
     </form>

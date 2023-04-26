@@ -76,7 +76,7 @@ export const NavBarComponent = () => {
                       Double up
                     </DropdownItem>
                     <hr className="dropdown-divider" />
-                    <DropdownItem linkHref={`${ROOT_URL}` / +"double-up-comps"}>
+                    <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
                       PBE Comps
                     </DropdownItem>
                   </div>
@@ -164,7 +164,7 @@ export const NavBarComponent = () => {
                     <DropdownItem title="Rising" />
                     <hr className="dropdown-divider" />
                     <DropdownItem>
-                      One Tricks
+                      <p>One Tricks</p>
                       <img
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"
@@ -172,7 +172,7 @@ export const NavBarComponent = () => {
                     </DropdownItem>
                     <hr className="dropdown-divider" />
                     <DropdownItem>
-                      Hyper Roll One Tricks
+                      <p>Hyper Roll One Tricks</p>
                       <img
                         className="PatreonFeatureNav"
                         alt="Patreon Feature"

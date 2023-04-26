@@ -7,8 +7,8 @@ import { LoadingCustom } from "../../../utils/LoadingCustom";
 export const ConfirmSignUpByLink = () => {
   const [loading, setLoading] = useState(false);
   const [isConfirm, setIsConfirm] = useState(false);
-  const [title, setTittle] = useState();
-  const [content, setContent] = useState();
+  const [title, setTittle] = useState("");
+  const [content, setContent] = useState("");
   const [aggreeTitle, setAggreeTittle] = useState("Return to login");
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ export const ConfirmSignUpByLink = () => {
             }, 3000);
           }
         }
-      } catch (err) {
+      } catch (err: any) {
         setAggreeTittle("Go to home page");
 
         setIsConfirm(true);

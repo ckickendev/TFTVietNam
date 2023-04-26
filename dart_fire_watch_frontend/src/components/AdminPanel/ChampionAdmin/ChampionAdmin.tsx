@@ -24,7 +24,6 @@ import DialogCustom from "../../../utils/DialogCustom";
 import { validateNumber } from "../../../utils/function";
 import { addChampionAPI } from "../../../api/championApi";
 import loadingStore from "../../../store/loadingStore";
-import c from "config";
 
 interface Column {
   id: "avatar" | "name" | "cost" | "skill";
@@ -180,7 +179,7 @@ export const ChampionAdmin = () => {
     });
   };
 
-  const inputNewChampion = (e: any, field: string) => {
+  const inputNewChampion = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
     setInputChampion((state) => {
       return { ...state, [field]: e.target.value };
     });
@@ -311,7 +310,7 @@ export const ChampionAdmin = () => {
                   <TableCell align="center">
                     <TextFieldComponent
                       color="error"
-                      onChange={(e: any) => {
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         inputNewChampion(e, "avatar");
                       }}
                       variant="filled"
@@ -323,7 +322,7 @@ export const ChampionAdmin = () => {
                   <TableCell align="center" sx={tableCellSx}>
                     <TextFieldComponent
                       color="error"
-                      onChange={(e: any) => {
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         inputNewChampion(e, "name");
                       }}
                       variant="filled"
@@ -335,7 +334,7 @@ export const ChampionAdmin = () => {
                   <TableCell align="center" sx={tableCellSx}>
                     <NumberFieldComponent
                       color="error"
-                      onChange={(e: any) => {
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         inputNewChampion(e, "cost");
                       }}
                       variant="filled"
@@ -347,7 +346,7 @@ export const ChampionAdmin = () => {
                   <TableCell align="center" sx={tableCellSx}>
                     <TextFieldComponent
                       color="error"
-                      onChange={(e: any) => {
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         inputNewChampion(e, "skill");
                       }}
                       variant="filled"

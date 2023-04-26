@@ -1,5 +1,3 @@
-import React from "react";
-
 export const FootContent = () => {
   return (
     <div className="MetaTFTfooter" style={{ width: "100%", minHeight: "62px" }}>

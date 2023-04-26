@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
 
-export const SignUp = (props) => {
+export const SignUp = (props: any) => {
   const setLoading = props.setLoading;
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [loginInfo, setLoginInfo] = useState({
@@ -12,7 +12,7 @@ export const SignUp = (props) => {
     rePassword: "",
   });
   const [error, setError] = useState("");
-  const submitLogin = async (e) => {
+  const submitLogin = async (e: any) => {
     e.preventDefault();
     console.log(loginInfo);
     if (!loginInfo.email || !loginInfo.password || !loginInfo.rePassword) {
@@ -30,12 +30,12 @@ export const SignUp = (props) => {
       setLoading(false);
       localStorage.setItem("user_signup", res.data.user);
       props.changeAuthen(4);
-    } catch (err) {
+    } catch (err: any) {
       setLoading(false);
       setError(err?.response?.data?.error || err?.message);
     }
   };
-  const changeValue = (e, field) => {
+  const changeValue = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
     console.log(e.target.value);
     setLoginInfo((loginInfo) => {
       return { ...loginInfo, [field]: e.target.value };
@@ -52,7 +52,7 @@ export const SignUp = (props) => {
             type="text"
             placeholder="Enter your email"
             name="name"
-            required=""
+            required={true}
             value={loginInfo.email}
             onChange={(e) => changeValue(e, "email")}
           />
@@ -65,7 +65,7 @@ export const SignUp = (props) => {
           type="password"
           placeholder="Password"
           name="password"
-          required=""
+          required={true}
           value={loginInfo.password}
           onChange={(e) => changeValue(e, "password")}
         />
@@ -77,7 +77,7 @@ export const SignUp = (props) => {
           type="password"
           placeholder="Confirm your password"
           name="password"
-          required=""
+          required={true}
           value={loginInfo.rePassword}
           onChange={(e) => changeValue(e, "rePassword")}
         />

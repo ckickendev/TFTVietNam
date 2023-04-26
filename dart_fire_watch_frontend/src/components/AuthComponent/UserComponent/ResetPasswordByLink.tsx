@@ -9,7 +9,7 @@ import { validatePassword } from "../../../utils/function";
 export const ResetPasswordByLink = () => {
   const [loading, setLoading] = useState(true);
   const [loadingBackground, setLoadingBackground] = useState(true);
-  const [error, setError] = useState();
+  const [error, setError] = useState("");
   const [errorLink, setErrorLink] = useState(false);
   const [newPassword, setNewPassword] = useState("");
 
@@ -70,7 +70,7 @@ export const ResetPasswordByLink = () => {
           setLoading(false);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(err?.response?.data?.error || err?.message);
       setLoading(false);
     }
@@ -86,7 +86,7 @@ export const ResetPasswordByLink = () => {
       <LoadingCustom
         opacity={1}
         isOpen={loading}
-        sx={loadingBackground && { backgroundColor: "#444" }}
+        sx={loadingBackground ? { backgroundColor: "#444" } : undefined}
       />
 
       {errorLink && (

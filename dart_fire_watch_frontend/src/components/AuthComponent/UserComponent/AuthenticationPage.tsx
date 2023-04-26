@@ -5,7 +5,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import { LoadingCustom } from "../../../utils/LoadingCustom";
 
-export const AuthenticationPage = (props) => {
+export const AuthenticationPage = (props: any) => {
   const authenState = props.authenState;
   const loading = props.loading;
   return (
@@ -19,7 +19,7 @@ export const AuthenticationPage = (props) => {
               <div className="image-style"></div>
               <div className="vertical-tab">
                 <div className="section_authen_state">
-                  <div name="sections" id="option1" checked="" />
+                  <div  id="option1" />
                   <label
                     htmlFor="option1"
                     className={`icon_left_authen ${
@@ -29,13 +29,13 @@ export const AuthenticationPage = (props) => {
                   >
                     <AccountCircleIcon
                       className="icon_title_matertial"
-                      color={`${authenState === 1 ? "light" : "success"}`}
+                      color={`${authenState === 1 ? "warning" : "success"}`}
                     />
                     <p>Login</p>
                   </label>
                 </div>
                 <div className="section_authen_state">
-                  <div name="sections" id="option2" />
+                  <div  id="option2" />
                   <label
                     htmlFor="option2"
                     className={`icon_left_authen ${
@@ -45,13 +45,13 @@ export const AuthenticationPage = (props) => {
                   >
                     <BorderColorIcon
                       className="icon_title_matertial"
-                      color={`${authenState === 2 ? "light" : "success"}`}
+                      color={`${authenState === 2 ? "warning" : "success"}`}
                     />
                     <p>Register</p>
                   </label>
                 </div>
                 <div className="section_authen_state">
-                  <div name="sections" id="option3" />
+                  <div  id="option3" />
                   <label
                     htmlFor="option3"
                     className={`icon_left_authen ${
@@ -61,7 +61,7 @@ export const AuthenticationPage = (props) => {
                   >
                     <LockResetIcon
                       className="icon_title_matertial"
-                      color={`${authenState === 3 ? "light" : "success"}`}
+                      color={`${authenState === 3 ? "warning" : "success"}`}
                     />
                     <p>Forgot Password?</p>
                   </label>

@@ -4,8 +4,8 @@ import authStore from "../../../store/authStore";
 
 export const NavBarAvatar = () => {
   const handleLogout = () => {
-    localStorage.clear("access_token");
-    localStorage.clear("user_signup");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user_signup");
     authStore.setIsAuth(true);
   };
   return (
@@ -30,16 +30,12 @@ export const NavBarAvatar = () => {
           Information
         </a>
         <hr className="dropdown-divider" />
-        <a className="dropdown-item" role="button"  href="#" />
-        <div
-          className="nav-link"
-          href="https://www.metatft.com/double-up-comps"
-          onClick={handleLogout}
-        >
+        <a className="dropdown-item" role="button" href="#" />
+        <div className="nav-link" onClick={handleLogout}>
           LogOut
         </div>
         <hr className="dropdown-divider" role="separator" />
-        <a className="dropdown-item" role="button"  href="#" />
+        <a className="dropdown-item" role="button" href="#" />
         <a className="nav-link" href="#">
           PBE Comps
         </a>

@@ -5,9 +5,12 @@ export const HomepageContent = () => {
   const small_bg_7 = "https://cdn.metatft.com/file/metatft/home/set7_bg.webp";
   return (
     <div className="MetaTFTLayout2" style={{ minHeight: "2000px" }}>
-      <div className="container" style={{minHeight: "100vh"}}>
+      <div className="container" style={{ minHeight: "100vh" }}>
         <div className="HomePage">
-          <div className="HomePageBanner" width={1110} height={500}>
+          <div
+            className="HomePageBanner"
+            style={{ width: "1110px", height: "500px" }}
+          >
             <img alt="HomePageBg" className="HomePageBg" src={small_bg_7} />
             <div className="HomePageBannerText">
               <h1 className="HomePageBannerTitle">
@@ -20,7 +23,9 @@ export const HomepageContent = () => {
               <div className="HomePageBannerButtons">
                 <div className="HomePageBannerButtonContainer">
                   <a href="https://www.metatft.com/comps">
-                    <Button variant="contained" color="success" >View Comps</Button>
+                    <Button variant="contained" color="success">
+                      View Comps
+                    </Button>
                   </a>
                 </div>
                 <div

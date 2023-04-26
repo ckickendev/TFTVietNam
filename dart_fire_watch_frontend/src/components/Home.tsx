@@ -35,5 +35,5 @@ export const Home = () => {
     getToken();
   }, []);
 
-  return <div>{loading ? <LoadingCustom /> : <HomePageComponent />}</div>;
+  return <div>{loading ? <LoadingCustom isOpen={loading} /> : <HomePageComponent />}</div>;
 };

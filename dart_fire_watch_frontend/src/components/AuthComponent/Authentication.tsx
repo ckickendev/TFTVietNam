@@ -61,7 +61,7 @@ export const Authentication = () => {
     };
     getToken();
   }, []);
-  const changeAuthen = (authenNumber) => {
+  const changeAuthen = (authenNumber: number) => {
     setAuthenState(authenNumber);
   };
 

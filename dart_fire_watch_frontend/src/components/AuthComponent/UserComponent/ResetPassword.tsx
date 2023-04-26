@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import EmailIcon from '@mui/icons-material/Email';
-export const ResetPassword = (props) => {
+import EmailIcon from "@mui/icons-material/Email";
+export const ResetPassword = (props: any) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [emailReset, setEmailReset] = useState("");
   const [error, setError] = useState("");
   const setLoading = props.setLoading;
-  const submitReset = async (e) => {
+  const submitReset = async (e: any) => {
     e.preventDefault();
     if (!emailReset) {
       setError("Email cannot empty");
@@ -19,7 +19,7 @@ export const ResetPassword = (props) => {
       });
       setError(res.data.message);
       setLoading(false);
-    } catch (err) {
+    } catch (err: any) {
       setLoading(false);
       setError(err?.response?.data?.error || err.message);
     }
@@ -37,13 +37,17 @@ export const ResetPassword = (props) => {
           type="email"
           placeholder="Enter your email here"
           name="email"
-          required=""
+          required={true}
           value={emailReset}
           onChange={(e) => setEmailReset(e.target.value)}
         />
       </div>
       <p className="text-success"> {error}</p>
-      <button type="submit" onClick={submitReset} className="btn submit last-btn">
+      <button
+        type="submit"
+        onClick={submitReset}
+        className="btn submit last-btn"
+      >
         Reset
       </button>
     </form>
