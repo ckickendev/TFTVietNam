@@ -1,6 +1,14 @@
-const { UserController, AuthController } = require("./controllers");
+const {
+  UserController,
+  AuthController,
+  ChampionController,
+} = require("./controllers");
 const AppServer = require("./appServer");
 
-const app = new AppServer([new UserController(), new AuthController()]);
+const app = new AppServer([
+  new UserController(),
+  new AuthController(),
+  new ChampionController(),
+]);
 
 app.startListening();

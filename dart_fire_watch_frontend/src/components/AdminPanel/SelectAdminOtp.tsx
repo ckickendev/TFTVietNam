@@ -1,6 +1,4 @@
-import React from "react";
-
-export const SelectAdminOtp = (props) => {
+export const SelectAdminOtp = (props: any) => {
   const { icon, title, change } = props;
   return (
     <li

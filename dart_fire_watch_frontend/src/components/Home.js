@@ -5,7 +5,6 @@ import { HomePageComponent } from "./HomePage/HomePageComponent";
 import { LoadingCustom } from "../utils/LoadingCustom";
 
 export const Home = () => {
-  // const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   
   useEffect(() => {

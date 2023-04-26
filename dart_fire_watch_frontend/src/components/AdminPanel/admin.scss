@@ -5574,6 +5574,14 @@
     -o-transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
     transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
   }
+  .page-container-admin-page .sidebar-menu #main-menu li div {
+    padding: 5px 30px;
+    color: #aaabae;
+    z-index: 2;
+  }
+  .page-container-admin-page .sidebar-menu #main-menu li div:hover {
+    cursor: pointer;
+  }
   .page-container-admin-page .sidebar-menu #main-menu li a i {
     top: 1px;
     display: inline-block;

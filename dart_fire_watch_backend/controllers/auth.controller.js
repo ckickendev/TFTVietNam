@@ -23,10 +23,12 @@ class AuthController extends Controller {
 
   async login(req, res, next) {
     try {
-      const { email, _id } = req.user;
+      const { email, _id, role } = req.user;
+      console.log(req.user);
       const payload = {
         id: _id,
         email,
+        role
       };
       const token = await authServices.generateToken(payload);
       const refreshToken = await authServices.generateRefreshToken(payload);

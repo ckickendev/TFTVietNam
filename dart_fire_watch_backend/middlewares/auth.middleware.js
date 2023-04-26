@@ -9,7 +9,8 @@ async function AuthMiddleware(req, res, next) {
     const validToken = jwt.verify(tokenClient, "SECRET_KEY", {
       algorithms: ["HS256"],
     });
-    const checkingUser = await User.find({ email: validToken.email });
+    console.log(validToken);
+    const checkingUser = await User.findOne({ email: validToken.email });
     if (!checkingUser) {
       return next(new NotFoundException("User not found!"));
     }
@@ -22,16 +23,18 @@ async function AuthMiddleware(req, res, next) {
 
 async function AdminMiddleware(req, res, next) {
   try {
-    const tokenClient = req.headers["authorization"].split(" ")[1];
+    const headersToken =
+      req?.headers["authorization"] || req?.body?.headers["Authorization"];
+    const tokenClient = headersToken.split(" ")[1];
+    console.log("tokenClient", tokenClient);
     const validToken = jwt.verify(tokenClient, "SECRET_KEY", {
       algorithms: ["HS256"],
     });
-    const checkingUser = await User.find({ email: validToken.email });
+    const checkingUser = await User.findOne({ email: validToken.email });
     if (!checkingUser) {
       return next(new NotFoundException("User not found!"));
     }
-
-    if (req.role !== 1) {
+    if (checkingUser.role !== 1) {
       return next(new UnauthorizedException("User is not admin!"));
     }
     req.userInfo = checkingUser;

@@ -14,6 +14,7 @@ import { AccessForbidden } from "./components/ErrorPage/AccessForbidden";
 import { Admin } from "./components/AdminPanel/AdminPanel";
 import { ConfirmSignUpByLink } from "./components/AuthComponent/UserComponent/ConfirmSignUpByLink";
 import { ResetPasswordByLink } from "./components/AuthComponent/UserComponent/ResetPasswordByLink";
+import loadingStore from "./store/loadingStore";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="home" element={<Home />} />
       <Route path="notfound" element={<NotFoundPage />} />
       <Route path="forbidden" element={<AccessForbidden />} />
-      <Route path="admin" element={<Admin />} />
+      <Route path="admin" element={<Admin loadingStore={loadingStore} />} />
       <Route path="confirm_register" element={<ConfirmSignUpByLink />} />
       <Route path="reset-password-link" element={<ResetPasswordByLink />} />
     </Route>

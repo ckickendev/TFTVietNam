@@ -1,6 +1,4 @@
-import React from "react";
-
-export const RightPanel = () => {
+export const DefaultPanel = () => {
   return (
     <div className="main-content">
       <div className="row">
@@ -108,7 +106,7 @@ export const RightPanel = () => {
               <div className="panel-title">Site Stats</div>
               <div className="panel-options">
                 <ul className="nav nav-tabs">
-                  <li className>
+                  <li>
                     <a href="#area-chart" data-toggle="tab">
                       Area Chart
                     </a>
@@ -118,7 +116,7 @@ export const RightPanel = () => {
                       Line Charts
                     </a>
                   </li>
-                  <li className>
+                  <li>
                     <a href="#pie-chart" data-toggle="tab">
                       Pie Chart
                     </a>
@@ -158,7 +156,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="261.11111068725586"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -190,7 +187,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="202.0833330154419"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -222,7 +218,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="143.05555534362793"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -254,7 +249,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="84.02777767181396"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -286,7 +280,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y={25}
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -318,7 +311,6 @@ export const RightPanel = () => {
                         x={560}
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -344,7 +336,6 @@ export const RightPanel = () => {
                         x="474.20873452625773"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -370,7 +361,6 @@ export const RightPanel = () => {
                         x="388.4174690525154"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -396,7 +386,6 @@ export const RightPanel = () => {
                         x="302.62620357877313"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -422,7 +411,6 @@ export const RightPanel = () => {
                         x="216.59989354208906"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -448,7 +436,6 @@ export const RightPanel = () => {
                         x="130.80862806834676"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -474,7 +461,6 @@ export const RightPanel = () => {
                         x="45.01736259460449"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -707,7 +693,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="261.11111068725586"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -739,7 +724,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="202.0833330154419"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -771,7 +755,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="143.05555534362793"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -803,7 +786,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y="84.02777767181396"
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -835,7 +817,6 @@ export const RightPanel = () => {
                         x="32.51736259460449"
                         y={25}
                         textAnchor="end"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -867,7 +848,6 @@ export const RightPanel = () => {
                         x={560}
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -893,7 +873,6 @@ export const RightPanel = () => {
                         x="474.20873452625773"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -919,7 +898,6 @@ export const RightPanel = () => {
                         x="388.4174690525154"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -945,7 +923,6 @@ export const RightPanel = () => {
                         x="302.62620357877313"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -971,7 +948,6 @@ export const RightPanel = () => {
                         x="216.59989354208906"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -997,7 +973,6 @@ export const RightPanel = () => {
                         x="130.80862806834676"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -1023,7 +998,6 @@ export const RightPanel = () => {
                         x="45.01736259460449"
                         y="273.61111068725586"
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#888888"
                         style={{
@@ -1290,7 +1264,6 @@ export const RightPanel = () => {
                         x="292.5"
                         y={140}
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#000000"
                         style={{
@@ -1316,7 +1289,6 @@ export const RightPanel = () => {
                         x="292.5"
                         y={160}
                         textAnchor="middle"
-                        font='10px "Arial"'
                         stroke="none"
                         fill="#000000"
                         style={{
@@ -1345,7 +1317,7 @@ export const RightPanel = () => {
             <table className="table table-bordered table-responsive">
               <thead>
                 <tr>
-                  <th width="50%" className="col-padding-1">
+                  <th className="col-padding-1">
                     <div className="pull-left">
                       <div className="h4 no-margin">Pageviews</div>
                       <small>54,127</small>
@@ -1363,7 +1335,7 @@ export const RightPanel = () => {
                       />
                     </span>
                   </th>
-                  <th width="50%" className="col-padding-1">
+                  <th className="col-padding-1">
                     <div className="pull-left">
                       <div className="h4 no-margin">Unique Visitors</div>
                       <small>25,127</small>

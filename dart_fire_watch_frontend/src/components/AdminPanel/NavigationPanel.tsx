@@ -1,45 +1,25 @@
 import React, { useState } from "react";
-import { SelectAdminOtp } from "./SelectAdminOtp.js";
+import { SelectAdminOtp } from "./SelectAdminOtp";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
-import CollapseComponent from "../CommonComponent/CollapseComponent";
+import CollapseComponent from "./CollapseComponent";
 
-export const LeftPanel = (props: any) => {
+const NavigationPanel = (props: any) => {
   const [collapseOtp, setCollapseOtp] = useState([false, false, false]);
 
   const selectHandler = (select: number) => {
     props.setOnStatus(select);
     setCollapseOtp((pre) => {
       const newCollapseMenu = [pre[0], pre[1], pre[2]];
-      newCollapseMenu[select - 1] = !pre[select-1];
+      newCollapseMenu[select - 1] = !pre[select - 1];
       return newCollapseMenu;
     });
   };
   return (
     <div className="sidebar-menu">
       <div className="sidebar-menu-inner">
-        <header className="logo-env">
-          <div className="logo">
-            <a href="https://demo.neontheme.com/dashboard/main/">
-              <img
-                src="https://demo.neontheme.com/assets/images/logo@2x.png"
-                width={120}
-                alt=""
-              />
-            </a>
-          </div>
-          <div className="sidebar-collapse">
-            <a href="#" className="sidebar-collapse-icon">
-              <i className="entypo-menu" />
-            </a>
-          </div>
-          <div className="sidebar-mobile-menu visible-xs">
-            <a href="#" className="with-animation">
-              <i className="entypo-menu" />
-            </a>
-          </div>
-        </header>
+        <HeaderNavigation />
         <ul id="main-menu" className="main-menu" style={{}}>
           <SelectAdminOtp
             onClick={() => {
@@ -76,3 +56,31 @@ export const LeftPanel = (props: any) => {
     </div>
   );
 };
+
+const HeaderNavigation = () => {
+  return (
+    <header className="logo-env">
+      <div className="logo">
+        <a href="https://demo.neontheme.com/dashboard/main/">
+          <img
+            src="https://demo.neontheme.com/assets/images/logo@2x.png"
+            width={120}
+            alt=""
+          />
+        </a>
+      </div>
+      <div className="sidebar-collapse">
+        <a href="#" className="sidebar-collapse-icon">
+          <i className="entypo-menu" />
+        </a>
+      </div>
+      <div className="sidebar-mobile-menu visible-xs">
+        <a href="#" className="with-animation">
+          <i className="entypo-menu" />
+        </a>
+      </div>
+    </header>
+  );
+};
+
+export default NavigationPanel;

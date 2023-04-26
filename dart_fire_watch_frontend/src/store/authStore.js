@@ -13,7 +13,6 @@ class AuthStore {
   };
 
   getIsAuth = () => {
-    console.log("log this auth: ", this.isAuth ) ;
     return this.isAuth;
   };
 
@@ -22,7 +21,6 @@ class AuthStore {
   };
 
   getWhoAmI = () => {
-    console.log("log this auth: ", this.whoAmI ) ;
     return this.whoAmI;
   };
 }
