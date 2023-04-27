@@ -6,8 +6,9 @@ import { ItemAdmin } from "./ItemAdmin";
 import TraitAdmin from "./TraitAdmin";
 import { NavBarComponent } from "../AuthComponent/NavBarComponent";
 import { ChampionAdmin } from "./ChampionAdmin/ChampionAdmin";
-import { observer } from "mobx-react";
 import { LoadingCustom } from "../../utils/LoadingCustom";
+import { observer } from "mobx-react";
+import authStore from "../../store/authStore";
 
 export const Admin = observer(({ loadingStore }: any) => {
   const [onStatus, setOnStatus] = useState(0);
@@ -30,7 +31,7 @@ export const Admin = observer(({ loadingStore }: any) => {
         {loadingStore.getIsLoading() && (
           <LoadingCustom isOpen={loadingStore.getIsLoading()} />
         )}
-        <NavBarComponent />
+        <NavBarComponent authStore={authStore} />
         <div className="page-container-admin-page">
           <NavigationPanel setOnStatus={setOnStatus} />
           {renderUIForAdminSide()}

@@ -1,19 +1,46 @@
 import Button from "@mui/material/Button";
 import "../HomePage/styles/NavBarComponent.scss";
 import "../HomePage/styles/HomePageComponent.scss";
-import authStore from "../../store/authStore";
 import { useNavigate } from "react-router-dom";
 import { DropdownItem } from "../HomePage/NavBarComponent/DropdownItem";
 import { NavBarAvatar } from "../HomePage/NavBarComponent/NavBarAvatar";
 import SupportIcon from "@mui/icons-material/Support";
+import { observer } from "mobx-react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export const NavBarComponent = () => {
+export const NavBarComponent = observer(({ authStore }: any) => {
   const navigate = useNavigate();
+  const [authAvatar, setAuthAvatar] = useState(authStore.getIsAuth());
   const ROOT_URL = process.env.REACT_APP_ROOT_FRONTEND;
-
   const onLogin = () => {
     navigate("/auth");
   };
+
+  useEffect(() => {
+    const getToken = async () => {
+      const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
+      const token = localStorage.getItem("access_token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      await axios
+        .get(`${ROOT_BACKEND}/auth/whoAmI`, { headers })
+        .then((response) => {
+          console.log("res", response);
+          authStore.setIsAuth(true);
+          setAuthAvatar(true);
+          authStore.setWhoAmI(response.data.userInfo.email);
+        })
+        .catch((error) => {
+          authStore.setIsAuth(false);
+          setAuthAvatar(false);
+          authStore.setWhoAmI("");
+        });
+    };
+
+    getToken();
+  }, [authStore]);
   return (
     <>
       <div className="navbar_component_wrapper">
@@ -112,7 +139,7 @@ export const NavBarComponent = () => {
                     <hr className="dropdown-divider" />
                     <DropdownItem>Auguments</DropdownItem>
                     <hr className="dropdown-divider" />
-                    <a className="dropdown-item" href={`${ROOT_URL}`}>
+                    <div className="dropdown-item">
                       <a
                         data-rr-ui-event-key="/early-comps"
                         className="nav-link"
@@ -127,7 +154,7 @@ export const NavBarComponent = () => {
                           alt="Patreon Feature"
                         />
                       </a>
-                    </a>
+                    </div>
                   </div>
                 </div>
                 <div className="nav-item dropdown">
@@ -226,8 +253,8 @@ export const NavBarComponent = () => {
                     src="./images/discord_icon.png"
                   />
                 </a>
-                {authStore.getIsAuth() ? (
-                  <NavBarAvatar />
+                {authAvatar ? (
+                  <NavBarAvatar setAuthAvatar={setAuthAvatar} />
                 ) : (
                   <div onClick={onLogin} className="login_space">
                     <Button variant="contained" color="success">
@@ -269,4 +296,4 @@ export const NavBarComponent = () => {
       </div>
     </>
   );
-};
+});

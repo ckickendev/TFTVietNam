@@ -10,30 +10,27 @@ import { SignUp } from "./SignUp";
 import { ResetPassword } from "./ResetPassword";
 import { ConfirmSignup } from "./ConfirmSignup";
 import { AuthenticationPage } from "./AuthenticationPage";
+import { observer } from "mobx-react";
+import authStore from "../../store/authStore";
 
-export const Authentication = () => {
+export const Authentication = observer(({ loadingStore }: any) => {
   const [authenState, setAuthenState] = useState(1);
   const navigate = useNavigate();
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
-  const [loading, setLoading] = useState(false);
 
   const renderCore = () => {
     switch (authenState) {
       case 1: {
-        return <Login setLoading={setLoading} changeAuthen={changeAuthen} />;
+        return <Login changeAuthen={changeAuthen} />;
       }
       case 2: {
-        return <SignUp setLoading={setLoading} changeAuthen={changeAuthen} />;
+        return <SignUp changeAuthen={changeAuthen} />;
       }
       case 3: {
-        return (
-          <ResetPassword setLoading={setLoading} changeAuthen={changeAuthen} />
-        );
+        return <ResetPassword changeAuthen={changeAuthen} />;
       }
       case 4: {
-        return (
-          <ConfirmSignup setLoading={setLoading} changeAuthen={changeAuthen} />
-        );
+        return <ConfirmSignup changeAuthen={changeAuthen} />;
       }
       default: {
         return <LoadingCustom isOpen={true} opacity={1} />;
@@ -42,7 +39,7 @@ export const Authentication = () => {
   };
   useEffect(() => {
     const getToken = async () => {
-      setLoading(true);
+      loadingStore.setIsLoading(true);
       const token = localStorage.getItem("access_token");
       const headers = {
         Authorization: `Bearer ${token}`,
@@ -57,7 +54,7 @@ export const Authentication = () => {
         .catch((error) => {
           navigate("/auth");
         });
-      setLoading(false);
+      loadingStore.setIsLoading(false);
     };
     getToken();
   }, []);
@@ -67,12 +64,14 @@ export const Authentication = () => {
 
   return (
     <div className="header-container">
+      {loadingStore.getIsLoading() && (
+        <LoadingCustom isOpen={loadingStore.getIsLoading()} />
+      )}
       <div id="root">
         <div id="page-container">
-          <NavBarComponent />
+          <NavBarComponent authStore={authStore}  />
           <div id="content-wrap">
             <AuthenticationPage
-              loading={loading}
               changeAuthen={changeAuthen}
               authenState={authenState}
               renderCore={renderCore}
@@ -111,4 +110,4 @@ export const Authentication = () => {
       </div>
     </div>
   );
-};
+});

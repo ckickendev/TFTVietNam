@@ -1,12 +1,12 @@
 import { Avatar } from "@mui/material";
-import React from "react";
 import authStore from "../../../store/authStore";
 
-export const NavBarAvatar = () => {
+export const NavBarAvatar = (props: any) => {
   const handleLogout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("user_signup");
-    authStore.setIsAuth(true);
+    authStore.setIsAuth(!authStore.getIsAuth());
+    props.setAuthAvatar(false);
   };
   return (
     <div className="nav-item nav-avatar dropdown">

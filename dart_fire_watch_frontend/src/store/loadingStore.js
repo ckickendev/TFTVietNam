@@ -4,7 +4,6 @@ class LoadingStore {
   isLoading = false;
 
   constructor() {
-    // makeObservable(this);
     makeAutoObservable(this);
   }
 

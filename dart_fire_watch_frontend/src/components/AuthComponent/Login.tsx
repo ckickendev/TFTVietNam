@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
 import { validateEmail, validatePassword } from "../../utils/function";
+import loadingStore from "../../store/loadingStore";
 
 export const Login = (props: any) => {
-  const setLoading = props.setLoading;
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -22,18 +22,18 @@ export const Login = (props: any) => {
         return;
       }
       setError("");
-      setLoading(true);
+      loadingStore.setIsLoading(true)
       const res = await axios.post(`${ROOT_BACKEND}/auth/login`, loginInfo);
       console.log("res 1 ne", res);
       if (res.data) {
         localStorage.setItem("access_token", res.data.data.access_token);
-        setLoading(false);
+        loadingStore.setIsLoading(false)
         navigate("/home");
       }
       return;
     } catch (err: any) {
       console.log("res 2 ne", err);
-      setLoading(false);
+      loadingStore.setIsLoading(false)
       setError(err?.response?.data?.error || err.message);
     }
   };

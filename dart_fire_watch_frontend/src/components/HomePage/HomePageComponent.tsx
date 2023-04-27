@@ -3,13 +3,14 @@ import { FootContent } from "./FootContent";
 import "./styles/HomePageComponent.scss";
 import { HomepageContent } from "./HomepageContent";
 import { NavBarComponent } from "../AuthComponent/NavBarComponent";
+import authStore from "../../store/authStore";
 
 export const HomePageComponent = () => {
   return (
     <div className="header-container">
       <div id="root">
         <div id="page-container">
-          <NavBarComponent />
+          <NavBarComponent authStore={authStore} />
           <div id="content-wrap">
             <HomepageContent />
             <FootContent />
@@ -24,7 +25,10 @@ export const HomePageComponent = () => {
       />
       <div id="translator-container" style={{ display: "none" }}>
         <div className="rapid-header">
-          <img alt="icon" src="chrome-extension://lmcboojgmmaafdmgacncdpjnpnnhpmei/icons/logo.svg" />
+          <img
+            alt="icon"
+            src="chrome-extension://lmcboojgmmaafdmgacncdpjnpnnhpmei/icons/logo.svg"
+          />
           <img
             alt="icon"
             id="rapid-copy"

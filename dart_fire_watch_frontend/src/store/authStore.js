@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx"
 
 class AuthStore {
-  isAuth = true;
+  isAuth = false;
   whoAmI = "";
 
   constructor() {

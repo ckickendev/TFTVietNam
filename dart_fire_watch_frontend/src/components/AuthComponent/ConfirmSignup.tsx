@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextRotationNoneIcon from "@mui/icons-material/TextRotationNone";
 import axios from "axios";
+import loadingStore from "../../store/loadingStore";
 
 export const ConfirmSignup = (props: any) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
@@ -14,7 +15,7 @@ export const ConfirmSignup = (props: any) => {
         return;
       }
       setError("");
-      props.setLoading(true);
+      loadingStore.setIsLoading(true);
       const loginInfo = {
         token,
         user_authen: localStorage.getItem("user_signup"),
@@ -24,17 +25,19 @@ export const ConfirmSignup = (props: any) => {
         loginInfo
       );
       setError(res.data.message);
-      props.setLoading(false);
+      loadingStore.setIsLoading(false);
+
       if (res.status == 200) {
-        props.setLoading(true);
+        loadingStore.setIsLoading(true);
+
         setTimeout(() => {
           props.changeAuthen(1);
         }, 1000);
         localStorage.removeItem("user_signup");
-        props.setLoading(false);
+        loadingStore.setIsLoading(false);
       }
     } catch (err: any) {
-      props.setLoading(false);
+      loadingStore.setIsLoading(false);
       setError(err?.response?.data?.error || err?.message);
     }
   };

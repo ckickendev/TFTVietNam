@@ -3,14 +3,11 @@ import "./authentication_style.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import LockResetIcon from "@mui/icons-material/LockReset";
-import { LoadingCustom } from "../../utils/LoadingCustom";
 
 export const AuthenticationPage = (props: any) => {
   const authenState = props.authenState;
-  const loading = props.loading;
   return (
     <>
-      <LoadingCustom opacity={0.4} isOpen={loading} />
       <div className="test">
         <div className="main-bg">
           <h1>Welcome to TFT</h1>

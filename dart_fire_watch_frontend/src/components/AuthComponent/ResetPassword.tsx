@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
+import loadingStore from "../../store/loadingStore";
+
 export const ResetPassword = (props: any) => {
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [emailReset, setEmailReset] = useState("");
   const [error, setError] = useState("");
-  const setLoading = props.setLoading;
   const submitReset = async (e: any) => {
     e.preventDefault();
     if (!emailReset) {
@@ -13,14 +14,15 @@ export const ResetPassword = (props: any) => {
       return;
     }
     try {
-      setLoading(true);
+      loadingStore.setIsLoading(true);
       const res = await axios.post(`${ROOT_BACKEND}/auth/resetpassword`, {
         email: emailReset,
       });
       setError(res.data.message);
-      setLoading(false);
+      loadingStore.setIsLoading(false);
     } catch (err: any) {
-      setLoading(false);
+      loadingStore.setIsLoading(false);
+
       setError(err?.response?.data?.error || err.message);
     }
   };

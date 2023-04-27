@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
+import loadingStore from "../../store/loadingStore";
 
 export const SignUp = (props: any) => {
-  const setLoading = props.setLoading;
   const ROOT_BACKEND = process.env.REACT_APP_ROOT_BACKEND;
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -24,14 +24,14 @@ export const SignUp = (props: any) => {
       return;
     }
     try {
-      setLoading(true);
+      loadingStore.setIsLoading(true);
       const res = await axios.post(`${ROOT_BACKEND}/auth/register`, loginInfo);
       setError(res.data.message);
-      setLoading(false);
+      loadingStore.setIsLoading(false);
       localStorage.setItem("user_signup", res.data.user);
       props.changeAuthen(4);
     } catch (err: any) {
-      setLoading(false);
+      loadingStore.setIsLoading(false);
       setError(err?.response?.data?.error || err?.message);
     }
   };

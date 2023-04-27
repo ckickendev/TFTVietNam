@@ -12,16 +12,19 @@ import { Authentication } from "./components/AuthComponent/Authentication";
 import { NotFoundPage } from "./components/ErrorPage/NotFoundPage";
 import { AccessForbidden } from "./components/ErrorPage/AccessForbidden";
 import { Admin } from "./components/AdminPanel/AdminPanel";
-import loadingStore from "./store/loadingStore";
 import { ConfirmSignUpByLink } from "./components/AuthComponent/ConfirmSignUpByLink";
 import { ResetPasswordByLink } from "./components/AuthComponent/ResetPasswordByLink";
+import loadingStore from "./store/loadingStore";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route path="auth" element={<Authentication />} />
-      <Route path="" element={<Home />} />
-      <Route path="home" element={<Home />} />
+      <Route
+        path="auth"
+        element={<Authentication loadingStore={loadingStore} />}
+      />
+      <Route path="" element={<Home loadingStore={loadingStore} />} />
+      <Route path="home" element={<Home loadingStore={loadingStore} />} />
       <Route path="notfound" element={<NotFoundPage />} />
       <Route path="forbidden" element={<AccessForbidden />} />
       <Route path="admin" element={<Admin loadingStore={loadingStore} />} />
@@ -36,7 +39,7 @@ const root = document.getElementById("root")!;
 ReactDOM.createRoot(root).render(
   //disable strict mode to negate render twice
   // <React.StrictMode>
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
   // </React.StrictMode>
 );
 
