@@ -14,7 +14,8 @@ class LoadingStore {
   getIsLoading = () => {
     return this.isLoading;
   };
-}
+
+} 
 
 const loadingStore = new LoadingStore();
 export default loadingStore;

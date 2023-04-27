@@ -57,7 +57,7 @@ export const Authentication = observer(({ loadingStore }: any) => {
       loadingStore.setIsLoading(false);
     };
     getToken();
-  }, []);
+  }, [ROOT_BACKEND,loadingStore, navigate]);
   const changeAuthen = (authenNumber: number) => {
     setAuthenState(authenNumber);
   };
@@ -88,7 +88,7 @@ export const Authentication = observer(({ loadingStore }: any) => {
       />
       <div id="translator-container" style={{ display: "none" }}>
         <div className="rapid-header">
-          <img src="chrome-extension://lmcboojgmmaafdmgacncdpjnpnnhpmei/icons/logo.svg" />
+          <img src="chrome-extension://lmcboojgmmaafdmgacncdpjnpnnhpmei/icons/logo.svg" alt="extention" />
           <img
             alt="extention"
             id="rapid-copy"

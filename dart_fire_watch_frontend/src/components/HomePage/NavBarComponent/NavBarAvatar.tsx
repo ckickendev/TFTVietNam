@@ -21,22 +21,15 @@ export const NavBarAvatar = (props: any) => {
         </div>
       </a>
       <div data-bs-popper="static" className="dropdown-menu">
-        <a
-          className="dropdown-item"
-          role="button"
-          href="https://www.metatft.com/double-up-comps"
-        />
         <a className="nav-link" href="http://localhost:3000/">
           Information
         </a>
         <hr className="dropdown-divider" />
-        <a className="dropdown-item" role="button" href="#" />
         <div className="nav-link" onClick={handleLogout}>
           LogOut
         </div>
-        <hr className="dropdown-divider" role="separator" />
-        <a className="dropdown-item" role="button" href="#" />
-        <a className="nav-link" href="#">
+        <hr className="dropdown-divider"  />
+        <a className="nav-link" href="localhost:3000/#">
           PBE Comps
         </a>
       </div>

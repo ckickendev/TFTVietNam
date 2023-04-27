@@ -6,7 +6,6 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import { useState } from "react";
 
 interface IDialogCustome {
   isOpen: boolean;
@@ -48,7 +47,7 @@ export default function DialogCustom({
         onClose={onClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        sx={{textAlign: 'center'}}
+        sx={{ textAlign: "center" }}
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>

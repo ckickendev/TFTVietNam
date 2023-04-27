@@ -27,7 +27,7 @@ export const ConfirmSignup = (props: any) => {
       setError(res.data.message);
       loadingStore.setIsLoading(false);
 
-      if (res.status == 200) {
+      if (res.status === 200) {
         loadingStore.setIsLoading(true);
 
         setTimeout(() => {

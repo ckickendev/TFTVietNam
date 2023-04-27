@@ -179,7 +179,10 @@ export const ChampionAdmin = () => {
     });
   };
 
-  const inputNewChampion = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+  const inputNewChampion = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
     setInputChampion((state) => {
       return { ...state, [field]: e.target.value };
     });
@@ -187,11 +190,13 @@ export const ChampionAdmin = () => {
 
   const onEditHandler = (idEdit: string) => {
     setInputChampion((oldInputChampion: any) => {
-      const inputData = allChampions.filter((champion) => {
+      const filterData = allChampions.filter((champion) => {
         if (champion._id === idEdit) {
           return champion;
         }
-      })[0];
+        return undefined;
+      });
+      const inputData = filterData[0];
       return { idEdit: idEdit, unable: true, ...inputData };
     });
   };
@@ -383,7 +388,7 @@ export const ChampionAdmin = () => {
 
               {allChampions.map((champion: ChampionData, index) => {
                 if (champion._id === inputChampion.idEdit) {
-                  return;
+                  return undefined;
                 }
                 return (
                   <RowData
@@ -410,7 +415,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <img src={champion.avatar} width={50} height={50} />
+        <img src={champion.avatar} width={50} height={50} alt="avatar" />
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
         <Typography>{champion.name}</Typography>
