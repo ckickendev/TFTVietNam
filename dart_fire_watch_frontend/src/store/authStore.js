@@ -1,7 +1,8 @@
-import {makeAutoObservable} from "mobx"
+import { makeAutoObservable } from "mobx";
 
 class AuthStore {
   isAuth = false;
+  isAdmin = false;
   whoAmI = "";
 
   constructor() {
@@ -22,6 +23,14 @@ class AuthStore {
 
   getWhoAmI = () => {
     return this.whoAmI;
+  };
+
+  setIsAdmin = (isAdmin) => {
+    this.isAdmin = isAdmin;
+  };
+
+  getIsAdmin = () => {
+    return this.isAdmin;
   };
 }
 
