@@ -6,15 +6,9 @@ import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact
 import CollapseComponent from "./CollapseComponent";
 
 const NavigationPanel = (props: any) => {
-  const [collapseOtp, setCollapseOtp] = useState([false, false, false]);
 
   const selectHandler = (select: number) => {
     props.setOnStatus(select);
-    setCollapseOtp((pre) => {
-      const newCollapseMenu = [pre[0], pre[1], pre[2]];
-      newCollapseMenu[select - 1] = !pre[select - 1];
-      return newCollapseMenu;
-    });
   };
   return (
     <div className="sidebar-menu">
@@ -25,29 +19,20 @@ const NavigationPanel = (props: any) => {
             onClick={() => {
               selectHandler(1);
             }}
-            setCollapseOtp={collapseOtp}
-            aria-controls="select-admin-otp"
-            aria-expanded={collapseOtp[0]}
             title="Champion"
             icon={<EmojiEventsIcon />}
           ></SelectAdminOtp>
-          <CollapseComponent
-            idCollapse="select-admin-otp"
-            title="ALL CHAMPIONS"
-            isOpen={collapseOtp[0]}
-          />
-          <CollapseComponent
-            idCollapse="select-admin-otp"
-            title="CREATE A CHAMPION"
-            isOpen={collapseOtp[0]}
-          />
           <SelectAdminOtp
-            setOnStatus={() => props.setOnStatus(2)}
+            onClick={() => {
+              props.setOnStatus(2);
+            }}
             title="Items"
             icon={<AddShoppingCartIcon />}
           />
           <SelectAdminOtp
-            setOnStatus={() => props.setOnStatus(3)}
+            onClick={() => {
+              props.setOnStatus(3);
+            }}
             title="Traits"
             icon={<ConnectWithoutContactIcon />}
           />

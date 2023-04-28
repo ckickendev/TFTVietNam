@@ -48,7 +48,7 @@ const columns: readonly Column[] = [
   },
 ];
 
-interface ChampionData {
+interface IChampionData {
   _id: string;
   avatar: string;
   name: string;
@@ -72,14 +72,14 @@ export const ChampionAdmin = () => {
     getAllChampion();
   }, []);
 
-  const [allChampions, setAllChampions] = useState<ChampionData[]>([]);
+  const [allChampions, setAllChampions] = useState<IChampionData[]>([]);
   const [errorAddChampion, setErrorAddChampion] = useState({
     error: "",
     isError: false,
   });
+  const [unableInput, setUnableInput] = useState(false);
   const [inputChampion, setInputChampion] = useState({
     idEdit: "SAMPLE",
-    unable: false,
     avatar: "",
     name: "",
     cost: 0,
@@ -108,7 +108,7 @@ export const ChampionAdmin = () => {
         return;
       }
       const newChampionData = await addChampionAPI(inputChampion);
-      setAllChampions((allChampions: ChampionData[]) => {
+      setAllChampions((allChampions: IChampionData[]) => {
         const newArrayAllChampions = [
           {
             _id: newChampionData._id,
@@ -123,12 +123,12 @@ export const ChampionAdmin = () => {
       });
       setInputChampion({
         idEdit: "SAMPLE",
-        unable: false,
         avatar: "",
         name: "",
         cost: 0,
         skill: "",
       });
+      setUnableInput(false);
       loadingStore.setIsLoading(false);
     } catch (err: any) {
       setErrorAddChampion((state) => {
@@ -148,7 +148,7 @@ export const ChampionAdmin = () => {
 
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
-        setAllChampions((allChampions: ChampionData[]) => {
+        setAllChampions((allChampions: IChampionData[]) => {
           const newArrayAllChampions = allChampions.filter(
             (champion) => champion._id !== id
           );
@@ -168,9 +168,7 @@ export const ChampionAdmin = () => {
   };
 
   const addRowAddChampion = () => {
-    setInputChampion((state) => {
-      return { ...state, unable: !state.unable };
-    });
+    setUnableInput((state) => !state);
   };
 
   const onCloseDialogHandler = async () => {
@@ -232,7 +230,7 @@ export const ChampionAdmin = () => {
       }
       const editChampionData = await editChampionAPI(inputChampion);
       if (editChampionData.responseData.modifiedCount) {
-        setAllChampions((allChampions: ChampionData[]) => {
+        setAllChampions((allChampions: IChampionData[]) => {
           const newArrayAllChampions = allChampions.map((championElement) => {
             return championElement._id === inputChampion.idEdit
               ? inputDataChampion
@@ -242,12 +240,13 @@ export const ChampionAdmin = () => {
         });
         setInputChampion({
           idEdit: "SAMPLE",
-          unable: false,
+
           avatar: "",
           name: "",
           cost: 0,
           skill: "",
         });
+        setUnableInput(false);
         loadingStore.setIsLoading(false);
       }
       loadingStore.setIsLoading(false);
@@ -308,7 +307,7 @@ export const ChampionAdmin = () => {
                   />
                 </TableCell>
               </TableRow>
-              {inputChampion.unable && (
+              {unableInput && (
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
@@ -386,7 +385,7 @@ export const ChampionAdmin = () => {
                 </TableRow>
               )}
 
-              {allChampions.map((champion: ChampionData, index) => {
+              {allChampions.map((champion: IChampionData, index) => {
                 if (champion._id === inputChampion.idEdit) {
                   return undefined;
                 }

@@ -27,15 +27,17 @@ export const NavBarComponent = observer(({ authStore }: any) => {
       await axios
         .get(`${ROOT_BACKEND}/auth/whoAmI`, { headers })
         .then((response) => {
-          console.log("res", response);
+          console.log("res who am i", response.data);
           authStore.setIsAuth(true);
           setAuthAvatar(true);
           authStore.setWhoAmI(response.data.userInfo.email);
+          authStore.setIsAdmin(response.data.userInfo.role);
         })
         .catch((error) => {
           authStore.setIsAuth(false);
           setAuthAvatar(false);
           authStore.setWhoAmI("");
+          authStore.setIsAdmin(0);
         });
     };
 

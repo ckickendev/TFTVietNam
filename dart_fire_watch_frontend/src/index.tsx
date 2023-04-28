@@ -15,10 +15,11 @@ import { Admin } from "./components/AdminPanel/AdminPanel";
 import { ConfirmSignUpByLink } from "./components/AuthComponent/ConfirmSignUpByLink";
 import { ResetPasswordByLink } from "./components/AuthComponent/ResetPasswordByLink";
 import loadingStore from "./store/loadingStore";
+import authStore from "./store/authStore";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    <Route path="/" >
       <Route
         path="auth"
         element={<Authentication loadingStore={loadingStore} />}
@@ -27,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="home" element={<Home loadingStore={loadingStore} />} />
       <Route path="notfound" element={<NotFoundPage />} />
       <Route path="forbidden" element={<AccessForbidden />} />
-      <Route path="admin" element={<Admin loadingStore={loadingStore} />} />
+      <Route path="admin" element={<Admin loadingStore={loadingStore} authStore={authStore} />} />
       <Route path="confirm_register" element={<ConfirmSignUpByLink />} />
       <Route path="reset-password-link" element={<ResetPasswordByLink />} />
     </Route>
