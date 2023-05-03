@@ -14,15 +14,10 @@ import {
   TextFieldComponent,
   NumberFieldComponent,
 } from "../../CommonComponent/TextFieldComponent";
-import {
-  deleteChampionById,
-  editChampionAPI,
-  getAllChampionAPI,
-} from "../../../api/championApi";
+import { addChampionAPI, deleteChampionById, editChampionAPI, getAllChampionAPI } from "../../../api/championApi";
 import { errorEmptyInputObject } from "../../../utils/function";
 import DialogCustom from "../../../utils/DialogCustom";
 import { validateNumber } from "../../../utils/function";
-import { addChampionAPI } from "../../../api/championApi";
 import loadingStore from "../../../store/loadingStore";
 
 interface Column {
@@ -195,8 +190,10 @@ export const ChampionAdmin = () => {
         return undefined;
       });
       const inputData = filterData[0];
+      
       return { idEdit: idEdit, unable: true, ...inputData };
     });
+    setUnableInput(true);
   };
 
   const handleEditChampion = async () => {
@@ -209,7 +206,6 @@ export const ChampionAdmin = () => {
         skill: inputChampion.skill,
       };
       loadingStore.setIsLoading(true);
-      console.log("inputChampion", inputChampion);
       const isErrorEmpty = errorEmptyInputObject(inputChampion);
       if (isErrorEmpty) {
         setErrorAddChampion((state) => {
@@ -229,7 +225,7 @@ export const ChampionAdmin = () => {
         return;
       }
       const editChampionData = await editChampionAPI(inputChampion);
-      if (editChampionData.responseData.modifiedCount) {
+      if (editChampionData) {
         setAllChampions((allChampions: IChampionData[]) => {
           const newArrayAllChampions = allChampions.map((championElement) => {
             return championElement._id === inputChampion.idEdit
@@ -240,7 +236,6 @@ export const ChampionAdmin = () => {
         });
         setInputChampion({
           idEdit: "SAMPLE",
-
           avatar: "",
           name: "",
           cost: 0,
@@ -249,6 +244,7 @@ export const ChampionAdmin = () => {
         setUnableInput(false);
         loadingStore.setIsLoading(false);
       }
+      setErrorAddChampion({ error: "Some error is occur, No data update", isError: true });
       loadingStore.setIsLoading(false);
     } catch (err: any) {
       setErrorAddChampion((state) => {
@@ -274,7 +270,9 @@ export const ChampionAdmin = () => {
         />
       )}
       {allChampions.length === 0 ? (
-        <Typography>No data</Typography>
+       <TableContainer sx={{ padding: 1, textAlign: "center" }}>
+       <Typography sx={tableCellSx}>No data found</Typography>
+     </TableContainer>
       ) : (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
           <Table aria-label="customized table">

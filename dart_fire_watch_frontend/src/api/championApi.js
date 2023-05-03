@@ -44,7 +44,7 @@ const editChampionAPI = async (data) => {
       editData: data,
     },
   })
-  return res.data;
+  return res.data.responseData.modifiedCount;
 }
 
 export { getAllChampionAPI, addChampionAPI, deleteChampionById, editChampionAPI };
