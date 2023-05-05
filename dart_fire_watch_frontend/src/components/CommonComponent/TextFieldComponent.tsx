@@ -17,7 +17,7 @@ interface ITextFieldComponentProps {
   placeholder: string;
   sx?: object;
   textAlignInput?: string;
-  type?: string
+  type?: string;
 }
 interface INumberFieldComponentProps {
   variant: "standard" | "filled" | "outlined" | undefined;
@@ -37,14 +37,25 @@ interface INumberFieldComponentProps {
   textAlignInput?: string;
 }
 
-
 const TextFieldComponent = (props: ITextFieldComponentProps) => {
   return (
     <TextField
       variant={props.variant}
       value={props.value}
       onChange={props.onChange}
-      sx={{ input: { color: props.textColor || "white", textAlign: "center"}, ...props.sx }}
+      sx={{
+        input: {
+          height: 40,
+          padding: 0,
+          color: props.textColor || "white",
+          textAlign: "center",
+          fontFamily: "Poppins,Backup,Verdana,sans-serif",
+          fontSize: "small",
+          fontWeight: 300,
+        },
+        ...props.sx,
+      }}
+      InputProps={{ sx: { height: 40 } }}
       color={props.color}
       placeholder={props.placeholder}
     />
@@ -57,12 +68,15 @@ const NumberFieldComponent = (props: INumberFieldComponentProps) => {
       variant={props.variant}
       value={props.value}
       onChange={props.onChange}
-      sx={{ input: { color: props.textColor || "white", textAlign: "center"}, ...props.sx }}
+      sx={{
+        input: { color: props.textColor || "white", textAlign: "center" },
+        ...props.sx,
+      }}
       color={props.color}
       placeholder={props.placeholder}
       type="number"
     />
   );
-}
+};
 
-export {TextFieldComponent, NumberFieldComponent}
+export { TextFieldComponent, NumberFieldComponent };

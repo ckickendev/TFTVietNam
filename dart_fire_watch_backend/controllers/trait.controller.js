@@ -1,0 +1,94 @@
+const express = require("express");
+const { Controller } = require("../core");
+const { AdminMiddleware } = require("../middlewares/auth.middleware");
+const { traitService } = require("../services");
+
+class TraitController extends Controller {
+  _rootPath = "/trait";
+  _router = express.Router();
+  constructor() {
+    super();
+    this.initController();
+  }
+
+  getAllTraits = async (req, res, next) => {
+    try {
+      const allTraits = await traitService.getAllTraits();
+      res.status(200).json({
+        allTraits: allTraits,
+      });
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  };
+
+  addNewTrait = async (req, res, next) => {
+    const newTrait = req.body.newTrait;
+    try {
+      const newTraitData = await traitService.addNewTrait(newTrait);
+      res.status(200).json({
+        message: "Add new trait !",
+        newTraitData: newTraitData,
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+    }
+  };
+
+  deleteTrait = async (req, res, next) => {
+    const id = req.body.idTrait;
+    try {
+      const dataDelete = await traitService.deleteTrait(id);
+      res.status(200).json({
+        message: "Delete trait success!",
+        dataDelete: dataDelete,
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+    }
+  };
+
+  editTrait = async (req, res, nex) => {
+    try {
+      const editData = req.body.data.editData;
+      const responseData = await traitService.editTrait(editData);
+      res.status(200).json({
+        message: "Edit trait success!",
+        responseData: responseData,
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+    }
+  };
+
+  initController() {
+    this._router.get(
+      `${this._rootPath}/get-all`,
+      AdminMiddleware,
+      this.getAllTraits
+    );
+    this._router.post(
+      `${this._rootPath}/add`,
+      AdminMiddleware,
+      this.addNewTrait
+    );
+    this._router.delete(
+      `${this._rootPath}/delete`,
+      AdminMiddleware,
+      this.deleteTrait
+    );
+    this._router.patch(
+      `${this._rootPath}/edit`,
+      AdminMiddleware,
+      this.editTrait
+    );
+  }
+}
+
+module.exports = TraitController;

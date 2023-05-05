@@ -3,7 +3,6 @@ import "./admin.scss";
 import NavigationPanel from "./NavigationPanel";
 import { DefaultPanel } from "./DefaultPanel";
 import { ItemAdmin } from "./ItemAdmin/ItemAdmin";
-import TraitAdmin from "./TraitAdmin";
 import { NavBarComponent } from "../AuthComponent/NavBarComponent";
 import { ChampionAdmin } from "./ChampionAdmin/ChampionAdmin";
 import { LoadingCustom } from "../../utils/LoadingCustom";
@@ -11,6 +10,7 @@ import { observer } from "mobx-react";
 import { AccessForbidden } from "../ErrorPage/AccessForbidden";
 import axios from "axios";
 import { ROOT_BACKEND } from "../../api/const";
+import { TraitAdmin } from "./TraitAdmin/TraitAdmin";
 
 export const Admin = observer(({ loadingStore, authStore }: any) => {
   useEffect(() => {
