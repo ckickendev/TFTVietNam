@@ -5,7 +5,6 @@ import DialogCustom from "../../../utils/DialogCustom";
 import {
   Box,
   Button,
-  Container,
   MenuItem,
   Select,
   Table,
@@ -24,6 +23,7 @@ import {
 } from "../../../api/traitAPI.js";
 import { errorEmptyInputObject } from "../../../utils/function";
 import { TextComponent } from "../../CommonComponent/TextComponent";
+import { TraitChampionAdmin } from "./TraitChampionAdmin";
 
 interface Column {
   id: "image" | "name" | "effect" | "unit_activate";
@@ -44,7 +44,7 @@ const columns: readonly Column[] = [
     align: "center",
   },
 ];
-interface ITraitData {
+export interface ITraitData {
   _id: string;
   image: string;
   name: string;
@@ -73,6 +73,7 @@ export const TraitAdmin = () => {
     getAllTraits();
   }, []);
 
+  const [editTraitChampion, setEditTraitChampion] = useState(true);
   const [allTraits, setAllTraits] = useState<ITraitData[]>([]);
   const [errorAddTrait, setErrorAddTrait] = useState({
     error: "",
@@ -244,78 +245,9 @@ export const TraitAdmin = () => {
     });
   };
 
-  const handleEditTrait = async () => {
-    try {
-      const inputDataTrait = {
-        _id: inputTrait.idEdit,
-        name: inputTrait.name,
-        image: inputTrait.image,
-        effect: inputTrait.effect,
-        unit_activate: inputTrait.unit_activate,
-      };
-      loadingStore.setIsLoading(true);
-      const isErrorEmpty = errorEmptyInputObject(inputTrait);
-      if (isErrorEmpty) {
-        setErrorAddTrait((state) => {
-          return { error: isErrorEmpty, isError: true };
-        });
-        loadingStore.setIsLoading(false);
-        return;
-      }
-      const editTraitData = await editTraitAPI(inputDataTrait);
-      if (editTraitData) {
-        setAllTraits((allTraits: ITraitData[]) => {
-          const newArrayAllTraits = allTraits.map((traitElement) => {
-            return traitElement._id === inputTrait.idEdit
-              ? inputDataTrait
-              : traitElement;
-          });
-          return newArrayAllTraits;
-        });
-        setInputTrait({
-          idEdit: "SAMPLE",
-          name: "",
-          image: "",
-          effect: "",
-          unit_activate: [{ count_activate: 0, effect_activate: "" }],
-        });
-        setUnableInput(false);
-        loadingStore.setIsLoading(false);
-      } else {
-        setErrorAddTrait({
-          error: "Some error is occur, No data update",
-          isError: true,
-        });
-      }
-      loadingStore.setIsLoading(false);
-    } catch (err: any) {
-      setErrorAddTrait((state) => {
-        return {
-          error: err?.response?.data?.error || err?.message,
-          isError: true,
-        };
-      });
-      loadingStore.setIsLoading(false);
-    }
-  };
-
-  return (
-    <>
-      {errorAddTrait.isError && (
-        <DialogCustom
-          onClose={onCloseDialogHandler}
-          isOpen={errorAddTrait.isError}
-          title={errorAddTrait.error}
-          content="Please check again"
-          displayAggree={false}
-          displayDisaggree={false}
-        />
-      )}
-      {allTraits.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <TextComponent sx={tableCellSx}>No data found</TextComponent>
-        </TableContainer>
-      ) : (
+  const renderMenuAdmin = () => {
+    if (editTraitChampion === false) {
+      return (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
           <Table aria-label="customized table">
             <TableHead>
@@ -446,7 +378,95 @@ export const TraitAdmin = () => {
             </TableBody>
           </Table>
         </TableContainer>
+      );
+    }
+    return <TraitChampionAdmin />;
+  };
+
+  const handleEditTrait = async () => {
+    try {
+      const inputDataTrait = {
+        _id: inputTrait.idEdit,
+        name: inputTrait.name,
+        image: inputTrait.image,
+        effect: inputTrait.effect,
+        unit_activate: inputTrait.unit_activate,
+      };
+      loadingStore.setIsLoading(true);
+      const isErrorEmpty = errorEmptyInputObject(inputTrait);
+      if (isErrorEmpty) {
+        setErrorAddTrait((state) => {
+          return { error: isErrorEmpty, isError: true };
+        });
+        loadingStore.setIsLoading(false);
+        return;
+      }
+      const editTraitData = await editTraitAPI(inputDataTrait);
+      if (editTraitData) {
+        setAllTraits((allTraits: ITraitData[]) => {
+          const newArrayAllTraits = allTraits.map((traitElement) => {
+            return traitElement._id === inputTrait.idEdit
+              ? inputDataTrait
+              : traitElement;
+          });
+          return newArrayAllTraits;
+        });
+        setInputTrait({
+          idEdit: "SAMPLE",
+          name: "",
+          image: "",
+          effect: "",
+          unit_activate: [{ count_activate: 0, effect_activate: "" }],
+        });
+        setUnableInput(false);
+        loadingStore.setIsLoading(false);
+      } else {
+        setErrorAddTrait({
+          error: "Some error is occur, No data update",
+          isError: true,
+        });
+      }
+      loadingStore.setIsLoading(false);
+    } catch (err: any) {
+      setErrorAddTrait((state) => {
+        return {
+          error: err?.response?.data?.error || err?.message,
+          isError: true,
+        };
+      });
+      loadingStore.setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      {errorAddTrait.isError && (
+        <DialogCustom
+          onClose={onCloseDialogHandler}
+          isOpen={errorAddTrait.isError}
+          title={errorAddTrait.error}
+          content="Please check again"
+          displayAggree={false}
+          displayDisaggree={false}
+        />
       )}
+      {allTraits.length === 0 ? (
+        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
+          <TextComponent sx={tableCellSx}>No data found</TextComponent>
+        </TableContainer>
+      ) : (
+        renderMenuAdmin()
+      )}
+      <Button
+        onClick={() => {
+          setEditTraitChampion(!editTraitChampion);
+        }}
+        variant="contained"
+        sx={{ width: "100%", ...tableCellSx, border: 1 , marginTop: 4}}
+        color="success"
+      >
+        Switch to add champion
+      </Button>
     </>
   );
 };
@@ -495,7 +515,6 @@ const UnitInputComponent = ({ index, inputChangeUnitActivate, unit }: any) => {
 
 const RowData = (props: any) => {
   const { index, trait, onEditHandler, handleDeleteTrait } = props;
-  console.log("trait in per row", trait);
   return (
     <TableRow
       key={index}

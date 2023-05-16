@@ -21,6 +21,7 @@ class ChampionService extends Service {
       name: data.name,
       cost: data.cost,
       skill: data.skill,
+      traits: [],
     });
     newChampion.save();
     return newChampion;

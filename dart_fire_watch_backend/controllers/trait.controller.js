@@ -14,6 +14,7 @@ class TraitController extends Controller {
   getAllTraits = async (req, res, next) => {
     try {
       const allTraits = await traitService.getAllTraits();
+      console.log("all traits", allTraits);
       res.status(200).json({
         allTraits: allTraits,
       });
@@ -52,7 +53,7 @@ class TraitController extends Controller {
     }
   };
 
-  editTrait = async (req, res, nex) => {
+  editTrait = async (req, res, next) => {
     try {
       const editData = req.body.data.editData;
       const responseData = await traitService.editTrait(editData);
@@ -67,6 +68,21 @@ class TraitController extends Controller {
     }
   };
 
+  editTraitChampion = async (req,res, next) => {
+    try {
+      const editData = req.body.data;
+      const responseData = await traitService.editTraitChampion(editData);
+      res.status(200).json({
+        message: "Edit success!",
+        responseData: responseData,
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+    }
+  }
+
   initController() {
     this._router.get(
       `${this._rootPath}/get-all`,
@@ -78,6 +94,11 @@ class TraitController extends Controller {
       AdminMiddleware,
       this.addNewTrait
     );
+    this._router.post(
+      `${this._rootPath}/edit-trait-hampion`,
+      AdminMiddleware,
+      this.editTraitChampion
+    );
     this._router.delete(
       `${this._rootPath}/delete`,
       AdminMiddleware,
@@ -88,6 +109,8 @@ class TraitController extends Controller {
       AdminMiddleware,
       this.editTrait
     );
+
+    
   }
 }
 

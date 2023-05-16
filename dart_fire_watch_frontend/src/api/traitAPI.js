@@ -13,7 +13,6 @@ const getAllTraitsAPI = async () => {
   const traits = await axios.get(`${ROOT_BACKEND}/trait/get-all`, {
     headers: getHeadersToken(),
   });
-  console.log("get all traits", traits);
   return traits;
 };
 
@@ -46,4 +45,15 @@ const editTraitAPI = async (data) => {
   return res.data.responseData.modifiedCount;
 };
 
-export { getAllTraitsAPI, addTraitAPI, deleteTraitById, editTraitAPI };
+const changeTraitChampion = async (idTrait, champions ) => {
+  const res = await axios.post(`${ROOT_BACKEND}/trait/edit-trait-hampion`, {
+    headers: getHeadersToken(),
+    data: {
+      idTrait,
+      champions
+    },
+  })
+  return res
+}
+
+export { getAllTraitsAPI, addTraitAPI, deleteTraitById, editTraitAPI, changeTraitChampion };

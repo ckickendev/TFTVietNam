@@ -10,7 +10,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
 import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
 import {
@@ -20,6 +19,7 @@ import {
   getAllItemsAPI,
 } from "../../../api/itemAPI";
 import { errorEmptyInputObject } from "../../../utils/function";
+import { TextComponent } from "../../CommonComponent/TextComponent";
 
 interface Column {
   id: "image" | "name" | "effect";
@@ -205,8 +205,9 @@ export const ItemAdmin = () => {
         });
         setUnableInput(false);
         loadingStore.setIsLoading(false);
+      }else{
+        setErrorAddItem({ error: "Some error is occur, No data update", isError: true });
       }
-      setErrorAddItem({ error: "Some error is occur, No data update", isError: true });
       loadingStore.setIsLoading(false);
     } catch (err: any) {
       setErrorAddItem((state) => {
@@ -233,7 +234,7 @@ export const ItemAdmin = () => {
       )}
       {allItems.length === 0 ? (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <Typography sx={tableCellSx}>No data found</Typography>
+          <TextComponent sx={tableCellSx}>No data found</TextComponent>
         </TableContainer>
       ) : (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
@@ -366,10 +367,10 @@ const RowData = (props: any) => {
         <img src={item.image} width={50} height={50} alt="image" />
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        <Typography>{item.name}</Typography>
+        <TextComponent>{item.name}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        <Typography>{item.effect}</Typography>
+        <TextComponent>{item.effect}</TextComponent>
       </TableCell>
       <TableCell align="center">
         <Button

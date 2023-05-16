@@ -7,18 +7,23 @@ import {
   TableHead,
   TableRow,
   Button,
-  Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
   TextFieldComponent,
   NumberFieldComponent,
 } from "../../CommonComponent/TextFieldComponent";
-import { addChampionAPI, deleteChampionById, editChampionAPI, getAllChampionAPI } from "../../../api/championApi";
+import {
+  addChampionAPI,
+  deleteChampionById,
+  editChampionAPI,
+  getAllChampionAPI,
+} from "../../../api/championApi";
 import { errorEmptyInputObject } from "../../../utils/function";
 import DialogCustom from "../../../utils/DialogCustom";
 import { validateNumber } from "../../../utils/function";
 import loadingStore from "../../../store/loadingStore";
+import { TextComponent } from "../../CommonComponent/TextComponent";
 
 interface Column {
   id: "avatar" | "name" | "cost" | "skill";
@@ -43,7 +48,7 @@ const columns: readonly Column[] = [
   },
 ];
 
-interface IChampionData {
+export interface IChampionData {
   _id: string;
   avatar: string;
   name: string;
@@ -190,7 +195,7 @@ export const ChampionAdmin = () => {
         return undefined;
       });
       const inputData = filterData[0];
-      
+
       return { idEdit: idEdit, unable: true, ...inputData };
     });
     setUnableInput(true);
@@ -243,8 +248,12 @@ export const ChampionAdmin = () => {
         });
         setUnableInput(false);
         loadingStore.setIsLoading(false);
+      } else {
+        setErrorAddChampion({
+          error: "Some error is occur, No data update",
+          isError: true,
+        });
       }
-      setErrorAddChampion({ error: "Some error is occur, No data update", isError: true });
       loadingStore.setIsLoading(false);
     } catch (err: any) {
       setErrorAddChampion((state) => {
@@ -270,9 +279,9 @@ export const ChampionAdmin = () => {
         />
       )}
       {allChampions.length === 0 ? (
-       <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-       <Typography sx={tableCellSx}>No data found</Typography>
-     </TableContainer>
+        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
+          <TextComponent sx={tableCellSx}>No data found</TextComponent>
+        </TableContainer>
       ) : (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
           <Table aria-label="customized table">
@@ -415,13 +424,13 @@ const RowData = (props: any) => {
         <img src={champion.avatar} width={50} height={50} alt="avatar" />
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        <Typography>{champion.name}</Typography>
+        <TextComponent>{champion.name}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        <Typography>{champion.cost}</Typography>
+        <TextComponent>{champion.cost}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        <Typography>{champion.skill}</Typography>
+        <TextComponent>{champion.skill}</TextComponent>
       </TableCell>
       <TableCell align="center">
         <Button
