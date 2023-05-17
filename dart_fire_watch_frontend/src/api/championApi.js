@@ -9,12 +9,10 @@ const getHeadersToken = () => {
 };
 
 const getAllChampionAPI = async () => {
-  console.log("get header token", getHeadersToken());
   const champions = await axios.get(
     `${CONSTVALUE.ROOT_BACKEND}/champion/get-all`,
     { headers: getHeadersToken() }
   );
-  console.log("getAllChampionAPI", champions);
   return champions;
 };
 
@@ -37,7 +35,6 @@ const deleteChampionById = async (id) => {
 };
 
 const editChampionAPI = async (data) => {
-  console.log("edit champion", data);
   const res = await axios.patch(`${CONSTVALUE.ROOT_BACKEND}/champion/edit`, {
     headers: getHeadersToken(),
     data: {

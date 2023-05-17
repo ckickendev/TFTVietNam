@@ -138,6 +138,7 @@ export const TraitAdmin = () => {
   const handleDeleteTrait = async (id: string) => {
     try {
       loadingStore.setIsLoading(true);
+      console.log("id", id);
       const handlerDelete = await deleteTraitById(id);
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
@@ -507,7 +508,7 @@ const UnitInputComponent = ({ index, inputChangeUnitActivate, unit }: any) => {
         variant="filled"
         value={unit.effect_activate}
         textColor="white"
-        placeholder="Link image trait"
+        placeholder="Skill this activate"
       />
     </Box>
   );

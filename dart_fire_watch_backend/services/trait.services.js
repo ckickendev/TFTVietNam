@@ -54,7 +54,9 @@ class TraitService extends Service {
     //   }
     //   await elementEdit.save();
     // });
-    const resData = await Trait.updateOne({ _id: idTrait }, {$set: {"champions": champions}});
+    const resData = await Trait.findByIdAndUpdate(idTrait, {
+      $set: { champions: champions },
+    });
     console.log("res data", resData);
     return resData;
   };

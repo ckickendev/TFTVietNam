@@ -116,6 +116,8 @@ export const ItemAdmin = () => {
 
   const handleDeleteItem = async (id: string) => {
     try {
+      console.log("id", id);
+      
       loadingStore.setIsLoading(true);
       const handlerDelete = await deleteItemById(id);
       if (handlerDelete) {

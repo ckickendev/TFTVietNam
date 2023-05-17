@@ -43,6 +43,8 @@ export const TraitChampionAdmin = () => {
       loadingStore.setIsLoading(true);
       const champions = await getAllChampionAPI();
       const traits = await getAllTraitsAPI();
+      console.log("allTraits : ", allTraits);
+
       setAllTraits(traits.data.allTraits);
       setAllChampions(champions.data.allChampions);
       loadingStore.setIsLoading(false);
@@ -75,7 +77,6 @@ export const TraitChampionAdmin = () => {
       const championsList: any = allTraits.filter((trait: any) => {
         return trait._id === idEdit;
       });
-      console.log("championsList[0]", championsList[0]);
       return {
         idEdit: idEdit,
         image: championsList[0].image,
@@ -123,7 +124,10 @@ export const TraitChampionAdmin = () => {
   const confirmHandlerAddChampions = async () => {
     console.log("inputTraitChampion", inputTraitChampion);
     try {
-      const dataResponse = await changeTraitChampion(inputTraitChampion.idEdit, inputTraitChampion.champions);
+      const dataResponse = await changeTraitChampion(
+        inputTraitChampion.idEdit,
+        inputTraitChampion.champions
+      );
     } catch (err: any) {
       console.log(err);
     }
@@ -184,20 +188,22 @@ export const TraitChampionAdmin = () => {
                     <TextComponent>{inputTraitChampion.name}</TextComponent>
                   </TableCell>
                   <TableCell align="center" sx={tableCellSx}>
-                    {inputTraitChampion.champions?.length === 0 ?? (
+                    {inputTraitChampion.champions?.length === 0 ? (
                       <TextComponent>No Champions</TextComponent>
+                    ) : (
+                      inputTraitChampion.champions.map((champion, index) => {
+                        return (
+                          <ChampionSelectComponent
+                            inputChangeTraitChampion={inputChangeTraitChampion}
+                            champion={champion}
+                            key={index}
+                            index={index}
+                            allChampions={allChampions}
+                          />
+                        );
+                      })
                     )}
-                    {inputTraitChampion.champions.map((champion, index) => {
-                      return (
-                        <ChampionSelectComponent
-                          inputChangeTraitChampion={inputChangeTraitChampion}
-                          champion={champion}
-                          key={index}
-                          index={index}
-                          allChampions={allChampions}
-                        />
-                      );
-                    })}
+
                     <AddCircleIcon onClick={addMoreChampion} />
                   </TableCell>
                   <TableCell align="center">
@@ -274,9 +280,9 @@ const ChampionSelectComponent = ({
         }}
         value={champion}
       >
-        {allChampions.map((champion: any) => {
+        {allChampions.map((champion: any, index: number) => {
           return (
-            <MenuItem value={champion._id} sx={{ display: "flex" }}>
+            <MenuItem key={index} value={champion._id} sx={{ display: "flex" }}>
               <img
                 src={champion.avatar}
                 width={50}
@@ -307,12 +313,13 @@ const RowData = (props: any) => {
         <TextComponent>{trait.name}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={tableCellSx}>
-        {trait.champions?.length === 0 ?? (
+        {trait.champions?.length === 0 ? (
           <TextComponent>No Champions</TextComponent>
+        ) : (
+          trait.champions?.map((champion: IChampionData, index: number) => {
+            return <TextComponent key={index}>{champion.name}</TextComponent>;
+          })
         )}
-        {trait.champions?.map((champion: IChampionData, index: number) => {
-          return <TextComponent key={index}>{champion.name}</TextComponent>;
-        })}
       </TableCell>
       <TableCell align="center">
         <Button

@@ -77,6 +77,7 @@ class TraitController extends Controller {
         responseData: responseData,
       });
     } catch (err) {
+      console.log("Loi khi add trait", err);
       res.status(500).json({
         error: err.message,
       });
@@ -95,7 +96,7 @@ class TraitController extends Controller {
       this.addNewTrait
     );
     this._router.post(
-      `${this._rootPath}/edit-trait-hampion`,
+      `${this._rootPath}/edit-trait-champion`,
       AdminMiddleware,
       this.editTraitChampion
     );

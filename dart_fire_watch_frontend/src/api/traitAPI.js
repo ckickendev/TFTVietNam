@@ -46,7 +46,7 @@ const editTraitAPI = async (data) => {
 };
 
 const changeTraitChampion = async (idTrait, champions ) => {
-  const res = await axios.post(`${ROOT_BACKEND}/trait/edit-trait-hampion`, {
+  const res = await axios.post(`${ROOT_BACKEND}/trait/edit-trait-champion`, {
     headers: getHeadersToken(),
     data: {
       idTrait,
