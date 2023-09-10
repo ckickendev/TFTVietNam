@@ -1,5 +1,6 @@
 const { Service } = require("../core");
 const { Champion } = require("../models");
+const mongoose = require("mongoose");
 
 class ChampionService extends Service {
   getAllChampion = async () => {
@@ -17,6 +18,7 @@ class ChampionService extends Service {
 
   addNewChampion = async (data) => {
     const newChampion = new Champion({
+      _id: new mongoose.Types.ObjectId(),
       avatar: data.avatar,
       name: data.name,
       cost: data.cost,

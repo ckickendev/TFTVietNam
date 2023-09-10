@@ -1,9 +1,11 @@
-const { Service } = require("../core");
+const { Service, ConsoleLogger } = require("../core");
 const { Trait, Champion } = require("../models");
+const mongoose = require("mongoose");
+const { ObjectId } = require("mongodb");
 
 class TraitService extends Service {
   getAllTraits = async () => {
-    const traits = await Trait.find({});
+    const traits = await Trait.find({}).populate('champions');
     console.log("Log all traits", traits);
     return traits;
   };
@@ -11,6 +13,7 @@ class TraitService extends Service {
   addNewTrait = async (data) => {
     const champions = data.champions ? data.champions : [];
     const newTrait = new Trait({
+      _id: new mongoose.Types.ObjectId(),
       image: data.image,
       name: data.name,
       effect: data.effect,
@@ -36,29 +39,13 @@ class TraitService extends Service {
 
   editTraitChampion = async (data) => {
     const idTrait = data.idTrait;
-    let champions = [];
-    console.log("id trait", idTrait);
-    const traitEdit = await Trait.findById(idTrait);
-    if (traitEdit.champions.length === 0) {
-      champions = data.champions;
-    } else {
-      champions = [...traitEdit.champions, data.champions];
-    }
-    console.log("champions", champions);
-    // champions.forEach(async (element) => {
-    //   const elementEdit = await Champion.findById(element);
-    //   if (elementEdit.traits.length === 0) {
-    //     elementEdit.traits = idTrait;
-    //   } else {
-    //     elementEdit.traits.push(idTrait);
-    //   }
-    //   await elementEdit.save();
-    // });
-    const resData = await Trait.findByIdAndUpdate(idTrait, {
-      $set: { champions: champions },
+    await Trait.findByIdAndUpdate(idTrait, {champions: []});
+    const championIds = data.champions.map(async (champion) => {
+      const championId = new ObjectId(champion._id);
+      await Trait.findByIdAndUpdate(idTrait, {$push: {champions: championId}});
+      return championId;
     });
-    console.log("res data", resData);
-    return resData;
+    return championIds;
   };
 }
 

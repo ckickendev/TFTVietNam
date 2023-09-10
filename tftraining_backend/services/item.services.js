@@ -1,5 +1,6 @@
 const { Service } = require("../core");
 const { Item } = require("../models");
+const mongoose = require("mongoose");
 
 class ItemService extends Service {
   getAllItems = async () => {
@@ -16,6 +17,7 @@ class ItemService extends Service {
 
   addNewItem = async (data) => {
     const newItem = new Item({
+      _id: new mongoose.Types.ObjectId(),
       image: data.image,
       name: data.name,
       effect: data.effect,

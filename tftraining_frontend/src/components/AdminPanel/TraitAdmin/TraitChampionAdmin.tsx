@@ -43,8 +43,6 @@ export const TraitChampionAdmin = () => {
       loadingStore.setIsLoading(true);
       const champions = await getAllChampionAPI();
       const traits = await getAllTraitsAPI();
-      console.log("allTraits : ", allTraits);
-
       setAllTraits(traits.data.allTraits);
       setAllChampions(champions.data.allChampions);
       loadingStore.setIsLoading(false);
@@ -94,7 +92,14 @@ export const TraitChampionAdmin = () => {
       let newListChampions = oldTrait.champions.map(
         (champion: any, index: number) => {
           if (index === position) {
-            return e.target.value;
+            let championReturn;
+            allChampions.forEach((championElement: any) => {
+              if (championElement._id === e.target.value) {
+                championReturn = championElement;
+              }
+            });
+
+            return championReturn;
           }
           return champion;
         }
@@ -122,12 +127,32 @@ export const TraitChampionAdmin = () => {
   };
 
   const confirmHandlerAddChampions = async () => {
-    console.log("inputTraitChampion", inputTraitChampion);
     try {
       const dataResponse = await changeTraitChampion(
         inputTraitChampion.idEdit,
         inputTraitChampion.champions
       );
+      setAllTraits((allTraits: any) => {
+        console.log("Before set all trait", allTraits);
+
+        const newAllTrait = allTraits.map((trait: any) => {
+          console.log("input trait champion", trait);
+          if (trait._id === inputTraitChampion.idEdit) {
+            return { ...trait, champions: inputTraitChampion.champions };
+          }
+          return trait;
+        });
+        console.log("After set all trait", newAllTrait);
+
+        return newAllTrait;
+      });
+      setInputTraitChampion({
+        idEdit: "SAMPLE",
+        image: "",
+        name: "",
+        champions: [],
+      });
+      setUnableInput(false);
     } catch (err: any) {
       console.log(err);
     }
@@ -191,17 +216,21 @@ export const TraitChampionAdmin = () => {
                     {inputTraitChampion.champions?.length === 0 ? (
                       <TextComponent>No Champions</TextComponent>
                     ) : (
-                      inputTraitChampion.champions.map((champion, index) => {
-                        return (
-                          <ChampionSelectComponent
-                            inputChangeTraitChampion={inputChangeTraitChampion}
-                            champion={champion}
-                            key={index}
-                            index={index}
-                            allChampions={allChampions}
-                          />
-                        );
-                      })
+                      inputTraitChampion.champions.map(
+                        (champion: any, index) => {
+                          return (
+                            <ChampionSelectComponent
+                              inputChangeTraitChampion={
+                                inputChangeTraitChampion
+                              }
+                              champion={champion}
+                              key={index}
+                              index={index}
+                              allChampions={allChampions}
+                            />
+                          );
+                        }
+                      )
                     )}
 
                     <AddCircleIcon onClick={addMoreChampion} />
@@ -276,21 +305,27 @@ const ChampionSelectComponent = ({
           },
         }}
         onChange={(e: any) => {
+          console.log("e in inputChangeTraitChampion", e.target.value);
+
           inputChangeTraitChampion(e, index);
         }}
-        value={champion}
+        value={champion._id}
       >
-        {allChampions.map((champion: any, index: number) => {
+        {allChampions.map((championElement: any, index: number) => {
           return (
-            <MenuItem key={index} value={champion._id} sx={{ display: "flex" }}>
+            <MenuItem
+              key={index}
+              value={championElement._id}
+              sx={{ display: "flex" }}
+            >
               <img
-                src={champion.avatar}
+                src={championElement.avatar}
                 width={50}
                 height={50}
                 alt="image"
                 style={{ padding: 8 }}
               />
-              <TextComponent>{champion.name}</TextComponent>
+              <TextComponent>{championElement.name}</TextComponent>
             </MenuItem>
           );
         })}
@@ -317,7 +352,12 @@ const RowData = (props: any) => {
           <TextComponent>No Champions</TextComponent>
         ) : (
           trait.champions?.map((champion: IChampionData, index: number) => {
-            return <TextComponent key={index}>{champion.name}</TextComponent>;
+            return (
+              <div className="mt-4" key={index}>
+                <img src={champion.avatar} />
+                <TextComponent key={index}>{champion.name}</TextComponent>
+              </div>
+            );
           })
         )}
       </TableCell>
