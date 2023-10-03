@@ -1,0 +1,7 @@
+const CONSTVALUE = {
+  ROOT_BACKEND: process.env.REACT_APP_ROOT_BACKEND,
+  ROOT_FRONTEND: process.env.REACT_APP_ROOT_FRONTEND,
+};
+
+module.exports = CONSTVALUE
+

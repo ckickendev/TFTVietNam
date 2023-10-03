@@ -1,0 +1,8579 @@
+.header-container {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #343840;
+        font-family: Poppins, Backup, Verdana, Segoe UI, Roboto, Oxygen, -apple-system, BlinkMacSystemFont, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        margin: 0
+    }
+
+    #root,
+    body {
+        min-height: 100vh
+    }
+
+    #root {
+        height: 100%
+    }
+
+    #page-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative !important
+    }
+
+    #content-wrap {
+        justify-content: space-between;
+        flex: 1 1;
+        padding-top: 0
+    }
+
+    .MetaTFTfooter {
+        width: 100% !important
+    }
+
+    .MetaTFTFooterContent {
+        background-color: #222;
+        color: #e6e6e6 !important;
+        font-family: Poppins, Verdana, sans-serif;
+        font-size: 12px;
+        margin: 0 auto !important;
+        overflow: auto;
+        padding-bottom: 4px;
+        padding-top: 4px;
+        text-align: center !important;
+        vertical-align: center !important;
+        width: 100%
+    }
+
+    code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
+    }
+
+    .tooltip.show {
+        opacity: 1 !important
+    }
+
+    .tooltip-header {
+        border-bottom: 1px solid gray;
+        color: #d3d3d3;
+        padding-bottom: 6px;
+        text-align: left
+    }
+
+    .tooltip-description {
+        border-bottom: 1px solid gray !important;
+        color: #d3d3d3;
+        line-height: 120%;
+        max-width: 300px !important;
+        padding: 6px 0;
+        text-align: left
+    }
+
+    .tooltip-content {
+        color: #cfcfcf;
+        line-height: 120%;
+        padding: 2px 0;
+        text-align: left
+    }
+
+    .tooltip-recipe {
+        color: #d3d3d3;
+        padding-bottom: 0;
+        padding-top: 6px;
+        text-align: left
+    }
+
+    .tooltip-inner {
+        box-shadow: 5px 5px 9px 0 rgba(0, 0, 0, .5);
+        max-width: 200px !important
+    }
+
+    .css-1dgxpo2-control,
+    .css-1dgxpo2-control:active,
+    .css-1dgxpo2-control:hover {
+        border-color: #000 !important
+    }
+
+    div.tooltip {
+        height: auto;
+        padding: 5px;
+        pointer-events: none;
+        text-align: center;
+        vertical-align: middle;
+        width: auto
+    }
+
+    .tooltip.show {
+        border-radius: 1px
+    }
+
+    .bs-tooltip-auto[x-placement^=right] .arrow:before {
+        border-right-color: #222326
+    }
+
+    .tooltip-right .tooltip-inner {
+        background-color: #222326;
+        padding: 8px
+    }
+
+    .tooltip-description .trait {
+        margin-bottom: 1px;
+        margin-top: 1px
+    }
+
+    #tooltip.show {
+        opacity: 1
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    a:hover {
+        text-decoration: none !important
+    }
+
+    .Error {
+        flex: 1 1 auto;
+        flex-direction: column;
+        height: calc(100vh - 200px);
+        width: 100%
+    }
+
+    .Error,
+    .ErrorRow {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .ErrorRow {
+        padding: 10px
+    }
+
+    .TierBadgeText {
+        font-weight: 600
+    }
+
+    .chart_tooltip,
+    .chart_tooltip_bar,
+    .chart_tooltip_scatter,
+    .line_chart_tooltip,
+    .line_chart_tooltip2 {
+        top: 0
+    }
+
+    .MetaTFTLayout2 {
+        height: 100%;
+        width: 100%;
+        background-color:#313236;
+        color:#e6e6e6;
+        font-family:Poppins,Backup,Verdana,sans-serif;
+        font-size:small;
+        min-height:100vh;
+        overflow-y:scroll
+    }
+
+    #content-wrap,
+    .MetaTFTLayout2 {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column
+    }
+
+    .MetaTFTSideBar {
+        flex: 1 1 auto
+    }
+
+    @media(max-width: 1741px) {
+
+        #MetaTFTSideBarLeftLarge,
+        #MetaTFTSideBarRightLarge {
+            display: none
+        }
+    }
+
+    @media(min-width: 1741px) {
+
+        #MetaTFTSideBarLeftMedium,
+        #MetaTFTSideBarRightMedium {
+            display: none
+        }
+    }
+
+    @media(max-width: 991px) {
+
+        #MetaTFTSideBarLeftMedium,
+        #MetaTFTSideBarRightMedium {
+            display: none
+        }
+    }
+
+    #MetaTFTSideBarLeftMobile,
+    #MetaTFTSideBarLeftSmall,
+    #MetaTFTSideBarRightMobile,
+    #MetaTFTSideBarRightSmall {
+        display: none
+    }
+
+    #MetaTFTSideBarLeftLarge,
+    #MetaTFTSideBarRightLarge {
+        min-width: 300px
+    }
+
+    #MetaTFTSideBarLeftLarge,
+    #MetaTFTSideBarLeftMedium,
+    #MetaTFTSideBarRightLarge,
+    #MetaTFTSideBarRightMedium {
+        flex: 1 1 auto;
+        margin-top: 30px;
+        position: sticky;
+        position: -webkit-sticky;
+        top: 40px
+    }
+
+    #MetaTFTVideo,
+    #MetaTFTVideo2 {
+        bottom: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        position: fixed;
+        right: 10px;
+        z-index: 3000
+    }
+
+    .inline_ads {
+        margin-top: 20px;
+        min-height: 250px
+    }
+
+    .inline_ads,
+    .inline_ads2 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-width: 300px;
+        width: 100%
+    }
+
+    .inline_ads2 {
+        margin-top: 10px;
+        min-height: 100px
+    }
+
+    .SliderContainer {
+        align-items: center;
+        color: #e6e6e6;
+        display: flex;
+        flex-direction: row;
+        margin-left: 20px;
+        margin-right: 10px;
+        max-width: 200px;
+        min-width: 200px
+    }
+
+    .NewHighlight {
+        color: #cf301b;
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        margin-left: -10px;
+        margin-top: -10px;
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg);
+        vertical-align: text-top
+    }
+
+    .NewHighlightNav {
+        margin-right: -10px
+    }
+
+    .HomePage {
+        margin-bottom: 40px
+    }
+
+    .HomePageBanner {
+        align-items: center;
+        aspect-ratio: 2.22;
+        display: flex;
+        margin-top: 40px;
+        position: relative;
+        width: 100%
+    }
+
+    .HomePageBg {
+        background-color: #202233;
+        background-position: 50%;
+        background-size: cover;
+        border-radius: 10px;
+        height: 100%;
+        left: 0;
+        max-width: 100%;
+        mix-blend-mode: soft-light;
+        object-fit: cover;
+        opacity: .6;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0
+    }
+
+    .HomePageBannerText {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        z-index: 100
+    }
+
+    .HomePageBannerTitle {
+        display: flex;
+        flex-direction: column;
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 137%
+    }
+
+    .HomePageBannerSubTitle {
+        color: #cfcfcf;
+        font-size: 20px;
+        font-weight: 500
+    }
+
+    .HomePageBannerButtons {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        height: 40px;
+        margin-top: 5px;
+        width: 100%
+    }
+
+    .HomePageBannerButtonContainer {
+        height: 100%;
+        margin-right: 10px;
+        width: 50%
+    }
+
+    .HomePageSummary {
+        align-items: center;
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 40px;
+        width: 100%
+    }
+
+    .HomePageHighlightContainer {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        max-width: 32%;
+        min-height: 100%
+    }
+
+    .HomePageSummaryImg {
+        height: 120px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        width: auto
+    }
+
+    .HighlightTextContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .HighlightTitle {
+        color: #e6e6e6;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .HighlightText,
+    .HighlightTitle {
+        align-items: center;
+        display: flex;
+        text-align: center
+    }
+
+    .HighlightText {
+        color: #cfcfcf;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 160%;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    .HomePageGetStartedContainer {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px
+    }
+
+    .HomePageGetStartedTitle {
+        font-size: 26px;
+        font-weight: 500;
+        margin-top: 10px;
+        text-align: center
+    }
+
+    .HomePageGetStartedOptions {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around
+    }
+
+    .HomePageGetStarted {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        min-width: 200px;
+        padding-top: 20px;
+        width: 25%
+    }
+
+    .HomePageGetStarted:hover {
+        color: #fff !important
+    }
+
+    .HomePageStartedImg {
+        height: 70px;
+        margin: 15px;
+        width: auto
+    }
+
+    #OverwolfGetStartedImg {
+        color: #fff;
+        height: 76px;
+        margin: 12px
+    }
+
+    #DiscordGetStartedImg {
+        color: #fff;
+        height: 48px;
+        margin: 26px
+    }
+
+    #PatreonGetStartedImg {
+        height: 60px;
+        margin: 20px
+    }
+
+    .HomePageDiscoverContainer {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px
+    }
+
+    .HomeTabContents {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px
+    }
+
+    .HomeTabDescription {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        width: calc(32% - 12px)
+    }
+
+    .HomeTabImgContainer {
+        align-items: center;
+        aspect-ratio: 1.36538;
+        display: flex;
+        flex: 2 0 500;
+        justify-content: center;
+        max-height: 100%;
+        max-width: 710px;
+        width: calc(70% - 12px)
+    }
+
+    .HomeTabImg {
+        border-radius: 10px;
+        height: auto;
+        max-width: 710px;
+        width: 100%
+    }
+
+    .HomePageTabContainer {
+        max-width: 100%;
+        min-width: 100%
+    }
+
+    .HomeTabTitle {
+        align-items: flex-start;
+        display: flex;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-bottom: 5px;
+        text-align: left
+    }
+
+    .HomeTabText {
+        color: #cfcfcf
+    }
+
+    .HomeTabCTA,
+    .HomeTabText {
+        align-items: flex-start;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 160%;
+        margin-bottom: 5px;
+        text-align: left
+    }
+
+    .HomeTabCTA {
+        color: #cbb46c;
+        cursor: pointer;
+        display: flex
+    }
+
+    .HomeTabCTA:hover {
+        color: #fff
+    }
+
+    .HomePageTabMain {
+        border-bottom: 1px solid #404144 !important;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    .HomePageTab {
+        color: #cfcfcf;
+        cursor: pointer
+    }
+
+    .HomePageTab.active {
+        border-color: #404144 #404144 #222326 !important
+    }
+
+    .HomePageTab.active,
+    .HomePageTab:hover {
+        background-color: #222326 !important;
+        color: #cbb46c !important
+    }
+
+    .HomePageTab:hover {
+        border-color: #404144 !important
+    }
+
+    @media (max-width: 991px) {
+        .HomeTabContents {
+            align-items: center;
+            display: flex;
+            flex-direction: column-reverse;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px
+        }
+
+        .HomePageBanner,
+        .HomePageSummary {
+            margin-top: 20px
+        }
+
+        .HomeTabDescription {
+            margin-top: 10px;
+            min-height: 200px;
+            width: 100%
+        }
+
+        .HomeTabImgContainer {
+            width: 100%
+        }
+
+        .HomePageBannerButtons {
+            font-size: 15px;
+            height: 36px
+        }
+
+        .HomePageBannerTitle {
+            font-size: 30px
+        }
+
+        .HomePageBannerSubTitle {
+            font-size: 18px
+        }
+    }
+
+    @media (max-width: 767px) {
+        .HomePageSummary {
+            flex-direction: column
+        }
+
+        .HomePageHighlightContainer {
+            flex-direction: row;
+            margin-bottom: 20px;
+            max-width: 100%
+        }
+
+        .HomePageSummaryImg {
+            height: 80px;
+            margin-left: 10px
+        }
+
+        .HomeTabTitle {
+            font-size: 16px
+        }
+
+        .HomeTabCTA,
+        .HomeTabText {
+            font-size: 12px
+        }
+
+        .HighlightTitle {
+            font-size: 16px;
+            margin-top: 16px
+        }
+
+        .HighlightText {
+            font-size: 12px
+        }
+
+        .HomePageBannerTitle {
+            font-size: 24px
+        }
+
+        .HomePageBannerSubTitle {
+            font-size: 16px
+        }
+
+        .HomePageBannerButtons {
+            font-size: 14px;
+            height: 30px
+        }
+
+        .HomePageDiscoverContainer {
+            margin-top: 0
+        }
+
+        .HomePageGetStartedContainer {
+            margin-bottom: 0;
+            margin-top: 20px
+        }
+
+        .HomePage {
+            margin-bottom: 20px
+        }
+    }
+
+    @media (max-width: 575px) {
+        .HomeTabDescription {
+            min-height: 200px;
+            width: 100%
+        }
+
+        .HomePageBanner {
+            aspect-ratio: 1
+        }
+
+        // .HomePageBg {
+        //     background-image: url('https://cdn.metatft.com/file/metatft/home/set7_bg.webp');
+        // }
+
+        #HomeDownloadButton {
+            display: none
+        }
+    }
+
+    @media (max-width: 446px) {
+        .HomePageGetStarted {
+            max-width: 300px;
+            padding-top: 5px;
+            width: 100%
+        }
+
+        .HighlightGetStarted {
+            margin-top: 0
+        }
+    }
+
+    .HomePageGetStarted:hover .HighlightGetStarted {
+        color: #fff
+    }
+
+    .IconNavContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px
+    }
+
+    .PatreonFeatureNav {
+        height: 20px;
+        margin-left: 5px;
+        width: 20px
+    }
+
+    #DiscordNavBarImgContainer,
+    #PatreonNavBarImgContainer {
+        align-items: center;
+        display: flex;
+        height: 60px;
+        justify-content: center
+    }
+
+    .DownloadButtonNavContainer {
+        font-size: 16px;
+        height: 32px;
+        min-width: 160px;
+        padding-left: 10px
+    }
+
+    .NavBarImg {
+        margin: 2px;
+        max-height: 40px;
+        min-width: 26px
+    }
+
+    #PatreonNavBarImg {
+        max-height: 26px
+    }
+
+    #DiscordNavBarImg {
+        margin-right: 4px;
+        max-height: 18px
+    }
+
+    #DownloadButtonNavContainer {
+        align-items: center;
+        display: flex;
+        height: 60px;
+        justify-content: center
+    }
+
+    @media (max-width: 991px) {
+        #DownloadButtonNavContainer {
+            display: none
+        }
+
+        .IconNavContainer {
+            padding: 10px
+        }
+    }
+
+    .dropdown-menu {
+        box-shadow: 5px 5px 9px 0 rgba(0, 0, 0, .5)
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block
+    }
+
+    .dropdown-item .nav-link {
+        border-bottom: 0 solid #222 !important;
+        font-size: 14px !important;
+        margin-top: 0 !important;
+        padding: 15px !important
+    }
+
+    .dropdown-item .nav-link:hover {
+        background-color: #303031
+    }
+
+    .nav-link:hover {
+        background-color: #272728
+    }
+
+    .dropdown-divider {
+        margin: 0 !important
+    }
+
+    .navbar-light .navbar-brand {
+        margin-right: 10px
+    }
+
+    .navbar_container {
+        z-index: 10;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 100%;
+    }
+
+    .LogoText {
+        color: #e6e6e6 !important
+    }
+
+    .dropdown-menu {
+        z-index: 10000000 !important
+    }
+
+    .DropDownActive.nav-item.dropdown {
+        background-color: #222;
+        border-bottom: 3px solid #cbb46c !important;
+        color: #fff !important
+    }
+
+    .DropDownActive.nav-item.dropdown .dropdown-menu {
+        margin-top: 3px !important
+    }
+
+    .navbarTooltip {
+        background-color: #272728
+    }
+
+    .navbarTooltip .tooltip-inner {
+        background-color: #272728;
+        padding: 8px
+    }
+
+    .navbarTooltip .arrow:before {
+        border-bottom-color: #272728 !important;
+        border-right-color: transparent
+    }
+
+    .navbarTooltip .tooltip-header {
+        border-bottom: 1px solid #404144 !important;
+        text-align: center !important
+    }
+
+    .navbarTooltip .tooltip-content {
+        text-align: center !important
+    }
+
+    .PatreonPage {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px
+    }
+
+    .PatreonButtonIcon {
+        height: 24px;
+        margin-right: 10px
+    }
+
+    .PatreonTitle {
+        margin-bottom: -10px;
+        margin-top: 10px
+    }
+
+    .PatreonMainTitle,
+    .PatreonTitle {
+        color: #e6e6e6;
+        display: flex;
+        font-size: 24px;
+        font-weight: 500;
+        justify-content: center;
+        text-align: center;
+        width: 100%
+    }
+
+    .PatreonMainTitle {
+        margin-bottom: 0;
+        margin-top: 20px
+    }
+
+    .PatreonTwoButtons {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%
+    }
+
+    .PatreonButtonText {
+        color: #cfcfcf;
+        font-size: 12px
+    }
+
+    .PatreonButtonCentered {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 20px 10px -10px
+    }
+
+    .PatreonButtonLink {
+        display: inline-flex;
+        font-size: 16px;
+        height: 36px;
+        width: 220px
+    }
+
+    .PatreonMessage {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 20px 50px;
+        position: relative;
+        width: 100%
+    }
+
+    .PatreonMessagebg {
+        // background-image: url(/patreon_bg.jpg);
+        background-position: 50%;
+        background-size: cover;
+        border-radius: 10px;
+        height: 100%;
+        mix-blend-mode: soft-light;
+        opacity: .4;
+        position: absolute;
+        top: 0;
+        width: 100%
+    }
+
+    .PatreonMessageContent {
+        align-items: flex-end;
+        background-blend-mode: normal;
+        display: flex;
+        flex-direction: column;
+        z-index: 2
+    }
+
+    .PatreonMessageHighlight {
+        font-weight: 600
+    }
+
+    .PatreonMessageText {
+        display: flex;
+        flex-direction: column;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 160%;
+        position: relative;
+        text-align: center
+    }
+
+    .PatreonMessageQuote {
+        color: #b4b4b4;
+        display: none
+    }
+
+    .PatreonMessageQuoteRightContainer {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column
+    }
+
+    #PatreonMessageQuoteRight {
+        float: right
+    }
+
+    .PatreonMessageSignOff {
+        margin-top: 5px
+    }
+
+    .PatreonMessageSignature {
+        color: #e6e6e6;
+        font-size: 16px;
+        font-weight: 500
+    }
+
+    .PatreonMessageTitle {
+        color: #cbb46c;
+        text-align: end
+    }
+
+    .Link {
+        color: #cbb46c
+    }
+
+    .Link,
+    .Link:hover {
+        display: inline-block
+    }
+
+    .Link:hover {
+        color: #d5c389
+    }
+
+    .PatreonSupporterOption {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        line-height: 160%;
+        max-width: 32%;
+        padding: 20px
+    }
+
+    .PatreonSupportTitle {
+        color: #cbb46c;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center
+    }
+
+    .PatreonSupportSubtitle {
+        color: #cfcfcf;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center
+    }
+
+    .PatreonSupportBenefit {
+        display: flex;
+        flex-direction: row;
+        margin: 5px
+    }
+
+    .PatreonSupportText {
+        color: #cfcfcf;
+        font-size: 14px;
+        padding: 10px
+    }
+
+    .PatreonSupportBulletContainer {
+        margin-right: 10px
+    }
+
+    .PatreonSubtitle {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-bottom: -20px;
+        margin-top: 10px
+    }
+
+    .PatreonBullets {
+        -webkit-padding-start: 20px;
+        padding-inline-start: 20px
+    }
+
+    #DiscordBenefits {
+        max-height: 150px
+    }
+
+    @media(max-width: 991px) {
+        .PatreonSubtitle {
+            margin-bottom: 0
+        }
+    }
+
+    @media (max-width: 767px) {
+        .PatreonButtonCentered {
+            margin-bottom: 20px;
+            margin-top: 0
+        }
+
+        .PatreonMessage {
+            padding: 20px
+        }
+
+        #CheckOutPatreon {
+            margin-top: 20px
+        }
+
+        .PatreonMessage {
+            margin-bottom: 0
+        }
+
+        .PatreonSupporterOption {
+            margin-bottom: 20px;
+            max-width: 100%
+        }
+    }
+
+    .DownloadPage {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .DownloadTitle {
+        color: #e6e6e6;
+        display: flex;
+        font-size: 24px;
+        font-weight: 500;
+        justify-content: center;
+        margin-top: 20px;
+        text-align: center;
+        width: 100%
+    }
+
+    .DownloadSubtitle {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-top: 5px;
+        text-align: center
+    }
+
+    .DownloadSummary {
+        align-items: center;
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+        width: 100%
+    }
+
+    .DownloadHighlightContainer {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        max-width: 32%;
+        min-height: 100%;
+        min-width: 220px;
+        overflow-x: hidden;
+        overflow-y: hidden
+    }
+
+    .DownloadPenguImg {
+        -webkit-filter: drop-shadow(0 0 12px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, .5));
+        height: 180px;
+        margin-bottom: 0;
+        margin-top: 5px;
+        opacity: .9;
+        width: auto
+    }
+
+    #PenguGold {
+        -webkit-filter: drop-shadow(0 0 12px hsla(45, 48%, 61%, .2));
+        filter: drop-shadow(0 0 12px rgba(203, 180, 108, .2));
+        height: 200px;
+        opacity: 1
+    }
+
+    .DownloadTextContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px
+    }
+
+    .DownloadHighlightTitle {
+        color: #e6e6e6;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 30px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .DownloadHighlightText,
+    .DownloadHighlightTitle {
+        align-items: center;
+        display: flex;
+        text-align: center
+    }
+
+    .DownloadHighlightText {
+        color: #cfcfcf;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 160%;
+        margin-bottom: 0;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    .DownloadButtonCentered {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10px
+    }
+
+    .DownloadButtonSubtitle {
+        color: #cfcfcf;
+        font-size: 12px;
+        margin-top: 5px
+    }
+
+    .DownloadButtonIcon {
+        margin-right: 5px
+    }
+
+    .DownloadDiscoverContainer {
+        margin-top: 20px
+    }
+
+    .DownloadDiscoverContainer,
+    .InstallContainer {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column
+    }
+
+    .InstallContainer {
+        margin-bottom: 60px;
+        margin-top: 40px;
+        width: 100%
+    }
+
+    .InstallPanelContainer {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%
+    }
+
+    .InstallPanel {
+        flex-direction: column;
+        text-align: center
+    }
+
+    .InstallCircle,
+    .InstallPanel {
+        align-items: center;
+        display: flex
+    }
+
+    .InstallCircle {
+        background-color: #273b4a;
+        border-radius: 50%;
+        -webkit-filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, .25));
+        filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, .25));
+        height: 110px;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        width: 110px
+    }
+
+    .InstallTitle {
+        color: #e6e6e6;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px
+    }
+
+    .InstallText,
+    .InstallTitle {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        line-height: 160%;
+        max-width: 300px;
+        text-align: center
+    }
+
+    .InstallText {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 40px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    #BottomDownloadButton {
+        align-items: center;
+        height: 160px;
+        justify-content: flex-start;
+        margin-bottom: 0;
+        max-width: 320px;
+        padding-top: 20px;
+        position: relative
+    }
+
+    .BottomDownloadPengu {
+        bottom: 0;
+        -webkit-filter: drop-shadow(0 0 12px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, .5));
+        height: 250px;
+        left: -320px;
+        position: absolute
+    }
+
+    @media (max-width: 520px) {
+        .BottomDownloadPengu {
+            display: none
+        }
+
+        .InstallPanelContainer {
+            align-items: center;
+            flex-direction: column
+        }
+
+        #BottomDownloadButton {
+            height: 100px;
+            margin-top: 0;
+            padding-top: 0
+        }
+    }
+
+    @media (max-width: 767px) {
+        .DownloadSummary {
+            align-items: center;
+            flex-direction: column
+        }
+
+        .DownloadHighlightContainer {
+            min-width: 100%
+        }
+    }
+
+    .DataInfo {
+        align-items: center;
+        align-self: flex-start;
+        background-color: #27282b;
+        border-radius: 4px;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        justify-content: flex-start;
+        margin-top: 5px;
+        padding: 5px 10px
+    }
+
+    .DataInfoRow {
+        display: flex;
+        justify-content: space-between;
+        min-width: 220px;
+        white-space: nowrap;
+        width: 100%
+    }
+
+    .DataInfoNumber {
+        align-items: center;
+        display: flex;
+        font-weight: 600;
+        margin-left: 4px
+    }
+
+    .RefreshIconContainer {
+        align-items: flex-end;
+        color: #cbb46c;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 12px;
+        justify-content: center;
+        margin-left: 4px;
+        margin-right: -2px
+    }
+
+    .PageHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: 100%
+    }
+
+    @media(max-width: 800px) {
+        .PageHeader {
+            flex-wrap: wrap
+        }
+    }
+
+    .PageTitleContainer {
+        display: flex;
+        flex-direction: column
+    }
+
+    .PageTitle {
+        color: #e6e6e6;
+        font-size: 26px;
+        font-weight: 600;
+        min-width: 200px
+    }
+
+    .PageSubtitle {
+        color: #cfcfcf;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 0;
+        margin-right: 10px
+    }
+
+    .MoreInfo {
+        color: #e6e6e6;
+        cursor: pointer;
+        text-decoration: underline
+    }
+
+    .MoreInfo:hover {
+        color: #cbb46c
+    }
+
+    .InfoHeader {
+        color: #e6e6e6;
+        display: inline-block;
+        font-weight: 500;
+        margin-bottom: 5px
+    }
+
+    .InfoDescription {
+        color: #cfcfcf;
+        display: inline-block;
+        margin-bottom: 12px
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #404144 !important
+    }
+
+    .modal-footer {
+        border-top: 1px solid #404144 !important
+    }
+
+    .RedirectPage {
+        height: 100%;
+        width: 100%
+    }
+
+    .RedirectContainer,
+    .RedirectPage {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .RedirectContainer {
+        background-color: #27282b;
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 30px;
+        width: auto
+    }
+
+    .RedirectTitle {
+        border-bottom: 1px solid #404144;
+        color: #e6e6e6;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        padding: 10px
+    }
+
+    .RedirectBody {
+        display: flex;
+        flex-direction: column;
+        width: 100%
+    }
+
+    .RedirectBodyText {
+        color: #cfcfcf;
+        margin-top: 8px
+    }
+
+    .RedirectButton {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 35px;
+        width: 100%
+    }
+
+    .RedirectButtonContainer {
+        min-height: 40px;
+        min-width: 180px
+    }
+
+    .RedirectDontShowAgain {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: center;
+        margin-top: 5px
+    }
+
+    .RedirectDontShowAgainCheckBoxContainer {
+        cursor: pointer;
+        margin-left: 5px;
+        position: relative
+    }
+
+    .RedirectDontShowAgainCheckBox {
+        color: #cfcfcf;
+        font-size: 18px;
+        margin-top: -2px
+    }
+
+    .RedirectDontShowAgainCheck {
+        bottom: 4px;
+        color: #cb3737;
+        font-size: 12px;
+        left: 4px;
+        position: absolute
+    }
+
+    .RedirectText {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        width: 100%
+    }
+
+    .TwitchExtensionAbout {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        padding: 10px
+    }
+
+    .TwitchExtensionAboutImgContainer {
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        max-width: 50%
+    }
+
+    .TwitchExtensionAboutText {
+        flex: 1 1
+    }
+
+    .TwitchExtensionAboutImg {
+        border-radius: 8px;
+        height: auto;
+        max-width: 100%
+    }
+
+    .TwitchExtensionTitle {
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 10px;
+        text-align: center
+    }
+
+    .TwitchExtensionAboutText {
+        padding: 10px
+    }
+
+    .TwitchExtensionAboutMain {
+        color: #cfcfcf;
+        font-size: 16px;
+        margin-top: 20px;
+        text-align: center
+    }
+
+    .TwitchExtensionAboutSubtitle {
+        color: #cfcfcf;
+        font-size: 12px;
+        margin-top: 20px;
+        text-align: center
+    }
+
+    @media (max-width: 767px) {
+        .TwitchExtensionAbout {
+            flex-direction: column
+        }
+
+        .TwitchExtensionAboutImgContainer {
+            max-width: 100%
+        }
+    }
+
+    .SetupStep {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        padding: 10px 20px;
+        width: 100%
+    }
+
+    .SetupStepTitle {
+        font-size: 18px;
+        margin-bottom: 5px
+    }
+
+    .SetupStepText {
+        color: #b4b4b4;
+        line-height: 150%;
+        margin-bottom: 5px
+    }
+
+    .SetupStepImgContainer {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .SetupStepImg {
+        max-width: 100%
+    }
+
+    .ItemTooltipImg {
+        border: 1px solid #111;
+        height: 25px
+    }
+
+    .UniqueItem {
+        color: #218283;
+        font-style: italic;
+        margin-top: 2px
+    }
+
+    .ElusiveItem {
+        color: #ff6967;
+        font-style: italic
+    }
+
+    .WinChanceImgContainer {
+        // background: url(/app/WinChance.png);
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 8px;
+        height: 300px;
+        width: 100%
+    }
+
+    .WinChanceHeaderContainer {
+        background-color: #222326;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px
+    }
+
+    .WinChanceAbout,
+    .WinChanceHeaderContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .WinChanceAbout {
+        width: 100%
+    }
+
+    .WinChanceAvailable {
+        font-size: 18px
+    }
+
+    .WinChanceTitle {
+        color: #e6e6e6;
+        font-size: 26px;
+        font-weight: 600;
+        margin: 10px;
+        text-align: center
+    }
+
+    .WinChanceSubtitle {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-bottom: 10px;
+        text-align: center
+    }
+
+    ::-webkit-scrollbar {
+        border-radius: 4px;
+        cursor: pointer !important;
+        height: 6px;
+        width: 10px
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #2c2d31;
+        border-radius: 0
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: hsla(0, 0%, 100%, .12);
+        border-radius: 4px;
+        cursor: pointer
+    }
+
+    .adcontainer {
+        flex: 1 1 auto;
+        width: 100%;
+        z-index: 1000
+    }
+
+    .VideoAdContainer {
+        flex-shrink: 0;
+        margin-top: -24px;
+        max-width: 100%;
+        min-height: 249px;
+        position: relative;
+        width: 400px
+    }
+
+    .VideoAdBg,
+    .VideoAdContainer {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .VideoAdBg {
+        background-color: #27282b;
+        border-radius: 4px;
+        bottom: 0;
+        flex-direction: column;
+        height: 225px;
+        max-height: calc(100% - 24px);
+        position: absolute;
+        width: 100%;
+        z-index: 0
+    }
+
+    .PageHeader2 {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 25px;
+        max-width: 100%;
+        width: 100%
+    }
+
+    .AppAdContainer {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        height: 130px;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        position: relative;
+        width: 100%
+    }
+
+    .AppAdContainerRight {
+        height: 225px;
+        margin-bottom: 0;
+        margin-left: 10px;
+        margin-right: 0
+    }
+
+    .AppAdContent {
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        flex-direction: column;
+        text-align: center;
+        z-index: 2
+    }
+
+    .AppAdContent,
+    .AppAdLink {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .AppAdLink {
+        height: 34px;
+        width: 180px
+    }
+
+    .AppAdLink,
+    .AppAdTitle {
+        font-size: 16px;
+        font-weight: 500
+    }
+
+    .AppAdTitle {
+        margin-bottom: 8px
+    }
+
+    .AppAdSubtitle,
+    .AppAdTitle {
+        color: #e6e6e6;
+        text-shadow: 2px 2px #222
+    }
+
+    .AppAdSubtitle {
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 8px
+    }
+
+    .AppAdBg {
+        background-color: #27282b;
+        background-position: 50%;
+        background-size: cover;
+        border-radius: 4px;
+        height: 100%;
+        left: 0;
+        max-width: 100%;
+        mix-blend-mode: soft-light;
+        object-fit: cover;
+        opacity: .6;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0
+    }
+
+    .avp-close-button-overlay {
+        margin: -2px !important;
+        padding: 2px !important
+    }
+
+    .AppAdCTA {
+        color: #cbb46c;
+        font-size: 16px;
+        font-weight: 500;
+        text-shadow: 2px 2px #111
+    }
+
+    tftkeyword {
+        color: #fff;
+        font-weight: 500
+    }
+
+    scalead {
+        color: #e98e32 !important
+    }
+
+    scalearmor {
+        color: #f16f59 !important
+    }
+
+    scalemr {
+        color: #cf8dd1 !important
+    }
+
+    star {
+        color: #e6e6e6 !important
+    }
+
+    tftradiantitembonus {
+        color: #fcce5d
+    }
+
+    expandrow,
+    row {
+        color: #a8a8a8;
+        display: flex;
+        justify-content: space-between;
+        margin-top: .1em
+    }
+
+    .rowActive,
+    expandrowactive {
+        color: #e6e6e6;
+        display: flex;
+        font-weight: 500;
+        justify-content: space-between;
+        margin-top: .1em
+    }
+
+    tftitemrules {
+        color: #218283;
+        font-style: italic
+    }
+
+    .LanguageSelect {
+        min-width: 54px
+    }
+
+    .LanguageLabel {
+        font-size: 10px;
+        margin-left: 2px;
+        text-transform: uppercase
+    }
+
+    @media (max-width: 991px) {
+        .AppAdContainer {
+            display: none
+        }
+    }
+
+    @media (max-width: 767px) {
+        .PageHeader2 {
+            align-items: flex-start;
+            flex-direction: column-reverse
+        }
+    }
+
+    .Header_div {
+        display: inline-block;
+        font-size: 1.5em;
+        height: auto;
+        overflow: auto;
+        width: 100%
+    }
+
+    .LoadedDice_img {
+        border-radius: 10%;
+        border-width: 1px !important;
+        border: 1px solid #000;
+        margin: 3px
+    }
+
+    .LoadedDice_img:hover {
+        border: 1px solid #cbb46c !important
+    }
+
+    .unit_row0,
+    .unit_row1 {
+        border-left: 1px solid #111;
+        border-right: 1px solid #111;
+        border-top: 1px solid #111
+    }
+
+    .unit_row0 {
+        background-color: #222
+    }
+
+
+    table {
+        border-spacing: 0;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    thead tr {
+        background: #1f2022 !important;
+        border-left: 0;
+        border-right: 0;
+        color: #cfcfcf;
+        padding: 10px
+    }
+
+    tr:hover {
+        background-color: initial
+    }
+
+    tr {
+        background: #27282b;
+        border-left: 0;
+        border-right: 0
+    }
+
+    tr:last-child td {
+        border-bottom: 0
+    }
+
+    tr:nth-child(2n) {
+        background: #222326
+    }
+
+    tr:hover {
+        background-color: hsla(0, 0%, 100%, .1)
+    }
+
+    th {
+        font-weight: 500
+    }
+
+    tr {
+        border-radius: 4px !important
+    }
+
+    td,
+    th {
+        border-bottom: 1px solid #313236;
+        border-left: 0;
+        margin: 0;
+        padding: .4rem .6rem
+    }
+
+    td,
+    td:last-child,
+    th {
+        border-right: 0
+    }
+
+    .col_header_text {
+        flex-grow: 1;
+        text-align: center
+    }
+
+    .Sortdesc {
+        float: right
+    }
+
+    .form-check-input {
+        accent-color: #222
+    }
+
+    .BannerImageContainer2 {
+        margin-top: 20px
+    }
+
+    .DiceOptionContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 4px
+    }
+
+    .DiceDropdown {
+        margin-right: 10px;
+        min-width: 300px
+    }
+
+    .DiceDropdownText {
+        margin-bottom: 4px
+    }
+
+    .DiceSet {
+        margin-right: 10px;
+        min-width: 100px
+    }
+
+    .RerollImg {
+        margin-bottom: -1px;
+        margin-right: 3px;
+        margin-top: -1px
+    }
+
+    .dootImg {
+        height: 24px;
+        margin-right: 4px;
+        width: 24px
+    }
+
+    .DootInput {
+        background-color: #414245;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+        color: #e6e6e6;
+        cursor: pointer;
+        font-size: 14px;
+        height: 38px;
+        padding: 4px;
+        width: 70px
+    }
+
+    .DootInput::-webkit-inner-spin-button {
+        background: #414245;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        opacity: .5
+    }
+
+    .DootInput:focus,
+    input:focus {
+        outline: none
+    }
+
+    .DiceMoreOptions {
+        flex-shrink: 1;
+        width: 200px
+    }
+
+    .DiceBard {
+        margin-right: 10px
+    }
+
+    .DiceLevelVisualiser {
+        display: flex;
+        flex-direction: row
+    }
+
+    .DiceLevelInput {
+        margin-right: 5px
+    }
+
+    .DiceOddsGrid {
+        grid-column-gap: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        min-width: 200px
+    }
+
+    .DiceOddsvalue {
+        text-align: center
+    }
+
+    .DootInfo {
+        color: #cfcfcf;
+        cursor: pointer
+    }
+
+    .TraitAssembler {
+        display: flex;
+        position: relative
+    }
+
+    .TraitIconContainer {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+    .TraitIcon {
+        margin-left: -1px;
+        max-height: 24px;
+        max-width: 24px
+    }
+
+    .NewSetUnitTrait {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap
+    }
+
+    .UnitAbilityTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .UnitAbilityTitle,
+    .UnitAugmentTitle {
+        color: #e6e6e6;
+        font-weight: 500;
+        margin-bottom: 5px
+    }
+
+    .UnitAbilityDescription {
+        color: #cfcfcf
+    }
+
+    .TraitUnits {
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        height: 100%
+    }
+
+    .TraitDescriptionUnitsTitle {
+        font-size: 16px;
+        font-weight: 500
+    }
+
+    .TraitUnitContainer {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        text-align: center
+    }
+
+    .TraitDescription {
+        color: #cfcfcf
+    }
+
+    .scaleRangeIcon {
+        fill: #efe7d4;
+        color: #efe7d4
+    }
+
+    .NewSetUnitImg {
+        height: 64px;
+        margin-top: 5px;
+        width: 64px
+    }
+
+    .NewSetItem {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .NewSetUnitAugment {
+        display: flex;
+        flex: 1 1 250px;
+        flex-direction: column;
+        max-width: 220px;
+        min-width: 100px;
+        width: 20vw
+    }
+
+    .UnitAugmentTitle.Support {
+        color: #7a6cff
+    }
+
+    .UnitAugmentTitle.Carry {
+        color: #0d9042
+    }
+
+    .NewSetItemImg {
+        border: 1px solid #111;
+        border-radius: 4px;
+        height: 42px;
+        margin-right: 5px;
+        width: 42px
+    }
+
+    .RemovedUnitContainer {
+        align-items: center;
+        background-color: #111;
+        background-color: #222326;
+        border-radius: 8px;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        row-gap: 10px;
+        width: 100%
+    }
+
+    .RemovedUnit {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        font-size: 12px;
+        font-weight: 500;
+        row-gap: 5px
+    }
+
+    .UnitNameContainer {
+        align-items: flex-start;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: row
+    }
+
+    .UnitNameContainer .TraitBG {
+        height: 32px;
+        margin: -1px
+    }
+
+    .UnitNameContainer .TraitIcon {
+        margin-left: -.5px;
+        max-height: 15px;
+        max-width: 16px
+    }
+
+    .NewSetUnitName {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .NewSetUnitTrait {
+        color: #cfcfcf
+    }
+
+    .NewSetAugment {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        white-space: nowrap;
+        width: 200px
+    }
+
+    .NewSetAugmentImg {
+        height: 50px;
+        margin-right: 5px;
+        width: 50px
+    }
+
+    .statIcon {
+        height: 14px;
+        margin: 2px;
+        vertical-align: text-top;
+        width: 14px
+    }
+
+    table {
+        -webkit-user-select: auto;
+        user-select: auto
+    }
+
+    .NewSetSectionTableContainer1 table td {
+        padding-bottom: .8rem;
+        padding-top: .8rem;
+        vertical-align: top
+    }
+
+    .NewSetSectionTableContainer table td {
+        padding-bottom: .8rem;
+        padding-top: .8rem
+    }
+
+    .NewSetPage br {
+        content: "";
+        display: block;
+        font-size: 24%;
+        margin: 2em
+    }
+
+    .NewSetArt {
+        aspect-ratio: 1.76282;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        max-width: 100%;
+        opacity: .9;
+        width: 100%
+    }
+
+    .NewSetPageHeader {
+        align-items: center;
+        background-color: #222326;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px
+    }
+
+    .NewSetPage {
+        padding-bottom: 20px
+    }
+
+    .NewSetSubtitle {
+        color: #cfcfcf;
+        font-size: 16px
+    }
+
+    .TablePlaceholderRow {
+        min-height: 40px;
+        min-width: 100px
+    }
+
+    .NewSetSummarySection {
+        align-items: center;
+        border-top: 1px solid #404144;
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        margin-top: 10px;
+        padding-top: 10px
+    }
+
+    .SummarySectionImg {
+        height: 25px;
+        margin: 2px;
+        width: 25px
+    }
+
+    .NewSetTitle {
+        font-weight: 800;
+        text-align: center;
+        text-shadow: -2px -2px 0 #181818, 2px -2px 0 #181818, -2px 2px 0 #181818, 2px 2px 0 #181818
+    }
+
+    .LittleLegendContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center
+    }
+
+    .ShorkImg {
+        -webkit-filter: drop-shadow(0 2px 2px #111);
+        filter: drop-shadow(0 2px 2px #111);
+        height: 160px
+    }
+
+    .ListItemNav {
+        cursor: pointer;
+        text-decoration: underline
+    }
+
+    .NewSetSubtitle {
+        text-align: center
+    }
+
+    .NewSetSummarySectionImage {
+        aspect-ratio: 1.69133;
+        border-radius: 8px;
+        opacity: .9;
+        width: 60%
+    }
+
+    .NewSetSummarySectionText {
+        padding: 10px
+    }
+
+    .NewSetSummarySectionTitle {
+        font-weight: 600;
+        margin-bottom: 10px
+    }
+
+    .NewSetSummarySectionDescription {
+        color: #cfcfcf;
+        font-size: 14px
+    }
+
+    .NewSetUnitContent {
+        margin-top: 20px
+    }
+
+    .NewSetSectionSubtitle {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-bottom: 8px
+    }
+
+    .UnitAbilityMana {
+        color: #cfcfcf
+    }
+
+    .InitialMana {
+        font-weight: 300;
+        margin-right: 2px
+    }
+
+    .HeroAugmentIcon {
+        margin-right: 5px;
+        width: 20px
+    }
+
+    @media(max-width: 991px) {
+        .TraitUnits {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr
+        }
+    }
+
+    @media(max-width: 767px) {
+        .NewSetSummarySection {
+            flex-direction: column-reverse
+        }
+
+        .NewSetSummarySectionImage {
+            margin-bottom: 10px;
+            width: 100%
+        }
+
+        .UnitNameContainer {
+            align-items: center;
+            flex-direction: column;
+            row-gap: 10px
+        }
+
+        .NewSetUnitName {
+            text-align: center
+        }
+
+        .NewSetUnitTrait {
+            text-align: center
+        }
+
+        .NewSetAugment,
+        .NewSetItem,
+        .NewSetUnitTrait {
+            align-items: center;
+            flex-direction: column;
+            width: auto
+        }
+
+        .NewSetItem {
+            text-align: center
+        }
+    }
+
+    @media(max-width: 600px) {
+        .TraitUnits {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr
+        }
+    }
+
+    @media(max-width: 400px) {
+        .TraitUnits {
+            display: grid;
+            grid-template-columns: 1fr 1fr
+        }
+    }
+
+    #DownloadButton {
+        align-items: center;
+        background-color: #611616;
+        border: 2px solid #cfcfcf;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        min-width: 160px;
+        padding: 8px
+    }
+
+    #DownloadButton:hover {
+        border: 2px solid #cbb46c
+    }
+
+    .DownloadButtonText {
+        white-space: nowrap
+    }
+
+    .slide_img {
+        border: 1px solid #111;
+        margin-bottom: 10px;
+        max-width: 100%
+    }
+
+    .unitDropdownImage {
+        height: 30px;
+        margin-right: 5px;
+        width: 30px
+    }
+
+    .unitDropdownImage.Negative {
+        display: flex;
+        -webkit-filter: grayscale(80%);
+        filter: grayscale(80%);
+        position: relative
+    }
+
+    .UnitDropdownLabel {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        position: relative
+    }
+
+    .UnitCross {
+        height: 20px;
+        left: 3px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+        z-index: 4
+    }
+
+    .AdditionalTraits {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .TraitDropdownImage {
+        height: 36px;
+        margin-bottom: -3px;
+        margin-left: -2px;
+        margin-top: -3px
+    }
+
+    .CompBrowserDropdowns {
+        grid-column-gap: 40px;
+        grid-row-gap: 10px;
+        -webkit-column-gap: 40px;
+        column-gap: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 10px;
+        row-gap: 10px
+    }
+
+    .CompBrowserScrollContainer {
+        background-color: #2c2d31;
+        border-radius: 4px;
+        box-shadow: inset 0 0 4px 4px rgba(0, 0, 0, .12);
+        cursor: grab;
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 6px
+    }
+
+    .CompBrowserContainer {
+        align-items: flex-start;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 150vh;
+        min-width: 100%
+    }
+
+    .CompBrowser_Title {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        white-space: nowrap
+    }
+
+    .CompBrowserMain_title,
+    .CompBrowser_Title {
+        display: inline-flex
+    }
+
+    .CompBrowsersub_title {
+        align-items: flex-end;
+        color: #cfcfcf;
+        display: inline-flex;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 1px;
+        margin-left: 3px
+    }
+
+    .CompBrowserStatsContainer,
+    .CompbrowserCompUnits {
+        display: flex;
+        flex-direction: row
+    }
+
+    .CompBrowserStatsContainer {
+        color: #cfcfcf;
+        -webkit-column-gap: 25px;
+        column-gap: 25px;
+        font-size: 12px;
+        font-weight: 400;
+        min-height: 36px
+    }
+
+    .AdditionalTraitImg {
+        width: 32px
+    }
+
+    .CompBrowserStat {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+        text-align: center
+    }
+
+    .CompBrowserAdditionalTraits {
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row
+    }
+
+    .SearchButton {
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        min-height: 30px;
+        min-width: 70px !important
+    }
+
+    .CompBrowserRow {
+        min-width: 250px
+    }
+
+    .OverallStatContainer {
+        align-items: center;
+        background-color: #27282b;
+        border-radius: 5px;
+        display: inline-flex;
+        flex-direction: row;
+        height: 100%;
+        justify-content: space-around;
+        padding: 5px
+    }
+
+    .CompBrowserSmallDropdownContainerHalf {
+        -webkit-column-gap: 40px;
+        column-gap: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .CompBrowserSmallDropdownContainer {
+        align-items: stretch;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column
+    }
+
+    .CompBrowserPatreonSignIn {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px
+    }
+
+    .CompBrowserPatreonSignInTitle {
+        font-size: 18px;
+        font-weight: 500
+    }
+
+    .CompBrowserPatreonSignInButtons {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center
+    }
+
+    @media(max-width: 767px) {
+        .CompBrowserDropdowns {
+            grid-template-columns: 1fr
+        }
+    }
+
+    @media (max-width: 400px) {
+        .CompBrowserSmallDropdownContainerHalf {
+            -webkit-column-gap: 10px;
+            column-gap: 10px;
+            flex-wrap: wrap;
+            row-gap: 10px
+        }
+    }
+
+    .modal-content {
+        background-color: #27282b !important;
+        border: 1px solid #19191b;
+        border-radius: 3px;
+        padding: 5px
+    }
+
+    .close,
+    .modal-content {
+        color: #e6e6e6 !important
+    }
+
+    .close {
+        font-weight: 400 !important;
+        vertical-align: initial
+    }
+
+    .ModalRow {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        min-height: 33px;
+        width: 100%
+    }
+
+    .ModalRow,
+    .ToggleContainer {
+        align-items: center;
+        display: flex
+    }
+
+    .ToggleContainer {
+        margin-left: 5px;
+        width: 50px
+    }
+
+    .CompUnitsInfo {
+        display: flex;
+        flex-direction: row;
+        max-height: 100%;
+        min-height: 0;
+        padding: 5px;
+        width: 100%
+    }
+
+    .CompUnitsDetail,
+    .CompUnitsFrequency {
+        display: flex;
+        flex: 3 1;
+        flex-direction: column
+    }
+
+    .CompUnitEmpty {
+        display: flex;
+        width: 100%
+    }
+
+    .CompUnitHeader {
+        flex: 0 0 auto;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 5px;
+        padding-top: 5px
+    }
+
+    .CompUnitHeader,
+    .CompUnitImage {
+        align-items: center;
+        display: flex
+    }
+
+    .CompUnitImage {
+        flex-direction: column;
+        justify-content: center;
+        min-width: 60px
+    }
+
+    .CompUnitsDetailContainer {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        min-height: 0;
+        padding-left: 5px
+    }
+
+    .CompUnitsItemsChartContainer {
+        flex: 4 2 auto;
+        flex-direction: column
+    }
+
+    .CompUnitsItemsChartContainer,
+    .CompUnitsTierChartContainer {
+        display: flex;
+        min-height: 0;
+        overflow: hidden;
+        padding-left: 5px;
+        padding-right: 5px
+    }
+
+    .CompUnitsTierChartContainer {
+        flex: 2 4 auto;
+        flex-direction: column
+    }
+
+    .Item_img_details {
+        border: 1px solid #19191b;
+        border-radius: 5px
+    }
+
+    .Item_img_details:hover {
+        border: 1px solid #cbb46c
+    }
+
+    .Unit_img_details {
+        border-radius: 5px
+    }
+
+    .Unit_img_details:hover {
+        border: 1px solid #cbb46c !important
+    }
+
+    .Unit_img {
+        border-radius: 3px;
+        height: 40px;
+        width: 40px
+    }
+
+    .Unit_img:hover {
+        border: 1px solid #cbb46c !important
+    }
+
+    .Item_img {
+        border-radius: 3px
+    }
+
+    .Item_img:hover {
+        border: 1px solid #cbb46c !important
+    }
+
+    .itemHolderContainer {
+        align-items: stretch;
+        flex: 1 1 auto;
+        flex-direction: column
+    }
+
+    .itemHolderContainer,
+    .itemHolderRow {
+        display: flex;
+        justify-content: space-between
+    }
+
+    .itemHolderRow {
+        align-items: center;
+        flex-direction: row;
+        margin-top: 2px
+    }
+
+    .UnitItemStatDelta {
+        font-size: 12px;
+        margin-left: 3px
+    }
+
+    .UnitOptionStats {
+        flex-direction: row;
+        font-size: 12px;
+        text-align: center;
+        width: 80px
+    }
+
+    .UnitItemStatNumber,
+    .UnitOptionStats {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center
+    }
+
+    .UnitItemStatNumber {
+        flex-wrap: wrap;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 2px
+    }
+
+    @media (max-width: 400px) {
+
+        .UnitItemStatDelta,
+        .UnitItemStatNumber {
+            font-size: 10px !important
+        }
+
+        .UnitOptionStats {
+            font-size: 12px;
+            width: 50px
+        }
+    }
+
+    .CompCounters {
+        min-height: 100%;
+        padding-right: 5px;
+        padding-top: 5px;
+        width: 100%
+    }
+
+    .CompCounterDisplay,
+    .CompCounters {
+        display: flex;
+        flex-direction: column
+    }
+
+    .CompCounterDisplay {
+        flex: 1 1;
+        justify-content: space-around;
+        margin-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px
+    }
+
+    .CounterChoiceChip {
+        align-items: center;
+        border: 1px solid #98999b;
+        border-radius: 16px;
+        cursor: pointer;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        margin-bottom: 5px;
+        width: 110px
+    }
+
+    .CompCounterRow {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 75px
+    }
+
+    .CounterChoiceChip:hover {
+        border: 1px solid #cbb46c
+    }
+
+    .CounterChoiceChip.active {
+        border: 1px solid #cbb46c;
+        outline: none
+    }
+
+    .PatreonIcon {
+        color: #ff424d;
+        cursor: pointer
+    }
+
+    .PatreonIcon:hover {
+        color: #fff !important
+    }
+
+    .btn.btn-secondary {
+        background-color: #414245;
+        border: #000;
+        color: #e6e6e6;
+        font-size: .9rem;
+        outline: 1px #000
+    }
+
+    .btn:active,
+    .btn:focus {
+        box-shadow: none;
+        outline: none !important
+    }
+
+    .PatreonSignInDiv {
+        align-items: center;
+        justify-content: center
+    }
+
+    .PatreonRadiantRow,
+    .PatreonSignInDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%
+    }
+
+    .PatreonItemRow,
+    .PatreonRadiantRow {
+        margin-bottom: 5px;
+        padding-top: 3px
+    }
+
+    .PatreonItemRow,
+    .PatreonRadiantContent {
+        padding-bottom: 5px;
+        width: 100%
+    }
+
+    .PatreonRadiantContent {
+        display: flex;
+        height: 86px
+    }
+
+    .RadiantTitle {
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .RadiantSubtitle {
+        color: #cfcfcf;
+        font-size: 11px;
+        margin-left: 5px
+    }
+
+    .RadiantItemHelperContainer {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        min-height: 50px;
+        min-width: 1000px;
+        padding-left: 3px;
+        padding-right: 3px
+    }
+
+    .RadiantStatContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 3px;
+        min-width: 36px
+    }
+
+    .RadiantStatContainer.active {
+        opacity: .5
+    }
+
+    .ItemAssistantImg {
+        border: 1px solid #19191b;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 30px;
+        width: 30px
+    }
+
+    .ItemAssistantImg:hover {
+        border: 1px solid #cbb46c
+    }
+
+    .chosen_trait_img {
+        cursor: pointer
+    }
+
+    .AdvancedFilterOptionsContainer {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 11px;
+        justify-content: space-between;
+        padding-bottom: 5px
+    }
+
+    .AdvancedFilterOptionsLeft {
+        display: flex;
+        flex: 1 1;
+        flex-direction: row;
+        min-height: 58px
+    }
+
+    .AdvancedFilterOptionsElement {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-right: 15px
+    }
+
+    .AdvancedFilterOptionsTitle {
+        margin-bottom: 5px
+    }
+
+    .AdvancedFilterOptionsRight {
+        flex: 0 1;
+        margin-left: 5px
+    }
+
+    .CompsProgress {
+        flex-direction: column;
+        height: 100%;
+        max-height: 800px;
+        min-height: 300px
+    }
+
+    .CompsProgress,
+    .TabContentPlaceholder {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%
+    }
+
+    .TabContentPlaceholder {
+        color: #cfcfcf
+    }
+
+    .CompQuickStart,
+    .CompQuickStartSection {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%
+    }
+
+    .CompQuickStartTitle {
+        color: #cfcfcf;
+        margin-bottom: 8px;
+        text-align: center
+    }
+
+    .CompQuickStartNote {
+        color: #bababa;
+        font-size: 90%;
+        margin-bottom: 4px;
+        text-align: center
+    }
+
+    .CompQuickStartLevels {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 90%
+    }
+
+    .leveltitlecontainer {
+        margin: 3px 15px 3px 3px;
+        text-align: right
+    }
+
+    .stage {
+        color: #bababa
+    }
+
+    .levelcontainer {
+        margin: 3px;
+        min-width: 23px;
+        text-align: center
+    }
+
+    .SwitchMode {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        font-size: 20px;
+        height: 48px;
+        justify-content: center;
+        margin-left: 5px;
+        margin-top: -4px;
+        position: relative;
+        vertical-align: middle
+    }
+
+    .SwitchModeButton:hover {
+        color: #cbb46c
+    }
+
+    .SwitchModeImg {
+        display: inline-block;
+        height: 26px;
+        margin-right: 5px;
+        max-height: 26px;
+        max-width: 26px;
+        width: 26px
+    }
+
+    .SwitchModePopUp {
+        background-color: #414245;
+        border: 1px solid #222;
+        box-shadow: 5px 10px 8px #222;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        right: -10px;
+        width: 200px;
+        z-index: 2000
+    }
+
+    .SwitchModePopUpRow:hover {
+        color: #fff;
+        text-decoration: none
+    }
+
+    .SwitchModePopUpRow {
+        align-items: center;
+        border-bottom: 1px solid #222;
+        color: #e6e6e6;
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        padding: 4px;
+        text-decoration-color: #fff
+    }
+
+    .CompOptionMessage {
+        color: #cfcfcf;
+        font-size: 12px
+    }
+
+    .CompOptionMessageRow {
+        margin: 3px;
+        text-align: center
+    }
+
+    .CompQuickStartCarousel {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        overflow: hidden;
+        width: 95%
+    }
+
+    .carouselcontainer {
+        display: flex;
+        flex-direction: column;
+        margin: 3px;
+        min-width: 28px;
+        text-align: center
+    }
+
+    .CompQuickStartSection2 {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 5px;
+        width: 100%
+    }
+
+    .itemtitle {
+        align-items: flex-end;
+        display: flex;
+        height: 24px;
+        justify-content: flex-end
+    }
+
+    .CompAugmentDescription {
+        color: #cfcfcf;
+        font-size: 10px;
+        min-height: 66px;
+        overflow: hidden;
+        padding: 2px 15px 5px;
+        text-align: center
+    }
+
+    .CompAugmentImg {
+        height: 80px;
+        margin: -10px;
+        width: 80px
+    }
+
+    .hero_augment_helper_img {
+        height: 32px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        width: 32px
+    }
+
+    .CompHeroAugmentImg {
+        height: 60px;
+        width: 60px
+    }
+
+    .chart_tooltip {
+        pointer-events: none
+    }
+
+    .AugmentOrderContainer {
+        display: flex;
+        flex-direction: column
+    }
+
+    .AugmentOrderChartContainer {
+        height: 110px
+    }
+
+    .CompAugmentsDetailContainer {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: space-between;
+        min-height: 0;
+        padding-left: 5px
+    }
+
+    .tabfillerdiv {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%
+    }
+
+    .tabfillerimg {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        height: 100px;
+        opacity: .1;
+        pointer-events: none;
+        position: absolute
+    }
+
+    .CompAugmentInfo {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%
+    }
+
+    .CompAugmentInfoFilters {
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px
+    }
+
+    .CompAugmentFiltersSearch {
+        flex: 3 1;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .CompAugmentFiltersDropdowns {
+        display: flex;
+        flex: 3 1;
+        flex-direction: row
+    }
+
+    .CompAugmentFiltersDropdown {
+        flex: 1 1;
+        padding-left: 2px;
+        padding-right: 2px
+    }
+
+    .CompAugmentFilterSubTitle {
+        padding-bottom: 2px
+    }
+
+    .CompAugmentFilterSubTitleSmall {
+        color: #a8a8a8;
+        font-size: 10px
+    }
+
+    .icon-rtl {
+        // background: url(/icons/search.svg) no-repeat 100%;
+        background-position: right 5px top 6px;
+        background-size: 12px;
+        padding-right: 25px
+    }
+
+    #CompAugmentSearch {
+        background-color: #414245;
+        border: 0;
+        border-color: #111;
+        color: #e6e6e6;
+        font-size: 10px;
+        margin-right: 5px
+    }
+
+    #CompAugmentSearch:focus {
+        box-shadow: 0 0 0 .2rem hsla(45, 48%, 61%, .25)
+    }
+
+    .CompFiltersSearch {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 5px;
+        max-width: 200px
+    }
+
+    #CompFiltersSearch {
+        background-color: #414245;
+        border: 0;
+        border-color: #111;
+        color: #e6e6e6;
+        font-size: 10px;
+        margin-right: 5px
+    }
+
+    #CompFiltersSearch:focus {
+        box-shadow: 0 0 0 .2rem hsla(45, 48%, 61%, .25)
+    }
+
+    .augment_helper_img {
+        height: 40px;
+        width: 40px
+    }
+
+    .augment_helper_img_filter {
+        height: 60px;
+        margin: -10px;
+        width: 60px
+    }
+
+    .augment_helper_img_Hero {
+        height: 30px;
+        margin: 5px;
+        width: 30px
+    }
+
+    .AugmentStatsContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 3px;
+        min-width: 36px
+    }
+
+    .AugmentStatsContainer.active {
+        opacity: .3
+    }
+
+    .AugmentAssistantContainer {
+        background-color: #27282b;
+        border-radius: 4px;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        min-height: 86px;
+        padding: 5px 10px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    .AugmentAssistantSelected,
+    .AugmentAssistantTiers {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        margin-right: 10px
+    }
+
+    .AugmentAssistantStats {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        margin-bottom: 5px;
+        min-width: 240px
+    }
+
+    .AugmentAssistantStatsBox {
+        display: flex;
+        flex: 1 1;
+        flex-direction: row;
+        min-height: 84px;
+        width: 100%
+    }
+
+    .AugmentAssistantStatsHeader {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 25px
+    }
+
+    .SpatItemContainer {
+        color: #cfcfcf
+    }
+
+    .AugmentAssistantSelectedBox {
+        align-items: center;
+        min-width: 138px
+    }
+
+    .AugmentAssistantSelectedBox,
+    .AugmentAssistantTiersBox {
+        background-color: #313236;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        height: 84px;
+        justify-content: space-around
+    }
+
+    .AugmentAssistantTiersBox {
+        min-width: 152px
+    }
+
+    .AugmentTier {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .AugmentTier.active {
+        opacity: .3
+    }
+
+    .augment_tier_name {
+        color: #cfcfcf;
+        font-size: 10px
+    }
+
+    .augment_tier_percent {
+        font-size: 12px
+    }
+
+    .AugmentSelected {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .AugmentSelectionHelp {
+        color: #cfcfcf;
+        font-size: 12px;
+        max-width: 80px;
+        text-align: center
+    }
+
+    .AugmentAssistantStatNumbers {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 34px
+    }
+
+    .AugmentAssistantStatsSearch {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        padding-left: 58.4px
+    }
+
+    .AugmentAssistantStatsSearchClear {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        margin-left: -5px;
+        margin-top: 3px
+    }
+
+    .AugmentAssistantTitle {
+        align-items: center;
+        display: flex;
+        margin-bottom: 5px;
+        min-height: 25px;
+        vertical-align: initial
+    }
+
+    .AugmentAssistantSelectedSettings {
+        margin-bottom: 3px
+    }
+
+    #CompAugmentAssistantSearch {
+        background-color: #414245;
+        border: 0;
+        border-color: #111;
+        color: #e6e6e6;
+        font-size: 10px;
+        margin-right: 5px
+    }
+
+    #CompAugmentAssistantSearch:focus {
+        box-shadow: 0 0 0 .2rem hsla(45, 48%, 61%, .25)
+    }
+
+    .AugmentHelperSettingsIcon {
+        color: #b5b5b6;
+        cursor: pointer;
+        margin-bottom: 4px
+    }
+
+    .AugmentHelperSettingsIcon:hover {
+        color: #e6e6e6
+    }
+
+    .ModalDropdown {
+        min-width: 150px
+    }
+
+    .AugmentAssistanModalBody {
+        overflow-y: inherit !important
+    }
+
+    .AugmentAssistantHelpRow {
+        margin-bottom: 10px;
+        margin-top: 2px
+    }
+
+    .AugmentAssistantHelpSubtitle {
+        color: #e6e6e6;
+        margin-bottom: 5px;
+        margin-top: 5px
+    }
+
+    .AugmentAssistantHelp {
+        cursor: pointer;
+        margin-bottom: 1px;
+        margin-left: 3px
+    }
+
+    .Comp_Title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 14px;
+        font-weight: 500;
+        justify-content: flex-start;
+        margin-bottom: 2px;
+        margin-right: 80px
+    }
+
+    .sub_title {
+        align-items: flex-end;
+        color: #cfcfcf;
+        display: flex;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 1px;
+        margin-left: 3px
+    }
+
+    .CompAugmentMatches {
+        display: inline-flex;
+        flex-direction: row;
+        margin-left: 4px;
+        margin-right: 4px
+    }
+
+    .AugmentMatchImg {
+        height: 25px;
+        margin: -2px;
+        width: 25px
+    }
+
+    .HeroAugmentMatchImg {
+        height: 20px;
+        margin-right: 1px;
+        margin-top: 1px;
+        width: 20px
+    }
+
+    .CompsHeader {
+        align-items: flex-end;
+        margin-bottom: 10px;
+        margin-top: 10px
+    }
+
+    .CompsConfig,
+    .CompsHeader {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between
+    }
+
+    .CompsConfig {
+        font-size: 16px;
+        min-height: 32px
+    }
+
+    .CompsFilters {
+        align-items: center;
+        display: flex;
+        flex: 3 3 330px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-bottom: 5px
+    }
+
+    .CompsSettings {
+        display: flex;
+        flex: 3 3 470px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        justify-content: flex-end;
+        text-align: center
+    }
+
+    .CompsSettingDiv {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .CompsSettingDiv.end {
+        margin-right: 0
+    }
+
+    .react-toggle {
+        vertical-align: middle
+    }
+
+    .CompRow {
+        background-color: #27282b;
+        border-radius: 5px;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        margin-bottom: 10px;
+        margin-top: 10px;
+        min-height: 50px;
+        padding: 5px 5px 5px 10px;
+        width: 100%
+    }
+
+    .react-toggle-thumb {
+        background-color: #cfcfcf;
+        border: 0 solid #4d4d4d;
+        border-radius: 50%;
+        height: 18px;
+        top: 1px;
+        width: 18px
+    }
+
+    .react-toggle--checked .react-toggle-thumb {
+        background-color: #e6e6e6;
+        border-color: #222;
+        left: 25px
+    }
+
+    .react-toggle--focus .react-toggle-thumb,
+    .react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
+        box-shadow: 0 0 2px 2px #e6e6e6
+    }
+
+    .react-toggle-track {
+        border-radius: 30px;
+        height: 20px;
+        padding: 0;
+        transition: all .2s ease;
+        width: 44px
+    }
+
+    .react-toggle-track,
+    .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+        background-color: #222
+    }
+
+    .react-toggle--checked .react-toggle-track,
+    .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+        background-color: #939495
+    }
+
+    .UnitsContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        min-width: 368px
+    }
+
+    .Unit_Wrapper {
+        justify-content: center;
+        padding-bottom: 3px;
+        padding-top: 3px
+    }
+
+    .Unit_Wrapper,
+    .stars_div {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .stars_div {
+        height: 12px;
+        margin-bottom: -5px;
+        margin-top: -7px;
+        position: relative
+    }
+
+    .UnitNames {
+        align-items: flex-end;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 10px;
+        height: 15px;
+        max-width: 47px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: initial;
+        white-space: nowrap
+    }
+
+    .Comp_Stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 5px;
+        margin-right: 5px;
+        min-height: 100%;
+        min-width: 140px;
+        padding-left: 5px;
+        padding-right: 5px
+    }
+
+    .Comp_Stats_Row {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%
+    }
+
+    .CompRow1 {
+        flex: 1 1 auto;
+        min-width: 0
+    }
+
+    .Stat_Text {
+        align-items: center;
+        color: #cfcfcf;
+        display: inline-flex
+    }
+
+    .Stat_Number {
+        align-items: baseline;
+        cursor: pointer;
+        display: flex;
+        font-size: 16px;
+        font-weight: 400;
+        justify-content: flex-end;
+        margin-left: 10px;
+        margin-top: 1px;
+        opacity: .9;
+        width: 40px
+    }
+
+    .TraitsContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: 2px;
+        min-height: 48px
+    }
+
+    .Carries {
+        align-items: flex-start;
+        color: #cfcfcf;
+        display: flex;
+        flex: 0 1;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 20px;
+        min-width: 300px
+    }
+
+    .CarouselPrioContainer {
+        align-items: center;
+        display: flex;
+        flex: 1 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 18px;
+        justify-content: flex-start
+    }
+
+    .CarriesTitle {
+        flex: 0 1
+    }
+
+    .Comp_Carries {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .CompTraitsPlaceholder {
+        flex: 1 1 auto;
+        height: 36px;
+        margin-bottom: 6px;
+        margin-top: 8px
+    }
+
+    .CompCarouselPlaceholder {
+        height: 26px;
+        margin-bottom: 16px;
+        margin-top: 19px;
+        width: 250px
+    }
+
+    .CompCarouselPlaceholder2 {
+        height: 26px;
+        margin-top: 5px;
+        max-width: 250px
+    }
+
+    .CarryContainer,
+    .ItemsContainer {
+        display: flex;
+        flex-direction: row
+    }
+
+    .ItemsContainer {
+        margin-top: -10px
+    }
+
+    .Item_img {
+        border: 1px solid #222;
+        height: 16px;
+        vertical-align: bottom;
+        width: 16px
+    }
+
+    .row_content {
+        display: flex;
+        justify-content: space-between;
+        max-height: 100%;
+        max-width: 100%;
+        min-width: 0;
+        position: relative
+    }
+
+    .ExpandImageContainer {
+        bottom: 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        justify-content: flex-end;
+        line-height: 0px;
+        margin-bottom: -5px;
+        max-height: 100%;
+        right: 0
+    }
+
+    .ExpandImageContainer:hover {
+        color: #cbb46c
+    }
+
+    .Expand_rotated {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg)
+    }
+
+    .ItemsContainer_Inline {
+        display: flex;
+        flex-direction: row;
+        height: 16px;
+        margin-bottom: 2px;
+        margin-top: -10px
+    }
+
+    .CarouselPrioHide {
+        margin-top: 5px
+    }
+
+    .CompsTabMain {
+        border-bottom: 1px solid #404144 !important
+    }
+
+    .TabSelection {
+        color: #cfcfcf !important;
+        cursor: pointer;
+        margin-top: 1px
+    }
+
+    .TabSelection,
+    .TabSelection:hover {
+        border: 1px solid #27282b !important;
+        border-bottom-color: #404144 !important
+    }
+
+    .TabSelection:hover {
+        background-color: #27282b !important;
+        color: #cbb46c !important
+    }
+
+    .CompsTabMain .nav-link.active {
+        background-color: #27282b !important;
+        border: 1px solid #404144 !important;
+        border-bottom-color: #27282b !important;
+        color: #e6e6e6 !important
+    }
+
+    .ExpandContent {
+        margin-top: 5px
+    }
+
+    .TabContent {
+        max-height: 350px;
+        width: 100%
+    }
+
+    .TabContent,
+    .TabContentFlex {
+        display: flex;
+        min-height: 350px;
+        padding: 5px
+    }
+
+    .TabContentHalf,
+    .TabContentHalf2 {
+        display: inline-flex;
+        flex: 1 1;
+        max-width: 50%;
+        min-height: 100%
+    }
+
+    .TabContentHalf2 {
+        border-right: 1px solid #404144
+    }
+
+    .CompOptions {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        padding: 5px 15px 5px 5px;
+        width: 100%
+    }
+
+    .CompOptionSelection {
+        align-items: center;
+        display: flex;
+        height: 36px;
+        justify-content: space-around;
+        width: 100%
+    }
+
+    .ChoiceChip {
+        align-items: center;
+        border: 1px solid #98999b;
+        border-radius: 16px;
+        cursor: pointer;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        width: 80px
+    }
+
+    .ChoiceChip.active,
+    .ChoiceChip:hover {
+        border: 1px solid #cbb46c
+    }
+
+    .ChoiceChip.active {
+        outline: none
+    }
+
+    .CompOptionRow {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 80px
+    }
+
+    .CompOptionCompContainer {
+        font-size: 12px;
+        min-width: 100%
+    }
+
+    .CompOptionComp {
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        min-width: 100%
+    }
+
+    .CompOptionStatContainer {
+        -webkit-column-gap: 15px;
+        column-gap: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end
+    }
+
+    .CompOptionStats {
+        align-items: center;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .CompOptionDisplay {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-top: 8px
+    }
+
+    .CompOptionStatNumber {
+        align-items: center;
+        display: inline-flex;
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 2px
+    }
+
+    .CompOptionStatText {
+        color: #cfcfcf;
+        font-size: 10px;
+        text-align: center
+    }
+
+    .SpatItemImg {
+        border: 1px solid #222;
+        border-radius: 4px;
+        cursor: pointer;
+        height: 34px;
+        width: 34px
+    }
+
+    .SpatItemImg.active,
+    .SpatItemImg:hover {
+        border: 1px solid #cbb46c
+    }
+
+    .SpatulaList {
+        display: flex;
+        flex-direction: row;
+        overflow-x: visible;
+        padding-left: 3px;
+        padding-right: 3px
+    }
+
+    .SpatulaListContainer {
+        display: flex;
+        flex-direction: row;
+        height: 80px
+    }
+
+    .SpatItemContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 3px
+    }
+
+    .SpatItemStatNumber {
+        font-weight: 400;
+        margin-top: 2px
+    }
+
+    .SpatItemStatNumber,
+    .SpatItemStatTitle {
+        align-items: center;
+        display: inline-flex;
+        font-size: 10px;
+        justify-content: center;
+        text-align: center
+    }
+
+    .SpatItemStatTitle {
+        height: 34px
+    }
+
+    .ItemsContainerSpat {
+        display: flex;
+        flex-direction: row;
+        height: 0;
+        margin-bottom: 10px;
+        margin-top: -10px;
+        overflow: show
+    }
+
+    .CompOverview {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%
+    }
+
+    .CompBarChartTitle {
+        flex: 0 1;
+        font-size: 12px;
+        text-align: center
+    }
+
+    .CompOverviewBars {
+        display: flex;
+        flex-direction: row;
+        height: 150px;
+        width: 100%
+    }
+
+    .CompBarChart1 {
+        flex: 8 1;
+        flex-direction: column
+    }
+
+    .CompBarChart1,
+    .CompBarChart2 {
+        align-items: stretch;
+        display: flex;
+        padding: 2px 10px 10px
+    }
+
+    .CompBarChart2 {
+        flex: 5 1;
+        flex-direction: column
+    }
+
+    .CompOverviewLines {
+        padding: 2px 5px 5px
+    }
+
+    .LineChartOption {
+        margin-left: 5px
+    }
+
+    .CompVods {
+        height: auto !important;
+        max-height: 100%;
+        overflow: hidden;
+        padding: 4px 5px 4px 0
+    }
+
+    .CompVods .recentGameGeneral {
+        flex: 1 1 auto;
+        justify-content: space-between;
+        margin-right: 0
+    }
+
+    .CompVods .VodLinkSmall {
+        display: inline-block
+    }
+
+    .CompVods .recentGameEntryRow {
+        flex-wrap: wrap
+    }
+
+    .CompVods .recentGameMatchInfo {
+        -webkit-column-gap: 10px;
+        column-gap: 10px
+    }
+
+    .CompVods .recentGameGeneral {
+        border-bottom: 1px solid #404144;
+        padding-bottom: 5px
+    }
+
+    .CompVods .recentGameEntryContainer {
+        border-left: 1px solid #404144;
+        border-top: 1px solid #404144
+    }
+
+    .CompVods .VodLinkLarge {
+        display: none
+    }
+
+    .CompVodHeader {
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        justify-content: space-between;
+        margin-bottom: 2px
+    }
+
+    .FindMoreVodsArrow {
+        font-size: 20px;
+        margin-left: -5px
+    }
+
+    .CompVodList {
+        flex-direction: column;
+        overflow-y: auto;
+        padding-right: 4px
+    }
+
+    .CompVodFiller,
+    .CompVodList {
+        display: flex;
+        flex: 1 1 auto;
+        height: 100%
+    }
+
+    .CompVodFiller {
+        align-items: center;
+        color: #cfcfcf;
+        font-size: 14px;
+        justify-content: center
+    }
+
+    .UnitFiller {
+        margin: 1px 3px;
+        width: 40px
+    }
+
+    .FilterIcon {
+        font-size: 20px
+    }
+
+    .ShareLinkIcon {
+        font-size: 18px;
+        margin-top: -2px
+    }
+
+    .PinIcon {
+        font-size: 16px;
+        margin-bottom: -1px
+    }
+
+    .SearchCompIcon {
+        font-size: 14px
+    }
+
+    .CloseCompIcon {
+        margin-top: -1px
+    }
+
+    .AscendingIcons {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 5px;
+        margin-right: 5px
+    }
+
+    .AscendingIcon {
+        color: #424348;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5))
+    }
+
+    .AscendingIcon:hover {
+        color: #cfcfcf
+    }
+
+    .AscendingIcon.active {
+        color: #e6e6e6
+    }
+
+    .CompsPatreonButtonContainer {
+        height: 28px
+    }
+
+    .PatreonButtonUnlockIcon {
+        color: #ff424d;
+        font-size: 18px;
+        margin-left: 5px
+    }
+
+    .PatreonButtonLockIcon {
+        color: #cfcfcf;
+        font-size: 18px;
+        width: 25px
+    }
+
+    .PatreonButtonLockIcon.Unlocked {
+        color: #e6e6e6
+    }
+
+    .CompsSmallButtonContainer {
+        height: 24px;
+        width: 24px
+    }
+
+    .SettingIcon {
+        color: #cfcfcf;
+        font-size: 16px
+    }
+
+    .CarouselPrioHide.hidden,
+    .Carries.hidden,
+    .CompTraitsHide.hidden,
+    .ItemsContainer_Inline.hidden {
+        display: none
+    }
+
+    @media (max-width: 500px) {
+        .ExpandImageContainer {
+            position: absolute;
+            right: 0;
+            top: 10px
+        }
+
+        .ExpandImagePlaceholder {
+            display: none
+        }
+    }
+
+    .SettingsModal {
+        max-width: 400px !important
+    }
+
+    .PatreonSignInHalf {
+        flex: 1 1 auto;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 5px
+    }
+
+    .ModalRowCentered {
+        align-items: baseline;
+        display: flex;
+        flex-direction: row;
+        justify-content: center
+    }
+
+    .PatreonStatus {
+        color: #cfcfcf;
+        margin-right: 5px;
+        margin-top: 5px
+    }
+
+    .PatreonButtonIcon {
+        color: #ff424d;
+        font-size: 20px;
+        margin-right: 5px
+    }
+
+    .PatreonButtonLinkContainer {
+        display: flex;
+        height: 32px;
+        line-height: 32px;
+        min-height: 32px;
+        min-width: 150px
+    }
+
+    .PatreonSignInText {
+        margin-bottom: 5px
+    }
+
+    .PatreonSettingsTitle {
+        font-weight: 500
+    }
+
+    .Sign-in-Button {
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25))
+    }
+
+    .modal-footer {
+        justify-content: flex-start !important
+    }
+
+    .ModalSettingsContainer {
+        color: #cfcfcf
+    }
+
+    .PatreonTrialMessage {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-top: 10px
+    }
+
+    .SettingsToggleText {
+        word-wrap: normal
+    }
+
+    .ModalRow.NoWrap {
+        flex-wrap: nowrap
+    }
+
+    .SettingsToggleText {
+        max-width: 300px
+    }
+
+    .AdvancedFilterReset {
+        height: 28px;
+        min-width: 120px
+    }
+
+    .AdvancedFilterContainer {
+        background-color: #27282b;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: column;
+        margin-top: 5px;
+        padding: 5px 10px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    .AdvancedFilterContainer,
+    .AdvancedFilterTraits {
+        border-radius: 4px;
+        display: flex;
+        margin-bottom: 5px
+    }
+
+    .AdvancedFilterTraits {
+        background-color: #313236;
+        flex-direction: row;
+        min-height: 58px;
+        overflow-x: scroll;
+        padding: 5px;
+        text-align: center
+    }
+
+    .Unit_img.Filter {
+        height: 36px;
+        opacity: .8;
+        width: 36px
+    }
+
+    .ItemAssistantContainer {
+        background-color: #27282b;
+        border-radius: 4px;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: column;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        padding: 5px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    .ItemAssistantText {
+        color: #cfcfcf;
+        font-size: 11px
+    }
+
+    .ItemAssistantResetButton {
+        height: 28px;
+        margin-left: 5px;
+        max-width: 120px;
+        padding-bottom: 2px;
+        padding-top: 2px
+    }
+
+    .ItemAssistantTop {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between
+    }
+
+    .ItemAssistantItemContainer {
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .ItemAssistantBox {
+        background-color: #313236;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 4px;
+        max-width: 250px;
+        min-height: 38px;
+        min-width: 250px;
+        padding: 4px
+    }
+
+    .ItemAssistantBox.Components {
+        min-width: 280px
+    }
+
+    .CompUnitStatsContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 100%
+    }
+
+    .CompUnitTraitsContainerPlaceholder {
+        display: flex;
+        flex: 1 1 100px;
+        flex-direction: column;
+        max-width: 368px
+    }
+
+    .ExpandDiv {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 5px;
+        min-height: 388.5px;
+        width: 100%
+    }
+
+    .Item_img.SpatulaComp {
+        cursor: pointer;
+        height: 20px;
+        margin-right: 3px;
+        width: 20px
+    }
+
+    .CompTitlePlaceholder {
+        height: 21px;
+        margin-bottom: 2px;
+        width: 100px
+    }
+
+    .CompUnitsPlaceholder {
+        height: 40px;
+        margin-bottom: 3px;
+        margin-top: 6px;
+        max-width: 100%
+    }
+
+    .CompUnitsSinglePlaceholder {
+        height: 51px;
+        margin-bottom: 3px;
+        margin-top: 6px;
+        max-width: 100%
+    }
+
+    .CompUnitsNamesPlaceholder {
+        height: 15px;
+        margin-bottom: 3px
+    }
+
+    .CompStatsPlaceholder {
+        height: 18px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        width: 100%
+    }
+
+    .CarriesTitlePlaceholder {
+        height: 16px;
+        margin-bottom: 2px;
+        margin-top: 1.5px;
+        width: 60px
+    }
+
+    .CompCarriesPlaceholder {
+        height: 55.5px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+        width: 192px
+    }
+
+    .ExpandImagePlaceholder {
+        height: 15px;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 20px
+    }
+
+    .PageTitleContainer2 {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: space-between
+    }
+
+    .PageTitleBottomHeader {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        row-gap: 8px
+    }
+
+    .PageTitleBottom {
+        display: flex;
+        flex-direction: column
+    }
+
+    .PageTitleBottom .CompsSettings {
+        flex: 0 1
+    }
+
+    .PageTitleBottom .PageTitle {
+        margin-bottom: 0
+    }
+
+    .PageTitleTop {
+        display: flex
+    }
+
+    .adText {
+        color: #e6e6e6;
+        font-size: 12px;
+        margin-top: 40%;
+        opacity: .25
+    }
+
+    .PBECompContainer {
+        align-items: center;
+        background-color: #27282b;
+        border-radius: 5px;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        max-width: 100%;
+        min-height: 50px;
+        padding: 5px 5px 5px 10px;
+        position: relative;
+        width: 100%
+    }
+
+    .PBECompContainerLeft {
+        flex-direction: column;
+        max-width: 400px;
+        min-width: 400px
+    }
+
+    .PBECompStat {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        margin-top: -10px;
+        min-width: 100px
+    }
+
+    .PBECompStat.Popularity {
+        min-width: 150px
+    }
+
+    .PBECompStatLabel {
+        margin: 5px
+    }
+
+    .PBECompStatNumber {
+        font-size: 24px;
+        font-weight: 400
+    }
+
+    .PBECompContainerLeft .Comp_Title {
+        margin-right: 0
+    }
+
+    .LowPopularityHighlight {
+        color: #bcfa7d;
+        font-weight: 500
+    }
+
+    .PBECompStatPopularity {
+        font-size: 16px;
+        font-weight: 500;
+        min-height: 28px;
+        vertical-align: initial
+    }
+
+    .PBECompStatPopularity.Low {
+        color: #bcfa7d
+    }
+
+    .PBECompStatPopularity.Medium {
+        color: #ffdf80
+    }
+
+    .PBECompStatPopularity.High {
+        color: #ff7e83
+    }
+
+    .PBECompStatTier {
+        align-items: center;
+        border-radius: 4px;
+        color: #222;
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        min-height: 28px;
+        min-width: 28px;
+        opacity: .8;
+        text-align: center
+    }
+
+    .PBECompStatTier.B {
+        background-color: #ffdf80
+    }
+
+    .PBECompStatTier.A {
+        background-color: #ffbf7f
+    }
+
+    .PBECompStatTier.S {
+        background-color: #ff7e83
+    }
+
+    .SampleSizeWarningIcon {
+        color: #e14a4a;
+        font-size: 22px;
+        margin-right: 2px
+    }
+
+    .PBECompCarries {
+        width: 300px
+    }
+
+    .PBECompKey {
+        grid-column-gap: 5%;
+        -webkit-column-gap: 5%;
+        column-gap: 5%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr
+    }
+
+    .PBECompKeyContainer {
+        grid-row-gap: 5px;
+        align-items: center;
+        background-color: #27282b;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        max-width: 100%;
+        min-height: 50px;
+        padding: 8px 5px 5px;
+        row-gap: 5px;
+        width: 100%
+    }
+
+    .PBECompGridSquare {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .PBECompKeyTitle {
+        text-align: end
+    }
+
+    .PBECompGridLabel {
+        color: #cfcfcf;
+        vertical-align: initial
+    }
+
+    .PBECompSearch {
+        align-items: flex-end;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 5px
+    }
+
+    .PBEInfoContainer {
+        align-items: center;
+        background-color: #27282b;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        max-width: 100%;
+        min-height: 50px;
+        padding: 8px 12px 5px;
+        row-gap: 5px;
+        width: 100%
+    }
+
+    .Underlined {
+        text-decoration: underline
+    }
+
+    .PBECompToggle {
+        align-items: center;
+        color: #cfcfcf;
+        font-size: 12px
+    }
+
+    .PBECompToggle,
+    .PBECompsTopBar {
+        display: flex;
+        flex-direction: row
+    }
+
+    .PBECompsTopBar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: -2px;
+        margin-top: 5px;
+        row-gap: 10px
+    }
+
+    .Items_Wrapper {
+        height: 16px
+    }
+
+    .ItemsContainer.CompUnits {
+        display: none;
+        height: 16px;
+        margin-bottom: 2px;
+        margin-top: -12px
+    }
+
+    .PBECompStatContainer {
+        align-items: center;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        row-gap: 20px
+    }
+
+    .CompSearch .StatSearch {
+        margin-right: 2px;
+        max-width: 160px
+    }
+
+    @media (max-width: 1200px) {
+        .ItemAssistantBox {
+            max-width: 200px;
+            min-width: 200px
+        }
+    }
+
+    @media (max-width: 991px) {
+        .ItemAssistantBox {
+            max-width: 100%;
+            min-width: 100%
+        }
+
+        .ItemAssistantItemContainer {
+            min-width: 48%
+        }
+
+        .PageTitleBottomHeader {
+            flex-direction: column-reverse
+        }
+
+        .PBECompKey {
+            grid-template-columns: 1fr 1fr
+        }
+
+        .PBECompCarries {
+            display: none
+        }
+
+        .PBECompContainer {
+            justify-content: space-between
+        }
+
+        .PBECompContainerLeft {
+            max-width: 400px;
+            min-width: 400px
+        }
+
+        .PBECompStat.Popularity {
+            min-width: 120px
+        }
+
+        .ItemsContainer.CompUnits {
+            display: flex
+        }
+    }
+
+    @media (max-width: 767px) {
+        .ItemAssistantBox {
+            max-width: 100%;
+            min-width: 100%
+        }
+
+        .ItemAssistantItemContainer {
+            min-width: 98%
+        }
+
+        .UnitsContainer {
+            min-width: auto
+        }
+
+        .Spacingdiv {
+            display: none
+        }
+
+        .PageTitleBottomHeader {
+            flex-direction: row;
+            margin-top: 10px
+        }
+
+        .PBECompContainerLeft {
+            min-width: auto
+        }
+    }
+
+    @media (max-width: 550px) {
+        .PBECompKeyContainer {
+            display: none
+        }
+    }
+
+    @media (max-width: 500px) {
+        .PBECompStatContainer {
+            -webkit-column-gap: 10px;
+            column-gap: 10px;
+            flex-direction: column
+        }
+    }
+
+    #onetricksearch {
+        max-width: 300px;
+        width: 100% !important
+    }
+
+    .OneTrickBody {
+        display: flex;
+        flex-direction: row
+    }
+
+    .OnetrickPlayerRowContainer {
+        background-color: #27282b;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: column;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        max-width: 100%;
+        min-height: 50px;
+        padding: 5px 5px 5px 10px;
+        position: relative;
+        width: 100%
+    }
+
+    .OnetrickPlayerRowContainer.Rising {
+        cursor: default
+    }
+
+    .OneTrickRightSide {
+        flex: 1 1 auto;
+        max-width: 100%
+    }
+
+    .Rank_img {
+        min-height: 30px;
+        min-width: 30px
+    }
+
+    .OnetrickPlayerRowHeader {
+        justify-content: space-between;
+        margin-bottom: 5px
+    }
+
+    .OnetrickPlayerRankInfo,
+    .OnetrickPlayerRowHeader {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .OnetrickPlayerRankInfo {
+        -webkit-column-gap: 3px;
+        column-gap: 3px
+    }
+
+    .Region_Badge {
+        background-color: #414245;
+        border-radius: 4px;
+        color: #e6e6e6;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 1px 6px
+    }
+
+    .OneTricksCompsContainer {
+        margin-right: 20px;
+        width: 450px
+    }
+
+    .PlayerLink {
+        cursor: pointer;
+        font-weight: 500
+    }
+
+    .PatreonLink,
+    .PlayerLink,
+    .PlayerLink:hover {
+        color: #cbb46c
+    }
+
+    .PatreonLink {
+        cursor: pointer;
+        font-weight: 500;
+        margin-top: 20px
+    }
+
+    .PatreonLink:hover {
+        color: #cbb46c
+    }
+
+    .OneTrickLPChangeTimeframe {
+        color: #cfcfcf;
+        font-size: 10px
+    }
+
+    .OneTrickLPChange {
+        justify-content: space-between;
+        margin-right: 5px;
+        min-width: 170px
+    }
+
+    .LPChangeText,
+    .OneTrickLPChange {
+        align-items: baseline;
+        display: flex
+    }
+
+    .LPChangeText {
+        -webkit-column-gap: 3px;
+        column-gap: 3px
+    }
+
+    .CardBody {
+        justify-content: space-between
+    }
+
+    .CardBody,
+    .PlayerRowContent {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px
+    }
+
+    .Player_Stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-right: 25px;
+        min-width: 150px
+    }
+
+    .Player_Stats.Rising {
+        margin-right: 15px;
+        min-width: 170px
+    }
+
+    .Comp_Stats_Row2 {
+        align-items: baseline;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: space-between
+    }
+
+    .Player_Stat_Number {
+        color: #e6e6e6;
+        font-size: 14px;
+        font-weight: 500
+    }
+
+    .OneTrickLPChangeNumber,
+    .OnetrickComp_Title {
+        align-items: baseline;
+        display: flex
+    }
+
+    .OnetrickComp_Title {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 14px;
+        font-weight: 500;
+        justify-content: flex-start;
+        margin-bottom: 2px
+    }
+
+    .OneTrickHeader {
+        font-size: 20px;
+        font-weight: 500
+    }
+
+    .OneTrickHeaderSubtitle {
+        color: #cfcfcf;
+        font-size: 12px;
+        font-weight: 400
+    }
+
+    .OnetrickCompUnits {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    .OneTrickExpand {
+        min-height: 300px
+    }
+
+    .OneTrickPrioSectionListContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        padding-bottom: 5px
+    }
+
+    .OneTrickPrioSectionList {
+        align-items: center;
+        background: #27282b;
+        border-radius: 4px;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        padding: 4px 2px
+    }
+
+    .OneTrickStatContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .OneTrickPrioSection {
+        background-color: #232427;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        padding: 5px 10px
+    }
+
+    .OneTrickFilterComponent {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .OneTrickPrioSectionTitle {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 5px
+    }
+
+    .OneTrickListHeader {
+        align-items: stretch;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        font-weight: 300;
+        margin-right: 6px;
+        min-width: 80px
+    }
+
+    .OneTrickListHeader .Header {
+        justify-content: flex-end;
+        text-align: right;
+        width: 100%
+    }
+
+    .OneTrickListUnit.Header {
+        align-items: center;
+        display: flex;
+        height: 44px
+    }
+
+    .OneTrickListUnitItem.Header {
+        align-items: center;
+        display: flex;
+        height: 50px
+    }
+
+    .OneTrickListComponent.Header {
+        align-items: center;
+        display: flex;
+        height: 32px
+    }
+
+    .OnetrickItem_img {
+        border-radius: 4px;
+        margin: 3px
+    }
+
+    .OneTrickListNumber {
+        color: #cfcfcf;
+        text-align: center
+    }
+
+    .OneTrickListNumber.Header {
+        text-align: right
+    }
+
+    .Item_Suggestion_Wrapper {
+        margin-top: -10px
+    }
+
+    .dropdownContainer {
+        max-width: 100%;
+        padding: 1px;
+        width: 200px
+    }
+
+    .OnetrickComp_Stats {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 3px
+    }
+
+    .OnetrickComp_Stats_Row {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: space-around;
+        margin-right: 5px
+    }
+
+    .OnetrickCensored {
+        align-items: center;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        background: rgba(39, 40, 43, .8);
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+    .Region_Select {
+        background-color: #424348;
+        color: #cfcfcf
+    }
+
+    .RisingListHeader {
+        align-items: center;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 5px
+    }
+
+    .RegionSelect {
+        cursor: pointer;
+        padding: 4px 8px
+    }
+
+    .RisingListHeaderContainer {
+        align-items: center;
+        -webkit-column-gap: 20px;
+        column-gap: 20px;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px
+    }
+
+    .PatreonAdvertText {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: -14px;
+        text-align: center
+    }
+
+    .OnetrickCensored .PatreonButtonLink {
+        font-size: 14px;
+        width: 190px
+    }
+
+    .PatreonButtonContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: -15px
+    }
+
+    .TopCompTitle {
+        color: #cfcfcf;
+        font-size: 12px;
+        margin-top: -2px
+    }
+
+    .RecentGamesGraphContainer {
+        height: 100px;
+        margin-bottom: 10px
+    }
+
+    .RecentGamesContainer {
+        color: #cfcfcf;
+        font-size: 12px;
+        margin-top: -25px
+    }
+
+    .RisingCardBody {
+        grid-column-gap: 10px;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: grid;
+        grid-template-columns: 1.12fr .88fr
+    }
+
+    .LockIcon {
+        height: 60px;
+        opacity: .8
+    }
+
+    @media (max-width: 991px) {
+        .RisingCardBody {
+            grid-template-columns: 1fr;
+            row-gap: 10px
+        }
+
+        .RecentGamesTitle {
+            display: none
+        }
+
+        .RecentGamesContainer {
+            margin-top: 0
+        }
+
+        .PlayerRowContent {
+            -webkit-column-gap: 10px;
+            column-gap: 10px
+        }
+    }
+
+    @media (max-width: 767px) {
+        .PatreonAdvertText {
+            margin-bottom: 20px
+        }
+    }
+
+    @media (max-width: 450px) {
+        .PlayerRowContent {
+            -webkit-column-gap: 10px;
+            column-gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .Player_Stats {
+            margin-bottom: 10px;
+            width: 100%
+        }
+
+        .OnetrickPlayerRowHeader {
+            -webkit-column-gap: 10px;
+            column-gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .PatreonButtonContainer {
+            flex-wrap: wrap
+        }
+
+        .PatreonAdvertText {
+            margin-bottom: 20px
+        }
+
+        .OneTrickListHeader {
+            font-size: 10px;
+            min-width: 62px
+        }
+
+        .OneTrickPrioSection {
+            padding: 5px
+        }
+
+        .OnetrickPlayerRowContainer {
+            padding: 2px 5px
+        }
+    }
+
+    .TableItemRow {
+        max-width: 170px;
+        min-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .TableItemImg {
+        font-size: 12px;
+        height: 32px;
+        margin-right: 5px;
+        width: 32px
+    }
+
+    .TableTraitImg {
+        cursor: pointer;
+        height: 44px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+        margin-top: -3px;
+        width: 39px
+    }
+
+    .TableAugmentImg {
+        cursor: pointer;
+        height: 46px;
+        margin: -5px 0 -5px -5px;
+        width: 46px
+    }
+
+    .UnitChipImg {
+        height: 28px !important;
+        width: 28px !important
+    }
+
+    .TablePlacementRow {
+        font-size: 16px
+    }
+
+    .TablePlacement {
+        text-align: center
+    }
+
+    .Sortdesc {
+        min-width: 15px
+    }
+
+    .StatTierBadge {
+        align-items: center;
+        border-radius: 2px;
+        color: #111;
+        cursor: pointer;
+        display: flex;
+        font-size: 18px;
+        font-weight: 600;
+        height: 28px;
+        justify-content: center;
+        width: 28px
+    }
+
+    .Tier_Badge:hover {
+        border: 1px solid orange
+    }
+
+    .Badge_S {
+        background-color: #ff7e83
+    }
+
+    .Badge_SS {
+        background-color: #ff9f80
+    }
+
+    .Badge_A {
+        background-color: #ffbf7f
+    }
+
+    .Badge_B {
+        background-color: #ffdf80
+    }
+
+    .Badge_C {
+        background-color: #feff7f
+    }
+
+    .Badge_D {
+        background-color: #bffe7f
+    }
+
+    .TierBadgeText {
+        margin-top: 4px
+    }
+
+    .TableTier {
+        align-items: center;
+        display: flex
+    }
+
+    .TableNum,
+    .TableTier {
+        text-align: center
+    }
+
+    .TableNumRow {
+        font-size: 14px
+    }
+
+    .TableNumRight {
+        text-align: right
+    }
+
+    .StatsFilterContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    .FilterBlock {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 5px
+    }
+
+    .CheckboxIcon {
+        color: #8d8e8f;
+        font-size: 16px;
+        margin-top: 1px;
+        position: relative
+    }
+
+    .CheckboxContainer {
+        align-items: center;
+        display: inline-flex;
+        flex-direction: row
+    }
+
+    .CheckboxCheck {
+        bottom: 6.5px;
+        color: #cb3737;
+        font-size: 10px;
+        left: 4px;
+        margin-top: 1px;
+        position: absolute
+    }
+
+    .CheckboxNumLabel,
+    .FilterCheckboxText {
+        align-items: center;
+        display: flex;
+        padding-top: 3px
+    }
+
+    .CheckboxNumLabel {
+        font-size: 12px;
+        height: 100%;
+        margin-right: 8px
+    }
+
+    .FilterButtonRow {
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 12px;
+        padding: 5px
+    }
+
+    .ApplyFilterButton {
+        background-color: #be0505;
+        color: #cfcfcf;
+        cursor: pointer;
+        font-weight: 500
+    }
+
+    .ApplyFilterButton,
+    .ApplyFilterButtonDisabled {
+        border-radius: 5px;
+        padding: 3px;
+        text-align: center;
+        width: 50px
+    }
+
+    .ApplyFilterButtonDisabled {
+        background-color: #5a5b5e;
+        color: #838486
+    }
+
+    .FilterContainer {
+        align-items: center;
+        display: flex;
+        flex-shrink: 1;
+        flex-wrap: wrap;
+        font-size: 12px
+    }
+
+    .FilterElementContainer {
+        flex-shrink: 0;
+        margin: 2px 2px 2px 4px;
+        position: relative
+    }
+
+    .FilterElement {
+        align-items: center;
+        background-color: #414245;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        font-size: 12px;
+        height: 28px;
+        justify-content: center;
+        padding: 5px 5px 5px 7px
+    }
+
+    .FilterElement:hover {
+        background-color: #545558;
+        color: #e6e6e6
+    }
+
+    .CancelButton {
+        align-items: center;
+        display: flex;
+        font-size: 19px;
+        justify-content: center;
+        margin-left: 2px;
+        margin-top: -1px
+    }
+
+    .CancelButton:hover {
+        color: #d01c8b
+    }
+
+    .RankFilterImg {
+        height: 26px;
+        margin-left: -2px;
+        margin-right: 2px;
+        margin-top: -2px;
+        width: 26px
+    }
+
+    .FilterLabel {
+        margin-top: 2px
+    }
+
+    .FilterExpand {
+        font-size: 18px;
+        margin-right: -3px
+    }
+
+    .RadioChecked {
+        color: #e6e6e6
+    }
+
+    .FilterRow {
+        border-bottom: 1px solid #313236;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: space-between;
+        padding: 6px 6px 6px 10px
+    }
+
+    .FilterRow:hover,
+    .FilterRowActive {
+        background-color: #545558;
+        color: #fff
+    }
+
+    .FilterRowActive {
+        border-bottom: 1px solid #313236;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: space-between;
+        padding: 6px 6px 6px 10px
+    }
+
+    .FilterRowContainer {
+        position: relative
+    }
+
+    .FilterListContainer {
+        display: none;
+        padding-top: 6px;
+        position: absolute;
+        top: 26px;
+        z-index: 10
+    }
+
+    .FilterListContainerLeft {
+        left: 0
+    }
+
+    .FilterListContainerRight {
+        right: 0
+    }
+
+    .FilterList {
+        background-color: #414245;
+        border-radius: 4px;
+        -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, .5));
+        filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, .5));
+        flex-direction: column;
+        width: 200px
+    }
+
+    .FilterElementContainer:hover .FilterListContainer,
+    .FilterList,
+    .FilterList:hover {
+        display: flex
+    }
+
+    .FilterConfigButton {
+        align-items: center;
+        background-color: #414245;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .25));
+        font-size: 18px;
+        height: 24px;
+        justify-content: center;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        width: 24px
+    }
+
+    .FilterConfigButton:hover {
+        background-color: #545558;
+        color: #fff
+    }
+
+    .FilterButtonContainer {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: 2px 2px 2px 4px;
+        position: relative
+    }
+
+    .FilterDropdown {
+        background-color: #414245;
+        border-radius: 4px;
+        box-shadow: 5px 10px 8px #222;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 35px;
+        width: 200px;
+        z-index: 10
+    }
+
+    .FilterDropdownLeft {
+        right: 0
+    }
+
+    .FilterDropdownRight {
+        left: 0
+    }
+
+    .FilterValuesInlineContainer {
+        display: none
+    }
+
+    .FilterValuesContainer {
+        display: none;
+        padding-left: 2px;
+        padding-right: 2px;
+        position: absolute;
+        top: 0
+    }
+
+    .FilterValuesContainerRight {
+        left: 200px
+    }
+
+    .FilterValuesContainerLeft {
+        right: 200px
+    }
+
+    .FilterRowContainer:hover .FilterValuesContainer,
+    .FilterRowContainer:hover .FilterValuesInlineContainer {
+        display: flex
+    }
+
+    .StatSearch {
+        background-color: #414245 !important;
+        border: 0 !important;
+        border-color: #111 !important;
+        color: #e6e6e6 !important;
+        font-size: 12px !important;
+        height: 32px !important;
+        width: 200px !important
+    }
+
+    .StatFilterSearch .StatSearch {
+        width: 145px !important
+    }
+
+    .StatSearch:focus {
+        box-shadow: 0 0 0 .2rem hsla(45, 48%, 61%, .25) !important
+    }
+
+    .icon-rtl-stat {
+        // background: url(/icons/search.svg) no-repeat 100%;
+        background-position: right 5px top 8px;
+        background-size: 16px;
+        padding-right: 25px
+    }
+
+    .StatLink {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .StatLink:hover {
+        color: #e6e6e6
+    }
+
+    .ItemName {
+        max-width: 133px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto
+    }
+
+    .StatTableContainer {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        min-height: 50vh;
+        width: 100%
+    }
+
+    .fig-table {
+        flex: 1 1 auto
+    }
+
+    .StatFilterBox {
+        align-self: flex-start;
+        background: #27282b;
+        border-radius: 4px;
+        flex-shrink: 1;
+        margin-right: 5px;
+        min-height: 100px;
+        padding: 10px;
+        width: 200px
+    }
+
+    .StatOptions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-top: 5px
+    }
+
+    .StatFilterRow {
+        margin-bottom: 10px
+    }
+
+    .LoadingIndicator {
+        align-items: center;
+        display: flex;
+        height: 32px;
+        margin-left: 2px;
+        padding: 2px
+    }
+
+    .LoadingIndicatorPlaceholder {
+        height: 32px;
+        width: 24px
+    }
+
+    .ErrorIndicator {
+        align-items: center;
+        color: #e14a4a;
+        display: flex;
+        margin-left: 2px;
+        padding: 2px
+    }
+
+    .StatOptionChip {
+        align-items: center;
+        background: #424348;
+        border: 1px solid #424348;
+        border-radius: 8px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+        color: #e6e6e6;
+        cursor: pointer;
+        display: flex;
+        height: 25px;
+        justify-content: center;
+        margin: 2px 5px 2px 2px;
+        min-width: 55px;
+        padding: 12px 8px;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .StatOptionChip.ChipSelected,
+    .StatOptionChip:hover {
+        background: #454440;
+        border: 1px solid #c2b06c
+    }
+
+    .StatOptionChipAugments {
+        font-size: 10px;
+        max-width: 56px
+    }
+
+    .GraphContainer2 {
+        align-items: center;
+        display: flex;
+        flex: 2 1;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 400px;
+        min-width: 300px;
+        position: relative
+    }
+
+    .SquareGraphContainer {
+        background-color: #27282b;
+        border-radius: 10px;
+        height: 100%;
+        margin-bottom: 10px;
+        padding-top: 60%;
+        position: relative;
+        width: 100%
+    }
+
+    #ItemsScatter,
+    #UnitsScatter {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%
+    }
+
+    .chart_tooltip_scatter {
+        pointer-events: none
+    }
+
+    .StatFilterInline {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .StatFilterInfo {
+        align-items: center;
+        color: #a1a4aa;
+        display: flex;
+        font-size: 14px;
+        font-style: italic;
+        text-align: center
+    }
+
+    .FiltersModal {
+        margin-top: 25vh !important;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .StatFilterMenuRow {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px
+    }
+
+    .StatFilterLeft {
+        justify-content: flex-start
+    }
+
+    .StatFilterLeft,
+    .StatFilterName {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column
+    }
+
+    .StatFilterName {
+        font-size: 14px;
+        justify-content: center;
+        min-width: 150px;
+        padding: 2px
+    }
+
+    .StatFilterSubtitle {
+        color: #cfcfcf;
+        font-size: 12px;
+        margin-bottom: 5px
+    }
+
+    .StatFilterOptions {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    .StatFilterSearch {
+        width: 150px
+    }
+
+    .StatFilterApplied {
+        background: #2c2d2f;
+        border-radius: 4px;
+        color: #cfcfcf;
+        margin-bottom: 10px;
+        padding: 4px
+    }
+
+    .AppliedFiltersRowSelected {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap
+    }
+
+    .TableUnit_Wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 5px;
+        padding-bottom: 3px;
+        padding-top: 3px
+    }
+
+    .TableUnitItemImg {
+        font-size: 12px;
+        height: 32px;
+        width: 32px
+    }
+
+    .UnitCostIcon {
+        margin-left: 3px;
+        width: 14px
+    }
+
+    .Unselected {
+        opacity: .3
+    }
+
+    .UnitFilterTraitImg {
+        cursor: pointer;
+        min-height: 40px;
+        width: 36px
+    }
+
+    .UnitFilterTraitContainer {
+        background-color: #2c2d2f;
+        border-radius: 4px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 5px;
+        width: 100%
+    }
+
+    .BackToMain {
+        color: #e6e6e6;
+        display: flex;
+        margin-bottom: 5px;
+        max-width: 150px;
+        text-decoration: underline
+    }
+
+    .BackToMain:hover {
+        color: #fff;
+        text-decoration: underline
+    }
+
+    .BackToMainIcon {
+        font-size: 20px;
+        margin-left: -4px
+    }
+
+    .ItemDetailProfile {
+        background: #27282b;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        padding: 4px 12px 8px
+    }
+
+    .ItemDetailHeader {
+        font-size: 22px;
+        font-weight: 500
+    }
+
+    .ItemDetailContent {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr
+    }
+
+    .UnitDetailContent {
+        display: grid;
+        grid-template-columns: .75fr .85fr 1.4fr 1fr
+    }
+
+    .ItemDetailProfileImage {
+        border-radius: 4px;
+        height: 80px;
+        margin-right: 10px;
+        width: 80px
+    }
+
+    .ItemDetailSummary {
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+        max-width: 250px
+    }
+
+    .ItemDetailImages {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        margin-right: 10px
+    }
+
+    .ItemDetailSecondaryImages {
+        display: flex;
+        flex-direction: column
+    }
+
+    .ItemDetailRecipeImgs {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .RecipePlus {
+        font-size: 20px;
+        margin-left: 5px;
+        margin-right: 5px
+    }
+
+    .RecipeImg {
+        border-radius: 4px;
+        height: 24px;
+        width: 24px
+    }
+
+    .ItemDetailBonusImgs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 5px;
+        max-width: 100%
+    }
+
+    .ItemDetailBonus {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-right: 5px
+    }
+
+    .ItemDetailBonusImg {
+        height: 16px;
+        width: 16px
+    }
+
+    .ItemDetailDescriptionContainer {
+        height: 76px;
+        margin-bottom: 5px
+    }
+
+    .ItemDetailDescription {
+        word-wrap: normal;
+        background-color: #2c2d31;
+        border-radius: 2px;
+        color: #cfcfcf;
+        font-size: 12px;
+        max-height: 76px;
+        overflow-y: auto;
+        padding: 4px
+    }
+
+    .ItemDetailSummaryStats {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center
+    }
+
+    .ItemDetailStatContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .ItemDetailStat {
+        align-items: center;
+        color: #e6e6e6;
+        display: flex;
+        flex-direction: column;
+        margin: 5px
+    }
+
+    .ItemDetailStatNum {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 22px
+    }
+
+    .ItemDetailStatChange {
+        align-items: center;
+        color: #b8b8b8;
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        margin: 5px
+    }
+
+    .ItemDetailStatChangeNum {
+        color: #cfcfcf;
+        font-size: 14px;
+        margin-bottom: -2px;
+        margin-top: -5px
+    }
+
+    .ItemHolderImg {
+        height: 36px;
+        width: 36px
+    }
+
+    .ItemDetailSectionTitle {
+        font-size: 16px
+    }
+
+    .ItemDetailSectionStageTitle {
+        font-size: 14px;
+        margin-bottom: 5px;
+        margin-top: -2px
+    }
+
+    .ItemDetailHolders {
+        margin-right: 10px;
+        margin-top: -5px;
+        min-height: 250px;
+        width: 250px
+    }
+
+    .ItemHolderRow {
+        color: #b8b8b8;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        font-size: 10px;
+        justify-content: space-around;
+        min-height: 41px;
+        padding: 2px;
+        width: 100%
+    }
+
+    .ItemHolderRoundStat,
+    .ItemHolderStat {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 2px
+    }
+
+    .ItemHolderRoundStat {
+        min-width: 60px
+    }
+
+    .ItemHolderStatNum {
+        color: #e6e6e6;
+        font-size: 18px;
+        line-height: 18px
+    }
+
+    .ItemHolderStatNumPercent {
+        color: #e6e6e6;
+        font-size: 16px;
+        line-height: 18px
+    }
+
+    .ItemDetailStageSection {
+        display: flex;
+        flex-direction: column;
+        margin-top: -5px
+    }
+
+    .IncreaseArrow {
+        margin-bottom: 2px
+    }
+
+    .ItemDetailStage {
+        min-width: 300px
+    }
+
+    .ItemDetailStageContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .ItemDetailStageHolders {
+        background-color: #2c2d31;
+        border-radius: 5px;
+        margin-top: -5px;
+        max-height: 250px;
+        min-width: 220px;
+        overflow-y: auto;
+        padding: 5px;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .UnitTraitsRow {
+        display: flex;
+        flex-direction: row
+    }
+
+    .UnitTraitsRow2 {
+        align-items: center;
+        justify-content: center;
+        margin-top: -10px
+    }
+
+    .UnitTraitImg {
+        width: 40px
+    }
+
+    .UnitDetailTierChart {
+        height: 90px;
+        margin-bottom: 12px;
+        margin-top: -4px
+    }
+
+    .UnitDetailNumItemsChart {
+        height: 120px;
+        margin-top: -4px
+    }
+
+    .UnitBuildContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr
+    }
+
+    .BuildImg {
+        min-width: 37px
+    }
+
+    .UnitBuilds {
+        margin-right: 10px;
+        margin-top: -5px;
+        max-width: 350px;
+        min-height: 250px
+    }
+
+    .RecommendedBuild {
+        margin-top: 17px
+    }
+
+    .UnitBuildContainer {
+        max-width: 111px
+    }
+
+    .ItemFilterItemContainer {
+        align-items: stretch;
+        background: #2c2d2f;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        max-height: 270px;
+        min-height: 50px;
+        overflow-y: auto;
+        padding: 2px 4px
+    }
+
+    .ItemFilterItemImg {
+        border-radius: 4px;
+        cursor: pointer;
+        height: 32px;
+        margin: 2px;
+        width: 32px
+    }
+
+    .ItemFilterItemRowItems {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 5px
+    }
+
+    .ItemFilterItemRowLabel {
+        color: #cfcfcf
+    }
+
+    .Pointer {
+        cursor: pointer
+    }
+
+    .AppliedFiltersRowHeader {
+        color: #cfcfcf
+    }
+
+    .AugmentTierSelect {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 10px;
+        max-width: 40px;
+        text-overflow: ellipsis
+    }
+
+    .AugmentTierSelectImg {
+        height: 40px;
+        margin: -5px;
+        width: 40px
+    }
+
+    .HeroAugmentTierSelectImg {
+        height: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 20px
+    }
+
+    .TableHeroAugmentImg {
+        height: 30px;
+        margin-right: 5px;
+        width: 30px
+    }
+
+    .HeroAugmentCarry {
+        color: #b66cd6 !important
+    }
+
+    .HeroAugmentSupport {
+        color: #2eb385 !important
+    }
+
+    .StatOptionChip.AugmentOptionChip {
+        padding: 0
+    }
+
+    .AugmentCompareIcon {
+        color: #e6e6e6;
+        font-size: 24px;
+        margin-left: -10px;
+        margin-right: -10px
+    }
+
+    .TableBestUnitRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center
+    }
+
+    .BestAugmentUnitImg {
+        border-radius: 2px;
+        cursor: pointer;
+        height: 32px;
+        margin: 2px;
+        opacity: .9;
+        width: 32px
+    }
+
+    .TableBestUnitRow {
+        min-width: 180px
+    }
+
+    .UnitTooltipTraitImg {
+        height: 30px;
+        margin-bottom: -2px;
+        margin-top: -2px;
+        min-width: 20px
+    }
+
+    .UnitTooltipTraitImgSet8 {
+        height: auto;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        max-height: 20px;
+        max-width: 20px;
+        width: auto
+    }
+
+    .AugmentChoiceStats {
+        -webkit-column-gap: 10%;
+        column-gap: 10%;
+        min-height: 108px
+    }
+
+    .AugmentChoiceStats,
+    .AugmentChoiceTags {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: center
+    }
+
+    .AugmentChoiceTags {
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        flex-wrap: wrap;
+        min-height: 70px;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 10px;
+        row-gap: 8px
+    }
+
+    .AugmentChoiceTag {
+        border: 1px solid #81b0cb;
+        border-radius: 14px;
+        color: #81b0cb;
+        margin-left: 4px;
+        padding: 2px 10px
+    }
+
+    .AugmentTagGreen {
+        border: 1px solid #65c64d;
+        color: #65c64d
+    }
+
+    .AugmentTagOrange {
+        border: 1px solid #d18854;
+        color: #d18854
+    }
+
+    .AugmentUnitListContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .AugmentUnitBorder {
+        border: 2px solid #37383a;
+        border-radius: 8px;
+        margin-left: 10px;
+        margin-right: 10px;
+        min-height: 300px;
+        min-width: 80%;
+        padding: 10px
+    }
+
+    .AugmentUnitTitle {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        font-size: 16px;
+        font-weight: 500;
+        justify-content: center;
+        margin-bottom: 5px
+    }
+
+    .AugmentUnitRow {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2px 5px
+    }
+
+    .AugmentUnitStatContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        min-width: 42px
+    }
+
+    .AugmentUnitContainer {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100px
+    }
+
+    .TableAugmentChoicePlacementLabel {
+        color: #cfcfcf;
+        font-size: 10px;
+        font-weight: 300;
+        margin-bottom: 5px;
+        text-align: center
+    }
+
+    .NoMargin {
+        margin: 0 !important
+    }
+
+    .AugmentUnitImg {
+        height: 36px !important;
+        width: 36px !important
+    }
+
+    .TableAugmentChoicePlacement {
+        font-size: 14px
+    }
+
+    .TableAugmentChoiceTitle {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px
+    }
+
+    .TableAugmentChoiceCount {
+        color: #e6e6e6;
+        font-size: 12px;
+        font-weight: 400
+    }
+
+    .TableAugmentPick {
+        min-width: 50px
+    }
+
+    .TableAugmentPickCount {
+        color: #cfcfcf;
+        font-size: 10px;
+        font-weight: 300
+    }
+
+    .TableAugmentPick {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .TableAugmentPickPlacement {
+        font-size: 14px
+    }
+
+    .FilterBlockRight {
+        align-items: flex-start;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        row-gap: 5px
+    }
+
+    .AugmentTierSelection {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-left: 5px
+    }
+
+    .AugmentTierSelectionText {
+        margin-right: 5px
+    }
+
+    .AugmentComparisonContainer {
+        align-items: stretch;
+        background: #27282b;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        min-height: 50px;
+        overflow-y: auto;
+        padding: 1% 2%
+    }
+
+    .AugmentSearchBar .MuiFormControl-root .MuiOutlinedInput-root {
+        background-color: #424348 !important;
+        padding: 2px !important
+    }
+
+    .AugmentUnitsHeader {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr
+    }
+
+    .Centered {
+        text-align: center
+    }
+
+    .AugmentUnitsFilters {
+        display: flex;
+        flex-direction: row-reverse
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+        border-width: 0 !important;
+        box-shadow: inset 2px 1px 4px rgba(0, 0, 0, .45);
+        top: -6px !important
+    }
+
+    .AugmentSelectChip {
+        background: #313236 !important;
+        color: #cfcfcf !important;
+        font-size: 13px !important
+    }
+
+    .AugmentSelectChip .MuiChip-deleteIcon {
+        color: hsla(0, 0%, 100%, .2)
+    }
+
+    .MuiAutocomplete-paper {
+        background-color: #424348 !important;
+        font-size: 13px !important
+    }
+
+    .MuiAutocomplete-paper ul {
+        color: #cfcfcf;
+        font-family: poppins !important
+    }
+
+    .MuiAutocomplete-option {
+        border-bottom: 1px solid #27282b !important
+    }
+
+    .MuiAutocomplete-option:last-child {
+        border-bottom: 0 solid #27282b !important
+    }
+
+    .AugmentSearchBar {
+        font-family: inherit !important;
+        margin-bottom: 10px;
+        width: 100% !important
+    }
+
+    .css-b7k0tb-MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected=true] {
+        background-color: hsla(45, 48%, 61%, .2) !important
+    }
+
+    .MuiChip-root,
+    .MuiInputBase-root {
+        font-family: inherit !important
+    }
+
+    .AugmentSearchBar .MuiInputBase-root {
+        color: #cfcfcf;
+        font-size: 13px;
+        min-height: 42px
+    }
+
+    .ChipLabel {
+        align-items: center;
+        -webkit-column-gap: 2px;
+        column-gap: 2px;
+        display: flex;
+        flex-direction: row
+    }
+
+    .ChipImg {
+        height: 30px;
+        width: 30px
+    }
+
+    .AugmentComparisonTitle {
+        color: #cfcfcf;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px
+    }
+
+    .AugmentComparisonOptions {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        max-width: 100%
+    }
+
+    .AugmentOption {
+        align-items: stretch;
+        border-right: 2px solid #37383a;
+        display: flex;
+        flex-direction: column
+    }
+
+    .AugmentOption:last-child {
+        border-right: 0
+    }
+
+    .AugmentOptionCard {
+        align-items: center;
+        aspect-ratio: .93;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1
+    }
+
+    .AugmentOptionCardImage {
+        height: auto;
+        margin-left: -11%;
+        margin-right: -11%;
+        margin-top: -3%;
+        width: 110%;
+        z-index: 1
+    }
+
+    .AugmentOptionCardContent {
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        padding: 8% 20%;
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+    .AugmentOptionCardImageContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: -3%;
+        overflow: hidden
+    }
+
+    .AugmentChoiceImage {
+        margin-bottom: 8%;
+        margin-top: 0;
+        width: 70%;
+        z-index: 1
+    }
+
+    .AugmentChoiceHeroImage {
+        margin-bottom: -8%;
+        margin-top: -10%;
+        width: 96%
+    }
+
+    .AugmentOptionTitle {
+        align-items: center;
+        color: #e6e6e6;
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: center
+    }
+
+    .AugmentOptionCardName {
+        color: #e6e6e6;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        margin-bottom: 2%;
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: center;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+        z-index: 1
+    }
+
+    .AugmentOptionCardDescription {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        font-size: 12px;
+        font-weight: 500;
+        justify-content: center;
+        padding-bottom: 8%;
+        padding-left: 4%;
+        padding-right: 4%;
+        text-align: center;
+        z-index: 1
+    }
+
+    .AugmentOptionCardImageContainer {
+        position: relative
+    }
+
+    .AugmentOptionCard1Cost:after {
+        background: radial-gradient(circle, transparent 50%, #b5b5b5 200%)
+    }
+
+    .AugmentOptionCard1Cost:after,
+    .AugmentOptionCard2Cost:after {
+        bottom: 10%;
+        content: "";
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        width: 96%
+    }
+
+    .AugmentOptionCard2Cost:after {
+        background: radial-gradient(circle, transparent 50%, #14cf11 200%)
+    }
+
+    .AugmentOptionCard3Cost:after {
+        background: radial-gradient(circle, transparent 50%, #0e2ae3 200%)
+    }
+
+    .AugmentOptionCard3Cost:after,
+    .AugmentOptionCard4Cost:after {
+        bottom: 10%;
+        content: "";
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        width: 96%
+    }
+
+    .AugmentOptionCard4Cost:after {
+        background: radial-gradient(circle, transparent 50%, #c211cf 200%)
+    }
+
+    .AugmentOptionCard5Cost:after {
+        background: radial-gradient(circle, transparent 50%, #b8a31c 200%);
+        bottom: 10%;
+        content: "";
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        width: 96%
+    }
+
+    .AutocompleteOptionSeparated,
+    .TraitDropdownContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row
+    }
+
+    .TraitIconDark {
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+        opacity: .95
+    }
+
+    .TraitSmall.TraitIconLight {
+        max-height: 20px;
+        max-width: 20px
+    }
+
+    .TraitBG.TraitSmall {
+        height: 44px;
+        margin-bottom: -3px;
+        margin-top: -3px;
+        width: 39px
+    }
+
+    .TraitIcon.TraitSmall {
+        margin-left: 0
+    }
+
+    .languageFlag {
+        border-top-left-radius: 4px;
+        left: 0;
+        opacity: .8;
+        position: absolute;
+        top: 0
+    }
+
+    .TraitIcon.TableItemImg {
+        height: auto;
+        max-height: 16px;
+        max-width: 16px;
+        width: auto
+    }
+
+    @media(max-width: 1199px) {
+        .ItemDetailStage {
+            min-width: 200px
+        }
+
+        .ItemDetailContent {
+            grid-template-columns: 1fr 1fr
+        }
+
+        .ItemDetailStageSection {
+            grid-column: 1/3
+        }
+
+        .ItemDetailStageContainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr
+        }
+
+        .ItemDetailHolders {
+            width: auto
+        }
+
+        .ItemDetailSummary {
+            max-width: 300px;
+            width: auto
+        }
+    }
+
+    @media(max-width: 991px) {
+        .StatTableContainer {
+            flex-direction: column
+        }
+
+        .StatFilterBox {
+            margin-bottom: 5px;
+            width: auto
+        }
+
+        .StatFilterRowContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap
+        }
+
+        .StatFilterRow {
+            min-width: 180px
+        }
+
+        .UnitDetailContent {
+            grid-template-columns: 1fr 1fr
+        }
+
+        .ItemHolderStatAvgPlace {
+            display: none
+        }
+    }
+
+    @media(max-width: 550px) {
+        .UnitDetailContent {
+            row-gap: 10px
+        }
+
+        .ItemDetailContent,
+        .UnitDetailContent {
+            grid-template-columns: 1fr
+        }
+
+        .ItemDetailStageContainer {
+            display: grid;
+            grid-template-columns: 1fr
+        }
+
+        .ItemDetailStageSection {
+            grid-column: 1/2
+        }
+    }
+
+    @media(max-width: 370px) {
+        .ItemHolderRoundStat {
+            display: none
+        }
+    }
+
+    @media(max-width: 450px) {
+        .FilterBlock {
+            flex-direction: column
+        }
+
+        .StatsFilterContainer {
+            margin-bottom: 5px
+        }
+
+        .TableItemRow {
+            max-width: 120px;
+            min-width: 120px
+        }
+    }
+
+    @media(max-width: 420px) {
+        .TableItemRow {
+            max-width: 37px;
+            min-width: 37px
+        }
+
+        td,
+        th {
+            padding: .2rem !important
+        }
+    }
+
+    .TableSkeleton {
+        height: 22px;
+        width: 30px
+    }
+
+    .skeleton {
+        background-color: #313236 !important;
+        border-color: #313236 !important;
+        border-radius: 4px;
+        color: transparent !important;
+        cursor: default;
+        overflow: hidden;
+        position: relative;
+        -webkit-user-select: none;
+        user-select: none
+    }
+
+    .skeleton:after {
+        -webkit-animation: shimmer 2s infinite;
+        animation: shimmer 2s infinite;
+        background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .02) 30%, hsla(0, 0%, 100%, .05) 70%, hsla(0, 0%, 100%, 0));
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%)
+    }
+
+    @-webkit-keyframes shimmer {
+        to {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%)
+        }
+    }
+
+    @keyframes shimmer {
+        to {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%)
+        }
+    }
+
+    .UnitImg {
+        height: 40px;
+        width: 40px
+    }
+
+    .TomeOfTraitsContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .UnitTierList {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100%
+    }
+
+    .UnitTierWrapper {
+        word-wrap: normal;
+        color: #cfcfcf;
+        font-size: 10px;
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 46px
+    }
+
+    .TierContainer,
+    .UnitTierWrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center
+    }
+
+    .TierContainer {
+        flex: 1 1 auto;
+        justify-content: center;
+        width: 150px
+    }
+
+    .EmblemTraitRow {
+        line-height: 120%;
+        margin-top: 5px
+    }
+
+    .TierDescription {
+        color: #cfcfcf;
+        font-size: 13px;
+        margin-top: 2px
+    }
+
+    .SectionTitle {
+        color: #e6e6e6;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0;
+        margin-top: 10px;
+        width: 100%
+    }
+
+    .SectionSubtitle {
+        color: #cfcfcf;
+        font-size: 13px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        margin-top: 5px;
+        width: 100%
+    }
+
+    .TomeOfTraitsUnitTiers {
+        margin-bottom: 20px
+    }
+
+    .TailoredTraitOdds {
+        align-items: center;
+        display: flex;
+        font-size: 13px;
+        justify-content: center;
+        min-height: 30px;
+        text-align: center
+    }
+
+    .TomeOfTraitsBoards td {
+        padding: 10px
+    }
+
+    .TomeLevelBoardOdds {
+        text-align: center
+    }
+
+    .SectionImageContainer {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        justify-content: center;
+        margin-bottom: 10px;
+        text-align: center
+    }
+
+    .SectionTableContainer {
+        flex: 1 1 auto;
+        margin-bottom: 10px;
+        max-width: 100%;
+        overflow: auto;
+        width: 100%
+    }
+
+    .TraitsExample {
+        border-radius: 4px;
+        height: 329px;
+        margin-bottom: 5px;
+        width: 210px
+    }
+
+    .SectionWarning {
+        background: rgba(71, 22, 22, .3);
+        border: 1px solid #471616;
+        border-radius: 5px;
+        color: #cfcfcf;
+        font-size: 14px;
+        margin: 10px;
+        padding: 10px 20px;
+        text-align: center
+    }
+
+    .WarningIcon {
+        font-size: 20px;
+        margin-right: 2px
+    }
+
+    .TraitListContainer {
+        -webkit-column-gap: 12px;
+        column-gap: 12px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center
+    }
+
+    .TomeOfTraitsEmblemTierList {
+        background-color: #27282b;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: row;
+        margin-bottom: 20px;
+        padding: 10px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    .TomeOfTraitsEmblemTierListHeader {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        min-height: 106px;
+        min-width: 80px;
+        padding: 5px
+    }
+
+    .TomeOptionsModal {
+        max-width: 90%;
+        min-width: 600px
+    }
+
+    .TomeOfTraitsEmblemTierListContainer {
+        background: #313236;
+        border-radius: 4px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        overflow-x: scroll;
+        padding: 5px
+    }
+
+    .TomeEmblemName {
+        color: #cfcfcf;
+        font-size: 10px;
+        max-width: 100%;
+        overflow: hidden;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .TomeEmblemContainer {
+        align-items: center;
+        border: 1px solid #313236;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin-left: 2px;
+        margin-right: 2px;
+        max-width: 50px;
+        min-width: 50px;
+        padding-top: 2px
+    }
+
+    .TomeEmblemContainer .TableItemImg {
+        border-radius: 4px;
+        margin: 0
+    }
+
+    .TomeTraitBoardHeader .TableItemImg {
+        border-radius: 4px
+    }
+
+    .TomeEmblemContainer.selected {
+        background-color: hsla(45, 48%, 61%, .1);
+        border: 1px solid #cbb46c;
+        border-radius: 4px
+    }
+
+    .TomeEmblemContainer:hover {
+        background-color: hsla(45, 48%, 61%, .06);
+        border: 1px solid hsla(45, 48%, 61%, .5);
+        border-radius: 4px
+    }
+
+    .TomeEmblemSubtitle {
+        color: #cfcfcf
+    }
+
+    .TomeEmblemNameHeader {
+        height: 49px
+    }
+
+    .TomeEmblemNameHeader,
+    .TomeEmblemPlacement {
+        align-items: center;
+        display: flex
+    }
+
+    .TomeOfTraitsEmblemTierListHeader .TomeEmblemPick {
+        margin-top: 2px
+    }
+
+    .TomeEmblemPick {
+        color: #cfcfcf;
+        font-size: 13px
+    }
+
+    .TomeOfTraitsEmblemTierListHeader .TomeEmblemPick {
+        color: #e6e6e6
+    }
+
+    .BoardEmblemSelectionContainer {
+        background: #313236;
+        border-radius: 4px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 5px
+    }
+
+    .BoardEmblemSelectionOutline {
+        background-color: #27282b;
+        display: flex;
+        -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
+        flex-direction: row;
+        padding: 10px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 100%
+    }
+
+    .TomeBoardsContainer {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        width: 100%
+    }
+
+    .TomeOfTraitsBoards {
+        margin-top: 5px;
+        width: 100%
+    }
+
+    .TomeLevelBoard {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: 400px
+    }
+
+    .TomeOfTraitsFAQ {
+        background: #27282b;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        max-width: 100%;
+        padding: 20px;
+        width: 700px
+    }
+
+    .TomeAppDownload {
+        margin-bottom: 80px;
+        text-align: center
+    }
+
+    .TraitListContainer {
+        background: #313236;
+        border-radius: 6px;
+        padding: 10px
+    }
+
+    .TomeLevelBoardOptions {
+        color: #cbb46c;
+        cursor: pointer;
+        min-width: 100px;
+        text-align: center;
+        text-decoration: underline
+    }
+
+    .NomsyTraitImg {
+        cursor: pointer;
+        height: 37.92px;
+        margin-bottom: -4px;
+        width: 34px
+    }
+
+    .NomsyTraitImgTransparent {
+        opacity: .3
+    }
+
+    .TomeTraitBoardHeader {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+        min-height: 54px
+    }
+
+    .TomeEmblemTitle {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        font-weight: 500;
+        min-height: 32px
+    }
+
+    .TomeEmblemTitleName {
+        font-size: 14px
+    }
+
+    .TomeNomsyTraitSelection {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row
+    }
+
+    .TomeOfTraitsBoards {
+        min-height: 640px
+    }
+
+    .BoardUnitPlaceholder {
+        height: 61px;
+        width: 350px
+    }
+
+    .BoardOddsRow {
+        height: 16px;
+        width: 20px
+    }
+
+    .BoardOptionsRow {
+        height: 16px;
+        width: 80px
+    }
+
+    .TomeOfTraitTableItem {
+        min-width: 80px
+    }
+
+    .PageContents {
+        margin-top: 10px;
+        width: 100%
+    }
+
+    .PageContents ul {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start
+    }
+
+    .ContentsLink {
+        color: #cfcfcf
+    }
+
+    .ContentsLink:hover {
+        color: #cbb46c
+    }
+
+    .TomeHeaderImage {
+        height: 100px;
+        object-fit: none;
+        width: 100px
+    }
+
+    .EmblemStatsLoading {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        height: 100%;
+        justify-content: center
+    }
+
+    .TomeFilterBlock {
+        width: 100%
+    }
+
+    @media (max-width: 650px) {
+        .TomeOptionsModal {
+            min-width: auto
+        }
+
+        .OptionTableContainer {
+            overflow: auto
+        }
+
+        .TomeLevelBoard {
+            min-width: auto
+        }
+
+        .TomeTraitBoardHeader {
+            flex-wrap: wrap
+        }
+
+        .TomeLevelBoardLevel {
+            text-align: center
+        }
+
+        .SectionTableContainer {
+            max-width: 100%;
+            overflow-x: scroll
+        }
+
+        .TomeOfTraitsEmblemTierListHeader {
+            font-size: 12px;
+            min-width: 70px
+        }
+
+        .TailoredTraitOdds {
+            font-size: 12px
+        }
+    }
+
+    @media (max-width: 450px) {
+        .TierContainer {
+            width: 100px
+        }
+    }
+
+    .MatchHistoryContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-start;
+        max-height: 100%;
+        overflow: auto;
+        width: 100%
+    }
+
+    .MatchHistoryRow {
+        align-items: center;
+        background: rgba(0, 0, 0, .2);
+        border: 1px solid #222;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        justify-content: space-between;
+        margin: 4px;
+        padding: 5px;
+        width: 96%
+    }
+
+    .place_top_1 {
+        background-color: #cbb46c !important
+    }
+
+    .place_top_1,
+    .place_top_2 {
+        font-size: 130% !important;
+        padding: 5px !important
+    }
+
+    .place_top_2 {
+        background-color: #a9a9a9 !important
+    }
+
+    .place_top_3 {
+        background-color: #7d6443 !important
+    }
+
+    .place_top_3,
+    .place_top_4 {
+        font-size: 130% !important;
+        padding: 5px !important
+    }
+
+    .place_top_4 {
+        background-color: #606669 !important
+    }
+
+    .place_bot_4 {
+        background-color: #494d4f !important;
+        font-size: 130% !important;
+        padding: 5px !important
+    }
+
+    .UnitWrapper {
+        height: 100%;
+        position: relative;
+        width: auto
+    }
+
+    .ItemWrapper {
+        bottom: 0;
+        height: 30%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: -10%;
+        min-height: 12px;
+        width: 90%
+    }
+
+    .ItemWrapper,
+    .TierWrapper {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: absolute
+    }
+
+    .TierWrapper {
+        height: 20%;
+        width: 100%
+    }
+
+    .ItemImg {
+        border: 1px solid #222;
+        height: 100%;
+        min-height: 12px
+    }
+
+    .ItemImg,
+    .UnitImg {
+        display: inline-block;
+        width: auto
+    }
+
+    .UnitImg {
+        margin: 3px;
+        min-height: 30px
+    }
+
+    .TierImg {
+        display: inline-block;
+        height: 100%;
+        margin-top: -4px;
+        min-height: 10px;
+        width: auto
+    }
+
+    .GameSummaryUnits {
+        align-items: center;
+        justify-content: flex-start
+    }
+
+    .GameSummaryUnits,
+    .LiveStatContainer {
+        display: flex;
+        flex-direction: row;
+        height: 100%
+    }
+
+    .LiveStatContainer {
+        width: 100%
+    }
+
+    .RoundHistory {
+        border-right: 1px solid #222;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 160px
+    }
+
+    .outcomeImg {
+        height: 20px;
+        width: 20px
+    }
+
+    .RoundRow {
+        background-color: #5a5b5e
+    }
+
+    .RoundRow,
+    .RoundRowSelected {
+        align-items: center;
+        border-bottom: 1px solid #222;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 6px 5px 2px;
+        width: 100%
+    }
+
+    .RoundRowSelected:hover {
+        background-color: #5a5b5e
+    }
+
+    .vsImg {
+        margin-left: -2px;
+        margin-top: 4px;
+        width: 15px
+    }
+
+    .outcomeImg {
+        float: right;
+        margin-top: -2px;
+        vertical-align: top
+    }
+
+    .StageBadge {
+        background-color: #e6e6e6;
+        font-size: 90%;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding: 3px;
+        text-align: center;
+        vertical-align: top;
+        width: 30px
+    }
+
+    .GameSummaryStats {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        flex-direction: row;
+        font-size: 90%;
+        justify-content: space-around;
+        width: 160px
+    }
+
+    .RoundStats {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%
+    }
+
+    .default_hex {
+        fill: #232427;
+        stroke: #19191b;
+        stroke-width: .8
+    }
+
+    .hex_1 {
+        fill: #27282b;
+        stroke: #b5b5b5;
+        stroke-width: .6
+    }
+
+    .hex_2 {
+        fill: #27282b;
+        stroke: #14cf11;
+        stroke-width: .6
+    }
+
+    .hex_3 {
+        fill: #27282b;
+        stroke: #0e2ae3;
+        stroke-width: .6
+    }
+
+    .hex_4 {
+        fill: #27282b;
+        stroke: #c211cf;
+        stroke-width: .6
+    }
+
+    .hex_5 {
+        fill: #27282b;
+        stroke: #b8a31c;
+        stroke-width: .6
+    }
+
+    .hex_6 {
+        fill: #27282b;
+        stroke: #a30202;
+        stroke-width: .6
+    }
+
+    .DamageGraph {
+        display: flex;
+        flex-grow: 3;
+        width: 100%
+    }
+
+    .BoardPositioning {
+        align-items: center;
+        display: flex;
+        flex-grow: 2;
+        justify-content: center;
+        max-height: 40%;
+        width: 100%
+    }
+
+    .BoardText {
+        fill: #e6e6e6;
+        stroke-width: 0;
+        font-size: 9px
+    }
+
+    .BoardText2 {
+        fill: #111;
+        stroke: #111;
+        stroke-width: 2;
+        font-size: 9px
+    }
+
+    .GameSummaryQueueType,
+    .GameSummaryTime {
+        text-align: center
+    }
+
+    .MatchHistoryTitle {
+        font-size: 140%;
+        position: relative;
+        text-align: center;
+        width: 100%
+    }
+
+    .MatchHistorySubTitle {
+        color: #cfcfcf
+    }
+
+    .MatchHistoryBack {
+        cursor: pointer;
+        font-size: 120%;
+        left: 0;
+        margin-top: -4px;
+        position: absolute;
+        top: 0
+    }
+
+    .MatchHistoryBack:hover {
+        color: #a30202
+    }
+
+    .MatchHistoryDetail {
+        display: inline-flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        overflow: hidden;
+        width: 100%
+    }
+
+    .LineChartOption {
+        color: #adadaf;
+        cursor: pointer;
+        margin-left: 0
+    }
+
+    .LineChartCheckboxIcon {
+        display: inline-block;
+        margin-right: 2px;
+        margin-top: -3px;
+        padding-top: 0;
+        vertical-align: middle
+    }
+
+    .LineChartOption.active {
+        color: #e6e6e6
+    }
+
+    .LineChartOption:hover {
+        color: #cbb46c
+    }
+
+    .MatchHistoryStageContainer {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: hidden
+    }
+
+    .MatchHistoryStageScrollContainer {
+        border-top: 1px solid #222;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto
+    }
+
+    .MatchHistoryGraphTitle {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 4px
+    }
+
+    .CheckboxText {
+        margin-right: 4px
+    }
+
+    .RowSummary {
+        color: #cfcfcf;
+        justify-content: space-around;
+        width: 50%
+    }
+
+    .RowBoard,
+    .RowSummary {
+        align-items: center;
+        display: flex
+    }
+
+    .RowBoard {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        max-width: 50%
+    }
+
+    .RowStageType {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between
+    }
+
+    .healthchange {
+        color: #cfcfcf;
+        font-size: 80%;
+        font-weight: 500;
+        margin-left: 3px;
+        margin-right: 3px;
+        margin-top: -2px;
+        width: 64px
+    }
+
+    .UnitWrapper2 {
+        height: 36px;
+        position: relative;
+        width: auto
+    }
+
+    .MatchHistoryGraphContainer {
+        display: inline-flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        min-height: 250px;
+        overflow: hidden;
+        width: 100%
+    }
+
+    .BoardContainer {
+        flex: 1 1 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 100%
+    }
+
+    .BoardContainer,
+    .BoardImage {
+        align-items: center;
+        display: flex
+    }
+
+    .BoardImage {
+        flex: 1 1 600;
+        justify-content: center
+    }
+
+    .BoardStats {
+        flex: 1 2 300;
+        height: 100%;
+        justify-content: space-between;
+        overflow: auto
+    }
+
+    .BoardStats,
+    .headerContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column
+    }
+
+    .headerContainer {
+        height: 300px;
+        justify-content: center;
+        margin: 20px auto;
+        max-width: 910px;
+        position: relative;
+        width: 100%
+    }
+
+    .headerImage {
+        background: url(https://www.metatft.com/cdn-cgi/image/width=910,format=auto/TFT_SET822_Art_KeyArt_4500x4500_FINAL_v002.jpg);
+        background-position: 50% 5%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        mix-blend-mode: soft-light;
+        opacity: .3;
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+    .recentGameGeneral {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-right: 30px
+    }
+
+    .recentGamePlacement {
+        align-items: center;
+        background: #606669;
+        border-radius: 2px;
+        color: #f9f9f9;
+        display: flex;
+        font-size: 12px;
+        font-weight: 500;
+        justify-content: center;
+        padding: 1px 6px;
+        text-shadow: rgba(0, 0, 0, .5) 0 2px 4px
+    }
+
+    .recentGameMatchDetails {
+        align-items: center;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        row-gap: 5px;
+        width: 140px
+    }
+
+    .recentGameCompUnitsContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        row-gap: 10px
+    }
+
+    .recentGameMatchDetailRow {
+        align-items: center;
+        -webkit-column-gap: 10px;
+        column-gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 5px
+    }
+
+    .PlayIcon {
+        color: #e6e6e6;
+        height: 32px
+    }
+
+    .NavContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        min-height: 46px;
+        overflow: auto;
+        padding-bottom: 2px
+    }
+
+    .VodContainer {
+        padding: 6px 8px
+    }
+
+    .NavigationButton {
+        align-items: center;
+        color: #a6a6a6;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin: 2px;
+        min-width: 24px;
+        text-align: center
+    }
+
+    .compTitleContainer {
+        align-items: baseline;
+        color: #cfcfcf;
+        flex-direction: row;
+        font-weight: 400;
+        margin-bottom: 2px;
+        margin-left: 4px;
+        max-width: 100%
+    }
+
+    .compTitleContainer,
+    .compTitleContainer .sub_title {
+        display: inline-flex;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .recentGameMatchAugment {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap
+    }
+
+    .recentGameMatchInfo {
+        align-items: center;
+        -webkit-column-gap: 5%;
+        column-gap: 5%;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        max-width: 100%
+    }
+
+    .NavigationButton:hover {
+        color: #fff
+    }
+
+    .NavigationButton:hover .StageImage {
+        -webkit-filter: drop-shadow(0 0 2px #cbb46c);
+        filter: drop-shadow(0 0 2px #CBB46C)
+    }
+
+    .NavTitle {
+        padding: 2px 8px
+    }
+
+    .NavSubtitle {
+        color: #cfcfcf;
+        font-size: 10px
+    }
+
+    .StageImage {
+        max-height: 20px;
+        max-width: 20px
+    }
+
+    .headerText1 {
+        align-items: center;
+        color: #e6e6e6;
+        display: flex;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 60px;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, .5)
+    }
+
+    .headerText1,
+    .headerText2 {
+        font-family: Poppins;
+        font-style: normal
+    }
+
+    .headerText2 {
+        color: #cfcfcf;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 30px;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, .25)
+    }
+
+    .VodSearchBarContainer {
+        max-width: 600px;
+        padding: 10px;
+        width: 100%
+    }
+
+    .gameHeader {
+        align-items: baseline;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .languageFilterContainer {
+        align-items: center;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+        display: flex;
+        flex-direction: row;
+        min-width: 135px
+    }
+
+    .languageFilterDropdown {
+        min-width: 62px
+    }
+
+    .searchBar {
+        background: #424348;
+        border-radius: 4px;
+        height: 42px;
+        left: 226px;
+        position: absolute;
+        top: 150px;
+        width: 465px
+    }
+
+    .searchBarText {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        font-family: Poppins;
+        font-size: 17px;
+        font-style: italic;
+        font-weight: 400;
+        height: 26px;
+        left: 13px;
+        line-height: 26px;
+        position: absolute;
+        top: 9px;
+        width: 382px
+    }
+
+    .searchBarIcon {
+        height: 24px;
+        left: 431px;
+        position: absolute;
+        top: 11px;
+        width: 24px
+    }
+
+    .smallWhiteText.queueType {
+        font-weight: 500
+    }
+
+    .recentGameEntryContainer {
+        background: #27282b;
+        border-radius: 4px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, .25);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+        min-height: 80px;
+        padding: 5px 10px;
+        position: relative;
+        width: 100%
+    }
+
+    .recentGameEntryRow {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        min-height: 70px;
+        row-gap: 5px
+    }
+
+    .VodLinkSmall {
+        display: none
+    }
+
+    .recentGameCompContainer {
+        max-width: 100%;
+        overflow: hidden;
+        padding-bottom: 5px
+    }
+
+    .goldText {
+        color: #cbb46c;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .goldText,
+    .smallWhiteText {
+        font-family: Poppins;
+        font-style: normal
+    }
+
+    .smallWhiteText {
+        align-items: center;
+        color: #cfcfcf;
+        display: flex;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px
+    }
+
+    .CompModeWarning {
+        color: #cfcfcf;
+        font-weight: 300;
+        margin-bottom: 5px
+    }
+
+    .smallWhiteText:hover {
+        color: #cfcfcf
+    }
+
+    .recentGameEntryProfileIcon {
+        border: 1px solid #cbb46c;
+        border-radius: 25px;
+        box-sizing: border-box
+    }
+
+    .recentGameGeneralProfile {
+        display: flex;
+        flex-direction: row
+    }
+
+    .VodPage {
+        padding-bottom: 20px;
+        padding-top: 20px
+    }
+
+    @media(max-width: 991px) {
+        .recentGameGeneral {
+            flex: 1 1 auto;
+            justify-content: space-between;
+            margin-right: 0
+        }
+
+        .VodLinkSmall {
+            display: inline-block
+        }
+
+        .recentGameEntryRow {
+            flex-wrap: wrap
+        }
+
+        .recentGameMatchInfo {
+            -webkit-column-gap: 49px;
+            column-gap: 49px
+        }
+
+        .recentGameGeneral {
+            border-bottom: 1px solid #404144;
+            padding-bottom: 5px
+        }
+
+        .VodLinkLarge {
+            display: none
+        }
+    }
+
+    @media (max-width: 500px) {
+        .recentGameMatchAugment {
+            align-items: center;
+            flex-direction: column
+        }
+
+        .recentGameMatchInfo {
+            -webkit-column-gap: 5px;
+            column-gap: 5px
+        }
+    }
+
+    @media (max-width: 400px) {
+        .recentGameGeneralProfile {
+            flex-wrap: wrap
+        }
+
+        .recentGameMatchDetails {
+            width: 150px
+        }
+    }
+
+}
