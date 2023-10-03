@@ -14,6 +14,7 @@ const getAllTraitsAPI = async () => {
     headers: getHeadersToken(),
   });
   return traits;
+  
 };
 
 const addTraitAPI = async (newTrait) => {

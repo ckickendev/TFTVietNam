@@ -1,3 +1,5 @@
+import { ChampionHoverComponent } from "../HoverComponent/ChampionHoverComponent";
+
 export const DefaultPanel = () => {
   return (
     <div className="main-content">
@@ -18,6 +20,25 @@ export const DefaultPanel = () => {
           </ul>
         </div>
       </div>
+      <ChampionHoverComponent
+        champion={{
+          name: "Syndra",
+          imgLink:
+            "https://www.metatft.com/cdn-cgi/image/width=38,height=38,format=auto/https://cdn.metatft.com/file/metatft/champions/tft8_syndra.png",
+          traits: [
+            {
+              image:
+                "https://cdn.metatft.com/file/metatft/traits/spacecorps.png",
+              name: "Quan canh laser",
+            },
+            {
+              image:
+                "https://cdn.metatft.com/file/metatft/traits/spacecorps.png",
+              name: "Quan canh laser",
+            },
+          ],
+        }}
+      />
       <hr />
       <div className="row">
         <div className="col-md-3 col-xs-6">

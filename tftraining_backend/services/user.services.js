@@ -5,6 +5,7 @@ const { ServerException, ForbiddenException } = require("../exceptions");
 const sendEmailHandler = require("../utils/sendEmailOptions");
 const { confirmTokenEmail, confirmRegiter } = require("../utils/emailTemplate");
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 class UserService extends Service {
   async getAllUser() {
     const users = await User.find({});
@@ -33,6 +34,7 @@ class UserService extends Service {
         GOOGLE_MAILER_REFRESH_TOKEN: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
       });
       const newUser = new User({
+        _id: new mongoose.Types.ObjectId(),
         username: email,
         password: passwordEncrypt,
         email: email,
@@ -61,6 +63,7 @@ class UserService extends Service {
         GOOGLE_MAILER_CLIENT_SECRET: process.env.GOOGLE_MAILER_CLIENT_SECRET,
         GOOGLE_MAILER_REFRESH_TOKEN: process.env.GOOGLE_MAILER_REFRESH_TOKEN,
       });
+      
       const userUpdate = await User.findOne({ email: email });
       userUpdate.token_reset_pass = tokenGenerate;
       userUpdate.save();
@@ -89,7 +92,6 @@ class UserService extends Service {
 
   async confirmTokenAccess(access_token) {
     const user = await User.findOne({ token_reset_pass: access_token });
-    console.log("user confrim token", user);
     if (user.id) {
       return true;
     }
@@ -98,7 +100,6 @@ class UserService extends Service {
 
   async confirmNewPassword(access_token, new_password) {
     const user = await User.findOne({token_reset_pass: access_token});
-    console.log(user);
     const newPassword = await bcrypt.hash(new_password, 10);
     user.password = newPassword;
     user.token_reset_pass = "";

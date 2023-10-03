@@ -466,7 +466,7 @@ export const TraitAdmin = () => {
         sx={{ width: "100%", ...tableCellSx, border: 1 , marginTop: 4}}
         color="success"
       >
-        Switch to add champion
+        Switch
       </Button>
     </>
   );

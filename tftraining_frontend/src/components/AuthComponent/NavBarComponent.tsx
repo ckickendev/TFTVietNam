@@ -228,9 +228,9 @@ export const NavBarComponent = observer(({ authStore }: any) => {
               </div>
               <div id="DownloadButtonNavContainer">
                 <div className="DownloadButtonNavContainer">
-                  <a href={`${ROOT_URL}/download`}>
+                  <a href={`${ROOT_URL}/chessboard`}>
                     <Button variant="contained" color="success" size="small">
-                      Download App
+                      Start with simulator
                     </Button>
                   </a>
                 </div>

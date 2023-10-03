@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-const uuid = require("node-uuid");
 
 const { Schema } = mongoose;
 const traitSchema = new Schema(
   {
     _id: {
-      type: String,
-      default: () => uuid.v4(),
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
     },
     name: String,
     image: String,
