@@ -16,6 +16,7 @@ import { ConfirmSignUpByLink } from "./components/AuthComponent/ConfirmSignUpByL
 import { ResetPasswordByLink } from "./components/AuthComponent/ResetPasswordByLink";
 import loadingStore from "./store/loadingStore";
 import authStore from "./store/authStore";
+import ChessBoard from "./components/ChessComponent/ChessBoard.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="admin" element={<Admin loadingStore={loadingStore} authStore={authStore} />} />
       <Route path="confirm_register" element={<ConfirmSignUpByLink />} />
       <Route path="reset-password-link" element={<ResetPasswordByLink />} />
+      <Route path="chessboard" element={<ChessBoard />} />
     </Route>
   )
 );
