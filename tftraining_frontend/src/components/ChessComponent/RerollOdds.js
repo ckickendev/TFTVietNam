@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "././css/index.scss"
 import * as Constants from "../constants.js"
 import RerollOddsBackground from "../images/reroll-odds-background.png"
 import Gem1 from "../images/gem-1.png"

@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "./css/index.scss"
 import * as Constants from "../constants.js"
 
 import { ChampionStage } from "./ChampionStage.js"
@@ -468,7 +468,7 @@ export default class ChessBoard extends React.Component {
     const heldChamp = this.state.stage[this.state.heldChamp];
     const sellCost = (heldChamp && heldChamp['name'] !== "") ? Constants.SELL_RATE[heldChamp['cost']][heldChamp['level'] - 1] : 0;
     return (
-      <div onKeyDown={this.handleKeyPress}>
+      <div onKeyDown={this.handleKeyPress} className="chessBoard">
         <img className="background" src={images['tft-map-background.jpg']}/>
         <ChampionStage
           stage={this.state['stage']}

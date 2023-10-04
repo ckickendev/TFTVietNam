@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "././css/index.scss"
 import KeyListener from "./KeyListener.js"
 import sellChampBackground from "../images/sell-champ-background.png"
 

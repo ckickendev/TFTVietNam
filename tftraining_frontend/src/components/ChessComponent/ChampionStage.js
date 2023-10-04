@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/index.css";
+import "./css/index.scss";
 import { ChampionStageTile } from "./ChampionStageTile.js";
 
 export class ChampionStage extends React.Component {

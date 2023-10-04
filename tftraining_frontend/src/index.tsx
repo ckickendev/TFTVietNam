@@ -17,6 +17,7 @@ import { ResetPasswordByLink } from "./components/AuthComponent/ResetPasswordByL
 import loadingStore from "./store/loadingStore";
 import authStore from "./store/authStore";
 import ChessBoard from "./components/ChessComponent/ChessBoard.js";
+import { UploadComponent } from "./components/UploadImage/UploadComponent";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       />
       <Route path="" element={<Home loadingStore={loadingStore} />} />
       <Route path="home" element={<Home loadingStore={loadingStore} />} />
+      <Route path="uploadImage" element={<UploadComponent />} />
       <Route path="notfound" element={<NotFoundPage />} />
       <Route path="forbidden" element={<AccessForbidden />} />
       <Route path="admin" element={<Admin loadingStore={loadingStore} authStore={authStore} />} />

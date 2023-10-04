@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "././css/index.scss"
 import Refresh from "../images/refresh.png"
 import RefreshHovered from "../images/refresh-hovered.png"
 import RefreshDisabled from "../images/refresh-disabled.png"

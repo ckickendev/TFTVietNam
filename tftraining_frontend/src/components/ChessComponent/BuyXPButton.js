@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "./css/index.scss"
 import BuyXP from "../images/buy-xp.png"
 import BuyXPHovered from "../images/buy-xp-hovered.png"
 import BuyXPDisabled from "../images/buy-xp-disabled.png"

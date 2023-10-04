@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "././css/index.scss"
 import sellChampBackground from "../images/sell-champ-background.png"
 
 export function SellChampButton(props) {

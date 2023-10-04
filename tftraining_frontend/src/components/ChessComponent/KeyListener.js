@@ -1,5 +1,5 @@
 import React from "react"
-import "./css/index.css"
+import "././css/index.scss"
 import * as Constants from "../constants.js"
 import KeybindSound from "../../audio/pickup.ogg"
 
