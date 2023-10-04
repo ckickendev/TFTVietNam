@@ -63,7 +63,7 @@ export const Admin = observer(({ loadingStore, authStore }: any) => {
             <LoadingCustom isOpen={loadingStore.getIsLoading()} />
           )}
           <NavBarComponent authStore={authStore} />
-          <div className="page-container-admin-page">
+          <div className="page-container-admin-page" >
             <NavigationPanel setOnStatus={changeStatus} />
             {renderUIForAdminSide()}
           </div>

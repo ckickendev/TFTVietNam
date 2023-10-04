@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { LINK_IMAGE_FIREBASE } from "../constants";
 
 export const HomepageContent = () => {
   const small_bg_7 = "https://cdn.metatft.com/file/metatft/home/set7_bg.webp";
@@ -46,7 +47,7 @@ export const HomepageContent = () => {
               <img
                 alt="Happy Pengu"
                 className="HomePageSummaryImg"
-                src="./images/happy_pengu.webp"
+                src={LINK_IMAGE_FIREBASE.ICON_PENGUIN_HOME_1}
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Accurate and Unbiased</div>
@@ -61,7 +62,7 @@ export const HomepageContent = () => {
               <img
                 alt="Cheer Pengu"
                 className="HomePageSummaryImg"
-                src="./images/cheer_pengu.webp"
+                src={LINK_IMAGE_FIREBASE.ICON_PENGUIN_HOME_2}
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Up to Date</div>
@@ -76,7 +77,7 @@ export const HomepageContent = () => {
               <img
                 alt="Dab Pengu"
                 className="HomePageSummaryImg"
-                src="./images/dab_pengu.webp"
+                src={LINK_IMAGE_FIREBASE.ICON_PENGUIN_HOME_3}
               />
               <div className="HighlightTextContainer">
                 <div className="HighlightTitle">Get the Advantage</div>

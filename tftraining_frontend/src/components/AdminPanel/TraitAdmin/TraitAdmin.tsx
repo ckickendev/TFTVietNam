@@ -451,23 +451,25 @@ export const TraitAdmin = () => {
           displayDisaggree={false}
         />
       )}
-      {allTraits.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <TextComponent sx={tableCellSx}>No data found</TextComponent>
-        </TableContainer>
-      ) : (
-        renderMenuAdmin()
-      )}
-      <Button
-        onClick={() => {
-          setEditTraitChampion(!editTraitChampion);
-        }}
-        variant="contained"
-        sx={{ width: "100%", ...tableCellSx, border: 1 , marginTop: 4}}
-        color="success"
-      >
-        Switch
-      </Button>
+      <div className="trait-admin">
+        {allTraits.length === 0 ? (
+          <TableContainer sx={{ padding: 1, textAlign: "center" }}>
+            <TextComponent sx={tableCellSx}>No data found</TextComponent>
+          </TableContainer>
+        ) : (
+          renderMenuAdmin()
+        )}
+        <Button
+          onClick={() => {
+            setEditTraitChampion(!editTraitChampion);
+          }}
+          variant="contained"
+          sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
+          color="success"
+        >
+          Switch
+        </Button>
+      </div>
     </>
   );
 };
