@@ -1,9 +1,47 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { LINK_IMAGE_FIREBASE } from "../constants";
 
 export const HomepageContent = () => {
   const small_bg_7 = "https://cdn.metatft.com/file/metatft/home/set7_bg.webp";
+  const [statusIntro, setStatusInto] = useState(1);
+  const bgImageDiscover = [
+    "",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Comps.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Hyperroll.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Loadeddice.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Augments.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Items.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Units.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Traits.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/Rising.PNG",
+    "https://www.metatft.com/cdn-cgi/image/width=710,format=auto/https://cdn.metatft.com/file/metatft/set8/images/App.PNG",
+  ];
+
+  const getStartImg = [
+    "https://www.metatft.com/logo.svg",
+    "",
+    "https://www.metatft.com/icons/Patreon_120.png",
+    "https://www.metatft.com/icons/Discord.svg",
+  ];
+
+  const updateStatus = (status: number) => {
+    setStatusInto(status);
+  };
+
+  const getClassStatus = (position: number) => {
+    if (statusIntro === position) {
+      return "HomePageTab active nav-link";
+    }
+    return "HomePageTab nav-link";
+  };
+
+  const getClassStatusContent = (position: number) => {
+    if (statusIntro === position) {
+      return "tab-pane active";
+    }
+    return "tab-pane";
+  };
   return (
     <div className="MetaTFTLayout2" style={{ minHeight: "2000px" }}>
       <div className="container" style={{ minHeight: "100vh" }}>
@@ -92,36 +130,63 @@ export const HomepageContent = () => {
             <div className="HomePageGetStartedTitle"></div>
             <div className="HomePageTabContainer">
               <ul className="HomePageTabMain nav nav-tabs">
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab active nav-link">Comps</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(1)}
+                >
+                  <a className={getClassStatus(1)}>Comps</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Game Modes</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(2)}
+                >
+                  <a className={getClassStatus(2)}>Game Modes</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Loaded Dice</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(3)}
+                >
+                  <a className={getClassStatus(3)}>Loaded Dice</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Augments</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(4)}
+                >
+                  <a className={getClassStatus(4)}>Augments</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Items</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(5)}
+                >
+                  <a className={getClassStatus(5)}>Items</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Units</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(6)}
+                >
+                  <a className={getClassStatus(6)}>Units</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Traits</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(7)}
+                >
+                  <a className={getClassStatus(7)}>Traits</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">Rising</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(8)}
+                >
+                  <a className={getClassStatus(8)}>Rising</a>
                 </li>
-                <li className="HomePageTabItem nav-item">
-                  <a className="HomePageTab nav-link">In-Game App</a>
+                <li
+                  className="HomePageTabItem nav-item"
+                  onClick={() => updateStatus(9)}
+                >
+                  <a className={getClassStatus(9)}>In-Game App</a>
                 </li>
               </ul>
               <div className="tab-content">
-                <div className="tab-pane active">
+                <div className={getClassStatusContent(1)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Comps</div>
@@ -144,12 +209,12 @@ export const HomepageContent = () => {
                       <img
                         alt="Comps Page Preview"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Comps.PNG"
+                        src={bgImageDiscover[1]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(2)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Game Modes</div>
@@ -177,12 +242,12 @@ export const HomepageContent = () => {
                       <img
                         alt="Game Modes Page Preview"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Hyperroll.PNG"
+                        src={bgImageDiscover[2]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(3)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Loaded Dice</div>
@@ -204,12 +269,12 @@ export const HomepageContent = () => {
                       <img
                         alt="Loaded Dice Page"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Loadeddice.PNG"
+                        src={bgImageDiscover[3]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(4)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Augments</div>
@@ -230,12 +295,12 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT Augment Stats Page"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Augments.PNG"
+                        src={bgImageDiscover[4]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(5)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Items</div>
@@ -256,12 +321,12 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT Item Stats"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Items.PNG"
+                        src={bgImageDiscover[5]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(6)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Units</div>
@@ -282,12 +347,12 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT Unit Stats and Builds"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Units.PNG"
+                        src={bgImageDiscover[6]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(7)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Traits</div>
@@ -307,12 +372,12 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT Trait Stats"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Traits.PNG"
+                        src={bgImageDiscover[7]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(8)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">Rising</div>
@@ -333,12 +398,12 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT Top Rising Players"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Rising.PNG"
+                        src={bgImageDiscover[8]}
                       />
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane">
+                <div className={getClassStatusContent(9)}>
                   <div className="HomeTabContents">
                     <div className="HomeTabDescription">
                       <div className="HomeTabTitle">In-Game App</div>
@@ -359,7 +424,7 @@ export const HomepageContent = () => {
                       <img
                         alt="TFT MetaTFT App"
                         className="HomeTabImg"
-                        src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/App.PNG"
+                        src={bgImageDiscover[9]}
                       />
                     </div>
                   </div>
@@ -377,7 +442,7 @@ export const HomepageContent = () => {
                 <img
                   alt="MetaTFT Logo"
                   className="HomePageStartedImg"
-                  src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/logo.svg"
+                  src={getStartImg[0]}
                 />
                 <div className="HighlightTitle HighlightGetStarted">
                   Dig into the data
@@ -418,7 +483,7 @@ export const HomepageContent = () => {
                   alt="Molediver"
                   className="HomePageStartedImg"
                   id="PatreonGetStartedImg"
-                  src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Patreon_120.png"
+                  src={getStartImg[2]}
                 />
                 <div className="HighlightTitle HighlightGetStarted">
                   Support on Patreon
@@ -438,7 +503,7 @@ export const HomepageContent = () => {
                   alt="Join Discord"
                   className="HomePageStartedImg"
                   id="DiscordGetStartedImg"
-                  src="./MetaTFT - Discover the TFT Meta & Stats for Set 8_files/Discord.svg"
+                  src={getStartImg[3]}
                 />
                 <div className="HighlightTitle HighlightGetStarted">
                   Join us on Discord
@@ -451,7 +516,6 @@ export const HomepageContent = () => {
               </a>
             </div>
           </div>
-          åß
         </div>
       </div>
     </div>
