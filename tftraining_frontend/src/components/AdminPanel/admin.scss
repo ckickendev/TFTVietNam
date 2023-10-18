@@ -78,6 +78,10 @@
     }
 
     #main-menu {
+      ul { 
+        list-style-type: none !important;
+      }
+
       li {
         position: relative;
         margin: 0;

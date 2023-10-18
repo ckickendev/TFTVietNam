@@ -58,13 +58,12 @@ export const NavBarComponent = observer(({ authStore }: any) => {
             </a>
             <h2 className="logo-container">
               <a className="LogoText" href={`${ROOT_URL}`}>
-                MetaTFT
+                TFT Training
               </a>
             </h2>
             <button
               aria-controls="basic-navbar-nav"
               type="button"
-              aria-label="Toggle navigation"
               className="navbar-toggler collapsed"
             >
               <span className="navbar-toggler-icon" />
@@ -73,7 +72,6 @@ export const NavBarComponent = observer(({ authStore }: any) => {
               <div className="ml-auto navbar-nav nav-pills">
                 <div className="nav-item">
                   <a
-                    data-rr-ui-event-key="/comps"
                     className="nav-link"
                     href={`${ROOT_URL}/comps`}
                   >
@@ -99,11 +97,9 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     <DropdownItem linkHref={`${ROOT_URL}`}>
                       Hyper Roll
                     </DropdownItem>
-                    <hr className="dropdown-divider" />
                     <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
                       Double up
                     </DropdownItem>
-                    <hr className="dropdown-divider" />
                     <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
                       PBE Comps
                     </DropdownItem>
@@ -134,13 +130,9 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     aria-labelledby="basic-nav-dropdown"
                   >
                     <DropdownItem>Items</DropdownItem>
-                    <hr className="dropdown-divider" />
                     <DropdownItem>Units</DropdownItem>
-                    <hr className="dropdown-divider" />
                     <DropdownItem>Traits</DropdownItem>
-                    <hr className="dropdown-divider" />
                     <DropdownItem>Auguments</DropdownItem>
-                    <hr className="dropdown-divider" />
                     <div className="dropdown-item">
                       <a
                         data-rr-ui-event-key="/early-comps"

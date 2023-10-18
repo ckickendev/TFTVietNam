@@ -1,3 +1,8 @@
+export const COLOR = {
+  BLACK: '#313236',
+  UNDER_BLACK: '#303641'
+}
+
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];
 export const REROLL_ODDS = {
   2: [100, 0, 0, 0, 0],
