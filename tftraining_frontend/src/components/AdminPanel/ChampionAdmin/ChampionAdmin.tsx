@@ -1,4 +1,3 @@
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import {
   Table,
   TableBody,
@@ -10,10 +9,6 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
-  TextFieldComponent,
-  NumberFieldComponent,
-} from "../../CommonComponent/TextFieldComponent";
-import {
   addChampionAPI,
   deleteChampionById,
   editChampionAPI,
@@ -24,6 +19,7 @@ import DialogCustom from "../../../utils/DialogCustom";
 import { validateNumber } from "../../../utils/function";
 import loadingStore from "../../../store/loadingStore";
 import { TextComponent } from "../../CommonComponent/TextComponent";
+import { ChampionAddForm } from "./ChampionAddForm";
 
 interface Column {
   id: "avatar" | "name" | "cost" | "skill";
@@ -266,6 +262,12 @@ export const ChampionAdmin = () => {
     }
   };
 
+  const onHandleAddButton = () => {
+    setUnableInput((pre: boolean) => {
+      return !pre;
+    });
+  };
+
   return (
     <>
       {errorAddChampion.isError && (
@@ -281,6 +283,9 @@ export const ChampionAdmin = () => {
       {allChampions.length === 0 ? (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
           <TextComponent sx={tableCellSx}>No data found</TextComponent>
+          <Button onClick={onHandleAddButton} variant="contained">
+            Add Champion
+          </Button>
         </TableContainer>
       ) : (
         <TableContainer sx={{ padding: 1, textAlign: "center" }}>
@@ -305,93 +310,6 @@ export const ChampionAdmin = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow sx={{ height: "100%" }}>
-                <TableCell colSpan={6} align="center">
-                  <AddCircleIcon
-                    onClick={addRowAddChampion}
-                    fontSize="large"
-                    color="success"
-                  />
-                </TableCell>
-              </TableRow>
-              {unableInput && (
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="center">
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewChampion(e, "avatar");
-                      }}
-                      variant="filled"
-                      value={inputChampion.avatar}
-                      textColor="white"
-                      placeholder="Link image avatar"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewChampion(e, "name");
-                      }}
-                      variant="filled"
-                      value={inputChampion.name}
-                      textColor="white"
-                      placeholder="Enter Name"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <NumberFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewChampion(e, "cost");
-                      }}
-                      variant="filled"
-                      value={inputChampion.cost}
-                      textColor="white"
-                      placeholder="Enter Cost"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewChampion(e, "skill");
-                      }}
-                      variant="filled"
-                      value={inputChampion.skill}
-                      textColor="white"
-                      placeholder="Enter Skill"
-                    />
-                  </TableCell>
-                  {inputChampion.idEdit !== "SAMPLE" ? (
-                    <TableCell align="center">
-                      <Button
-                        onClick={handleEditChampion}
-                        variant="contained"
-                        sx={{ minWidth: 100, ...tableCellSx }}
-                        color="warning"
-                      >
-                        Edit
-                      </Button>
-                    </TableCell>
-                  ) : (
-                    <TableCell align="center">
-                      <Button
-                        onClick={handleAddChampion}
-                        variant="contained"
-                        sx={{ minWidth: 100, ...tableCellSx }}
-                        color="success"
-                      >
-                        Add
-                      </Button>
-                    </TableCell>
-                  )}
-                </TableRow>
-              )}
-
               {allChampions.map((champion: IChampionData, index) => {
                 if (champion._id === inputChampion.idEdit) {
                   return undefined;
@@ -407,7 +325,19 @@ export const ChampionAdmin = () => {
               })}
             </TableBody>
           </Table>
+          <Button onClick={onHandleAddButton} variant="contained">
+            Add Champion
+          </Button>
         </TableContainer>
+      )}
+      {unableInput && (
+        <ChampionAddForm
+          inputChampion={inputChampion}
+          inputNewChampion={inputNewChampion}
+          title="Add Champion"
+          handleSubmit={handleAddChampion}
+          cancelModel={addRowAddChampion}
+        />
       )}
     </>
   );
