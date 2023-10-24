@@ -20,6 +20,9 @@ import { validateNumber } from "../../../utils/function";
 import loadingStore from "../../../store/loadingStore";
 import { TextComponent } from "../../CommonComponent/TextComponent";
 import { ChampionAddForm } from "./ChampionAddForm";
+// import { COLOR } from "../../constants";
+import { COLOR } from "../../constants";
+import { ADMIN_TABLE_STYLE } from "../style";
 
 interface Column {
   id: "avatar" | "name" | "cost" | "skill";
@@ -52,11 +55,6 @@ export interface IChampionData {
   skill: string;
 }
 
-const tableCellSx = {
-  color: "white",
-  fontWeight: 300,
-};
-
 export const ChampionAdmin = () => {
   useEffect(() => {
     const getAllChampion = async () => {
@@ -74,6 +72,7 @@ export const ChampionAdmin = () => {
     isError: false,
   });
   const [unableInput, setUnableInput] = useState(false);
+  const [deleteChampion, setDeleteChampion] = useState("");
   const [inputChampion, setInputChampion] = useState({
     idEdit: "SAMPLE",
     avatar: "",
@@ -137,19 +136,20 @@ export const ChampionAdmin = () => {
     }
   };
 
-  const handleDeleteChampion = async (id: string) => {
+  const handleDeleteChampion = async () => {
     try {
       loadingStore.setIsLoading(true);
-      const handlerDelete = await deleteChampionById(id);
+      const handlerDelete = await deleteChampionById(deleteChampion);
 
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
         setAllChampions((allChampions: IChampionData[]) => {
           const newArrayAllChampions = allChampions.filter(
-            (champion) => champion._id !== id
+            (champion) => champion._id !== deleteChampion
           );
           return newArrayAllChampions;
         });
+        cancelFormDeleteChampion();
         return;
       }
     } catch (err: any) {
@@ -162,6 +162,10 @@ export const ChampionAdmin = () => {
       });
     }
   };
+
+  const cancelFormDeleteChampion = () => {
+    setDeleteChampion("");
+  }
 
   const addRowAddChampion = () => {
     setUnableInput((state) => !state);
@@ -281,28 +285,33 @@ export const ChampionAdmin = () => {
         />
       )}
       {allChampions.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <TextComponent sx={tableCellSx}>No data found</TextComponent>
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
+            No data found
+          </TextComponent>
           <Button onClick={onHandleAddButton} variant="contained">
             Add Champion
           </Button>
         </TableContainer>
       ) : (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <Table aria-label="customized table">
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <Table
+            aria-label="customized table"
+            sx={{ backgroundColor: COLOR.WHITE }}
+          >
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    sx={{ bgcolor: "#000", ...tableCellSx }}
+                    sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   >
                     {column.label}
                   </TableCell>
                 ))}
                 <TableCell
-                  sx={{ bgcolor: "#000", ...tableCellSx }}
+                  sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   align="center"
                 >
                   Action
@@ -316,10 +325,12 @@ export const ChampionAdmin = () => {
                 }
                 return (
                   <RowData
+                    key={index}
                     index={index}
                     champion={champion}
                     onEditHandler={onEditHandler}
                     handleDeleteChampion={handleDeleteChampion}
+                    setDeleteChampion={setDeleteChampion}
                   />
                 );
               })}
@@ -334,17 +345,29 @@ export const ChampionAdmin = () => {
         <ChampionAddForm
           inputChampion={inputChampion}
           inputNewChampion={inputNewChampion}
-          title="Add Champion"
+          title={
+            inputChampion?.idEdit == "SAMPLE"
+              ? "Add Champion"
+              : "Edit Champion Detail"
+          }
           handleSubmit={handleAddChampion}
           cancelModel={addRowAddChampion}
+          handleEditChampion={handleEditChampion}
         />
       )}
+      <DialogCustom
+        isOpen={deleteChampion != ""}
+        content="Do you really want delete this champion, this may be cannot to undo."
+        title="Delete this champion?"
+        confirmHandler={handleDeleteChampion}
+        cancelHandler={cancelFormDeleteChampion}
+      />
     </>
   );
 };
 
 const RowData = (props: any) => {
-  const { index, champion, onEditHandler, handleDeleteChampion } = props;
+  const { index, champion, onEditHandler,setDeleteChampion } = props;
   return (
     <TableRow
       key={index}
@@ -353,19 +376,23 @@ const RowData = (props: any) => {
       <TableCell align="center">
         <img src={champion.avatar} width={50} height={50} alt="avatar" />
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{champion.name}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{champion.cost}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{champion.skill}</TextComponent>
       </TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
-          sx={{ minWidth: 100, marginRight: 2, ...tableCellSx }}
+          sx={{
+            minWidth: 100,
+            marginRight: 2,
+            ...ADMIN_TABLE_STYLE.tableCellSx,
+          }}
           color="secondary"
           onClick={() => {
             onEditHandler(champion._id);
@@ -375,10 +402,10 @@ const RowData = (props: any) => {
         </Button>
         <Button
           variant="contained"
-          sx={{ minWidth: 100, ...tableCellSx }}
+          sx={{ minWidth: 100, ...ADMIN_TABLE_STYLE.tableCellSx }}
           color="error"
           onClick={() => {
-            handleDeleteChampion(champion._id);
+            setDeleteChampion(champion._id);
           }}
         >
           Delete

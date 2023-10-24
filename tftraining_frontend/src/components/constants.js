@@ -2,6 +2,7 @@ export const COLOR = {
   BLACK: '#313236',
   UNDER_BLACK: '#303641',
   BLACK_BACKGROUND: '#000000aa',
+  WHITE: '#ffffff',
 }
 
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];

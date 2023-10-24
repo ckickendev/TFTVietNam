@@ -20,7 +20,7 @@ interface IDialogCustome {
   aggreeTitle?: string;
 }
 
-export default function DialogCustom({
+const DialogCustom = ({
   isOpen,
   confirmHandler,
   cancelHandler,
@@ -31,7 +31,7 @@ export default function DialogCustom({
   disaggreeTitle = "Disaggree",
   aggreeTitle = "Aggree",
   onClose,
-}: IDialogCustome) {
+}: IDialogCustome) => {
   const handleAggree = () => {
     confirmHandler && confirmHandler();
   };
@@ -69,3 +69,5 @@ export default function DialogCustom({
     </div>
   );
 }
+
+export default DialogCustom;
