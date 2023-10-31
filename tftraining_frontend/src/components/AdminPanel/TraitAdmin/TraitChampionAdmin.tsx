@@ -20,6 +20,9 @@ import { IChampionData } from "../ChampionAdmin/ChampionAdmin";
 import { ITraitData } from "./TraitAdmin";
 import { getAllChampionAPI } from "../../../api/championApi";
 import { changeTraitChampion, getAllTraitsAPI } from "../../../api/traitAPI";
+import { ADMIN_TABLE_STYLE } from "../style";
+import { COLOR } from "../../constants";
+import { TraitChangeChampionForm } from "./TraitChangeChampionForm";
 
 interface Column {
   id: "image" | "champions" | "name";
@@ -37,7 +40,7 @@ const tableCellSx = {
   fontWeight: 300,
 };
 
-export const TraitChampionAdmin = () => {
+export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
   useEffect(() => {
     const getAllDatas = async () => {
       loadingStore.setIsLoading(true);
@@ -63,6 +66,7 @@ export const TraitChampionAdmin = () => {
     isError: false,
   });
   const [unableInput, setUnableInput] = useState(false);
+  const [deleteTrait, setDeleteTrait] = useState("");
 
   const onCloseDialogHandler = async () => {
     setErrorAddTraitChampion((state) => {
@@ -171,25 +175,29 @@ export const TraitChampionAdmin = () => {
         />
       )}
       {allTraits.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
           <TextComponent sx={tableCellSx}>No data found</TextComponent>
+          <Button onClick={handleChangeMenu}>Change</Button>
         </TableContainer>
       ) : (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <Table aria-label="customized table">
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <Table
+            aria-label="customized table"
+            sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
+          >
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    sx={{ bgcolor: "#000", ...tableCellSx }}
+                    sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   >
                     {column.label}
                   </TableCell>
                 ))}
                 <TableCell
-                  sx={{ bgcolor: "#000", ...tableCellSx }}
+                  sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   align="center"
                 >
                   Action
@@ -198,6 +206,9 @@ export const TraitChampionAdmin = () => {
             </TableHead>
             <TableBody>
               {unableInput && (
+                // <TraitChangeChampionForm
+
+                // />
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
@@ -257,9 +268,6 @@ export const TraitChampionAdmin = () => {
               )}
 
               {allTraits.map((trait: ITraitData, index) => {
-                if (trait._id === inputTraitChampion.idEdit) {
-                  return undefined;
-                }
                 return (
                   <RowData
                     key={index}
@@ -267,11 +275,13 @@ export const TraitChampionAdmin = () => {
                     trait={trait}
                     onEditHandler={onEditHandler}
                     handleDeleteTrait={handleDeleteTrait}
+                    setDeleteTrait={setDeleteTrait}
                   />
                 );
               })}
             </TableBody>
           </Table>
+          <Button onClick={handleChangeMenu}>Change</Button>
         </TableContainer>
       )}
     </>
@@ -335,7 +345,7 @@ const ChampionSelectComponent = ({
 };
 
 const RowData = (props: any) => {
-  const { index, trait, onEditHandler, handleDeleteItem } = props;
+  const { index, trait, onEditHandler, setDeleteTrait } = props;
   return (
     <TableRow
       key={index}
@@ -344,10 +354,10 @@ const RowData = (props: any) => {
       <TableCell align="center">
         <img src={trait.image} width={50} height={50} alt="image" />
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         {trait.champions?.length === 0 ? (
           <TextComponent>No Champions</TextComponent>
         ) : (
@@ -364,7 +374,11 @@ const RowData = (props: any) => {
       <TableCell align="center">
         <Button
           variant="contained"
-          sx={{ minWidth: 100, marginRight: 2, ...tableCellSx }}
+          sx={{
+            minWidth: 100,
+            marginRight: 2,
+            ...ADMIN_TABLE_STYLE.tableCellSx,
+          }}
           color="secondary"
           onClick={() => {
             onEditHandler(trait._id);
@@ -374,10 +388,10 @@ const RowData = (props: any) => {
         </Button>
         <Button
           variant="contained"
-          sx={{ minWidth: 100, ...tableCellSx }}
+          sx={{ minWidth: 100, ...ADMIN_TABLE_STYLE.tableCellSx }}
           color="error"
           onClick={() => {
-            handleDeleteItem(trait._id);
+            setDeleteTrait(trait._id);
           }}
         >
           Delete

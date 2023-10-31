@@ -1,31 +1,22 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from "@mui/material";
 import React from "react";
 import { COLOR } from "../../constants";
+import { Box, Button, InputLabel, TextField } from "@mui/material";
 
 interface IFormAdd {
   title?: string;
   handleSubmit?: () => void;
-  handleEditChampion?: () => void;
-  inputNewChampion: (e: any, field: string) => void;
-  inputChampion: any;
+  handleEditItem?: () => void;
+  inputNewItem: (e: any, field: string) => void;
+  inputItem: any;
   cancelModel?: () => void;
 }
 
-export const ChampionAddForm = ({
+export const ItemForm = ({
   title,
   handleSubmit,
-  handleEditChampion,
-  inputNewChampion,
-  inputChampion,
+  handleEditItem,
+  inputNewItem,
+  inputItem,
   cancelModel,
 }: IFormAdd) => {
   return (
@@ -50,55 +41,34 @@ export const ChampionAddForm = ({
                 autoComplete="off"
               >
                 <TextField
-                  label="Link image avatar"
+                  label="Link image item"
                   color="success"
                   focused
-                  value={inputChampion?.avatar}
+                  value={inputItem?.image}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewChampion(event, "avatar");
+                    inputNewItem(event, "image");
                   }}
                   sx={{ m: 1 }}
                 />
                 <TextField
-                  label="Enter name"
+                  label="Enter name item"
                   color="success"
                   focused
-                  value={inputChampion?.name}
+                  value={inputItem?.name}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewChampion(event, "name");
+                    inputNewItem(event, "name");
                   }}
                   sx={{ m: 1 }}
                 />
-                <FormControl fullWidth sx={{ m: 1 }}>
-                  <InputLabel id="demo-simple-select-helper-label">
-                    Cost
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    color="success"
-                    value={inputChampion?.cost}
-                    label="Cost"
-                    onChange={(event: SelectChangeEvent<any>) => {
-                      inputNewChampion(event, "cost");
-                    }}
-                  >
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={3}>4</MenuItem>
-                    <MenuItem value={3}>5</MenuItem>
-                  </Select>
-                </FormControl>
                 <TextField
-                  label="Enter skill"
+                  label="Enter effect"
                   color="success"
-                  focused
                   multiline
                   rows={4}
-                  value={inputChampion?.skill}
+                  focused
+                  value={inputItem?.effect}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewChampion(event, "skill");
+                    inputNewItem(event, "effect");
                   }}
                   sx={{ m: 1 }}
                 />
@@ -110,12 +80,10 @@ export const ChampionAddForm = ({
                 variant="contained"
                 sx={{ marginRight: 1 }}
                 onClick={
-                  inputChampion?.idEdit == "SAMPLE"
-                    ? handleSubmit
-                    : handleEditChampion
+                  inputItem?.idEdit == "SAMPLE" ? handleSubmit : handleEditItem
                 }
               >
-                {inputChampion?.idEdit == "SAMPLE" ? "Create" : "Confirm"}
+                {inputItem?.idEdit == "SAMPLE" ? "Create" : "Confirm"}
               </Button>
               <Button variant="contained" onClick={cancelModel}>
                 Cancel

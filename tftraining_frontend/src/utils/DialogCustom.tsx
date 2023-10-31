@@ -57,10 +57,10 @@ const DialogCustom = ({
         </DialogContent>
         <DialogActions>
           {displayDisaggree && (
-            <Button onClick={handleDisaggree}>{disaggreeTitle}</Button>
+            <Button variant="contained" color="primary" onClick={handleDisaggree}>{disaggreeTitle}</Button>
           )}
           {displayAggree && (
-            <Button onClick={handleAggree} autoFocus>
+            <Button variant="contained" color="warning" onClick={handleAggree} autoFocus>
               {aggreeTitle}
             </Button>
           )}

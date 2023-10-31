@@ -20,6 +20,9 @@ import {
 } from "../../../api/itemAPI";
 import { errorEmptyInputObject } from "../../../utils/function";
 import { TextComponent } from "../../CommonComponent/TextComponent";
+import { ADMIN_TABLE_STYLE } from "../style";
+import { COLOR } from "../../constants";
+import { ItemForm } from "./ItemForm";
 
 interface Column {
   id: "image" | "name" | "effect";
@@ -64,6 +67,7 @@ export const ItemAdmin = () => {
     isError: false,
   });
   const [unableInput, setUnableInput] = useState(false);
+  const [deleteItem, setDeleteItem] = useState("");
   const [inputItem, setInputItem] = useState({
     idEdit: "SAMPLE",
     image: "",
@@ -114,16 +118,16 @@ export const ItemAdmin = () => {
     }
   };
 
-  const handleDeleteItem = async (id: string) => {
+  const handleDeleteItem = async () => {
     try {
-      console.log("id", id);
-      
       loadingStore.setIsLoading(true);
-      const handlerDelete = await deleteItemById(id);
+      const handlerDelete = await deleteItemById(deleteItem);
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
         setAllItems((allItems: IItemData[]) => {
-          const newArrayAllItems = allItems.filter((item) => item._id !== id);
+          const newArrayAllItems = allItems.filter(
+            (item) => item._id !== deleteItem
+          );
           return newArrayAllItems;
         });
         return;
@@ -207,8 +211,11 @@ export const ItemAdmin = () => {
         });
         setUnableInput(false);
         loadingStore.setIsLoading(false);
-      }else{
-        setErrorAddItem({ error: "Some error is occur, No data update", isError: true });
+      } else {
+        setErrorAddItem({
+          error: "Some error is occur, No data update",
+          isError: true,
+        });
       }
       loadingStore.setIsLoading(false);
     } catch (err: any) {
@@ -220,6 +227,10 @@ export const ItemAdmin = () => {
       });
       loadingStore.setIsLoading(false);
     }
+  };
+
+  const cancelFormDeleteItem = () => {
+    setDeleteItem("");
   };
 
   return (
@@ -235,25 +246,33 @@ export const ItemAdmin = () => {
         />
       )}
       {allItems.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <TextComponent sx={tableCellSx}>No data found</TextComponent>
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
+            No data found
+          </TextComponent>
+          <Button onClick={addRowAddItem} variant="contained">
+            Add Item
+          </Button>
         </TableContainer>
       ) : (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <Table aria-label="customized table">
+        <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <Table
+            aria-label="customized table"
+            sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
+          >
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
                     key={column.id}
                     align={column.align}
-                    sx={{ bgcolor: "#000", ...tableCellSx }}
+                    sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   >
                     {column.label}
                   </TableCell>
                 ))}
                 <TableCell
-                  sx={{ bgcolor: "#000", ...tableCellSx }}
+                  sx={ADMIN_TABLE_STYLE.tableCellHeader}
                   align="center"
                 >
                   Action
@@ -261,105 +280,52 @@ export const ItemAdmin = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow sx={{ height: "100%" }}>
-                <TableCell colSpan={6} align="center">
-                  <AddCircleIcon
-                    onClick={addRowAddItem}
-                    fontSize="large"
-                    color="success"
-                  />
-                </TableCell>
-              </TableRow>
-              {unableInput && (
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="center">
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewItem(e, "image");
-                      }}
-                      variant="filled"
-                      value={inputItem.image}
-                      textColor="white"
-                      placeholder="Link image item"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewItem(e, "name");
-                      }}
-                      variant="filled"
-                      value={inputItem.name}
-                      textColor="white"
-                      placeholder="Enter Name of Item"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <TextFieldComponent
-                      color="error"
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        inputNewItem(e, "effect");
-                      }}
-                      variant="filled"
-                      value={inputItem.effect}
-                      textColor="white"
-                      placeholder="Enter Effect"
-                    />
-                  </TableCell>
-                  {inputItem.idEdit !== "SAMPLE" ? (
-                    <TableCell align="center">
-                      <Button
-                        onClick={handleEditItem}
-                        variant="contained"
-                        sx={{ minWidth: 100, ...tableCellSx }}
-                        color="warning"
-                      >
-                        Edit
-                      </Button>
-                    </TableCell>
-                  ) : (
-                    <TableCell align="center">
-                      <Button
-                        onClick={handleAddItem}
-                        variant="contained"
-                        sx={{ minWidth: 100, ...tableCellSx }}
-                        color="success"
-                      >
-                        Add
-                      </Button>
-                    </TableCell>
-                  )}
-                </TableRow>
-              )}
-
               {allItems.map((item: IItemData, index) => {
-                if (item._id === inputItem.idEdit) {
-                  return undefined;
-                }
                 return (
                   <RowData
                     key={index}
-                    index={index}
+                    index={index}ß
                     item={item}
                     onEditHandler={onEditHandler}
+                    setDeleteItem={setDeleteItem}
                     handleDeleteItem={handleDeleteItem}
                   />
                 );
               })}
             </TableBody>
           </Table>
+          <Button onClick={addRowAddItem} fullWidth variant="contained">
+            Add Item
+          </Button>
         </TableContainer>
       )}
+      {unableInput && (
+        <ItemForm
+          inputItem={inputItem}
+          inputNewItem={inputNewItem}
+          title={
+            inputItem?.idEdit == "SAMPLE" ? "Add Item" : "Edit Item Detail"
+          }
+          handleSubmit={handleAddItem}
+          cancelModel={addRowAddItem}
+          handleEditItem={handleEditItem}
+        />
+      )}
+      <DialogCustom
+        isOpen={deleteItem != ""}
+        content="Do you really want delete this champion, this may be cannot to undo."
+        title="Delete this champion?"
+        disaggreeTitle="Cancel"
+        aggreeTitle="Delete"
+        confirmHandler={handleDeleteItem}
+        cancelHandler={cancelFormDeleteItem}
+      />
     </>
   );
 };
 
 const RowData = (props: any) => {
-  const { index, item, onEditHandler, handleDeleteItem } = props;
+  const { index, item, onEditHandler, setDeleteItem } = props;
   return (
     <TableRow
       key={index}
@@ -368,16 +334,20 @@ const RowData = (props: any) => {
       <TableCell align="center">
         <img src={item.image} width={50} height={50} alt="image" />
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{item.name}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{item.effect}</TextComponent>
       </TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
-          sx={{ minWidth: 100, marginRight: 2, ...tableCellSx }}
+          sx={{
+            minWidth: 100,
+            marginRight: 2,
+            ...ADMIN_TABLE_STYLE.tableCellSx,
+          }}
           color="secondary"
           onClick={() => {
             onEditHandler(item._id);
@@ -387,10 +357,10 @@ const RowData = (props: any) => {
         </Button>
         <Button
           variant="contained"
-          sx={{ minWidth: 100, ...tableCellSx }}
+          sx={{ minWidth: 100, ...ADMIN_TABLE_STYLE.tableCellSx }}
           color="error"
           onClick={() => {
-            handleDeleteItem(item._id);
+            setDeleteItem(item._id);
           }}
         >
           Delete

@@ -165,7 +165,7 @@ export const ChampionAdmin = () => {
 
   const cancelFormDeleteChampion = () => {
     setDeleteChampion("");
-  }
+  };
 
   const addRowAddChampion = () => {
     setUnableInput((state) => !state);
@@ -297,7 +297,7 @@ export const ChampionAdmin = () => {
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
           <Table
             aria-label="customized table"
-            sx={{ backgroundColor: COLOR.WHITE }}
+            sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
           >
             <TableHead>
               <TableRow>
@@ -320,9 +320,6 @@ export const ChampionAdmin = () => {
             </TableHead>
             <TableBody>
               {allChampions.map((champion: IChampionData, index) => {
-                if (champion._id === inputChampion.idEdit) {
-                  return undefined;
-                }
                 return (
                   <RowData
                     key={index}
@@ -336,7 +333,7 @@ export const ChampionAdmin = () => {
               })}
             </TableBody>
           </Table>
-          <Button onClick={onHandleAddButton} variant="contained">
+          <Button onClick={onHandleAddButton} fullWidth variant="contained">
             Add Champion
           </Button>
         </TableContainer>
@@ -359,6 +356,8 @@ export const ChampionAdmin = () => {
         isOpen={deleteChampion != ""}
         content="Do you really want delete this champion, this may be cannot to undo."
         title="Delete this champion?"
+        disaggreeTitle="Cancel"
+        aggreeTitle="Delete"
         confirmHandler={handleDeleteChampion}
         cancelHandler={cancelFormDeleteChampion}
       />
@@ -367,7 +366,7 @@ export const ChampionAdmin = () => {
 };
 
 const RowData = (props: any) => {
-  const { index, champion, onEditHandler,setDeleteChampion } = props;
+  const { index, champion, onEditHandler, setDeleteChampion } = props;
   return (
     <TableRow
       key={index}
