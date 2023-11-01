@@ -19,6 +19,12 @@ import authStore from "./store/authStore";
 import ChessBoard from "./components/ChessComponent/ChessBoard.js";
 import { UploadComponent } from "./components/UploadImage/UploadComponent";
 
+// font 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" >

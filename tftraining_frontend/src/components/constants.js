@@ -6,6 +6,10 @@ export const COLOR = {
   GREEN: '#2f7d31'
 }
 
+export const SIZE = {
+  SIZE_IMAGE_CHANGE_CHAMPION : '80px'
+}
+
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];
 export const REROLL_ODDS = {
   2: [100, 0, 0, 0, 0],

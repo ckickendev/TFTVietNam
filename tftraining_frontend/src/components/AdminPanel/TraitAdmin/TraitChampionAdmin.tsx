@@ -22,7 +22,7 @@ import { getAllChampionAPI } from "../../../api/championApi";
 import { changeTraitChampion, getAllTraitsAPI } from "../../../api/traitAPI";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { COLOR } from "../../constants";
-import { TraitChangeChampionForm } from "./TraitChangeChampionForm";
+import { TraitChampionListInTraitForm } from "./TraitChampionListInTraitForm";
 
 interface Column {
   id: "image" | "champions" | "name";
@@ -55,7 +55,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
 
   const [allTraits, setAllTraits] = useState([]);
   const [allChampions, setAllChampions] = useState([]);
-  const [inputTraitChampion, setInputTraitChampion] = useState({
+  const [inputListTraitChampion, setInputListTraitChampion] = useState({
     idEdit: "SAMPLE",
     image: "",
     name: "",
@@ -75,7 +75,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
   };
 
   const onEditHandler = (idEdit: string) => {
-    setInputTraitChampion((oldInputTrait: any) => {
+    setInputListTraitChampion((oldInputTrait: any) => {
       const championsList: any = allTraits.filter((trait: any) => {
         return trait._id === idEdit;
       });
@@ -92,7 +92,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
   const handleDeleteTrait = () => {};
 
   const inputChangeTraitChampion = (e: any, position: number) => {
-    setInputTraitChampion((oldTrait: any) => {
+    setInputListTraitChampion((oldTrait: any) => {
       let newListChampions = oldTrait.champions.map(
         (champion: any, index: number) => {
           if (index === position) {
@@ -116,7 +116,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
   };
 
   const addMoreChampion = () => {
-    setInputTraitChampion((oldTrait: any) => {
+    setInputListTraitChampion((oldTrait: any) => {
       let newListChampions = [];
       if (oldTrait?.champions) {
         newListChampions = [...oldTrait.champions, ""];
@@ -133,16 +133,16 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
   const confirmHandlerAddChampions = async () => {
     try {
       const dataResponse = await changeTraitChampion(
-        inputTraitChampion.idEdit,
-        inputTraitChampion.champions
+        inputListTraitChampion.idEdit,
+        inputListTraitChampion.champions
       );
       setAllTraits((allTraits: any) => {
         console.log("Before set all trait", allTraits);
 
         const newAllTrait = allTraits.map((trait: any) => {
           console.log("input trait champion", trait);
-          if (trait._id === inputTraitChampion.idEdit) {
-            return { ...trait, champions: inputTraitChampion.champions };
+          if (trait._id === inputListTraitChampion.idEdit) {
+            return { ...trait, champions: inputListTraitChampion.champions };
           }
           return trait;
         });
@@ -150,7 +150,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
 
         return newAllTrait;
       });
-      setInputTraitChampion({
+      setInputListTraitChampion({
         idEdit: "SAMPLE",
         image: "",
         name: "",
@@ -160,6 +160,10 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
     } catch (err: any) {
       console.log(err);
     }
+  };
+
+  const onChangeInputStatus = () => {
+    setUnableInput(!unableInput);
   };
 
   return (
@@ -206,65 +210,15 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
             </TableHead>
             <TableBody>
               {unableInput && (
-                // <TraitChangeChampionForm
-
-                // />
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="center">
-                    <img
-                      src={inputTraitChampion.image}
-                      width={50}
-                      height={50}
-                      alt="image"
-                    />
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    <TextComponent>{inputTraitChampion.name}</TextComponent>
-                  </TableCell>
-                  <TableCell align="center" sx={tableCellSx}>
-                    {inputTraitChampion.champions?.length === 0 ? (
-                      <TextComponent>No Champions</TextComponent>
-                    ) : (
-                      inputTraitChampion.champions.map(
-                        (champion: any, index) => {
-                          return (
-                            <ChampionSelectComponent
-                              inputChangeTraitChampion={
-                                inputChangeTraitChampion
-                              }
-                              champion={champion}
-                              key={index}
-                              index={index}
-                              allChampions={allChampions}
-                            />
-                          );
-                        }
-                      )
-                    )}
-
-                    <AddCircleIcon onClick={addMoreChampion} />
-                  </TableCell>
-                  <TableCell align="center">
-                    <Button
-                      variant="contained"
-                      sx={{ minWidth: 100, marginRight: 2, ...tableCellSx }}
-                      color="secondary"
-                      onClick={confirmHandlerAddChampions}
-                    >
-                      Confirm
-                    </Button>
-                    <Button
-                      variant="contained"
-                      sx={{ minWidth: 100, ...tableCellSx }}
-                      color="error"
-                      onClick={() => {}}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
+                <TraitChampionListInTraitForm
+                  title="Change champion in the list trait"
+                  handleSubmit={confirmHandlerAddChampions}
+                  data={inputListTraitChampion}
+                  inputChangeTraitChampion={inputChangeTraitChampion}
+                  cancelModel={onChangeInputStatus}
+                  allChampions={allChampions}
+                  addMoreChampion={addMoreChampion}
+                />
               )}
 
               {allTraits.map((trait: ITraitData, index) => {
@@ -281,68 +235,21 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
               })}
             </TableBody>
           </Table>
-          <Button onClick={handleChangeMenu}>Change</Button>
+          <Button
+            onClick={handleChangeMenu}
+            variant="contained"
+            sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
+            color="success"
+          >
+            Switch to detail trait 
+          </Button>
         </TableContainer>
       )}
     </>
   );
 };
 
-const ChampionSelectComponent = ({
-  index,
-  inputChangeTraitChampion,
-  champion,
-  allChampions,
-}: any) => {
-  return (
-    <Box margin={2}>
-      <Select
-        key={index}
-        labelId="demo-controlled-open-select-label"
-        id="demo-controlled-open-select"
-        label="Champion"
-        sx={{
-          color: "white",
-          height: "40px",
-          background: "#d32f2f",
-          display: "flex",
-          "& .MuiSelect-select": {
-            display: "flex",
-            justifyContent: "space-evenly",
-            "& p": {
-              lineHeight: "50px",
-            },
-          },
-        }}
-        onChange={(e: any) => {
-          console.log("e in inputChangeTraitChampion", e.target.value);
 
-          inputChangeTraitChampion(e, index);
-        }}
-        value={champion._id}
-      >
-        {allChampions.map((championElement: any, index: number) => {
-          return (
-            <MenuItem
-              key={index}
-              value={championElement._id}
-              sx={{ display: "flex" }}
-            >
-              <img
-                src={championElement.avatar}
-                width={50}
-                height={50}
-                alt="image"
-                style={{ padding: 8 }}
-              />
-              <TextComponent>{championElement.name}</TextComponent>
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </Box>
-  );
-};
 
 const RowData = (props: any) => {
   const { index, trait, onEditHandler, setDeleteTrait } = props;
@@ -364,7 +271,7 @@ const RowData = (props: any) => {
           trait.champions?.map((champion: IChampionData, index: number) => {
             return (
               <div className="mt-4" key={index}>
-                <img src={champion.avatar} />
+                <img src={champion.avatar} width={50} height={50}  />
                 <TextComponent key={index}>{champion.name}</TextComponent>
               </div>
             );
@@ -384,7 +291,7 @@ const RowData = (props: any) => {
             onEditHandler(trait._id);
           }}
         >
-          Edit
+          Edit list champion
         </Button>
         <Button
           variant="contained"

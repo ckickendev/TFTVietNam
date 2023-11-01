@@ -14,6 +14,8 @@ import React from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
 import { TextComponent } from "../../CommonComponent/TextComponent";
+import { COLOR } from "../../constants";
+import { ADMIN_TABLE_STYLE } from "../style";
 
 interface Column {
   id: "image" | "name" | "effect" | "unit_activate";
@@ -35,7 +37,7 @@ const columns: readonly Column[] = [
   },
 ];
 const tableCellSx = {
-  color: "white",
+  color: COLOR.WHITE,
   fontWeight: 300,
 };
 
@@ -82,20 +84,21 @@ export const TraitSkillDetail = ({
   handleChangeMenu
 }: ITraitChampionDetail) => {
   return (
-    <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-      <Table aria-label="customized table">
+    <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+      <Table aria-label="customized table"
+      sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}>
         <TableHead>
           <TableRow>
             {columns.map((column) => (
               <TableCell
                 key={column.id}
                 align={column.align}
-                sx={{ bgcolor: "#000", ...tableCellSx }}
+                sx={ADMIN_TABLE_STYLE.tableCellHeader}
               >
                 {column.label}
               </TableCell>
             ))}
-            <TableCell sx={{ bgcolor: "#000", ...tableCellSx }} align="center">
+            <TableCell sx={ADMIN_TABLE_STYLE.tableCellHeader} align="center">
               Action
             </TableCell>
           </TableRow>
@@ -265,13 +268,13 @@ const RowData = (props: any) => {
       <TableCell align="center">
         <img src={trait.image} width={50} height={50} alt="image" />
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.effect}</TextComponent>
       </TableCell>
-      <TableCell align="center" sx={tableCellSx}>
+      <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         {trait.unit_activate.map((element: IUnitActivate, index: number) => {
           return (
             <TextComponent
