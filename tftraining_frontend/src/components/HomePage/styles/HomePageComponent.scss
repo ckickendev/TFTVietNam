@@ -13,12 +13,13 @@
 
   a,
   p,
-  li {
+  li,
+  div {
     font-family: Poppins, Backup, Verdana, Segoe UI, Roboto, Oxygen,
       -apple-system, BlinkMacSystemFont, Ubuntu, Cantarell, Fira Sans,
       Droid Sans, Helvetica Neue, sans-serif;
-    font-size: small;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 300;
     margin: 0;
   }
 
@@ -229,7 +230,6 @@
     font-family: Poppins, Backup, Verdana, sans-serif;
     font-size: small;
     min-height: 100vh;
-    overflow-y: scroll;
   }
 
   .HomePageBannerText {
@@ -377,6 +377,7 @@
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+    align-items: center;
   }
 
   .HomePageDiscoverContainer {

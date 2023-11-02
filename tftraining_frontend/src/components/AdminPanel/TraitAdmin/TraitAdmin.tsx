@@ -170,6 +170,10 @@ export const TraitAdmin = () => {
     setUnableInput(true);
   };
 
+  const cancelInput = () => {
+    setUnableInput(!unableInput)
+  }
+
   const inputChangeUnitActivate = (e: any, position: number, type: number) => {
     if (type === 1) {
       const newUnitActivateArray = inputTrait.unit_activate.map(
@@ -242,6 +246,7 @@ export const TraitAdmin = () => {
           onEditHandler={onEditHandler}
           handleDeleteTrait={handleDeleteTrait}
           handleChangeMenu={handleChangeMenu}
+          cancelInput={cancelInput}
         />
       );
     }
@@ -315,23 +320,7 @@ export const TraitAdmin = () => {
           displayDisaggree={false}
         />
       )}
-      {allTraits.length === 0 ? (
-        <TableContainer sx={{ padding: 1, textAlign: "center" }}>
-          <TextComponent sx={tableCellSx}>No data found</TextComponent>
-        </TableContainer>
-      ) : (
-        renderMenuAdmin()
-      )}
-      {/* <Button
-          onClick={() => {
-            setEditTraitDetailChampion(!editTraitDetailChampion);
-          }}
-          variant="contained"
-          sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
-          color="success"
-        >
-          {editTraitDetailChampion ? "Edit trait detail" : "Edit champion for trait detail"}
-        </Button> */}
+      {renderMenuAdmin()}
     </>
   );
 };

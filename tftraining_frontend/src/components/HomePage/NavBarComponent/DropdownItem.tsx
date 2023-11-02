@@ -8,7 +8,11 @@ interface IDropdownItem {
 
 export const DropdownItem = ({ linkHref, title, children }: IDropdownItem) => {
   return (
-    <a className="nav-link" href={linkHref}>
+    <a
+      style={{ fontSize: "12px", fontWeight: 300 }}
+      className="nav-link"
+      href={linkHref}
+    >
       {children}
     </a>
   );

@@ -48,7 +48,7 @@ export const HomepageContent = () => {
         <div className="HomePage">
           <div
             className="HomePageBanner"
-            style={{ width: "1110px", height: "500px" }}
+            style={{ height: "500px" }}
           >
             <img alt="HomePageBg" className="HomePageBg" src={small_bg_7} />
             <div className="HomePageBannerText">

@@ -11,11 +11,11 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
 import { TextComponent } from "../../CommonComponent/TextComponent";
 import { COLOR } from "../../constants";
 import { ADMIN_TABLE_STYLE } from "../style";
+import { TraitSkillDetailForm } from "./TraitSkillDetailForm";
 
 interface Column {
   id: "image" | "name" | "effect" | "unit_activate";
@@ -59,14 +59,15 @@ interface ITraitChampionDetail {
   addRowAddTrait: () => void;
   inputNewTrait: (e: any, name: string) => void;
   inputTrait: any;
-  inputChangeUnitActivate: (e: any, index:number, param: number) => void;
+  inputChangeUnitActivate: (e: any, index: number, param: number) => void;
   addMoreUnitTrait: () => void;
   handleEditTrait: () => void;
   handleAddTrait: () => void;
   allTraits: ITraitData[];
-  onEditHandler: (e:any) => void;
+  onEditHandler: (e: any) => void;
   handleDeleteTrait: (id: string) => void;
-  handleChangeMenu: () => void
+  handleChangeMenu: () => void;
+  cancelInput: () => void;
 }
 
 export const TraitSkillDetail = ({
@@ -81,12 +82,15 @@ export const TraitSkillDetail = ({
   allTraits,
   onEditHandler,
   handleDeleteTrait,
-  handleChangeMenu
+  handleChangeMenu,
+  cancelInput,
 }: ITraitChampionDetail) => {
   return (
     <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
-      <Table aria-label="customized table"
-      sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}>
+      <Table
+        aria-label="customized table"
+        sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
+      >
         <TableHead>
           <TableRow>
             {columns.map((column) => (
@@ -104,95 +108,19 @@ export const TraitSkillDetail = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow sx={{ height: "100%" }}>
-            <TableCell colSpan={6} align="center">
-              <AddCircleIcon
-                onClick={addRowAddTrait}
-                fontSize="large"
-                color="success"
-              />
-            </TableCell>
-          </TableRow>
           {unableInput && (
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell align="center">
-                <TextFieldComponent
-                  color="error"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewTrait(e, "image");
-                  }}
-                  variant="filled"
-                  value={inputTrait.image}
-                  textColor="white"
-                  placeholder="Link image trait"
-                />
-              </TableCell>
-              <TableCell align="center" sx={tableCellSx}>
-                <TextFieldComponent
-                  color="error"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewTrait(e, "name");
-                  }}
-                  variant="filled"
-                  value={inputTrait.name}
-                  textColor="white"
-                  placeholder="Enter Name of Trait"
-                />
-              </TableCell>
-              <TableCell align="center" sx={tableCellSx}>
-                <TextFieldComponent
-                  color="error"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    inputNewTrait(e, "effect");
-                  }}
-                  variant="filled"
-                  value={inputTrait.effect}
-                  textColor="white"
-                  placeholder="Enter Effect"
-                />
-              </TableCell>
-              <TableCell align="center" sx={tableCellSx}>
-                {inputTrait.unit_activate.map((unit: any, index: any) => {
-                  return (
-                    <UnitInputComponent
-                      index={index}
-                      inputChangeUnitActivate={inputChangeUnitActivate}
-                      unit={unit}
-                    />
-                  );
-                })}
-                <AddCircleIcon
-                  onClick={addMoreUnitTrait}
-                  fontSize="small"
-                  color="success"
-                />
-              </TableCell>
-              {inputTrait.idEdit !== "SAMPLE" ? (
-                <TableCell align="center">
-                  <Button
-                    onClick={handleEditTrait}
-                    variant="contained"
-                    sx={{ minWidth: 100, ...tableCellSx }}
-                    color="warning"
-                  >
-                    Edit
-                  </Button>
-                </TableCell>
-              ) : (
-                <TableCell align="center">
-                  <Button
-                    onClick={handleAddTrait}
-                    variant="contained"
-                    sx={{ minWidth: 100, ...tableCellSx }}
-                    color="success"
-                  >
-                    Add
-                  </Button>
-                </TableCell>
-              )}
-            </TableRow>
+            <TraitSkillDetailForm
+              title={inputTrait.idEdit ? "Edit trait detail" : "Add new trait"}
+              inputTrait={inputTrait}
+              inputNewTrait={inputNewTrait}
+              addRowAddTrait={addRowAddTrait}
+              inputChangeUnitActivate={inputChangeUnitActivate}
+              addMoreUnitTrait={addMoreUnitTrait}
+              handleEditTrait={handleEditTrait}
+              handleAddTrait={handleAddTrait}
+              onEditHandler={onEditHandler}
+              cancelInput={cancelInput}
+            />
           )}
 
           {allTraits.map((trait: ITraitData, index) => {
@@ -211,50 +139,18 @@ export const TraitSkillDetail = ({
           })}
         </TableBody>
       </Table>
-      <Button onClick={handleChangeMenu}>Change</Button>
-    </TableContainer>
-  );
-};
-
-const UnitInputComponent = ({ index, inputChangeUnitActivate, unit }: any) => {
-  const renderMenuItem = () => {
-    const listOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    return listOptions.map((elementMenu) => {
-      return <MenuItem value={elementMenu}>{elementMenu}</MenuItem>;
-    });
-  };
-
-  return (
-    <Box>
-      <Select
-        key={index}
-        labelId="demo-controlled-open-select-label"
-        id="demo-controlled-open-select"
-        value={unit.count_activate}
-        label="Age"
-        sx={{
-          color: "white",
-          height: "40px",
-          background: "#d32f2f",
-          margin: "2px",
-        }}
-        onChange={(e: any) => {
-          inputChangeUnitActivate(e, index, 1);
-        }}
+      <Button variant="contained" color="primary" onClick={addRowAddTrait}>
+        Add more trait
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
+        color="success"
+        onClick={handleChangeMenu}
       >
-        {renderMenuItem()}
-      </Select>
-      <TextFieldComponent
-        color="error"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          inputChangeUnitActivate(e, index, 2);
-        }}
-        variant="filled"
-        value={unit.effect_activate}
-        textColor="white"
-        placeholder="Skill this activate"
-      />
-    </Box>
+        Add more champion to trait
+      </Button>
+    </TableContainer>
   );
 };
 

@@ -181,7 +181,14 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
       {allTraits.length === 0 ? (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
           <TextComponent sx={tableCellSx}>No data found</TextComponent>
-          <Button onClick={handleChangeMenu}>Change</Button>
+          <Button
+            onClick={handleChangeMenu}
+            variant="contained"
+            sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
+            color="success"
+          >
+            Switch to detail trait
+          </Button>
         </TableContainer>
       ) : (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
@@ -241,15 +248,13 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
             sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}
             color="success"
           >
-            Switch to detail trait 
+            Switch to detail trait
           </Button>
         </TableContainer>
       )}
     </>
   );
 };
-
-
 
 const RowData = (props: any) => {
   const { index, trait, onEditHandler, setDeleteTrait } = props;
@@ -271,7 +276,7 @@ const RowData = (props: any) => {
           trait.champions?.map((champion: IChampionData, index: number) => {
             return (
               <div className="mt-4" key={index}>
-                <img src={champion.avatar} width={50} height={50}  />
+                <img src={champion.avatar} width={50} height={50} />
                 <TextComponent key={index}>{champion.name}</TextComponent>
               </div>
             );

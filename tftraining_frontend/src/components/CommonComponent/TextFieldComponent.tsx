@@ -18,6 +18,7 @@ interface ITextFieldComponentProps {
   sx?: object;
   textAlignInput?: string;
   type?: string;
+  label?: string;
 }
 interface INumberFieldComponentProps {
   variant: "standard" | "filled" | "outlined" | undefined;
@@ -40,6 +41,7 @@ interface INumberFieldComponentProps {
 const TextFieldComponent = (props: ITextFieldComponentProps) => {
   return (
     <TextField
+      label={props?.label}
       variant={props.variant}
       value={props.value}
       onChange={props.onChange}
