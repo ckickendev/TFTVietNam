@@ -43,7 +43,6 @@ class UserService extends Service {
       });
       newUser.save();
     } catch (e) {
-      console.log(e);
       throw new ServerException("Error", e.message);
     }
   }

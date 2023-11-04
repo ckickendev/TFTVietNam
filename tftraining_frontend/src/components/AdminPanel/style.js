@@ -17,3 +17,11 @@ export const ADMIN_TABLE_STYLE = {
     color: COLOR.WHITE,
   },
 };
+
+export const FORM_STYLE = {
+  formContainer: {
+    display: "flex",
+    justifyContent: "center",
+    background: COLOR.BLACK_BACKGROUND,
+  },
+};

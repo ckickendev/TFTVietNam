@@ -24,7 +24,6 @@ class AuthController extends Controller {
   async login(req, res, next) {
     try {
       const { email, _id, role } = req.user;
-      console.log(req.user);
       const payload = {
         id: _id,
         email,
@@ -33,7 +32,6 @@ class AuthController extends Controller {
       const token = await authServices.generateToken(payload);
       const refreshToken = await authServices.generateRefreshToken(payload);
       ConsoleLogger.info(token);
-      console.log(1);
       return res.status(200).json({
         message: "Login Success",
         data: {
@@ -49,7 +47,6 @@ class AuthController extends Controller {
 
   async register(req, res, next) {
     const { email, password } = req.body;
-    console.log(email, password);
     try {
       await userServices.register(email, password);
       return res.status(200).json({
@@ -81,7 +78,6 @@ class AuthController extends Controller {
         throw new NotFoundException("User not found");
       }
       const isPasswordTrue = await bcrypt.compare(password, user.password);
-      console.log(isPasswordTrue);
       if (!isPasswordTrue) {
         throw new BadRequestException("Password not matching!");
       }
@@ -121,7 +117,6 @@ class AuthController extends Controller {
       const { token, user_authen } = req.body;
       const confirmToken = await userServices.confirmToken(token, user_authen);
       if (confirmToken) {
-        console.log(true);
         res
           .status(200)
           .json({ message: "Confirm Success !", user: user_authen });

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { COLOR } from "../../constants";
+import { FORM_STYLE } from "../style";
 
 interface IFormAdd {
   title?: string;
@@ -31,7 +32,7 @@ export const ChampionAddForm = ({
   return (
     <div
       className={`modal fade show d-block"`}
-      style={{ display: "block", background: COLOR.BLACK_BACKGROUND }}
+      style={FORM_STYLE.formContainer}
     >
       <div className="modal-dialog modal-simple modal-dialog-centered">
         <div className="modal-content">

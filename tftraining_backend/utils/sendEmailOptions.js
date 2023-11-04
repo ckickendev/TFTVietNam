@@ -6,7 +6,6 @@ const sendEmailHandler = async (mailOptionsInfo) => {
   const GOOGLE_MAILER_CLIENT_ID = mailOptionsInfo.GOOGLE_MAILER_CLIENT_ID;
   const GOOGLE_MAILER_CLIENT_SECRET = mailOptionsInfo.GOOGLE_MAILER_CLIENT_SECRET;
   const GOOGLE_MAILER_REFRESH_TOKEN = mailOptionsInfo.GOOGLE_MAILER_REFRESH_TOKEN;
-  console.log(mailOptionsInfo);
   const ADMIN_EMAIL_ADDRESS = "thesoonafu@gmail.com";
 
   const myOAuth2Client = new OAuth2Client(

@@ -26,7 +26,6 @@ class ChampionController extends Controller {
     const newChampion = req.body.newChampion;
     try {
       const newChampionData = await championService.addNewChampion(newChampion);
-      console.log("new champion data", newChampionData);
       res.status(200).json({
         message: "Add new champion !",
         newChampionData: newChampionData,
@@ -42,7 +41,6 @@ class ChampionController extends Controller {
     const id = req.body.idChampion;
     try {
       const dataDelete = await championService.deleteChampion(id);
-      console.log("dataDelete", dataDelete);
       res.status(200).json({
         message: "Delete champion success!",
         dataDelete: dataDelete,

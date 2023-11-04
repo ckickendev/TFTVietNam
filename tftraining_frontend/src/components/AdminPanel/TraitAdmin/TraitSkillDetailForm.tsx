@@ -3,6 +3,7 @@ import { COLOR } from "../../constants";
 import { Box, Button, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { FORM_STYLE } from "../style";
 
 interface IFormAdd {
   title: string;
@@ -33,7 +34,7 @@ export const TraitSkillDetailForm = ({
   return (
     <div
       className={`modal fade show d-block"`}
-      style={{ display: "block", background: COLOR.BLACK_BACKGROUND }}
+      style={FORM_STYLE.formContainer}
     >
       <div className="modal-dialog modal-simple modal-dialog-centered">
         <div className="modal-content">

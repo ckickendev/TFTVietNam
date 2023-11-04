@@ -9,7 +9,6 @@ async function AuthMiddleware(req, res, next) {
     const validToken = jwt.verify(tokenClient, "SECRET_KEY", {
       algorithms: ["HS256"],
     });
-    console.log(validToken);
     const checkingUser = await User.findOne({ email: validToken.email });
     if (!checkingUser) {
       return next(new NotFoundException("User not found!"));
@@ -26,7 +25,6 @@ async function AdminMiddleware(req, res, next) {
     const headersToken =
       req?.headers["authorization"] || req?.body?.headers["Authorization"];
     const tokenClient = headersToken.split(" ")[1];
-    console.log("tokenClient", tokenClient);
     const validToken = jwt.verify(tokenClient, "SECRET_KEY", {
       algorithms: ["HS256"],
     });

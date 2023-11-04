@@ -41,7 +41,6 @@ class ItemController extends Controller {
     const id = req.body.idItem;
     try {
       const dataDelete = await itemService.deleteItem(id);
-      console.log("dataDelete item", dataDelete);
       res.status(200).json({
         message: "Delete item success!",
         dataDelete: dataDelete,

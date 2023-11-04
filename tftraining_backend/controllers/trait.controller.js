@@ -14,7 +14,6 @@ class TraitController extends Controller {
   getAllTraits = async (req, res, next) => {
     try {
       const allTraits = await traitService.getAllTraits();
-      console.log("all traits", allTraits);
       res.status(200).json({
         allTraits: allTraits,
       });
@@ -77,7 +76,6 @@ class TraitController extends Controller {
         responseData: responseData,
       });
     } catch (err) {
-      console.log("Loi khi add trait", err);
       res.status(500).json({
         error: err.message,
       });

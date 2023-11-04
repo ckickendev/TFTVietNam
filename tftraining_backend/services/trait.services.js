@@ -6,7 +6,6 @@ const { ObjectId } = require("mongodb");
 class TraitService extends Service {
   getAllTraits = async () => {
     const traits = await Trait.find({}).populate('champions');
-    console.log("Log all traits", traits);
     return traits;
   };
 

@@ -4,7 +4,6 @@ require("dotenv").config();
 
 class AuthService extends Service {
   async generateToken(data) {
-    console.log(process.env.SECRET_KEY);
     return await jwt.sign(data, process.env.SECRET_KEY, {
       algorithm: "HS256",
       expiresIn: process.env.JWT_EXPIRED,

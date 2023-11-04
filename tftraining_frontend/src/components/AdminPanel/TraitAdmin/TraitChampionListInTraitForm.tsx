@@ -7,8 +7,8 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { Image } from "@mui/icons-material";
 import { TextComponent } from "../../CommonComponent/TextComponent";
+import { FORM_STYLE } from "../style";
 
 interface IFormAdd {
   title?: string;
@@ -32,7 +32,7 @@ export const TraitChampionListInTraitForm = ({
   return (
     <div
       className={`modal fade show d-block"`}
-      style={{ display: "block", background: COLOR.BLACK_BACKGROUND }}
+      style={FORM_STYLE.formContainer}
     >
       <div className="modal-dialog modal-simple modal-dialog-centered">
         <div className="modal-content">
@@ -52,7 +52,7 @@ export const TraitChampionListInTraitForm = ({
                 autoComplete="off"
               >
                 <TextComponent>{data?.name}</TextComponent>
-                {data.champions?.length === 0 ? (
+                  {data.champions?.length === 0 ? (
                   <TextComponent>No Champions</TextComponent>
                 ) : (
                   data.champions.map((champion: any, index: any) => {
