@@ -8,6 +8,8 @@ import SupportIcon from "@mui/icons-material/Support";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { COLOR } from "../constants";
+import { IconComponent } from "../CommonComponent/IconComponent";
 
 export const NavBarComponent = observer(({ authStore }: any) => {
   const navigate = useNavigate();
@@ -49,15 +51,10 @@ export const NavBarComponent = observer(({ authStore }: any) => {
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="navbar_container container">
             <a href={ROOT_URL} className="navbar-brand">
-              <img
-                src="./images/logoforapp.png"
-                width={50}
-                height={50}
-                alt="MetaTFT Logo"
-              />
+              <IconComponent />
             </a>
             <h2 className="logo-container">
-              <a className="LogoText" href={`${ROOT_URL}`}>
+              <a className="LogoText" style={{color: COLOR.WHITE}} href={`${ROOT_URL}`}>
                 TFT Training
               </a>
             </h2>
