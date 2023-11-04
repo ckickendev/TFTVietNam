@@ -30,6 +30,7 @@ class TraitService extends Service {
 
   editTrait = async (data) => {
     const { image, name, effect, unit_activate } = data;
+    console.log("ádasdsad", data);
     const findById = { _id: data._id };
     const updateData = { image, name, effect, unit_activate };
     const responseData = await Trait.updateOne(findById, updateData);
@@ -38,6 +39,7 @@ class TraitService extends Service {
 
   editTraitChampion = async (data) => {
     const idTrait = data.idTrait;
+    console.log("ákdaskjd", data);
     await Trait.findByIdAndUpdate(idTrait, {champions: []});
     const championIds = data.champions.map(async (champion) => {
       const championId = new ObjectId(champion._id);

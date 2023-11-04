@@ -79,6 +79,8 @@ export const TraitSkillDetailForm = ({
                     inputNewTrait(e, "effect");
                   }}
                   focused
+                  multiline
+  rows={4}
                   value={inputTrait.effect}
                   sx={{ m: 1 }}
                 />

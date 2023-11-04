@@ -16,6 +16,7 @@ import { TextComponent } from "../../CommonComponent/TextComponent";
 import { COLOR } from "../../constants";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { TraitSkillDetailForm } from "./TraitSkillDetailForm";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
 
 interface Column {
   id: "image" | "name" | "effect" | "unit_activate";
@@ -124,9 +125,6 @@ export const TraitSkillDetail = ({
           )}
 
           {allTraits.map((trait: ITraitData, index) => {
-            if (trait._id === inputTrait.idEdit) {
-              return undefined;
-            }
             return (
               <RowData
                 key={index}
@@ -162,7 +160,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <img src={trait.image} width={50} height={50} alt="image" />
+        <CustomIconTraitComponent src={trait.image} height={"80px"} width={"80px"} />
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>

@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { TextComponent } from "../../CommonComponent/TextComponent";
 import { FORM_STYLE } from "../style";
+import { CustomChampionAvatar } from "../../CommonComponent/CustomChampionAvatar";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
 
 interface IFormAdd {
   title?: string;
@@ -45,14 +47,15 @@ export const TraitChampionListInTraitForm = ({
               <Box
                 component="form"
                 sx={{
-                  width: "200px",  
+                  width: "200px",
                   "& > :not(style)": { width: "100%" },
                 }}
                 noValidate
                 autoComplete="off"
               >
+                <CustomIconTraitComponent src={data?.image} width={"80px"} height={"80px"}/>
                 <TextComponent>{data?.name}</TextComponent>
-                  {data.champions?.length === 0 ? (
+                {data.champions?.length === 0 ? (
                   <TextComponent>No Champions</TextComponent>
                 ) : (
                   data.champions.map((champion: any, index: any) => {
@@ -131,11 +134,8 @@ const ChampionSelectComponent = ({
               value={championElement._id}
               sx={{ display: "flex", justifyContent: "center" }}
             >
-              <img
-                src={championElement.avatar}
-                width={80}
-                height={80}
-                alt="image"
+              <CustomChampionAvatar
+                src={championElement?.avatar}
                 style={{ padding: 8, marginRight: 20 }}
               />
               <TextComponent color="red">{championElement.name}</TextComponent>

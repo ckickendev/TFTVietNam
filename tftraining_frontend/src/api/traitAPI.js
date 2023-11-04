@@ -37,6 +37,7 @@ const deleteTraitById = async (id) => {
 };
 
 const editTraitAPI = async (data) => {
+  console.log("asdasd");
   const res = await axios.patch(`${ROOT_BACKEND}/trait/edit`, {
     headers: getHeadersToken(),
     data: {

@@ -111,6 +111,66 @@ export const TraitAdmin = () => {
     }
   };
 
+  const handleEditTrait = async () => {
+    
+    try {
+      const inputDataTrait = {
+        _id: inputTrait.idEdit,
+        name: inputTrait.name,
+        image: inputTrait.image,
+        effect: inputTrait.effect,
+        unit_activate: inputTrait.unit_activate,
+      };
+      console.log(inputTrait);
+      
+      loadingStore.setIsLoading(true);
+      const isErrorEmpty = errorEmptyInputObject(inputTrait);
+      console.log("hello", isErrorEmpty);
+
+      if (isErrorEmpty) {
+        setErrorAddTrait((state) => {
+          return { error: isErrorEmpty, isError: true };
+        });
+        loadingStore.setIsLoading(false);
+        return;
+      }
+      const editTraitData = await editTraitAPI(inputDataTrait);
+      if (editTraitData) {
+        setAllTraits((allTraits: ITraitData[]) => {
+          const newArrayAllTraits = allTraits.map((traitElement) => {
+            return traitElement._id === inputTrait.idEdit
+              ? inputDataTrait
+              : traitElement;
+          });
+          return newArrayAllTraits;
+        });
+        setInputTrait({
+          idEdit: "SAMPLE",
+          name: "",
+          image: "",
+          effect: "",
+          unit_activate: [{ count_activate: 0, effect_activate: "" }],
+        });
+        setUnableInput(false);
+        loadingStore.setIsLoading(false);
+      } else {
+        setErrorAddTrait({
+          error: "Some error is occur, No data update",
+          isError: true,
+        });
+      }
+      loadingStore.setIsLoading(false);
+    } catch (err: any) {
+      setErrorAddTrait((state) => {
+        return {
+          error: err?.response?.data?.error || err?.message,
+          isError: true,
+        };
+      });
+      loadingStore.setIsLoading(false);
+    }
+  };
+
   const handleDeleteTrait = async (id: string) => {
     try {
       loadingStore.setIsLoading(true);
@@ -253,60 +313,6 @@ export const TraitAdmin = () => {
     return <TraitChampionAdmin handleChangeMenu={handleChangeMenu} />;
   };
 
-  const handleEditTrait = async () => {
-    try {
-      const inputDataTrait = {
-        _id: inputTrait.idEdit,
-        name: inputTrait.name,
-        image: inputTrait.image,
-        effect: inputTrait.effect,
-        unit_activate: inputTrait.unit_activate,
-      };
-      loadingStore.setIsLoading(true);
-      const isErrorEmpty = errorEmptyInputObject(inputTrait);
-      if (isErrorEmpty) {
-        setErrorAddTrait((state) => {
-          return { error: isErrorEmpty, isError: true };
-        });
-        loadingStore.setIsLoading(false);
-        return;
-      }
-      const editTraitData = await editTraitAPI(inputDataTrait);
-      if (editTraitData) {
-        setAllTraits((allTraits: ITraitData[]) => {
-          const newArrayAllTraits = allTraits.map((traitElement) => {
-            return traitElement._id === inputTrait.idEdit
-              ? inputDataTrait
-              : traitElement;
-          });
-          return newArrayAllTraits;
-        });
-        setInputTrait({
-          idEdit: "SAMPLE",
-          name: "",
-          image: "",
-          effect: "",
-          unit_activate: [{ count_activate: 0, effect_activate: "" }],
-        });
-        setUnableInput(false);
-        loadingStore.setIsLoading(false);
-      } else {
-        setErrorAddTrait({
-          error: "Some error is occur, No data update",
-          isError: true,
-        });
-      }
-      loadingStore.setIsLoading(false);
-    } catch (err: any) {
-      setErrorAddTrait((state) => {
-        return {
-          error: err?.response?.data?.error || err?.message,
-          isError: true,
-        };
-      });
-      loadingStore.setIsLoading(false);
-    }
-  };
 
   return (
     <>

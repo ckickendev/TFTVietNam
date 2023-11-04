@@ -23,6 +23,7 @@ import { changeTraitChampion, getAllTraitsAPI } from "../../../api/traitAPI";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { COLOR } from "../../constants";
 import { TraitChampionListInTraitForm } from "./TraitChampionListInTraitForm";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
 
 interface Column {
   id: "image" | "champions" | "name";
@@ -264,7 +265,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <img src={trait.image} width={50} height={50} alt="image" />
+        <CustomIconTraitComponent src={trait.image} height={"80px"} width={"80px"} />
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>

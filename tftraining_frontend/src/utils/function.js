@@ -35,7 +35,7 @@ export const validateNumber = (
 export const errorEmptyInputObject = (value) => {
   for (let key in value) {
     if (value.hasOwnProperty(key)) {
-      if (!value[key]) {
+      if (!value[key] && value[key] != "0") {
         return `Field "${key}" is cannot empty`;
       }
     }
