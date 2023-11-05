@@ -63,6 +63,8 @@ export const TraitAdmin = () => {
     effect: "",
     unit_activate: [{ count_activate: 0, effect_activate: "" }],
   });
+  const [deleteTrait, setDeleteTrait] = useState("");
+
 
   const handleAddTrait = async () => {
     try {
@@ -112,7 +114,7 @@ export const TraitAdmin = () => {
   };
 
   const handleEditTrait = async () => {
-    
+
     try {
       const inputDataTrait = {
         _id: inputTrait.idEdit,
@@ -122,7 +124,7 @@ export const TraitAdmin = () => {
         unit_activate: inputTrait.unit_activate,
       };
       console.log(inputTrait);
-      
+
       loadingStore.setIsLoading(true);
       const isErrorEmpty = errorEmptyInputObject(inputTrait);
       console.log("hello", isErrorEmpty);
@@ -171,7 +173,8 @@ export const TraitAdmin = () => {
     }
   };
 
-  const handleDeleteTrait = async (id: string) => {
+  const handleDeleteTrait = async () => {
+    const id = deleteTrait;
     try {
       loadingStore.setIsLoading(true);
       console.log("id", id);
@@ -184,6 +187,7 @@ export const TraitAdmin = () => {
           );
           return newArrayAllTraits;
         });
+        setDeleteTrait("");
         return;
       }
     } catch (err: any) {
@@ -290,6 +294,14 @@ export const TraitAdmin = () => {
     setEditTraitDetailChampion(!editTraitDetailChampion);
   };
 
+  const handleSetDeleteTrait = (id: string) => {
+    setDeleteTrait(id);
+  }
+
+  const cancelHandlerDelete = () => {
+    setDeleteTrait("");
+  }
+
   const renderMenuAdmin = () => {
     if (editTraitDetailChampion === false) {
       return (
@@ -307,6 +319,9 @@ export const TraitAdmin = () => {
           handleDeleteTrait={handleDeleteTrait}
           handleChangeMenu={handleChangeMenu}
           cancelInput={cancelInput}
+          handleSetDeleteTrait={handleSetDeleteTrait}
+          deleteTrait={deleteTrait}
+          cancelHandlerDelete={cancelHandlerDelete}
         />
       );
     }

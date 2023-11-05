@@ -21,7 +21,7 @@ import { ITraitData } from "./TraitAdmin";
 import { getAllChampionAPI } from "../../../api/championApi";
 import { changeTraitChampion, getAllTraitsAPI } from "../../../api/traitAPI";
 import { ADMIN_TABLE_STYLE } from "../style";
-import { COLOR } from "../../constants";
+import { COLOR, SIZE } from "../../constants";
 import { TraitChampionListInTraitForm } from "./TraitChampionListInTraitForm";
 import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
 
@@ -90,7 +90,7 @@ export const TraitChampionAdmin = ({ handleChangeMenu }: any) => {
     setUnableInput(true);
   };
 
-  const handleDeleteTrait = () => {};
+  const handleDeleteTrait = () => { };
 
   const inputChangeTraitChampion = (e: any, position: number) => {
     setInputListTraitChampion((oldTrait: any) => {
@@ -265,7 +265,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <CustomIconTraitComponent src={trait.image} height={"80px"} width={"80px"} />
+        <CustomIconTraitComponent src={trait.image} width={SIZE.WIDTH_ICON} height={SIZE.HEIGHT_ICON} />
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>
@@ -298,16 +298,6 @@ const RowData = (props: any) => {
           }}
         >
           Edit list champion
-        </Button>
-        <Button
-          variant="contained"
-          sx={{ minWidth: 100, ...ADMIN_TABLE_STYLE.tableCellSx }}
-          color="error"
-          onClick={() => {
-            setDeleteTrait(trait._id);
-          }}
-        >
-          Delete
         </Button>
       </TableCell>
     </TableRow>

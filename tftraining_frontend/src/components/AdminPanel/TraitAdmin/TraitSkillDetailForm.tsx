@@ -60,7 +60,8 @@ export const TraitSkillDetailForm = ({
                     inputNewTrait(e, "image");
                   }}
                   value={inputTrait.image}
-                  sx={{ m: 1 }}
+                  sx={{ m: 4 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <TextField
                   label="Name"
@@ -71,6 +72,7 @@ export const TraitSkillDetailForm = ({
                   focused
                   value={inputTrait.name}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <TextField
                   label="Effect"
@@ -80,9 +82,10 @@ export const TraitSkillDetailForm = ({
                   }}
                   focused
                   multiline
-  rows={4}
+                  rows={4}
                   value={inputTrait.effect}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <Typography sx={{ m: 1 }}>List activate reach</Typography>
                 {inputTrait.unit_activate.map((unit: any, index: any) => {
@@ -132,7 +135,7 @@ const UnitInputComponent = ({ index, inputChangeUnitActivate, unit }: any) => {
   };
 
   return (
-    <Box>
+    <Box style={FORM_STYLE.formElement}>
       <Select
         key={index}
         labelId="demo-controlled-open-select-label"
@@ -144,22 +147,27 @@ const UnitInputComponent = ({ index, inputChangeUnitActivate, unit }: any) => {
           height: "40px",
           background: "#d32f2f",
           margin: "2px",
+          padding: "2px"
         }}
         onChange={(e: any) => {
           inputChangeUnitActivate(e, index, 1);
         }}
+        style={{ width: "20%" }}
       >
         {renderMenuItem()}
       </Select>
       <TextFieldComponent
+        sx={{ p: 2 }}
         color="error"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           inputChangeUnitActivate(e, index, 2);
         }}
+        multiline={4}
         variant="filled"
         value={unit.effect_activate}
         textColor={COLOR.BLACK_BACKGROUND}
         placeholder="Skill this activate"
+        style={{ width: "80%", padding: "2px" }}
       />
     </Box>
   );

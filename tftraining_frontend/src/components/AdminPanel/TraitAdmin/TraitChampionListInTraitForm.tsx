@@ -53,7 +53,7 @@ export const TraitChampionListInTraitForm = ({
                 noValidate
                 autoComplete="off"
               >
-                <CustomIconTraitComponent src={data?.image} width={"80px"} height={"80px"}/>
+                <CustomIconTraitComponent src={data?.image} width={SIZE.WIDTH_ICON} height={SIZE.HEIGHT_ICON} />
                 <TextComponent>{data?.name}</TextComponent>
                 {data.champions?.length === 0 ? (
                   <TextComponent>No Champions</TextComponent>
@@ -101,9 +101,9 @@ const ChampionSelectComponent = ({
   allChampions,
 }: any) => {
   return (
-    <FormControl sx={{ m: 1, minWidth: 100 }}>
+    <FormControl sx={{ m: 3, minWidth: 100 }} style={{marginBottom: 5}}>
       <InputLabel id="demo-controlled-open-select" color="success">
-        Input champion here
+        Select champion here
       </InputLabel>
       <Select
         key={index}
@@ -114,6 +114,7 @@ const ChampionSelectComponent = ({
           color: "white",
           background: COLOR.WHITE,
           display: "flex",
+          m: 3,
           "& .MuiSelect-select": {
             display: "flex",
             justifyContent: "center",
@@ -132,11 +133,13 @@ const ChampionSelectComponent = ({
             <MenuItem
               key={index}
               value={championElement._id}
-              sx={{ display: "flex", justifyContent: "center" }}
+              sx={{ display: "flex" }}
             >
               <CustomChampionAvatar
                 src={championElement?.avatar}
-                style={{ padding: 8, marginRight: 20 }}
+                style={{ marginRight: "20px" }}
+                width={SIZE.WIDTH_ICON}
+                height={SIZE.HEIGHT_ICON}
               />
               <TextComponent color="red">{championElement.name}</TextComponent>
             </MenuItem>

@@ -19,6 +19,9 @@ interface ITextFieldComponentProps {
   textAlignInput?: string;
   type?: string;
   label?: string;
+  multiline?: number,
+  style?: object;
+
 }
 interface INumberFieldComponentProps {
   variant: "standard" | "filled" | "outlined" | undefined;
@@ -39,6 +42,8 @@ interface INumberFieldComponentProps {
 }
 
 const TextFieldComponent = (props: ITextFieldComponentProps) => {
+  const multiline = props?.multiline ? true : false;
+  const rows = props?.multiline ? props?.multiline : 0;
   return (
     <TextField
       label={props?.label}
@@ -57,9 +62,12 @@ const TextFieldComponent = (props: ITextFieldComponentProps) => {
         },
         ...props.sx,
       }}
+      multiline={multiline}
+      rows={rows}
       InputProps={{ sx: { height: 40 } }}
       color={props.color}
       placeholder={props.placeholder}
+      style={props?.style}
     />
   );
 };

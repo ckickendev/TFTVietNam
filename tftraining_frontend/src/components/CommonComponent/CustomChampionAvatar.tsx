@@ -1,14 +1,17 @@
 import React from "react";
 import { COLOR } from "../constants";
 
-export const CustomChampionAvatar = (props: { src: string, style?: any }) => {
+export const CustomChampionAvatar = (props: { src: string, style?: any, height: string | number, width: string | number }) => {
   return (
-    <img
-      src={props?.src}
-      style={{...props?.style }}
-      width={80}
-      height={80}
-      alt="image"
-    />
+    <div style={{ width: props.width, height: props.height, ...props?.style }}>
+      <img
+        src={props?.src}
+
+        height={props.height}
+        width={props.width}
+        alt="image"
+      />
+    </div>
+
   );
 };

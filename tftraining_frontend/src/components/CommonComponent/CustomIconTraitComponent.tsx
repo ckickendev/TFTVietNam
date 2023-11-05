@@ -7,11 +7,14 @@ export const CustomIconTraitComponent = (props: {
   height: number | string;
 }) => {
   return (
-    <img
-      src={props?.src}
-      style={{ background: COLOR.BLACK_BACKGROUND, color: "#cfcfcf", borderRadius: 50 }}
-      width={props?.width}
-      height={props?.height}
-    />
+    <div style={{height: props.height}} >
+      <img
+        src={props?.src}
+        style={{ background: COLOR.BLACK_BACKGROUND, color: "#cfcfcf", borderRadius: 50 }}
+        width={props?.width}
+        height={props?.height}
+      />
+    </div>
+
   );
 };

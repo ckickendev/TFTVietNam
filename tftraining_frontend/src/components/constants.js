@@ -1,14 +1,16 @@
 export const COLOR = {
-  BLACK: '#313236',
-  UNDER_BLACK: '#303641',
-  BLACK_BACKGROUND: '#000000aa',
-  WHITE: '#ffffff',
-  GREEN: '#2f7d31'
-}
+  BLACK: "#313236",
+  UNDER_BLACK: "#303641",
+  BLACK_BACKGROUND: "#000000aa",
+  WHITE: "#ffffff",
+  GREEN: "#2f7d31",
+};
 
 export const SIZE = {
-  SIZE_IMAGE_CHANGE_CHAMPION : '80px'
-}
+  SIZE_IMAGE_CHANGE_CHAMPION: "28px",
+  WIDTH_ICON: "28px",
+  HEIGHT_ICON: "28px",
+};
 
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];
 export const REROLL_ODDS = {

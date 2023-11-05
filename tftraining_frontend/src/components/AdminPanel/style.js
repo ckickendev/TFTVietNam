@@ -24,4 +24,7 @@ export const FORM_STYLE = {
     justifyContent: "center",
     background: COLOR.BLACK_BACKGROUND,
   },
+  formElement: {
+    margin: "5px"
+  }
 };
