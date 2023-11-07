@@ -5,7 +5,7 @@ const { ObjectId } = require("mongodb");
 
 class TraitService extends Service {
   getAllTraits = async () => {
-    const traits = await Trait.find({}).populate('champions');
+    const traits = await Trait.find({del_flag: 0}).populate('champions');
     return traits;
   };
 
@@ -24,8 +24,9 @@ class TraitService extends Service {
   };
 
   deleteTrait = async (id) => {
-    const dataDeleteTrait = Trait.deleteOne({ _id: id });
-    return dataDeleteTrait;
+    await Trait.updateOne({ _id: id }, { del_flag: 1 });
+    const returnTrait = await Trait.findById({ _id: id });
+    return returnTrait;
   };
 
   editTrait = async (data) => {

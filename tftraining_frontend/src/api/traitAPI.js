@@ -13,6 +13,7 @@ const getAllTraitsAPI = async () => {
   const traits = await axios.get(`${ROOT_BACKEND}/trait/get-all`, {
     headers: getHeadersToken(),
   });
+  console.log("traits", traits);
   return traits;
   
 };

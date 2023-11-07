@@ -4,6 +4,7 @@ export const COLOR = {
   BLACK_BACKGROUND: "#000000aa",
   WHITE: "#ffffff",
   GREEN: "#2f7d31",
+  YELLOW: "#ffdf80"
 };
 
 export const SIZE = {

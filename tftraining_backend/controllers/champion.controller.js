@@ -26,7 +26,7 @@ class ChampionController extends Controller {
     try {
       const champion = await championService.getChampionById(req.params.championId);
       res.status(200).json({
-        champion: champion,
+        champion: champion[0],
       });
     } catch (err) {
       res.status(500).send({ error: err.message });

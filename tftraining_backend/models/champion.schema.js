@@ -10,7 +10,12 @@ const championSchema = new Schema(
     name: String,
     cost: Number,
     avatar: String,
+    bgimage: String,
     skill: String,
+    del_flag: {
+      type: Number,
+      default: 0
+    },
     traits: [
       {
         type: mongoose.Schema.Types.ObjectId,

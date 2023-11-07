@@ -1,18 +1,10 @@
 .test {
+  width: 80%;
+
   body {
     font-size: 100%;
     font-family: "Roboto", sans-serif;
   }
-
-  // .main-bg {
-  //   background: url('https://images2.alphacoders.com/128/1288423.jpg') no-repeat center;
-  //   background-size: cover;
-  //   -webkit-background-size: cover;
-  //   -moz-background-size: cover;
-  //   -o-background-size: cover;
-  //   -ms-background-size: cover;
-  //   min-height: 100vh;
-  // }
 
   .main-bg::before {
     content: "";

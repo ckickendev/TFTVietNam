@@ -17,6 +17,10 @@ const traitSchema = new Schema(
         ref: "champions",
       },
     ],
+    del_flag: {
+      type: Number,
+      default: 0
+    },
   },
   {
     versionKey: '_somethingElse',

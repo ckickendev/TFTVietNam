@@ -51,6 +51,7 @@ const columns: readonly Column[] = [
 export interface IChampionData {
   _id: string;
   avatar: string;
+  bgimage: string;
   name: string;
   cost: number;
   skill: string;
@@ -77,6 +78,7 @@ export const ChampionAdmin = () => {
   const [inputChampion, setInputChampion] = useState({
     idEdit: "SAMPLE",
     avatar: "",
+    bgimage: "",
     name: "",
     cost: 0,
     skill: "",
@@ -109,6 +111,7 @@ export const ChampionAdmin = () => {
           {
             _id: newChampionData._id,
             avatar: newChampionData.avatar,
+            bgimage: newChampionData.bgimage,
             name: newChampionData.name,
             cost: newChampionData.cost,
             skill: newChampionData.skill,
@@ -120,6 +123,7 @@ export const ChampionAdmin = () => {
       setInputChampion({
         idEdit: "SAMPLE",
         avatar: "",
+        bgimage: "",
         name: "",
         cost: 0,
         skill: "",
@@ -141,7 +145,6 @@ export const ChampionAdmin = () => {
     try {
       loadingStore.setIsLoading(true);
       const handlerDelete = await deleteChampionById(deleteChampion);
-
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
         setAllChampions((allChampions: IChampionData[]) => {
@@ -209,6 +212,7 @@ export const ChampionAdmin = () => {
       const inputDataChampion = {
         _id: inputChampion.idEdit,
         avatar: inputChampion.avatar,
+        bgimage: inputChampion.bgimage,
         name: inputChampion.name,
         cost: inputChampion.cost,
         skill: inputChampion.skill,
@@ -245,6 +249,7 @@ export const ChampionAdmin = () => {
         setInputChampion({
           idEdit: "SAMPLE",
           avatar: "",
+          bgimage: "",
           name: "",
           cost: 0,
           skill: "",
@@ -385,7 +390,7 @@ const RowData = (props: any) => {
         <TextComponent>{champion.cost}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
-        <TextComponent>{champion.skill}</TextComponent>
+        <TextComponent style={{whiteSpace: "pre-wrap"}} >{champion.skill}</TextComponent>
       </TableCell>
       <TableCell align="center">
         <Button

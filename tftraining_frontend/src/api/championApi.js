@@ -23,13 +23,15 @@ const getChampionByIdApi = async (id) => {
     { headers: getHeadersToken() }
   );
   const champion = data.data.champion;
-  console.log("Champiopn", champion);
 
   const returnValue = {
     image: champion.avatar,
+    bgimage: champion.bgimage,
+    traits: champion.traits,
     name: champion.name,
     skill: champion.skill
   }
+  console.log("return", returnValue);
   return returnValue;
 };
 
@@ -48,7 +50,8 @@ const deleteChampionById = async (id) => {
       idChampion: id,
     },
   });
-  return res.data.dataDelete.deletedCount;
+  console.log(res.data);
+  return res.data.dataDelete;
 };
 
 const editChampionAPI = async (data) => {

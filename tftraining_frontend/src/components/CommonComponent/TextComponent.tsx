@@ -7,6 +7,7 @@ interface ITextComponentProps {
   text?: string;
   children?: any;
   display?: any;
+  style?:any;
 }
 
 const TextComponent = (props: ITextComponentProps) => {
@@ -19,8 +20,9 @@ const TextComponent = (props: ITextComponentProps) => {
         fontWeight: 300,
         ...props.sx,
       }}
-      display={props.display}
-      color={props.color}
+      display={props?.display}
+      color={props?.color}
+      style={props?.style}
     >
       {props.children}
     </Typography>

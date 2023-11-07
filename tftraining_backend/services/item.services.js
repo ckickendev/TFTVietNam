@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 class ItemService extends Service {
   getAllItems = async () => {
-    const items = await Item.find({});
+    const items = await Item.find({del_flag: 0});
     return items.map((item) => {
       return {
         _id: item._id,
@@ -27,8 +27,9 @@ class ItemService extends Service {
   };
   
   deleteItem = async (id) => {
-    const dataDeleteItem = Item.deleteOne({ _id: id });
-    return dataDeleteItem;
+    await Item.updateOne({ _id: id }, { del_flag: 1 });
+    const returnItem = await Item.findById({ _id: id });
+    return returnItem;
   };
 
   editItem = async (data) => {

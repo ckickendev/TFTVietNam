@@ -54,9 +54,20 @@ export const ChampionAddForm = ({
                   label="Link image avatar"
                   color="success"
                   focused
-                  value={inputChampion?.avatar}
+                  defaultValue={inputChampion?.avatar}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     inputNewChampion(event, "avatar");
+                  }}
+                  sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
+                />
+                <TextField
+                  label="Link background avatar"
+                  color="success"
+                  focused
+                  defaultValue={inputChampion?.bgimage}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    inputNewChampion(event, "bgimage");
                   }}
                   sx={{ m: 1 }}
                   style={FORM_STYLE.formElement}
@@ -65,7 +76,7 @@ export const ChampionAddForm = ({
                   label="Enter name"
                   color="success"
                   focused
-                  value={inputChampion?.name}
+                  defaultValue={inputChampion?.name}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     inputNewChampion(event, "name");
                   }}
@@ -82,7 +93,7 @@ export const ChampionAddForm = ({
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     color="success"
-                    value={inputChampion?.cost}
+                    defaultValue={inputChampion?.cost}
                     label="Cost"
                     onChange={(event: SelectChangeEvent<any>) => {
                       inputNewChampion(event, "cost");
@@ -101,7 +112,7 @@ export const ChampionAddForm = ({
                   focused
                   multiline
                   rows={4}
-                  value={inputChampion?.skill}
+                  defaultValue={inputChampion?.skill}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     inputNewChampion(event, "skill");
                   }}
