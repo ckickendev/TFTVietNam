@@ -16,6 +16,10 @@ class ChampionService extends Service {
     });
   };
 
+  getChampionById = async (id) => {
+    return await Champion.findById(id);
+  };
+
   addNewChampion = async (data) => {
     const newChampion = new Champion({
       _id: new mongoose.Types.ObjectId(),

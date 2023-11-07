@@ -59,6 +59,7 @@ export const ChampionAddForm = ({
                     inputNewChampion(event, "avatar");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <TextField
                   label="Enter name"
@@ -69,8 +70,11 @@ export const ChampionAddForm = ({
                     inputNewChampion(event, "name");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
-                <FormControl fullWidth sx={{ m: 1 }}>
+                <FormControl fullWidth sx={{ m: 1 }} 
+                  style={FORM_STYLE.formElement}
+                  >
                   <InputLabel id="demo-simple-select-helper-label">
                     Cost
                   </InputLabel>
@@ -87,8 +91,8 @@ export const ChampionAddForm = ({
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
                     <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={3}>4</MenuItem>
-                    <MenuItem value={3}>5</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
                   </Select>
                 </FormControl>
                 <TextField
@@ -102,6 +106,7 @@ export const ChampionAddForm = ({
                     inputNewChampion(event, "skill");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
               </Box>
             </div>

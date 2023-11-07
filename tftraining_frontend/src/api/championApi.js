@@ -16,6 +16,23 @@ const getAllChampionAPI = async () => {
   return champions;
 };
 
+const getChampionByIdApi = async (id) => {
+  console.log("asdasd", id);
+  const data = await axios.get(
+    `${CONSTVALUE.ROOT_BACKEND}/champion/find/${id}`,
+    { headers: getHeadersToken() }
+  );
+  const champion = data.data.champion;
+  console.log("Champiopn", champion);
+
+  const returnValue = {
+    image: champion.avatar,
+    name: champion.name,
+    skill: champion.skill
+  }
+  return returnValue;
+};
+
 const addChampionAPI = async (newChampion) => {
   const res = await axios.post(`${CONSTVALUE.ROOT_BACKEND}/champion/add`, {
     headers: getHeadersToken(),
@@ -40,8 +57,14 @@ const editChampionAPI = async (data) => {
     data: {
       editData: data,
     },
-  })
+  });
   return res.data.responseData.modifiedCount;
-}
+};
 
-export { getAllChampionAPI, addChampionAPI, deleteChampionById, editChampionAPI };
+export {
+  getAllChampionAPI,
+  addChampionAPI,
+  getChampionByIdApi,
+  deleteChampionById,
+  editChampionAPI,
+};

@@ -53,7 +53,7 @@ export const TraitSkillDetailForm = ({
                 autoComplete="off"
               >
                 <TextField
-                  label="Link image item"
+                  label="Link image trait"
                   color="error"
                   focused
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

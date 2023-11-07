@@ -80,7 +80,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     id="basic-nav-dropdown"
                     aria-expanded="false"
                     role="button"
-                    className="dropdown-toggle nav-link"
+                    className="nav-link"
                     tabIndex={0}
                     href={`${ROOT_URL}`}
                   >
@@ -107,7 +107,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     id="basic-nav-dropdown"
                     aria-expanded="false"
                     role="button"
-                    className="dropdown-toggle nav-link"
+                    className="nav-link"
                     tabIndex={0}
                     href={`${ROOT_URL}`}
                   >
@@ -153,7 +153,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     id="basic-nav-dropdown"
                     aria-expanded="false"
                     role="button"
-                    className="dropdown-toggle nav-link"
+                    className="nav-link"
                     tabIndex={0}
                     href={`${ROOT_URL}`}
                   >
@@ -188,7 +188,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     id="basic-nav-dropdown"
                     aria-expanded="false"
                     role="button"
-                    className="dropdown-toggle nav-link"
+                    className="nav-link"
                     tabIndex={0}
                     href={`${ROOT_URL}`}
                   >

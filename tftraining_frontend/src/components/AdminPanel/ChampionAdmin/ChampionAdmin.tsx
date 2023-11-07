@@ -23,6 +23,7 @@ import { ChampionAddForm } from "./ChampionAddForm";
 // import { COLOR } from "../../constants";
 import { COLOR } from "../../constants";
 import { ADMIN_TABLE_STYLE } from "../style";
+import { ChampionTooltip } from "../../CommonComponent/Tooltip/ChampionTooltip";
 
 interface Column {
   id: "avatar" | "name" | "cost" | "skill";
@@ -202,6 +203,8 @@ export const ChampionAdmin = () => {
   };
 
   const handleEditChampion = async () => {
+    console.log("inputChampion", inputChampion);
+    
     try {
       const inputDataChampion = {
         _id: inputChampion.idEdit,
@@ -373,7 +376,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <img src={champion.avatar} width={50} height={50} alt="avatar" />
+        <ChampionTooltip id={champion._id} />
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{champion.name}</TextComponent>
