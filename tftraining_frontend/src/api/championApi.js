@@ -35,6 +35,15 @@ const getChampionByIdApi = async (id) => {
   return returnValue;
 };
 
+const getListTraisByChampionId = async (id) => {
+  const data = await axios.get(
+    `${CONSTVALUE.ROOT_BACKEND}/champion/getListTraits/${id}`,
+    { headers: getHeadersToken() }
+  );
+  const traits = data.data.traits;
+  return traits;
+}
+
 const addChampionAPI = async (newChampion) => {
   const res = await axios.post(`${CONSTVALUE.ROOT_BACKEND}/champion/add`, {
     headers: getHeadersToken(),
@@ -70,4 +79,5 @@ export {
   getChampionByIdApi,
   deleteChampionById,
   editChampionAPI,
+  getListTraisByChampionId,
 };

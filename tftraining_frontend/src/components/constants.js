@@ -11,6 +11,8 @@ export const SIZE = {
   SIZE_IMAGE_CHANGE_CHAMPION: "28px",
   WIDTH_ICON: "28px",
   HEIGHT_ICON: "28px",
+  TRAIT_ICON_WIDTH: "12px",
+  TRAIT_ICON_HEIGHT: "12px",
 };
 
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];

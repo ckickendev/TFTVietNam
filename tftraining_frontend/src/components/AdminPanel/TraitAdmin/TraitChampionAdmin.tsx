@@ -24,6 +24,8 @@ import { ADMIN_TABLE_STYLE } from "../style";
 import { COLOR, SIZE } from "../../constants";
 import { TraitChampionListInTraitForm } from "./TraitChampionListInTraitForm";
 import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
+import { ChampionTooltip } from "../../CommonComponent/Tooltip/ChampionTooltip";
+import { TraitToolTip } from "../../CommonComponent/Tooltip/TraitTooltip";
 
 interface Column {
   id: "image" | "champions" | "name";
@@ -265,7 +267,8 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <CustomIconTraitComponent src={trait.image} width={SIZE.WIDTH_ICON} height={SIZE.HEIGHT_ICON} />
+        <TraitToolTip id={trait?._id} />
+        {/* <CustomIconTraitComponent src={trait.image} width={SIZE.WIDTH_ICON} height={SIZE.HEIGHT_ICON} /> */}
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{trait.name}</TextComponent>
@@ -276,9 +279,8 @@ const RowData = (props: any) => {
         ) : (
           trait.champions?.map((champion: IChampionData, index: number) => {
             return (
-              <div className="mt-4" key={index}>
-                <img src={champion.avatar} width={50} height={50} />
-                <TextComponent key={index}>{champion.name}</TextComponent>
+              <div key={index} style={{margin: "2px 0px", textAlign: 'center'}}>
+                <ChampionTooltip id={champion?._id} />
               </div>
             );
           })

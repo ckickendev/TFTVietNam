@@ -1,9 +1,9 @@
 import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import loadingStore from '../../../store/loadingStore';
-import { getChampionByIdApi } from '../../../api/championApi';
+import { getChampionByIdApi, getListTraisByChampionId } from '../../../api/championApi';
 import { CustomChampionAvatar } from '../CustomChampionAvatar';
-import { COLOR } from '../../constants';
+import { COLOR, SIZE } from '../../constants';
 
 export const ChampionTooltip = ({ id }: any) => {
     const [champion, setChampion] = useState({
@@ -13,27 +13,39 @@ export const ChampionTooltip = ({ id }: any) => {
         skill: "",
         traits: [],
     });
+    const [listTraits, setListTraits] = useState([]);
     useEffect(() => {
-        const getChampionById = async () => {
+        const getData = async () => {
             loadingStore.setIsLoading(true);
+
+            // Get data for champion
             const champion = await getChampionByIdApi(id);
             setChampion(champion);
+
+            // Get data for traits
+            const traits = await getListTraisByChampionId(id);
+            setListTraits(traits);
             loadingStore.setIsLoading(false);
         };
-        
-        getChampionById();
+
+        getData();
     }, [])
     return (
         <HtmlTooltip
             title={
                 <React.Fragment>
                     <div style={{ borderColor: COLOR.GREEN, borderWidth: 2, borderStyle: "solid", margin: 0, borderRadius: 5 }}>
-                        <div style={{position: 'relative'}}>
+                        <div style={{ position: 'relative' }}>
+
                             <div style={{ position: 'absolute', bottom: 10, left: 0, zIndex: 99 }}>
-                                {champion?.traits?.map((trait: any) => {
-                                    return <Typography fontSize={10} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 10, zIndex: 99, color: COLOR.WHITE }} color="inherit">Chien binh tasn the</Typography>
+                                {listTraits?.map((trait: any) => {
+                                    return (
+                                        <div style={{display: 'flex', alignItems: 'center', marginLeft: 5}} key={trait._id}>
+                                            <img src={trait?.image} width={SIZE.TRAIT_ICON_WIDTH} height={SIZE.TRAIT_ICON_HEIGHT} />
+                                            <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 5, zIndex: 99, color: COLOR.WHITE }} color="inherit">{trait?.name}</Typography>
+                                        </div>
+                                    )
                                 })}
-                                
                             </div>
                             <img src={champion?.bgimage} width="100%" style={{ borderColor: COLOR.YELLOW, borderWidth: 2, borderStyle: "solid", borderRadius: 10 }} />
                         </div>
@@ -47,8 +59,7 @@ export const ChampionTooltip = ({ id }: any) => {
                 </React.Fragment>
             }
         >
-            <div>
-
+            <div style={{display: 'flex', justifyContent: 'center'}}>
                 <CustomChampionAvatar height={28} width={28} src={champion?.image} />
             </div>
         </HtmlTooltip>

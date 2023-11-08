@@ -5,8 +5,15 @@ const { ObjectId } = require("mongodb");
 
 class TraitService extends Service {
   getAllTraits = async () => {
-    const traits = await Trait.find({del_flag: 0}).populate('champions');
+    const traits = await Trait.find({ del_flag: 0 }).populate("champions");
     return traits;
+  };
+
+  getTraitById = async (id) => {
+    const trait = await Trait.find({ _id: id, del_flag: 0 }).populate(
+      "champions"
+    );
+    return trait;
   };
 
   addNewTrait = async (data) => {
@@ -41,10 +48,12 @@ class TraitService extends Service {
   editTraitChampion = async (data) => {
     const idTrait = data.idTrait;
     console.log("ákdaskjd", data);
-    await Trait.findByIdAndUpdate(idTrait, {champions: []});
+    await Trait.findByIdAndUpdate(idTrait, { champions: [] });
     const championIds = data.champions.map(async (champion) => {
       const championId = new ObjectId(champion._id);
-      await Trait.findByIdAndUpdate(idTrait, {$push: {champions: championId}});
+      await Trait.findByIdAndUpdate(idTrait, {
+        $push: { champions: championId },
+      });
       return championId;
     });
     return championIds;

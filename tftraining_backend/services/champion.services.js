@@ -1,5 +1,5 @@
 const { Service } = require("../core");
-const { Champion } = require("../models");
+const { Champion, Trait } = require("../models");
 const mongoose = require("mongoose");
 
 class ChampionService extends Service {
@@ -20,6 +20,11 @@ class ChampionService extends Service {
   getChampionById = async (id) => {
     return await Champion.find({ _id: id, del_flag: 0 });
   };
+
+  getListTraisByChampionId = async (id) => {
+    const listTrait =  await Trait.find({champions: id});
+    return listTrait;
+  }
 
   addNewChampion = async (data) => {
     const newChampion = new Champion({

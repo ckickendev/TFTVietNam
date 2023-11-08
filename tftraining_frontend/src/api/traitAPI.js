@@ -15,7 +15,22 @@ const getAllTraitsAPI = async () => {
   });
   console.log("traits", traits);
   return traits;
-  
+};
+
+const getTraitByIdAPI = async (id) => {
+  console.log("get header token", getHeadersToken());
+  const response = await axios.get(`${ROOT_BACKEND}/trait/find/${id}`, {
+    headers: getHeadersToken(),
+  });
+  const dataOut = response.data.trait[0];
+  const traitData = {
+    name: dataOut.name,
+    image: dataOut.image,
+    effect: dataOut.effect,
+    unit_activate: dataOut.unit_activate
+  }
+  console.log("data", response);
+  return traitData;
 };
 
 const addTraitAPI = async (newTrait) => {
@@ -48,15 +63,22 @@ const editTraitAPI = async (data) => {
   return res.data.responseData.modifiedCount;
 };
 
-const changeTraitChampion = async (idTrait, champions ) => {
+const changeTraitChampion = async (idTrait, champions) => {
   const res = await axios.post(`${ROOT_BACKEND}/trait/edit-trait-champion`, {
     headers: getHeadersToken(),
     data: {
       idTrait,
-      champions
+      champions,
     },
-  })
-  return res
-}
+  });
+  return res;
+};
 
-export { getAllTraitsAPI, addTraitAPI, deleteTraitById, editTraitAPI, changeTraitChampion };
+export {
+  getAllTraitsAPI,
+  getTraitByIdAPI,
+  addTraitAPI,
+  deleteTraitById,
+  editTraitAPI,
+  changeTraitChampion,
+};

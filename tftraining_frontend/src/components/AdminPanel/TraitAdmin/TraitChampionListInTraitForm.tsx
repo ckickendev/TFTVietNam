@@ -54,7 +54,7 @@ export const TraitChampionListInTraitForm = ({
                 autoComplete="off"
               >
                 <CustomIconTraitComponent src={data?.image} width={SIZE.WIDTH_ICON} height={SIZE.HEIGHT_ICON} />
-                <TextComponent>{data?.name}</TextComponent>
+                <TextComponent style={{marginBottom: 10}}>{data?.name}</TextComponent>
                 {data.champions?.length === 0 ? (
                   <TextComponent>No Champions</TextComponent>
                 ) : (
@@ -70,7 +70,6 @@ export const TraitChampionListInTraitForm = ({
                     );
                   })
                 )}
-
                 <Button onClick={addMoreChampion}>Add more champion</Button>
               </Box>
             </div>
