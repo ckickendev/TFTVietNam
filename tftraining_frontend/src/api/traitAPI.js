@@ -74,9 +74,38 @@ const changeTraitChampion = async (idTrait, champions) => {
   return res;
 };
 
+
+
+async function getTraitRank() {
+  const response = await fetch(
+    "https://api2.metatft.com/tft-stat-api/traits?queue=1100&patch=current&days=2&rank=CHALLENGER,GRANDMASTER&permit_filter_adjustment=true"
+  );
+  const data = await response.json();
+  const totalPrequent = data.games[0].count;
+  const unitDataList = [];
+  data.results.forEach((element) => {
+    let frequency = 0;
+    let avgCount = 0;
+    element.places.forEach((current, index) => {
+      frequency += current;
+      avgCount += current * (index + 1);
+    });
+    const unitData = {
+      name: element.trait,
+      frequency: frequency,
+      winrate: (element.places[0] / frequency) * 100,
+      percentage: (frequency / totalPrequent) * 100,
+      avgCount: avgCount / frequency,
+    };
+    unitDataList.push(unitData);
+  });
+  console.log("data", unitDataList);
+}
+
 export {
   getAllTraitsAPI,
   getTraitByIdAPI,
+  getTraitRank,
   addTraitAPI,
   deleteTraitById,
   editTraitAPI,
