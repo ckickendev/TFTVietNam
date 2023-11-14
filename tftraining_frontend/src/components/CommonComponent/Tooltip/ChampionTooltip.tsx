@@ -2,7 +2,7 @@ import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } fro
 import React, { useEffect, useState } from 'react'
 import loadingStore from '../../../store/loadingStore';
 import { getChampionByIdApi, getListTraisByChampionId } from '../../../api/championApi';
-import { CustomChampionAvatar } from '../CustomChampionAvatar';
+import { CustomChampionAvatar } from '../CustomComponent/CustomChampionAvatar';
 import { COLOR, SIZE } from '../../constants';
 
 export const ChampionTooltip = ({ id }: any) => {
@@ -12,6 +12,7 @@ export const ChampionTooltip = ({ id }: any) => {
         name: "",
         skill: "",
         traits: [],
+        cost: 0,
     });
     const [listTraits, setListTraits] = useState([]);
     useEffect(() => {
@@ -46,6 +47,10 @@ export const ChampionTooltip = ({ id }: any) => {
                                         </div>
                                     )
                                 })}
+                            </div>
+                            <div style={{ position: 'absolute', bottom: 10, right: 10, zIndex: 99, display: 'flex', alignItems:'center' }}>
+                                <img color={COLOR.YELLOW} src="https://cdn.mobalytics.gg/assets/common/icons/tft-system/coin.svg" alt="coin" />
+                                <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 2, zIndex: 99, color: COLOR.WHITE }} color="inherit">{champion?.cost}</Typography>
                             </div>
                             <img src={champion?.bgimage} width="100%" style={{ borderColor: COLOR.YELLOW, borderWidth: 2, borderStyle: "solid", borderRadius: 10 }} />
                         </div>

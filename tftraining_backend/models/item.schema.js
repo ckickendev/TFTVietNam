@@ -10,6 +10,7 @@ const itemSchema = new Schema(
     name: String,
     image: String,
     effect: String,
+    property: Object,
     del_flag: {
       type: Number,
       default: 0

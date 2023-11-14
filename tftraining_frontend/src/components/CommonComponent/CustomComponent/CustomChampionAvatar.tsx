@@ -1,5 +1,5 @@
 import React from "react";
-import { COLOR } from "../constants";
+import { COLOR } from "../../constants";
 
 export const CustomChampionAvatar = (props: { src: string, style?: any, height: string | number, width: string | number }) => {
   return (

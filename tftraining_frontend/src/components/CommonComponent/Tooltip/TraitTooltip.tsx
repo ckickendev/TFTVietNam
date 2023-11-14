@@ -3,7 +3,7 @@ import loadingStore from "../../../store/loadingStore";
 import { getAllTraitsAPI, getTraitByIdAPI } from "../../../api/traitAPI";
 import { COLOR } from "../../constants";
 import { Tooltip, TooltipProps, Typography, tooltipClasses } from "@mui/material";
-import { CustomIconTraitComponent } from "../CustomIconTraitComponent";
+import { CustomIconTraitComponent } from "../CustomComponent/CustomIconTraitComponent";
 import styled from "@emotion/styled";
 
 export const TraitToolTip = ({ id }: any) => {

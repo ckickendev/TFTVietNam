@@ -29,7 +29,8 @@ const getChampionByIdApi = async (id) => {
     bgimage: champion.bgimage,
     traits: champion.traits,
     name: champion.name,
-    skill: champion.skill
+    skill: champion.skill,
+    cost: champion.cost
   }
   console.log("return", returnValue);
   return returnValue;

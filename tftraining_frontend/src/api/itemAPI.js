@@ -16,6 +16,20 @@ const getAllItemsAPI = async () => {
   return items;
 };
 
+const getItemByIdAPI = async (id) => {
+  const data = await axios.get(`${ROOT_BACKEND}/item/find/${id}`, {
+    headers: getHeadersToken(),
+  });
+  console.log(data);
+  const trait = data.data.item[0];
+  return {
+    effect: trait.effect,
+    image: trait.image,
+    name: trait.name,
+    property: trait.property,
+  };
+};
+
 const addItemAPI = async (newItem) => {
   const res = await axios.post(`${ROOT_BACKEND}/item/add`, {
     headers: getHeadersToken(),
@@ -80,6 +94,7 @@ const editItemAPI = async (data) => {
 
 export {
   getAllItemsAPI,
+  getItemByIdAPI,
   loadItemRank,
   addItemAPI,
   deleteItemById,

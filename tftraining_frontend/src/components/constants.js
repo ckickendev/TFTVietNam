@@ -15,6 +15,16 @@ export const SIZE = {
   TRAIT_ICON_HEIGHT: "12px",
 };
 
+export const TYPE_PROPERTY = {
+  MN: 'MANA',
+  AP: 'ABILITY_POWER',
+  AD: 'ATTACK_DAMAGE',
+  MR: "MAGIC_RETRICS",
+  AR: "ARMOR",
+  HE: "HEALTH",
+  AS: "ATTACK_SPEED"
+}
+
 export const XP_THRESH = [-1, -1, 2, 6, 10, 20, 32, 50, 66];
 export const REROLL_ODDS = {
   2: [100, 0, 0, 0, 0],

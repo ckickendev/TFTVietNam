@@ -1,4 +1,3 @@
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import React, { useEffect, useState } from "react";
 import loadingStore from "../../../store/loadingStore";
 import DialogCustom from "../../../utils/DialogCustom";
@@ -11,7 +10,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
 import {
   addItemAPI,
   deleteItemById,
@@ -23,6 +21,7 @@ import { TextComponent } from "../../CommonComponent/TextComponent";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { COLOR } from "../../constants";
 import { ItemForm } from "./ItemForm";
+import { ItemTooltip } from "../../CommonComponent/Tooltip/ItemTooltip";
 
 interface Column {
   id: "image" | "name" | "effect";
@@ -332,7 +331,7 @@ const RowData = (props: any) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell align="center">
-        <img src={item.image} width={50} height={50} alt="image" />
+        <ItemTooltip id={item._id} />
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
         <TextComponent>{item.name}</TextComponent>

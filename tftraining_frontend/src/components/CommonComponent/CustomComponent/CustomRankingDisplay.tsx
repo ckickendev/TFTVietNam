@@ -1,4 +1,4 @@
-import { COLOR } from '../constants';
+import { COLOR } from '../../constants';
 
 export const CustomRankingDisplay = (props: { ranking: "S" | "A" | "B" | "C" | "D" }) => {
     const color = () => {
@@ -10,7 +10,7 @@ export const CustomRankingDisplay = (props: { ranking: "S" | "A" | "B" | "C" | "
                 return "#ffbf7f"
                 break;
             case "B":
-                return "##ffdf80"
+                return "#ffdf80"
                 break;
             case "C":
                 return "#feff7f"
@@ -22,8 +22,18 @@ export const CustomRankingDisplay = (props: { ranking: "S" | "A" | "B" | "C" | "
                 return COLOR.WHITE
         }
     }
+
+    const styleText = {
+        borderRadius: "2px",
+        cursor: "pointer",
+        display: 'flex',
+        fontSize: '18px',
+        fontWeight: '600',
+        justifyContent: 'center',
+    }
+
     return (
-        <div style={{ width: "18px", height: "18px", backgroundColor: color(), alignItems: 'center', borderRadius: "2px", color }}>
+        <div style={{ width: "28px", height: "28px", backgroundColor: color(), color: "#111", ...styleText }}>
             {props.ranking}
         </div>
     )

@@ -11,12 +11,12 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useState } from "react";
-import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
+import { TextFieldComponent } from "../../CommonComponent/CustomComponent/TextFieldComponent";
 import { TextComponent } from "../../CommonComponent/TextComponent";
 import { COLOR, SIZE } from "../../constants";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { TraitSkillDetailForm } from "./TraitSkillDetailForm";
-import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomComponent/CustomIconTraitComponent";
 import DialogCustom from "../../../utils/DialogCustom";
 
 interface Column {

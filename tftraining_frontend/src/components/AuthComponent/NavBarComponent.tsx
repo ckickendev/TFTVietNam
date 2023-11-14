@@ -9,7 +9,7 @@ import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { COLOR } from "../constants";
-import { IconComponent } from "../CommonComponent/IconComponent";
+import { IconComponent } from "../CommonComponent/CustomComponent/IconComponent";
 
 export const NavBarComponent = observer(({ authStore }: any) => {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
             </button>
             <div className="navbar-collapse collapse" id="basic-navbar-nav">
               <div className="ml-auto navbar-nav nav-pills">
-                <div className="nav-item">
+                <div className="nav-item dropdown">
                   <a
                     className="nav-link"
                     href={`${ROOT_URL}/comps`}

@@ -22,6 +22,18 @@ class ItemController extends Controller {
     }
   };
 
+  findItemById = async (req, res, next) => {
+    try {
+      const item = await itemService.findItemById(req.params.id);
+      res.status(200).json({
+        item: item,
+      });
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  };
+
+
   addNewItem = async (req, res, next) => {
     const newItem = req.body.newItem;
     try {
@@ -72,6 +84,11 @@ class ItemController extends Controller {
       `${this._rootPath}/get-all`,
       AdminMiddleware,
       this.getAllItems
+    );
+    this._router.get(
+      `${this._rootPath}/find/:id`,
+      AdminMiddleware,
+      this.findItemById
     );
     this._router.post(
       `${this._rootPath}/add`,

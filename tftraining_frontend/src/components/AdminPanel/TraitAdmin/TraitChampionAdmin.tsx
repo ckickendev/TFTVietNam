@@ -23,7 +23,7 @@ import { changeTraitChampion, getAllTraitsAPI } from "../../../api/traitAPI";
 import { ADMIN_TABLE_STYLE } from "../style";
 import { COLOR, SIZE } from "../../constants";
 import { TraitChampionListInTraitForm } from "./TraitChampionListInTraitForm";
-import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomComponent/CustomIconTraitComponent";
 import { ChampionTooltip } from "../../CommonComponent/Tooltip/ChampionTooltip";
 import { TraitToolTip } from "../../CommonComponent/Tooltip/TraitTooltip";
 

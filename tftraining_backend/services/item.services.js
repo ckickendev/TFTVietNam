@@ -15,6 +15,11 @@ class ItemService extends Service {
     });
   };
 
+  findItemById = async (id) => {
+    const item = await Item.find({_id: id, del_flag: 0});
+    return item;
+  };
+
   addNewItem = async (data) => {
     const newItem = new Item({
       _id: new mongoose.Types.ObjectId(),

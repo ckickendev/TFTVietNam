@@ -9,8 +9,8 @@ import {
 } from "@mui/material";
 import { TextComponent } from "../../CommonComponent/TextComponent";
 import { FORM_STYLE } from "../style";
-import { CustomChampionAvatar } from "../../CommonComponent/CustomChampionAvatar";
-import { CustomIconTraitComponent } from "../../CommonComponent/CustomIconTraitComponent";
+import { CustomChampionAvatar } from "../../CommonComponent/CustomComponent/CustomChampionAvatar";
+import { CustomIconTraitComponent } from "../../CommonComponent/CustomComponent/CustomIconTraitComponent";
 
 interface IFormAdd {
   title?: string;

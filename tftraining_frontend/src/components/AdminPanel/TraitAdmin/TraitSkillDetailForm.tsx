@@ -1,7 +1,7 @@
 import React from "react";
 import { COLOR } from "../../constants";
 import { Box, Button, MenuItem, Select, TextField, Typography } from "@mui/material";
-import { TextFieldComponent } from "../../CommonComponent/TextFieldComponent";
+import { TextFieldComponent } from "../../CommonComponent/CustomComponent/TextFieldComponent";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { FORM_STYLE } from "../style";
 
