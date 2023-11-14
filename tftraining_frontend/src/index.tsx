@@ -24,6 +24,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { Testing } from "./components/CommonComponent/Testing";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="confirm_register" element={<ConfirmSignUpByLink />} />
       <Route path="reset-password-link" element={<ResetPasswordByLink />} />
       <Route path="chessboard" element={<ChessBoard />} />
+      <Route path="testing" element={<Testing />} />
     </Route>
   )
 );
