@@ -6,7 +6,6 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-  Typography,
 } from "@mui/material";
 import authStore from "../../../store/authStore";
 import React from "react";

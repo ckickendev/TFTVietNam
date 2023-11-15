@@ -126,26 +126,10 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     className="dropdown-menu"
                     aria-labelledby="basic-nav-dropdown"
                   >
-                    <DropdownItem>Items</DropdownItem>
-                    <DropdownItem>Units</DropdownItem>
-                    <DropdownItem>Traits</DropdownItem>
-                    <DropdownItem>Auguments</DropdownItem>
-                    <div className="dropdown-item">
-                      <a
-                        data-rr-ui-event-key="/early-comps"
-                        className="nav-link"
-                        href={`${ROOT_URL}/early-comps`}
-                      >
-                        <p>
-                          Early Csomps<span className="NewHighlight">New!</span>
-                        </p>
-                        <img
-                          src={`${ROOT_URL}/patreon_logo2.png`}
-                          className="PatreonFeatureNav"
-                          alt="Patreon Feature"
-                        />
-                      </a>
-                    </div>
+                    <DropdownItem linkHref={`${ROOT_URL}/items`}>Items</DropdownItem>
+                    <DropdownItem linkHref={`${ROOT_URL}/units`}>Units</DropdownItem>
+                    <DropdownItem linkHref={`${ROOT_URL}/traits`}>Traits</DropdownItem>
+                    <DropdownItem linkHref={`${ROOT_URL}/auguments`}>Auguments</DropdownItem>
                   </div>
                 </div>
                 <div className="nav-item dropdown">

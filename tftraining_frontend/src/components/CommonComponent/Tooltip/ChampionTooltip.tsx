@@ -30,7 +30,7 @@ export const ChampionTooltip = ({ id }: any) => {
         };
 
         getData();
-    }, [])
+    }, [id])
     return (
         <HtmlTooltip
             title={
