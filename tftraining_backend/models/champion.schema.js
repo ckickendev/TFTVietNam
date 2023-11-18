@@ -12,6 +12,7 @@ const championSchema = new Schema(
     avatar: String,
     bgimage: String,
     skill: String,
+    name_api: String,
     del_flag: {
       type: Number,
       default: 0

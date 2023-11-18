@@ -7,7 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { Home } from "./components/Home";
+import { Home } from "./components/HomePage/Home";
 import { Authentication } from "./components/AuthComponent/Authentication";
 import { NotFoundPage } from "./components/ErrorPage/NotFoundPage";
 import { AccessForbidden } from "./components/ErrorPage/AccessForbidden";
@@ -25,6 +25,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Testing } from "./components/CommonComponent/Testing";
+import { ChampionRanking } from "./components/DatasetRanking/ChampionRanking";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,9 @@ const router = createBrowserRouter(
       <Route path="reset-password-link" element={<ResetPasswordByLink />} />
       <Route path="chessboard" element={<ChessBoard />} />
       <Route path="testing" element={<Testing />} />
+
+      <Route path="units" element={<ChampionRanking />} />
+
     </Route>
   )
 );

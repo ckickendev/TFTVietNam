@@ -10,6 +10,7 @@ const traitSchema = new Schema(
     name: String,
     image: String,
     effect: String,
+    name_api: String,
     unit_activate: Array,
     champions: [
       {

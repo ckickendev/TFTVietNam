@@ -53,6 +53,7 @@ export interface IChampionData {
   avatar: string;
   bgimage: string;
   name: string;
+  name_api: string;
   cost: number;
   skill: string;
 }
@@ -80,6 +81,7 @@ export const ChampionAdmin = () => {
     avatar: "",
     bgimage: "",
     name: "",
+    name_api: "",
     cost: 0,
     skill: "",
   });
@@ -113,6 +115,7 @@ export const ChampionAdmin = () => {
             avatar: newChampionData.avatar,
             bgimage: newChampionData.bgimage,
             name: newChampionData.name,
+            name_api: newChampionData.name_api,
             cost: newChampionData.cost,
             skill: newChampionData.skill,
           },
@@ -125,6 +128,7 @@ export const ChampionAdmin = () => {
         avatar: "",
         bgimage: "",
         name: "",
+        name_api: "",
         cost: 0,
         skill: "",
       });
@@ -214,6 +218,7 @@ export const ChampionAdmin = () => {
         avatar: inputChampion.avatar,
         bgimage: inputChampion.bgimage,
         name: inputChampion.name,
+        name_api: inputChampion.name_api,
         cost: inputChampion.cost,
         skill: inputChampion.skill,
       };
@@ -251,6 +256,7 @@ export const ChampionAdmin = () => {
           avatar: "",
           bgimage: "",
           name: "",
+          name_api: "",
           cost: 0,
           skill: "",
         });

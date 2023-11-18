@@ -1,6 +1,7 @@
 export const COLOR = {
   BLACK: "#313236",
   UNDER_BLACK: "#303641",
+  BLACK_RANKING: "#1d1e20",
   BLACK_BACKGROUND: "#000000aa",
   WHITE: "#ffffff",
   GREEN: "#2f7d31",

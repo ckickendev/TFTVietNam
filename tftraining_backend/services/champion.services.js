@@ -11,6 +11,7 @@ class ChampionService extends Service {
         avatar: championElement.avatar,
         bgimage: championElement.bgimage,
         name: championElement.name,
+        name_api: championElement.name_api,
         cost: championElement.cost,
         skill: championElement.skill,
       };
@@ -22,9 +23,9 @@ class ChampionService extends Service {
   };
 
   getListTraisByChampionId = async (id) => {
-    const listTrait =  await Trait.find({champions: id});
+    const listTrait = await Trait.find({ champions: id });
     return listTrait;
-  }
+  };
 
   addNewChampion = async (data) => {
     const newChampion = new Champion({
@@ -32,6 +33,7 @@ class ChampionService extends Service {
       avatar: data.avatar,
       bgimage: data.bgimage,
       name: data.name,
+      name_api: data.name_api,
       cost: data.cost,
       skill: data.skill,
       traits: [],
@@ -47,9 +49,9 @@ class ChampionService extends Service {
   };
 
   editChampion = async (data) => {
-    const { avatar, bgimage, name, skill, cost } = data;
+    const { avatar, bgimage, name, name_api, skill, cost } = data;
     const findById = { _id: data._id };
-    const updateData = { avatar, bgimage, name, skill, cost };
+    const updateData = { avatar, bgimage, name, name_api, skill, cost };
     const responseData = await Champion.updateOne(findById, updateData);
     return responseData;
   };

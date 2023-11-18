@@ -83,6 +83,17 @@ export const ChampionAddForm = ({
                   sx={{ m: 1 }}
                   style={FORM_STYLE.formElement}
                 />
+                <TextField
+                  label="Enter name api"
+                  color="success"
+                  focused
+                  defaultValue={inputChampion?.name_api}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    inputNewChampion(event, "name_api");
+                  }}
+                  sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
+                />
                 <FormControl fullWidth sx={{ m: 1 }} 
                   style={FORM_STYLE.formElement}
                   >

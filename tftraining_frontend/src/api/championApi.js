@@ -29,9 +29,10 @@ const getChampionByIdApi = async (id) => {
     bgimage: champion.bgimage,
     traits: champion.traits,
     name: champion.name,
+    nameAPI: champion.name_api,
     skill: champion.skill,
-    cost: champion.cost
-  }
+    cost: champion.cost,
+  };
   console.log("return", returnValue);
   return returnValue;
 };
@@ -43,7 +44,7 @@ const getListTraisByChampionId = async (id) => {
   );
   const traits = data.data.traits;
   return traits;
-}
+};
 
 const addChampionAPI = async (newChampion) => {
   const res = await axios.post(`${CONSTVALUE.ROOT_BACKEND}/champion/add`, {
@@ -65,6 +66,7 @@ const deleteChampionById = async (id) => {
 };
 
 const editChampionAPI = async (data) => {
+  console.log("68", data);
   const res = await axios.patch(`${CONSTVALUE.ROOT_BACKEND}/champion/edit`, {
     headers: getHeadersToken(),
     data: {
@@ -81,24 +83,32 @@ async function loadRankChampion() {
   const data = await response.json();
   const totalPrequent = data.games[0].count;
   const unitDataList = [];
-  data.results.forEach((element) => {
+  data.results.forEach(async (element) => {
     let frequency = 0;
     let avgCount = 0;
     element.places.forEach((current, index) => {
       frequency += current;
       avgCount += current * (index + 1);
     });
+
+    const dataChampion = await axios.get(
+      `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${element.unit}`,
+      { headers: getHeadersToken() }
+    );
+
     const unitData = {
       name: element.unit,
       frequency: frequency,
       winrate: (element.places[0] / frequency) * 100,
       percentage: (frequency / totalPrequent) * 100,
       avgCount: avgCount / frequency,
+      dataChampion: dataChampion,
     };
     unitDataList.push(unitData);
   });
-  console.log("data", unitDataList);
+  return unitDataList;
 }
+
 export {
   getAllChampionAPI,
   addChampionAPI,

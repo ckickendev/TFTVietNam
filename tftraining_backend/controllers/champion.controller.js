@@ -44,6 +44,17 @@ class ChampionController extends Controller {
     }
   }
 
+  getChampionByNameApi = async (req, res, next) => {
+    try {
+      const traits = await championService.getListTraisByChampionId(req.params.championId);
+      res.status(200).json({
+        traits: traits
+      });
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  }
+
 
   addNewChampion = async (req, res, next) => {
     const newChampion = req.body.newChampion;
@@ -105,6 +116,11 @@ class ChampionController extends Controller {
       `${this._rootPath}/getListTraits/:championId`,
       AdminMiddleware,
       this.getListTraisByChampionId
+    );
+    this._router.get(
+      `${this._rootPath}/getChampionByNameApi/:championNameApi`,
+      AdminMiddleware,
+      this.getChampionByNameApi
     );
     this._router.post(
       `${this._rootPath}/add`,

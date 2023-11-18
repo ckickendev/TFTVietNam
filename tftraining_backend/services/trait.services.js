@@ -22,6 +22,7 @@ class TraitService extends Service {
       _id: new mongoose.Types.ObjectId(),
       image: data.image,
       name: data.name,
+      name_api: data.name_api,
       effect: data.effect,
       unit_activate: data.unit_activate,
       champions: champions,
@@ -37,17 +38,16 @@ class TraitService extends Service {
   };
 
   editTrait = async (data) => {
-    const { image, name, effect, unit_activate } = data;
+    const { image, name, name_api, effect, unit_activate } = data;
     console.log("ádasdsad", data);
     const findById = { _id: data._id };
-    const updateData = { image, name, effect, unit_activate };
+    const updateData = { image, name, name_api, effect, unit_activate };
     const responseData = await Trait.updateOne(findById, updateData);
     return responseData;
   };
 
   editTraitChampion = async (data) => {
     const idTrait = data.idTrait;
-    console.log("ákdaskjd", data);
     await Trait.findByIdAndUpdate(idTrait, { champions: [] });
     const championIds = data.champions.map(async (champion) => {
       const championId = new ObjectId(champion._id);

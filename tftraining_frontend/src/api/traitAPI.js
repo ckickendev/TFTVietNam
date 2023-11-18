@@ -25,6 +25,7 @@ const getTraitByIdAPI = async (id) => {
   const dataOut = response.data.trait[0];
   const traitData = {
     name: dataOut.name,
+    name_api: dataOut.name_api,
     image: dataOut.image,
     effect: dataOut.effect,
     unit_activate: dataOut.unit_activate

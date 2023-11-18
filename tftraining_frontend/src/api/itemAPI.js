@@ -25,6 +25,7 @@ const getItemByIdAPI = async (id) => {
   return {
     effect: trait.effect,
     image: trait.image,
+    name_api: trait.name_api,
     name: trait.name,
     property: trait.property,
   };
