@@ -18,8 +18,11 @@ export const TraitToolTip = ({ id }: any) => {
             loadingStore.setIsLoading(true);
 
             // Get data for trait
-            const trait = await getTraitByIdAPI(id);
-            setTrait(trait);
+            if (id) {
+                const trait = await getTraitByIdAPI(id);
+                setTrait(trait);
+
+            }
 
             loadingStore.setIsLoading(false);
         };
@@ -32,13 +35,13 @@ export const TraitToolTip = ({ id }: any) => {
                 <React.Fragment>
                     <div style={{ borderColor: COLOR.GREEN, borderWidth: 2, borderStyle: "solid", padding: 5, borderRadius: 5 }}>
                         <Typography fontSize={15} color={COLOR.BLACK_BACKGROUND}>{trait?.name}</Typography>
-                        <Typography fontSize={12} fontWeight={300} style={{whiteSpace: "pre-wrap", padding: 0, margin: "10px 0px" }} color="inherit">{trait?.effect}</Typography>
+                        <Typography fontSize={12} fontWeight={300} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "10px 0px" }} color="inherit">{trait?.effect}</Typography>
                         <div>
                             {trait?.unit_activate?.map((unit: any) => {
                                 return (
-                                    <div style={{display: 'flex'}}>
-                                        <Typography fontSize={10} style={{whiteSpace: "pre-wrap", padding: 0, margin: "2px 0px" }} >{`(${unit?.count_activate})`}</Typography>
-                                        <Typography fontSize={10} style={{whiteSpace: "pre-wrap", padding: 0, margin: "2px 2px" }} >{`${unit?.effect_activate}`}</Typography>
+                                    <div style={{ display: 'flex' }}>
+                                        <Typography fontSize={10} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "2px 0px" }} >{`(${unit?.count_activate})`}</Typography>
+                                        <Typography fontSize={10} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "2px 2px" }} >{`${unit?.effect_activate}`}</Typography>
                                     </div>
                                 )
                             })}

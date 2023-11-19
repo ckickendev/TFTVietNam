@@ -26,6 +26,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Testing } from "./components/CommonComponent/Testing";
 import { ChampionRanking } from "./components/DatasetRanking/ChampionRanking";
+import { ItemRanking } from "./components/DatasetRanking/ItemRanking";
+import { TraitRanking } from "./components/DatasetRanking/TraitRanking";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +48,9 @@ const router = createBrowserRouter(
       <Route path="testing" element={<Testing />} />
 
       <Route path="units" element={<ChampionRanking />} />
+      <Route path="items" element={<ItemRanking />} />
+      <Route path="traits" element={<TraitRanking />} />
+
 
     </Route>
   )

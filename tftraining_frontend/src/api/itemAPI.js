@@ -49,39 +49,6 @@ const deleteItemById = async (id) => {
   return res.data.dataDelete.deletedCount;
 };
 
-async function loadItemRank() {
-  const response = await fetch(
-    "https://api2.metatft.com/tft-stat-api/items?queue=1100&patch=current&days=2&rank=CHALLENGER,GRANDMASTER&permit_filter_adjustment=true"
-  );
-  const data = await response.json();
-  const totalPrequent = data.games[0].count;
-  const unitDataList = [];
-  data.results.forEach((element) => {
-    let frequency = 0;
-    let avgCount = 0;
-    let sumplus = 0;
-    let summinus = 0;
-    element.places.forEach((current, index) => {
-      frequency += current;
-      avgCount += current * (index + 1);
-      if (index < 4) {
-        sumplus += frequency * (index + 1);
-      } else {
-        summinus += frequency * (index + 1);
-      }
-    });
-    const unitData = {
-      name: element.itemName,
-      frequency: frequency,
-      winrate: (element.places[0] / frequency) * 100,
-      percentage: (frequency / totalPrequent) * 100,
-      avgCount: avgCount / frequency,
-      avgChange: (sumplus - summinus) / totalPrequent,
-    };
-    unitDataList.push(unitData);
-  });
-  console.log("data", unitDataList);
-}
 
 const editItemAPI = async (data) => {
   const res = await axios.patch(`${ROOT_BACKEND}/item/edit`, {
@@ -96,7 +63,6 @@ const editItemAPI = async (data) => {
 export {
   getAllItemsAPI,
   getItemByIdAPI,
-  loadItemRank,
   addItemAPI,
   deleteItemById,
   editItemAPI,

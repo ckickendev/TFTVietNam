@@ -33,6 +33,17 @@ class ItemController extends Controller {
     }
   };
 
+  getItemByItemNameAPI = async (req, res, next) => {
+    console.log("req.params.nameAPI", req.params.nameAPI);
+    try {
+      const item = await itemService.getItemByItemNameAPI(req.params.nameAPI);
+      res.status(200).json({
+        item: item,
+      });
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  };
 
   addNewItem = async (req, res, next) => {
     const newItem = req.body.newItem;
@@ -89,6 +100,11 @@ class ItemController extends Controller {
       `${this._rootPath}/find/:id`,
       AdminMiddleware,
       this.findItemById
+    );
+    this._router.get(
+      `${this._rootPath}/getItemByItemNameAPI/:nameAPI`,
+      AdminMiddleware,
+      this.getItemByItemNameAPI
     );
     this._router.post(
       `${this._rootPath}/add`,

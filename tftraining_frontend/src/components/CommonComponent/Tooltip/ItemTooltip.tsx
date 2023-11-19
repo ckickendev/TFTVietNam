@@ -17,10 +17,11 @@ export const ItemTooltip = ({ id }: any) => {
             loadingStore.setIsLoading(true);
 
             // Get data for trait
-            const item = await getItemByIdAPI(id);
-            console.log(item);
-            
-            setItem(item);
+            if (id) {
+                const item = await getItemByIdAPI(id);
+                console.log(item);
+                setItem(item);
+            }
 
             loadingStore.setIsLoading(false);
         };

@@ -41,6 +41,7 @@ interface IItemData {
   _id: string;
   image: string;
   name: string;
+  name_api: string;
   effect: string;
 }
 
@@ -71,6 +72,7 @@ export const ItemAdmin = () => {
     idEdit: "SAMPLE",
     image: "",
     name: "",
+    name_api: "",
     effect: "",
   });
 
@@ -92,6 +94,7 @@ export const ItemAdmin = () => {
             _id: newItemData._id,
             image: newItemData.image,
             name: newItemData.name,
+            name_api: newItemData.name_api,
             effect: newItemData.effect,
           },
           ...allItems,
@@ -102,6 +105,7 @@ export const ItemAdmin = () => {
         idEdit: "SAMPLE",
         image: "",
         name: "",
+        name_api: "",
         effect: "",
       });
       setUnableInput(false);
@@ -180,6 +184,7 @@ export const ItemAdmin = () => {
       const inputDataItem = {
         _id: inputItem.idEdit,
         name: inputItem.name,
+        name_api: inputItem.name_api,
         image: inputItem.image,
         effect: inputItem.effect,
       };
@@ -205,6 +210,7 @@ export const ItemAdmin = () => {
         setInputItem({
           idEdit: "SAMPLE",
           name: "",
+          name_api: "",
           image: "",
           effect: "",
         });

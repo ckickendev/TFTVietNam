@@ -33,6 +33,17 @@ class TraitController extends Controller {
     }
   };
 
+  getTraitByNameAPI = async (req, res, next) => {
+    try {
+      const trait = await traitService.getTraitByNameAPI(req.params.trait_api);
+      res.status(200).json({
+        trait: trait,
+      });
+    } catch (err) {
+      res.status(500).send({ error: err.message });
+    }
+  };
+
   addNewTrait = async (req, res, next) => {
     const newTrait = req.body.newTrait;
     try {
@@ -78,7 +89,7 @@ class TraitController extends Controller {
     }
   };
 
-  editTraitChampion = async (req,res, next) => {
+  editTraitChampion = async (req, res, next) => {
     try {
       const editData = req.body.data;
       console.log("edit", editData);
@@ -92,7 +103,7 @@ class TraitController extends Controller {
         error: err.message,
       });
     }
-  }
+  };
 
   initController() {
     this._router.get(
@@ -104,6 +115,11 @@ class TraitController extends Controller {
       `${this._rootPath}/find/:id`,
       AdminMiddleware,
       this.getTraitById
+    );
+    this._router.get(
+      `${this._rootPath}/getTraitByNameAPI/:name_api`,
+      AdminMiddleware,
+      this.getTraitByNameAPI
     );
     this._router.post(
       `${this._rootPath}/add`,
@@ -125,8 +141,6 @@ class TraitController extends Controller {
       AdminMiddleware,
       this.editTrait
     );
-
-    
   }
 }
 

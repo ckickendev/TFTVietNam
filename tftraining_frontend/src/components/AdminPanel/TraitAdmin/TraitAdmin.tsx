@@ -24,6 +24,7 @@ export interface ITraitData {
   _id: string;
   image: string;
   name: string;
+  name_api: string;
   effect: string;
   unit_activate: Array<IUnitActivate>;
 }
@@ -60,6 +61,7 @@ export const TraitAdmin = () => {
     idEdit: "SAMPLE",
     image: "",
     name: "",
+    name_api: "",
     effect: "",
     unit_activate: [{ count_activate: 0, effect_activate: "" }],
   });
@@ -86,6 +88,7 @@ export const TraitAdmin = () => {
             _id: newTraitData._id,
             image: newTraitData.image,
             name: newTraitData.name,
+            name_api: newTraitData.name_api,
             effect: newTraitData.effect,
             unit_activate: newTraitData.unit_activate,
           },
@@ -97,6 +100,7 @@ export const TraitAdmin = () => {
         idEdit: "SAMPLE",
         image: "",
         name: "",
+        name_api: "",
         effect: "",
         unit_activate: [{ count_activate: 0, effect_activate: "" }],
       });
@@ -119,6 +123,7 @@ export const TraitAdmin = () => {
       const inputDataTrait = {
         _id: inputTrait.idEdit,
         name: inputTrait.name,
+        name_api: inputTrait.name_api,
         image: inputTrait.image,
         effect: inputTrait.effect,
         unit_activate: inputTrait.unit_activate,
@@ -149,6 +154,7 @@ export const TraitAdmin = () => {
         setInputTrait({
           idEdit: "SAMPLE",
           name: "",
+          name_api: "",
           image: "",
           effect: "",
           unit_activate: [{ count_activate: 0, effect_activate: "" }],

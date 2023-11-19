@@ -16,6 +16,12 @@ class TraitService extends Service {
     return trait;
   };
 
+  getTraitByNameAPI = async (name_api) => {
+    const trait = await Trait.find({ name_api: name_api, del_flag: 0 })
+    return trait;
+  };
+
+
   addNewTrait = async (data) => {
     const champions = data.champions ? data.champions : [];
     const newTrait = new Trait({

@@ -50,6 +50,7 @@ export const ItemForm = ({
                     inputNewItem(event, "image");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <TextField
                   label="Enter name item"
@@ -60,6 +61,18 @@ export const ItemForm = ({
                     inputNewItem(event, "name");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
+                />
+                <TextField
+                  label="Enter name api"
+                  color="success"
+                  focused
+                  value={inputItem?.name_api}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                    inputNewItem(event, "name_api");
+                  }}
+                  sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
                 <TextField
                   label="Enter effect"
@@ -72,6 +85,7 @@ export const ItemForm = ({
                     inputNewItem(event, "effect");
                   }}
                   sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
                 />
               </Box>
             </div>

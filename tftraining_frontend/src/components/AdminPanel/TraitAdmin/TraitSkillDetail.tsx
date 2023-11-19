@@ -47,6 +47,7 @@ interface ITraitData {
   _id: string;
   image: string;
   name: string;
+  name_api: string;
   effect: string;
   unit_activate: Array<IUnitActivate>;
 }

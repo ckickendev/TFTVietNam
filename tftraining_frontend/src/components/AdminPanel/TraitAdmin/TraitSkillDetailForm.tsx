@@ -75,6 +75,17 @@ export const TraitSkillDetailForm = ({
                   style={FORM_STYLE.formElement}
                 />
                 <TextField
+                  label="Name"
+                  color="error"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    inputNewTrait(e, "name_api");
+                  }}
+                  focused
+                  value={inputTrait.name_api}
+                  sx={{ m: 1 }}
+                  style={FORM_STYLE.formElement}
+                />
+                <TextField
                   label="Effect"
                   color="error"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
