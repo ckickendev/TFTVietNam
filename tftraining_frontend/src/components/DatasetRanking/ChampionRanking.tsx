@@ -3,15 +3,20 @@ import { NavBarComponent } from "../AuthComponent/NavBarComponent";
 import authStore from "../../store/authStore";
 import { FootContent } from "../HomePage/FootContent";
 import { COLOR } from "../constants";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, tableCellClasses } from "@mui/material";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, styled, tableCellClasses } from "@mui/material";
 import loadingStore from "../../store/loadingStore";
-import { getAllChampionAPI, loadRankChampion } from "../../api/championApi";
-import { IChampionData } from "../AdminPanel/ChampionAdmin/ChampionAdmin";
+import { getAllChampionAPI, getHeadersToken, loadRankChampion } from "../../api/championApi";
+import axios from "axios";
+import CONSTVALUE from "../../api/const";
+import { ChampionTooltip } from "../CommonComponent/Tooltip/ChampionTooltip";
+import { CustomRankingDisplay } from "../CommonComponent/CustomComponent/CustomRankingDisplay";
+
 
 export const ChampionRanking = () => {
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '&:nth-of-type(odd)': {
             backgroundColor: theme.palette.action.hover,
+            // backgroundColor: COLOR.BLACK,
         },
         // hide last border
         '&:last-child td, &:last-child th': {
@@ -29,38 +34,85 @@ export const ChampionRanking = () => {
         },
     }));
 
-    const [allChampions, setAllChampions] = useState<any>([]);
 
+    const [allChampions, setAllChampions] = useState<any>([]);
 
     useEffect(() => {
         const getAllChampion = async () => {
-          loadingStore.setIsLoading(true);
-          const champions = await loadRankChampion();
-          setAllChampions(champions);
-          loadingStore.setIsLoading(false);
+            loadingStore.setIsLoading(true);
+            const response = await axios.get(
+                "https://api2.metatft.com/tft-stat-api/units?queue=1100&patch=current&days=2&rank=CHALLENGER&permit_filter_adjustment=true"
+            );
+
+            const totalPrequent = await response.data.games[0].count;
+            const unitDataList = await response.data.results.map((element: { places: any[]; unit: any; }) => {
+                let frequency = 0;
+                let avgCount = 0;
+                element.places.forEach((current, index) => {
+                    frequency += current;
+                    avgCount += current * (index + 1);
+                });
+
+                // const dataChampion = await axios.get(
+                //     `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${element.unit}`,
+                //     { headers: getHeadersToken() }
+                // );
+
+                return {
+                    name: element.unit,
+                    frequency: frequency,
+                    winrate: ((element.places[0] / frequency) * 100).toFixed(2),
+                    percentage: ((frequency / totalPrequent) * 100).toFixed(2),
+                    rank: getRankingChampion((avgCount / frequency)),
+                    avgCount: (avgCount / frequency).toFixed(2),
+                    avgCountNumber: avgCount,
+                    // dataChampion: dataChampion,
+                };
+            });
+
+            unitDataList.sort((a: any, b: any) => a.avgCount - b.avgCount);
+
+            const finalList = await unitDataList.map(async (element : any) => {
+                const dataChampion = await axios.get(
+                    `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${element.name}`,
+                    { headers: getHeadersToken() }
+                );
+
+                return {...element, dataChampion}
+            })
+            
+            finalList.forEach((data: Promise<any>) => {
+                data.then((e) => {
+                    setAllChampions((old: any) => {
+                        return [...old, e]
+                    });
+                })
+            })
+            loadingStore.setIsLoading(false);
         };
         getAllChampion();
-      }, []);
+    }, []);
 
-    
+    useEffect(() => {
+        console.log(123);
+        
+    }, [allChampions]);
 
-    function createData(
-        name: string,
-        calories: number,
-        fat: number,
-        carbs: number,
-        protein: number,
-    ) {
-        return { name, calories, fat, carbs, protein };
+    const getRankingChampion = (avgPlace: number) => {
+        if (avgPlace < 4.2) {
+            return "S";
+        } else if (avgPlace < 4.40) {
+            return "A";
+        } else if (avgPlace < 4.61) {
+            return "B";
+        } else if (avgPlace < 4.8) {
+            return "C";
+        } else {
+            return "D";
+        }
+
     }
 
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-    ];
 
     return (
         <div className="header-container">
@@ -70,11 +122,11 @@ export const ChampionRanking = () => {
                     <div id="content-wrap" style={{ backgroundColor: COLOR.BLACK_RANKING }}>
                         <div >
                             <div style={{ marginTop: '20px', color: COLOR.WHITE }}>
-                                <h4 style={{fontFamily: "Poppins,Backup,Verdana,sans-serif", fontWeight: 600}}>TFT Champion Tier List</h4>
+                                <h4 style={{ fontFamily: "Poppins,Backup,Verdana,sans-serif", fontWeight: 600 }}>TFT Champion Tier List</h4>
                                 <p>Stats on the best tft champions to play in set 9.5. Select a unit to see the best items and builds for that unit. Data updates every 5 minutes.
                                 </p>
                             </div>
-                            <TableContainer component={Paper} style={{marginTop: '20px'}}>
+                            <TableContainer component={Paper} style={{ marginTop: '20px' }}>
                                 <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                     <TableHead>
                                         <TableRow>
@@ -86,17 +138,32 @@ export const ChampionRanking = () => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {allChampions?.map((champion : any) => (
-                                            <StyledTableRow key={champion.name}>
-                                                <StyledTableCell component="th" scope="row">
-                                                    {champion.name}
-                                                </StyledTableCell>
-                                                <StyledTableCell align="center">{champion.name}</StyledTableCell>
-                                                <StyledTableCell align="center">{champion.name}</StyledTableCell>
-                                                <StyledTableCell align="center">{champion.name}</StyledTableCell>
-                                                <StyledTableCell align="center">{champion.name}</StyledTableCell>
-                                            </StyledTableRow>
-                                        ))}
+                                        {allChampions?.map((champion: any, index: number) => {
+
+                                            return (
+                                                <StyledTableRow key={index}>
+                                                    <StyledTableCell component="th" scope="row">
+                                                        <div style={{ display: 'flex', justifyContent: 'start' }}>
+                                                            <ChampionTooltip id={champion?.dataChampion?.data.champion[0]?._id} />
+                                                            <Typography style={{ marginLeft: '12px' }} align='center' lineHeight={"24px"} fontSize={10} fontWeight={400} color={COLOR.BLACK_BACKGROUND}>{champion?.dataChampion?.data.champion[0]?.name}</Typography>
+                                                        </div>
+                                                    </StyledTableCell>
+                                                    <StyledTableCell align="center">
+                                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                                            <CustomRankingDisplay ranking={champion?.rank} />
+                                                        </div>
+                                                    </StyledTableCell>
+                                                    <StyledTableCell align="center">{champion?.avgCount}</StyledTableCell>
+                                                    <StyledTableCell align="center">{champion?.winrate} %</StyledTableCell>
+                                                    <StyledTableCell align="center">{champion?.frequency}
+                                                        <span> </span>
+                                                        <span style={{ fontSize: '10px' }}>
+                                                            {champion?.percentage} %
+                                                        </span>
+                                                    </StyledTableCell>
+                                                </StyledTableRow>
+                                            )
+                                        })}
                                     </TableBody>
                                 </Table>
                             </TableContainer>

@@ -19,13 +19,15 @@ export const ChampionTooltip = ({ id }: any) => {
         const getData = async () => {
             loadingStore.setIsLoading(true);
 
-            // Get data for champion
-            const champion = await getChampionByIdApi(id);
-            setChampion(champion);
+            if (id) {
+                // Get data for champion
+                const champion = await getChampionByIdApi(id);
+                setChampion(champion);
+                const traits = await getListTraisByChampionId(id);
+                setListTraits(traits);
+            }
 
             // Get data for traits
-            const traits = await getListTraisByChampionId(id);
-            setListTraits(traits);
             loadingStore.setIsLoading(false);
         };
 
@@ -41,14 +43,14 @@ export const ChampionTooltip = ({ id }: any) => {
                             <div style={{ position: 'absolute', bottom: 10, left: 0, zIndex: 99 }}>
                                 {listTraits?.map((trait: any) => {
                                     return (
-                                        <div style={{display: 'flex', alignItems: 'center', marginLeft: 5}} key={trait._id}>
+                                        <div style={{ display: 'flex', alignItems: 'center', marginLeft: 5 }} key={trait._id}>
                                             <img src={trait?.image} width={SIZE.TRAIT_ICON_WIDTH} height={SIZE.TRAIT_ICON_HEIGHT} />
                                             <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 5, zIndex: 99, color: COLOR.WHITE }} color="inherit">{trait?.name}</Typography>
                                         </div>
                                     )
                                 })}
                             </div>
-                            <div style={{ position: 'absolute', bottom: 10, right: 10, zIndex: 99, display: 'flex', alignItems:'center' }}>
+                            <div style={{ position: 'absolute', bottom: 10, right: 10, zIndex: 99, display: 'flex', alignItems: 'center' }}>
                                 <img color={COLOR.YELLOW} src="https://cdn.mobalytics.gg/assets/common/icons/tft-system/coin.svg" alt="coin" />
                                 <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 2, zIndex: 99, color: COLOR.WHITE }} color="inherit">{champion?.cost}</Typography>
                             </div>
@@ -64,7 +66,7 @@ export const ChampionTooltip = ({ id }: any) => {
                 </React.Fragment>
             }
         >
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <CustomChampionAvatar height={28} width={28} src={champion?.image} />
             </div>
         </HtmlTooltip>

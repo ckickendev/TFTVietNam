@@ -46,9 +46,9 @@ class ChampionController extends Controller {
 
   getChampionByNameApi = async (req, res, next) => {
     try {
-      const traits = await championService.getListTraisByChampionId(req.params.championId);
+      const champion = await championService.getChampionByNameApi(req.params.championNameApi);
       res.status(200).json({
-        traits: traits
+        champion: champion
       });
     } catch (err) {
       res.status(500).send({ error: err.message });

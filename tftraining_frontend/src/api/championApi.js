@@ -1,7 +1,7 @@
 import axios from "axios";
 import CONSTVALUE from "./const";
 
-const getHeadersToken = () => {
+export const getHeadersToken = () => {
   const token = localStorage.getItem("access_token");
   return {
     Authorization: `Bearer ${token}`,
@@ -77,36 +77,7 @@ const editChampionAPI = async (data) => {
 };
 
 async function loadRankChampion() {
-  const response = await fetch(
-    "https://api2.metatft.com/tft-stat-api/units?queue=1100&patch=current&days=2&rank=CHALLENGER&permit_filter_adjustment=true"
-  );
-  const data = await response.json();
-  const totalPrequent = data.games[0].count;
-  const unitDataList = [];
-  data.results.forEach(async (element) => {
-    let frequency = 0;
-    let avgCount = 0;
-    element.places.forEach((current, index) => {
-      frequency += current;
-      avgCount += current * (index + 1);
-    });
-
-    const dataChampion = await axios.get(
-      `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${element.unit}`,
-      { headers: getHeadersToken() }
-    );
-
-    const unitData = {
-      name: element.unit,
-      frequency: frequency,
-      winrate: (element.places[0] / frequency) * 100,
-      percentage: (frequency / totalPrequent) * 100,
-      avgCount: avgCount / frequency,
-      dataChampion: dataChampion,
-    };
-    unitDataList.push(unitData);
-  });
-  return unitDataList;
+  
 }
 
 export {

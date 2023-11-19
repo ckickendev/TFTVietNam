@@ -27,6 +27,12 @@ class ChampionService extends Service {
     return listTrait;
   };
 
+  getChampionByNameApi = async (name_api) => {
+    const champion = await Champion.find({ name_api: name_api, del_flag: 0 });
+    console.log("Champion", champion);
+    return champion;
+  };
+
   addNewChampion = async (data) => {
     const newChampion = new Champion({
       _id: new mongoose.Types.ObjectId(),

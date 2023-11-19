@@ -28,7 +28,9 @@ export const CustomRankingDisplay = (props: { ranking: "S" | "A" | "B" | "C" | "
         cursor: "pointer",
         display: 'flex',
         fontSize: '18px',
-        fontWeight: '600',
+        lineHeight: '28px',
+        fontFamily: 'Poppins,Backup,Verdana,sans-serif',
+        fontWeight: '500',
         justifyContent: 'center',
     }
 
