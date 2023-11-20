@@ -4,15 +4,16 @@ import authStore from "../../store/authStore";
 import { FootContent } from "../HomePage/FootContent";
 import { COLOR } from "../constants";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, styled, tableCellClasses } from "@mui/material";
-import loadingStore from "../../store/loadingStore";
-import { getAllChampionAPI, getHeadersToken, loadRankChampion } from "../../api/championApi";
+import { getHeadersToken } from "../../api/championApi";
 import axios from "axios";
 import CONSTVALUE from "../../api/const";
 import { ChampionTooltip } from "../CommonComponent/Tooltip/ChampionTooltip";
 import { CustomRankingDisplay } from "../CommonComponent/CustomComponent/CustomRankingDisplay";
+import { observer } from "mobx-react";
+import { LoadingCustom } from "../../utils/LoadingCustom";
 
 
-export const ChampionRanking = () => {
+export const ChampionRanking = observer(({ loadingStore, authStore }: any) => {
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '&:nth-of-type(odd)': {
             backgroundColor: theme.palette.action.hover,
@@ -71,15 +72,15 @@ export const ChampionRanking = () => {
 
             unitDataList.sort((a: any, b: any) => a.avgCount - b.avgCount);
 
-            const finalList = await unitDataList.map(async (element : any) => {
+            const finalList = await unitDataList.map(async (element: any) => {
                 const dataChampion = await axios.get(
                     `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${element.name}`,
                     { headers: getHeadersToken() }
                 );
 
-                return {...element, dataChampion}
+                return { ...element, dataChampion }
             })
-            
+
             finalList.forEach((data: Promise<any>) => {
                 data.then((e) => {
                     setAllChampions((old: any) => {
@@ -107,65 +108,70 @@ export const ChampionRanking = () => {
 
     }
 
-
     return (
-        <div className="header-container">
-            <div id="root">
-                <div id="page-container">
-                    <NavBarComponent authStore={authStore} />
-                    <div id="content-wrap" style={{ backgroundColor: COLOR.BLACK_RANKING }}>
-                        <div >
-                            <div style={{ marginTop: '20px', color: COLOR.WHITE }}>
-                                <h4 style={{ fontFamily: "Poppins,Backup,Verdana,sans-serif", fontWeight: 600 }}>TFT Champion Tier List</h4>
-                                <p>Stats on the best tft champions to play in set 9.5. Select a unit to see the best items and builds for that unit. Data updates every 5 minutes.
-                                </p>
-                            </div>
-                            <TableContainer component={Paper} style={{ marginTop: '20px' }}>
-                                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                    <TableHead>
-                                        <TableRow>
-                                            <StyledTableCell>Champion</StyledTableCell>
-                                            <StyledTableCell align="center">Tier</StyledTableCell>
-                                            <StyledTableCell align="center">Top (Average)</StyledTableCell>
-                                            <StyledTableCell align="center">Winrate</StyledTableCell>
-                                            <StyledTableCell align="center">Frequently</StyledTableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {allChampions?.map((champion: any, index: number) => {
+        <>
+            {loadingStore.getIsLoading() && (
+                <LoadingCustom isOpen={loadingStore.getIsLoading()} />
+            )}
+            <div className="header-container">
+                <div id="root">
+                    <div id="page-container">
+                        <NavBarComponent authStore={authStore} />
+                        <div id="content-wrap" style={{ backgroundColor: COLOR.BLACK_RANKING }}>
+                            <div >
+                                <div style={{ marginTop: '20px', color: COLOR.WHITE }}>
+                                    <h4 style={{ fontFamily: "Poppins,Backup,Verdana,sans-serif", fontWeight: 600 }}>TFT Champion Tier List</h4>
+                                    <p>Stats on the best tft champions to play in set 9.5. Select a unit to see the best items and builds for that unit. Data updates every 5 minutes.
+                                    </p>
+                                </div>
+                                <TableContainer component={Paper} style={{ marginTop: '20px' }}>
+                                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <StyledTableCell>Champion</StyledTableCell>
+                                                <StyledTableCell align="center">Tier</StyledTableCell>
+                                                <StyledTableCell align="center">Top (Average)</StyledTableCell>
+                                                <StyledTableCell align="center">Winrate</StyledTableCell>
+                                                <StyledTableCell align="center">Frequently</StyledTableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {allChampions?.map((champion: any, index: number) => {
 
-                                            return (
-                                                <StyledTableRow key={index}>
-                                                    <StyledTableCell component="th" scope="row">
-                                                        <div style={{ display: 'flex', justifyContent: 'start' }}>
-                                                            <ChampionTooltip id={champion?.dataChampion?.data.champion[0]?._id} />
-                                                            <Typography style={{ marginLeft: '12px' }} align='center' lineHeight={"24px"} fontSize={10} fontWeight={400} color={COLOR.BLACK_BACKGROUND}>{champion?.dataChampion?.data.champion[0]?.name}</Typography>
-                                                        </div>
-                                                    </StyledTableCell>
-                                                    <StyledTableCell align="center">
-                                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                                            <CustomRankingDisplay ranking={champion?.rank} />
-                                                        </div>
-                                                    </StyledTableCell>
-                                                    <StyledTableCell align="center">{champion?.avgCount}</StyledTableCell>
-                                                    <StyledTableCell align="center">{champion?.winrate} %</StyledTableCell>
-                                                    <StyledTableCell align="center">{champion?.frequency}
-                                                        <span> </span>
-                                                        <span style={{ fontSize: '10px' }}>
-                                                            {champion?.percentage} %
-                                                        </span>
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            )
-                                        })}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                                                return (
+                                                    <StyledTableRow key={index}>
+                                                        <StyledTableCell component="th" scope="row">
+                                                            <div style={{ display: 'flex', justifyContent: 'start' }}>
+                                                                <ChampionTooltip id={champion?.dataChampion?.data.champion[0]?._id} />
+                                                                <Typography style={{ marginLeft: '12px' }} align='center' lineHeight={"24px"} fontSize={10} fontWeight={400} color={COLOR.BLACK_BACKGROUND}>{champion?.dataChampion?.data.champion[0]?.name}</Typography>
+                                                            </div>
+                                                        </StyledTableCell>
+                                                        <StyledTableCell align="center">
+                                                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                                                <CustomRankingDisplay ranking={champion?.rank} />
+                                                            </div>
+                                                        </StyledTableCell>
+                                                        <StyledTableCell align="center">{champion?.avgCount}</StyledTableCell>
+                                                        <StyledTableCell align="center">{champion?.winrate} %</StyledTableCell>
+                                                        <StyledTableCell align="center">{champion?.frequency}
+                                                            <span> </span>
+                                                            <span style={{ fontSize: '10px' }}>
+                                                                {champion?.percentage} %
+                                                            </span>
+                                                        </StyledTableCell>
+                                                    </StyledTableRow>
+                                                )
+                                            })}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </div>
+                            <FootContent />
                         </div>
-                        <FootContent />
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     );
-};
+});

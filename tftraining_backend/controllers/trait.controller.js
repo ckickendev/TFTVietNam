@@ -35,7 +35,7 @@ class TraitController extends Controller {
 
   getTraitByNameAPI = async (req, res, next) => {
     try {
-      const trait = await traitService.getTraitByNameAPI(req.params.trait_api);
+      const trait = await traitService.getTraitByNameAPI(req.params.name_api);
       res.status(200).json({
         trait: trait,
       });

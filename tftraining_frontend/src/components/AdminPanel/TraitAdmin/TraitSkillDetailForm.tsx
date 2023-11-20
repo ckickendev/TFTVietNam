@@ -23,12 +23,10 @@ export const TraitSkillDetailForm = ({
   title,
   inputTrait,
   inputNewTrait,
-  addRowAddTrait,
   inputChangeUnitActivate,
   addMoreUnitTrait,
   handleEditTrait,
   handleAddTrait,
-  onEditHandler,
   cancelInput
 }: IFormAdd) => {
   return (
@@ -75,7 +73,7 @@ export const TraitSkillDetailForm = ({
                   style={FORM_STYLE.formElement}
                 />
                 <TextField
-                  label="Name"
+                  label="Name API"
                   color="error"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     inputNewTrait(e, "name_api");

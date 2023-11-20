@@ -21,9 +21,7 @@ export const TraitToolTip = ({ id }: any) => {
             if (id) {
                 const trait = await getTraitByIdAPI(id);
                 setTrait(trait);
-
             }
-
             loadingStore.setIsLoading(false);
         };
 
@@ -33,7 +31,8 @@ export const TraitToolTip = ({ id }: any) => {
         <HtmlTooltip
             title={
                 <React.Fragment>
-                    <div style={{ borderColor: COLOR.GREEN, borderWidth: 2, borderStyle: "solid", padding: 5, borderRadius: 5 }}>
+                    {trait?.name || "Loading Data"}
+                    {!trait?.name || <div style={{ borderColor: COLOR.GREEN, borderWidth: 2, borderStyle: "solid", padding: 5, borderRadius: 5 }}>
                         <Typography fontSize={15} color={COLOR.BLACK_BACKGROUND}>{trait?.name}</Typography>
                         <Typography fontSize={12} fontWeight={300} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "10px 0px" }} color="inherit">{trait?.effect}</Typography>
                         <div>
@@ -46,7 +45,8 @@ export const TraitToolTip = ({ id }: any) => {
                                 )
                             })}
                         </div>
-                    </div>
+                    </div>}
+
 
                 </React.Fragment>
             }

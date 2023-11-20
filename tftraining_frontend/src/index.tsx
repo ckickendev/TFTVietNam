@@ -28,6 +28,7 @@ import { Testing } from "./components/CommonComponent/Testing";
 import { ChampionRanking } from "./components/DatasetRanking/ChampionRanking";
 import { ItemRanking } from "./components/DatasetRanking/ItemRanking";
 import { TraitRanking } from "./components/DatasetRanking/TraitRanking";
+import { CompsRanking } from "./components/DatasetRanking/CompsRanking";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,9 +48,11 @@ const router = createBrowserRouter(
       <Route path="chessboard" element={<ChessBoard />} />
       <Route path="testing" element={<Testing />} />
 
-      <Route path="units" element={<ChampionRanking />} />
-      <Route path="items" element={<ItemRanking />} />
-      <Route path="traits" element={<TraitRanking />} />
+      <Route path="units" element={<ChampionRanking loadingStore={loadingStore} authStore={authStore} />} />
+      <Route path="items" element={<ItemRanking loadingStore={loadingStore} authStore={authStore} />} />
+      <Route path="traits" element={<TraitRanking loadingStore={loadingStore} authStore={authStore} />} />
+
+      <Route path="comps" element={<CompsRanking loadingStore={loadingStore} authStore={authStore} />} />
 
 
     </Route>

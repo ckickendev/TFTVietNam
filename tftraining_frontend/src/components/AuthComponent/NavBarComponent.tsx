@@ -215,19 +215,6 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                 >
                   <SupportIcon color="success" />
                 </a>
-                <a
-                  href="https://discord.com/invite/RqN3qPy"
-                  id="DiscordNavBarImgContainer"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    alt="Join Discord"
-                    className="NavBarImg"
-                    id="DiscordNavBarImg"
-                    src="./images/discord_icon.png"
-                  />
-                </a>
                 {authAvatar ? (
                   <NavBarAvatar setAuthAvatar={setAuthAvatar} />
                 ) : (
