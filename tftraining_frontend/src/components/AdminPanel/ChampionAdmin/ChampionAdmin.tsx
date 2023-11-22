@@ -300,15 +300,22 @@ export const ChampionAdmin = () => {
       )}
       {allChampions.length === 0 ? (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
-          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
-            No data found
-          </TextComponent>
           <Button onClick={onHandleAddButton} variant="contained">
             Add Champion
           </Button>
+          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
+            No data found
+          </TextComponent>
+          
         </TableContainer>
       ) : (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <div style={{display: 'flex', justifyContent: 'end'}}>
+          <Button onClick={onHandleAddButton} variant="contained">
+            Add Champion
+          </Button>
+          </div>
+          
           <Table
             aria-label="customized table"
             sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
@@ -347,9 +354,7 @@ export const ChampionAdmin = () => {
               })}
             </TableBody>
           </Table>
-          <Button onClick={onHandleAddButton} fullWidth variant="contained">
-            Add Champion
-          </Button>
+          
         </TableContainer>
       )}
       {unableInput && (

@@ -54,7 +54,7 @@ export const ChampionTooltip = ({ id }: any) => {
                                 <img color={COLOR.YELLOW} src="https://cdn.mobalytics.gg/assets/common/icons/tft-system/coin.svg" alt="coin" />
                                 <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 2, zIndex: 99, color: COLOR.WHITE }} color="inherit">{champion?.cost}</Typography>
                             </div>
-                            <img src={champion?.bgimage} width="100%" style={{ borderColor: COLOR.YELLOW, borderWidth: 2, borderStyle: "solid", borderRadius: 10 }} />
+                            <img src={`../images/bg_champions/${champion?.bgimage}.png`} width="100%" style={{ borderColor: COLOR.YELLOW, borderWidth: 2, borderStyle: "solid", borderRadius: 10 }} />
                         </div>
                         <div style={{ textAlign: "center" }}>
                             <Typography fontSize={30} color={COLOR.BLACK_BACKGROUND}>{champion.name}</Typography>
