@@ -50,7 +50,7 @@ const deleteTraitById = async (id) => {
       idTrait: id,
     },
   });
-  return res.data.dataDelete.deletedCount;
+  return res.data.dataDelete;
 };
 
 const editTraitAPI = async (data) => {

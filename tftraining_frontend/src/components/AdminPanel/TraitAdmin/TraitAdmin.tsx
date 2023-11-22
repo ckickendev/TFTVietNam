@@ -40,15 +40,37 @@ const tableCellSx = {
 };
 
 export const TraitAdmin = () => {
-  useEffect(() => {
-    const getAllTraits = async () => {
+
+  const handleDeleteTrait = async () => {
+    const id = deleteTrait;
+    try {
       loadingStore.setIsLoading(true);
-      const traits = await getAllTraitsAPI();
-      setAllTraits(traits.data.allTraits);
+      console.log("id", id);
+      const handlerDelete = await deleteTraitById(id);
+      if (handlerDelete) {
+        loadingStore.setIsLoading(false);
+        setAllTraits((allTraits: ITraitData[]) => {
+          const newArrayAllTraits = allTraits.filter(
+            (trait) => trait._id !== id
+          );
+          console.log("newArrayAllTraits", newArrayAllTraits);
+          return newArrayAllTraits;
+        });
+        setDeleteTrait("");
+        return;
+      }
+    } catch (err: any) {
       loadingStore.setIsLoading(false);
-    };
-    getAllTraits();
-  }, []);
+      setErrorAddTrait((state) => {
+        return {
+          error: err?.response?.data?.error || err?.message,
+          isError: !state.error,
+        };
+      });
+    }
+  };
+
+  
 
   const [editTraitDetailChampion, setEditTraitDetailChampion] = useState(true);
   const [allTraits, setAllTraits] = useState<ITraitData[]>([]);
@@ -67,6 +89,15 @@ export const TraitAdmin = () => {
   });
   const [deleteTrait, setDeleteTrait] = useState("");
 
+  useEffect(() => {
+    const getAllTraits = async () => {
+      loadingStore.setIsLoading(true);
+      const traits = await getAllTraitsAPI();
+      setAllTraits(traits.data.allTraits);
+      loadingStore.setIsLoading(false);
+    };
+    getAllTraits();
+  }, []);
 
   const handleAddTrait = async () => {
     try {
@@ -176,34 +207,6 @@ export const TraitAdmin = () => {
         };
       });
       loadingStore.setIsLoading(false);
-    }
-  };
-
-  const handleDeleteTrait = async () => {
-    const id = deleteTrait;
-    try {
-      loadingStore.setIsLoading(true);
-      console.log("id", id);
-      const handlerDelete = await deleteTraitById(id);
-      if (handlerDelete) {
-        loadingStore.setIsLoading(false);
-        setAllTraits((allTraits: ITraitData[]) => {
-          const newArrayAllTraits = allTraits.filter(
-            (trait) => trait._id !== id
-          );
-          return newArrayAllTraits;
-        });
-        setDeleteTrait("");
-        return;
-      }
-    } catch (err: any) {
-      loadingStore.setIsLoading(false);
-      setErrorAddTrait((state) => {
-        return {
-          error: err?.response?.data?.error || err?.message,
-          isError: !state.error,
-        };
-      });
     }
   };
 

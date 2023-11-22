@@ -127,6 +127,7 @@ export const ItemAdmin = () => {
       const handlerDelete = await deleteItemById(deleteItem);
       if (handlerDelete) {
         loadingStore.setIsLoading(false);
+        cancelFormDeleteItem();
         setAllItems((allItems: IItemData[]) => {
           const newArrayAllItems = allItems.filter(
             (item) => item._id !== deleteItem
@@ -252,15 +253,22 @@ export const ItemAdmin = () => {
       )}
       {allItems.length === 0 ? (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
-          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
-            No data found
-          </TextComponent>
           <Button onClick={addRowAddItem} variant="contained">
             Add Item
           </Button>
+          <TextComponent sx={ADMIN_TABLE_STYLE.tableCellSx}>
+            No data found
+          </TextComponent>
+
         </TableContainer>
       ) : (
         <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+          <div style={{ display: 'flex', justifyContent: "end" }}>
+            <Button onClick={addRowAddItem} variant="contained">
+              Add Item
+            </Button>
+          </div>
+
           <Table
             aria-label="customized table"
             sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
@@ -289,7 +297,7 @@ export const ItemAdmin = () => {
                 return (
                   <RowData
                     key={index}
-                    index={index}ß
+                    index={index} ß
                     item={item}
                     onEditHandler={onEditHandler}
                     setDeleteItem={setDeleteItem}
@@ -299,9 +307,6 @@ export const ItemAdmin = () => {
               })}
             </TableBody>
           </Table>
-          <Button onClick={addRowAddItem} fullWidth variant="contained">
-            Add Item
-          </Button>
         </TableContainer>
       )}
       {unableInput && (
@@ -318,8 +323,8 @@ export const ItemAdmin = () => {
       )}
       <DialogCustom
         isOpen={deleteItem != ""}
-        content="Do you really want delete this champion, this may be cannot to undo."
-        title="Delete this champion?"
+        content="Do you really want delete this item, this may be cannot to undo."
+        title="Delete this item?"
         disaggreeTitle="Cancel"
         aggreeTitle="Delete"
         confirmHandler={handleDeleteItem}

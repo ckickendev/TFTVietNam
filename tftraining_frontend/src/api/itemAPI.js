@@ -46,7 +46,7 @@ const deleteItemById = async (id) => {
       idItem: id,
     },
   });
-  return res.data.dataDelete.deletedCount;
+  return res.data;
 };
 
 

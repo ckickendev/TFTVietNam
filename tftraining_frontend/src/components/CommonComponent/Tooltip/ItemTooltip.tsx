@@ -27,7 +27,7 @@ export const ItemTooltip = ({ id }: any) => {
         };
 
         getData();
-    }, [])
+    }, [id])
     return (
         <HtmlTooltip
             title={
@@ -45,7 +45,7 @@ export const ItemTooltip = ({ id }: any) => {
         >
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <img
-                    src={item?.image}
+                    src={`../images/items/${item?.image}.png`}
                     style={{ background: COLOR.BLACK_BACKGROUND, color: "#cfcfcf", borderRadius: 5 }}
                     width={28}
                     height={28}
