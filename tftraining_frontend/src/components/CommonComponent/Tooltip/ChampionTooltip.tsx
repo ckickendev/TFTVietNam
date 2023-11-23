@@ -1,6 +1,5 @@
 import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import loadingStore from '../../../store/loadingStore';
 import { getChampionByIdApi, getListTraisByChampionId } from '../../../api/championApi';
 import { CustomChampionAvatar } from '../CustomComponent/CustomChampionAvatar';
 import { COLOR, SIZE } from '../../constants';
@@ -17,7 +16,6 @@ export const ChampionTooltip = ({ id }: any) => {
     const [listTraits, setListTraits] = useState([]);
     useEffect(() => {
         const getData = async () => {
-            loadingStore.setIsLoading(true);
 
             if (id) {
                 // Get data for champion
@@ -28,11 +26,10 @@ export const ChampionTooltip = ({ id }: any) => {
             }
 
             // Get data for traits
-            loadingStore.setIsLoading(false);
         };
 
         getData();
-    }, [id])
+    }, [])
     return (
         <HtmlTooltip
             title={

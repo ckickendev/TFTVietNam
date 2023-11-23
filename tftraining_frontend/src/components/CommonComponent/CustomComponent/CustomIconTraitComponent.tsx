@@ -9,7 +9,7 @@ export const CustomIconTraitComponent = (props: {
   return (
     <div style={{height: props.height}} >
       <img
-        src={props?.src}
+        src={`../images/traits/${props?.src}.png`}
         style={{ background: COLOR.BLACK_BACKGROUND, color: "#cfcfcf", borderRadius: 50 }}
         width={props?.width}
         height={props?.height}

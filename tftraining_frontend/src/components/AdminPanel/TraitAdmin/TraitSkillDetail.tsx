@@ -97,6 +97,12 @@ export const TraitSkillDetail = ({
   return (
     <>
       <TableContainer sx={ADMIN_TABLE_STYLE.tableContainer}>
+        <div style={{ display: 'flex', justifyContent: 'right', margin: '20px 0px 20px 0px' }}>
+          <Button variant="contained" color="primary" onClick={addRowAddTrait}>
+            Add more trait
+          </Button>
+        </div>
+
         <Table
           aria-label="customized table"
           sx={{ backgroundColor: COLOR.WHITE, marginBottom: 4 }}
@@ -146,9 +152,7 @@ export const TraitSkillDetail = ({
             })}
           </TableBody>
         </Table>
-        <Button variant="contained" color="primary" onClick={addRowAddTrait}>
-          Add more trait
-        </Button>
+
         <Button
           variant="contained"
           sx={{ width: "100%", ...tableCellSx, border: 1, marginTop: 4 }}

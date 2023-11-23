@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import loadingStore from "../../../store/loadingStore";
 import { getItemByIdAPI } from "../../../api/itemAPI";
 import { Tooltip, TooltipProps, Typography, styled, tooltipClasses } from "@mui/material";
 import { COLOR } from "../../constants";
@@ -14,7 +13,6 @@ export const ItemTooltip = ({ id }: any) => {
     });
     useEffect(() => {
         const getData = async () => {
-            loadingStore.setIsLoading(true);
 
             // Get data for trait
             if (id) {
@@ -22,12 +20,10 @@ export const ItemTooltip = ({ id }: any) => {
                 console.log(item);
                 setItem(item);
             }
-
-            loadingStore.setIsLoading(false);
         };
 
         getData();
-    }, [id])
+    }, [])
     return (
         <HtmlTooltip
             title={

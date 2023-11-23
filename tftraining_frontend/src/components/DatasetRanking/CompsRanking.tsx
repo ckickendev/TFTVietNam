@@ -66,8 +66,8 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
                                 </p>
                             </div>
                             <div id="tftmodel">
-                                {teamComps.map((team: IComps) => {
-                                    return <CompsUnitElement team={team} />
+                                {teamComps.map((team: IComps, index: number) => {
+                                    return <CompsUnitElement key={index} team={team} />
                                 })}
                             </div>
                             <FootContent />

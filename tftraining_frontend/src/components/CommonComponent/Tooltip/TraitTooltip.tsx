@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import loadingStore from "../../../store/loadingStore";
 import { getAllTraitsAPI, getTraitByIdAPI } from "../../../api/traitAPI";
 import { COLOR } from "../../constants";
 import { Tooltip, TooltipProps, Typography, tooltipClasses } from "@mui/material";
 import { CustomIconTraitComponent } from "../CustomComponent/CustomIconTraitComponent";
 import styled from "@emotion/styled";
+import { LoadingCustom } from "../../../utils/LoadingCustom";
 
 export const TraitToolTip = ({ id }: any) => {
+
     const [trait, setTrait] = useState({
         name: "",
         image: "",
@@ -15,14 +16,12 @@ export const TraitToolTip = ({ id }: any) => {
     });
     useEffect(() => {
         const getData = async () => {
-            loadingStore.setIsLoading(true);
 
             // Get data for trait
             if (id) {
                 const trait = await getTraitByIdAPI(id);
                 setTrait(trait);
             }
-            loadingStore.setIsLoading(false);
         };
 
         getData();
@@ -55,6 +54,7 @@ export const TraitToolTip = ({ id }: any) => {
                 <CustomIconTraitComponent height={28} width={28} src={trait?.image} />
             </div>
         </HtmlTooltip>
+
     )
 }
 
