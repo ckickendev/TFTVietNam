@@ -274,17 +274,23 @@ const RowData = (props: any) => {
         <TextComponent>{trait.name}</TextComponent>
       </TableCell>
       <TableCell align="center" sx={ADMIN_TABLE_STYLE.tableCellSx}>
-        {trait.champions?.length === 0 ? (
-          <TextComponent>No Champions</TextComponent>
-        ) : (
-          trait.champions?.map((champion: IChampionData, index: number) => {
-            return (
-              <div key={index} style={{margin: "2px 0px", textAlign: 'center'}}>
-                <ChampionTooltip id={champion?._id} />
-              </div>
-            );
-          })
-        )}
+        <div style={{ display: "flex", justifyContent: 'center'}}>
+        <div style={{ display: "flex",flexWrap:'wrap', width: "80px" }}>
+          {trait.champions?.length === 0 ? (
+            <TextComponent>No Champions</TextComponent>
+          ) : (
+            trait.champions?.map((champion: IChampionData, index: number) => {
+              return (
+                <div key={index} style={{ margin: "5px", textAlign: 'center' }}>
+                  <ChampionTooltip id={champion?._id} />
+                </div>
+              );
+            })
+          )}
+        </div>
+        </div>
+        
+
       </TableCell>
       <TableCell align="center">
         <Button

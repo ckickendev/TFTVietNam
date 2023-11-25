@@ -8,7 +8,7 @@ import { LoadingCustom } from '../../utils/LoadingCustom'
 import { CompsUnitElement } from './CompsUnitElement'
 
 export interface IComps {
-    champions: any,
+    champions: Array<any>,
     builds: any,
     name: string
 }

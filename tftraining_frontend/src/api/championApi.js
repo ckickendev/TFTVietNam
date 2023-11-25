@@ -46,6 +46,15 @@ const getListTraisByChampionId = async (id) => {
   return traits;
 };
 
+const getListTraisByChampionNameApi = async (nameApi) => {
+  const data = await axios.get(
+    `${CONSTVALUE.ROOT_BACKEND}/champion/getListTraitsByNameAI/${nameApi}`,
+    { headers: getHeadersToken() }
+  );
+  const traits = data.data.traits;
+  return traits;
+}
+
 const addChampionAPI = async (newChampion) => {
   const res = await axios.post(`${CONSTVALUE.ROOT_BACKEND}/champion/add`, {
     headers: getHeadersToken(),
@@ -66,7 +75,6 @@ const deleteChampionById = async (id) => {
 };
 
 const editChampionAPI = async (data) => {
-  console.log("68", data);
   const res = await axios.patch(`${CONSTVALUE.ROOT_BACKEND}/champion/edit`, {
     headers: getHeadersToken(),
     data: {
@@ -76,16 +84,38 @@ const editChampionAPI = async (data) => {
   return res.data.responseData.modifiedCount;
 };
 
+const getChampionByNameApi = async(name) => {
+  const data = await axios.get(
+    `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${name}`,
+    { headers: getHeadersToken() }
+  );
+  const champion = data.data.champion;
+
+  const returnValue = {
+    image: champion.avatar,
+    bgimage: champion.bgimage,
+    traits: champion.traits,
+    name: champion.name,
+    nameAPI: champion.name_api,
+    skill: champion.skill,
+    cost: champion.cost,
+  };
+  console.log("return", returnValue);
+  return returnValue;
+}
+
 async function loadRankChampion() {
   
 }
 
 export {
   getAllChampionAPI,
+  getChampionByNameApi,
   addChampionAPI,
   getChampionByIdApi,
   loadRankChampion,
   deleteChampionById,
   editChampionAPI,
   getListTraisByChampionId,
+  getListTraisByChampionNameApi
 };

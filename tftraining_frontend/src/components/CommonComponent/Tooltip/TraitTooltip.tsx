@@ -35,9 +35,9 @@ export const TraitToolTip = ({ id }: any) => {
                         <Typography fontSize={15} color={COLOR.BLACK_BACKGROUND}>{trait?.name}</Typography>
                         <Typography fontSize={12} fontWeight={300} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "10px 0px" }} color="inherit">{trait?.effect}</Typography>
                         <div>
-                            {trait?.unit_activate?.map((unit: any) => {
+                            {trait?.unit_activate?.map((unit: any, index: number) => {
                                 return (
-                                    <div style={{ display: 'flex' }}>
+                                    <div style={{ display: 'flex' }} key={index}>
                                         <Typography fontSize={10} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "2px 0px" }} >{`(${unit?.count_activate})`}</Typography>
                                         <Typography fontSize={10} style={{ whiteSpace: "pre-wrap", padding: 0, margin: "2px 2px" }} >{`${unit?.effect_activate}`}</Typography>
                                     </div>

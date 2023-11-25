@@ -88,6 +88,7 @@ export const ChampionRanking = observer(({ loadingStore, authStore }: any) => {
                     });
                 })
             })
+            
             loadingStore.setIsLoading(false);
         };
         getAllChampion();

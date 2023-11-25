@@ -60,14 +60,17 @@ export const TraitRanking = observer(({ loadingStore, authStore }: any) => {
                     winrate: ((element.places[0] / frequency) * 100).toFixed(2),
                     percentage: ((frequency / totalPrequent) * 100).toFixed(2),
                     avgCount: (avgCount / frequency).toFixed(2),
+                    avgNumber: (avgCount / frequency),
                     ranking: getRankingItem(avgCount / frequency),
                     number_unit: element.trait.slice(-1)
                 };
                 ;
             })
 
-            traitDataList.sort((a: any, b: any) => a.avgCount - b.avgCount);
-
+            traitDataList.sort((a: any, b: any) => {
+                return a.avgNumber - b.avgNumber;
+            });
+            
             const finalList = await traitDataList.map(async (element: any) => {
                 const dataTrait = await axios.get(
                     `${CONSTVALUE.ROOT_BACKEND}/trait/getTraitByNameAPI/${element.name.slice(0, -2)}`,
@@ -76,6 +79,10 @@ export const TraitRanking = observer(({ loadingStore, authStore }: any) => {
 
                 return { ...element, dataTrait }
             })
+
+            finalList.sort((a: any, b: any) => {
+                return Number(b.avgCount) - Number(a.avgCount);
+            });
 
             finalList.forEach((data: Promise<any>) => {
                 data.then((e) => {
@@ -103,7 +110,6 @@ export const TraitRanking = observer(({ loadingStore, authStore }: any) => {
         } else {
             return "D";
         }
-
     }
 
 

@@ -1,10 +1,10 @@
 import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { getChampionByIdApi, getListTraisByChampionId } from '../../../api/championApi';
+import { getChampionByIdApi, getChampionByNameApi, getListTraisByChampionId } from '../../../api/championApi';
 import { CustomChampionAvatar } from '../CustomComponent/CustomChampionAvatar';
 import { COLOR, SIZE } from '../../constants';
 
-export const ChampionTooltip = ({ id }: any) => {
+export const ChampionTooltip = ({ id, nameAPI }: any) => {
     const [champion, setChampion] = useState({
         image: "",
         bgimage: "",
@@ -20,6 +20,14 @@ export const ChampionTooltip = ({ id }: any) => {
             if (id) {
                 // Get data for champion
                 const champion = await getChampionByIdApi(id);
+                setChampion(champion);
+                const traits = await getListTraisByChampionId(id);
+                setListTraits(traits);
+            }
+
+            if (nameAPI) {
+                // Get data for champion
+                const champion = await getChampionByNameApi(nameAPI);
                 setChampion(champion);
                 const traits = await getListTraisByChampionId(id);
                 setListTraits(traits);
@@ -41,7 +49,7 @@ export const ChampionTooltip = ({ id }: any) => {
                                 {listTraits?.map((trait: any) => {
                                     return (
                                         <div style={{ display: 'flex', alignItems: 'center', marginLeft: 5 }} key={trait._id}>
-                                            <img src={trait?.image} width={SIZE.TRAIT_ICON_WIDTH} height={SIZE.TRAIT_ICON_HEIGHT} />
+                                            <img src={`../images/traits/${trait?.image}.png`} width={SIZE.TRAIT_ICON_WIDTH} height={SIZE.TRAIT_ICON_HEIGHT} />
                                             <Typography fontSize={12} fontWeight={400} style={{ whiteSpace: "pre-wrap", paddingLeft: 5, zIndex: 99, color: COLOR.WHITE }} color="inherit">{trait?.name}</Typography>
                                         </div>
                                     )

@@ -18,7 +18,6 @@ const getAllTraitsAPI = async () => {
 };
 
 const getTraitByIdAPI = async (id) => {
-  console.log("get header token", getHeadersToken());
   const response = await axios.get(`${ROOT_BACKEND}/trait/find/${id}`, {
     headers: getHeadersToken(),
   });
@@ -30,7 +29,6 @@ const getTraitByIdAPI = async (id) => {
     effect: dataOut.effect,
     unit_activate: dataOut.unit_activate
   }
-  console.log("data", response);
   return traitData;
 };
 
