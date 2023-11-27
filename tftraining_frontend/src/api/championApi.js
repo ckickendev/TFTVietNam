@@ -33,7 +33,6 @@ const getChampionByIdApi = async (id) => {
     skill: champion.skill,
     cost: champion.cost,
   };
-  console.log("return", returnValue);
   return returnValue;
 };
 
@@ -48,7 +47,7 @@ const getListTraisByChampionId = async (id) => {
 
 const getListTraisByChampionNameApi = async (nameApi) => {
   const data = await axios.get(
-    `${CONSTVALUE.ROOT_BACKEND}/champion/getListTraitsByNameAI/${nameApi}`,
+    `${CONSTVALUE.ROOT_BACKEND}/champion/getListTraitsByNameAPI/${nameApi}`,
     { headers: getHeadersToken() }
   );
   const traits = data.data.traits;
@@ -70,7 +69,6 @@ const deleteChampionById = async (id) => {
       idChampion: id,
     },
   });
-  console.log(res.data);
   return res.data.dataDelete;
 };
 
@@ -89,8 +87,7 @@ const getChampionByNameApi = async(name) => {
     `${CONSTVALUE.ROOT_BACKEND}/champion/getChampionByNameApi/${name}`,
     { headers: getHeadersToken() }
   );
-  const champion = data.data.champion;
-
+  const champion = data.data.champion[0];
   const returnValue = {
     image: champion.avatar,
     bgimage: champion.bgimage,
@@ -100,7 +97,6 @@ const getChampionByNameApi = async(name) => {
     skill: champion.skill,
     cost: champion.cost,
   };
-  console.log("return", returnValue);
   return returnValue;
 }
 

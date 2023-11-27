@@ -1,10 +1,10 @@
 import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { getChampionByIdApi, getChampionByNameApi, getListTraisByChampionId } from '../../../api/championApi';
+import { getChampionByIdApi, getChampionByNameApi, getListTraisByChampionId, getListTraisByChampionNameApi } from '../../../api/championApi';
 import { CustomChampionAvatar } from '../CustomComponent/CustomChampionAvatar';
 import { COLOR, SIZE } from '../../constants';
 
-export const ChampionTooltip = ({ id, nameAPI }: any) => {
+export const ChampionTooltip = ({ id, nameAPI, size }: any) => {
     const [champion, setChampion] = useState({
         image: "",
         bgimage: "",
@@ -18,21 +18,22 @@ export const ChampionTooltip = ({ id, nameAPI }: any) => {
         const getData = async () => {
 
             if (id) {
+
                 // Get data for champion
                 const champion = await getChampionByIdApi(id);
                 setChampion(champion);
                 const traits = await getListTraisByChampionId(id);
                 setListTraits(traits);
-            }
+            } else {
+                if (nameAPI) {
 
-            if (nameAPI) {
-                // Get data for champion
-                const champion = await getChampionByNameApi(nameAPI);
-                setChampion(champion);
-                const traits = await getListTraisByChampionId(id);
-                setListTraits(traits);
+                    // Get data for champion
+                    const champion = await getChampionByNameApi(nameAPI.trim());
+                    setChampion(champion);
+                    const traits = await getListTraisByChampionNameApi(nameAPI.trim());
+                    setListTraits(traits);
+                }
             }
-
             // Get data for traits
         };
 
@@ -71,8 +72,8 @@ export const ChampionTooltip = ({ id, nameAPI }: any) => {
                 </React.Fragment>
             }
         >
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <CustomChampionAvatar height={28} width={28} src={champion?.image} />
+            <div style={{ display: 'flex', justifyContent: 'center' }} className='tool-tip--cursor'>
+                <CustomChampionAvatar height={size || 28} width={size || 28} src={champion?.image} />
             </div>
         </HtmlTooltip>
     )

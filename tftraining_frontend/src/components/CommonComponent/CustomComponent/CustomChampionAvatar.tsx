@@ -9,7 +9,7 @@ export const CustomChampionAvatar = (props: { src: string, style?: any, height: 
   }, [props.src])
 
   return (
-    <div style={{ width: props.width, height: props.height, ...props?.style }}>
+    <div className="ChampionAvatar" style={{ width: props.width, height: props.height, ...props?.style }}>
       <img
         src={`../images/champions/${image}.avif`}
         height={props.height}
