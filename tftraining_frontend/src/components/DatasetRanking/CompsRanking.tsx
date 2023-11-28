@@ -13,6 +13,7 @@ export interface IComps {
     builds: any,
     name: string,
     qtt: any,
+    stars: Array<any>,
 }
 
 export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
@@ -26,7 +27,7 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
             const responseQtt = await fetch("https://api2.metatft.com/tft-comps-api/comps_stats?queue=1100&patch=current&days=2&rank=CHALLENGER,GRANDMASTER&permit_filter_adjustment=true");
             const dataQtt = await responseQtt.json();
             console.log("dataqtt", dataQtt);
-            
+
             const totalData = dataQtt?.filter_adjustment?.new_sample_size
 
             const teamCompsQttRes = dataQtt?.results?.map((element: any) => {
@@ -57,6 +58,8 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
                 "https://api2.metatft.com/tft-comps-api/comps_data"
             );
             const data = await response.json();
+            console.log("data comps", data);
+
             var arrayData = Object.keys(data.results.data.cluster_details).map(
                 (key) => data.results.data.cluster_details[key]
             );
@@ -67,24 +70,36 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
                     compsName += " " + handle[1];
                 });
 
-                const championsList = team.units_string.split(",");
+                const championsListAfterSplit = team.units_string.split(",");
+                const championsList = championsListAfterSplit.map((e: any) => {
+                    return e.trim();
+                })
                 const championsListName = championsList.map((champion: any) => {
                     const cl = champion.split("_")
-                    return cl[1];
+                    return cl[1].trim();
+                })
+
+                let startsChamp: any[] = [];
+                team?.stars?.forEach((element: any) => {
+                    const splitChamp = element.split("_");
+                    if (championsListName.includes(splitChamp[1])) {
+                        startsChamp.push(element)
+                    }
                 })
                 const unitData = {
+                    stars: startsChamp,
                     champions: championsList,
                     championsListName: championsListName,
                     builds: team.builds,
                     name: compsName,
-                    qtt: teamCompsQttRes[index+1]
+                    qtt: teamCompsQttRes[index + 1]
                 };
                 return unitData;
             });
 
             loadingStore.setIsLoading(false);
             console.log("comps", comps);
-            
+
             setTeamComps(comps);
         };
         loadCompsData();

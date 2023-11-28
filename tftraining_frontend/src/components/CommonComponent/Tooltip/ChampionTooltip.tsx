@@ -1,10 +1,11 @@
-import { Button, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
+import { Button, Rating, Tooltip, TooltipProps, Typography, styled, tooltipClasses } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { getChampionByIdApi, getChampionByNameApi, getListTraisByChampionId, getListTraisByChampionNameApi } from '../../../api/championApi';
 import { CustomChampionAvatar } from '../CustomComponent/CustomChampionAvatar';
 import { COLOR, SIZE } from '../../constants';
+import './tooltip.scss'
 
-export const ChampionTooltip = ({ id, nameAPI, size }: any) => {
+export const ChampionTooltip = ({ id, nameAPI, size, isFullStar }: any) => {
     const [champion, setChampion] = useState({
         image: "",
         bgimage: "",
@@ -72,8 +73,12 @@ export const ChampionTooltip = ({ id, nameAPI, size }: any) => {
                 </React.Fragment>
             }
         >
-            <div style={{ display: 'flex', justifyContent: 'center' }} className='tool-tip--cursor'>
+            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }} className='tool-tip--cursor'>
                 <CustomChampionAvatar height={size || 28} width={size || 28} src={champion?.image} />
+                {isFullStar &&
+                    <div className="stars_div">
+                        <img className="Stars_img" height="12" src="https://www.metatft.com/cdn-cgi/image/height=12,format=auto/https://cdn.metatft.com/file/metatft/tiers/3.png" alt="Three Star Unit" />
+                    </div>}
             </div>
         </HtmlTooltip>
     )

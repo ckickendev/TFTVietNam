@@ -1,12 +1,13 @@
 .compsWrapper {
   display: flex;
+  flex-wrap: wrap;
   background-color: rgb(101 92 92 / 67%);
   color: white;
   border-radius: 5px;
   padding: 5px;
   margin: 10px;
   .teamChampion {
-    width: 40%;
+    min-width: 40%;
     h6 {
       font-family: "Poppins", "Backup", "Verdana", "sans-serif";
       color: rgb(230, 230, 230);
@@ -16,6 +17,8 @@
   }
   .championsList {
     display: flex;
+  justify-content: space-around;
+
     .championTooltipElement {
       display: flex;
       flex-direction: column;
@@ -27,24 +30,56 @@
     }
     .championsList--Name {
       font-family: "Poppins, Backup, Verdana, Segoe UI, Roboto, Oxygen, -apple-system, BlinkMacSystemFont, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif";
-      font-size: 9px;
+      font-size: 12px;
       font-weight: 400;
     }
   }
   .compsQuantity {
-    width: 40%;
+    width: 30%;
     display: flex;
     justify-content: space-around;
     .compsQuantity-wrapper {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .compsQuantity-name {
+      color: rgb(191, 254, 127);
+      align-items: baseline;
+      cursor: pointer;
+      display: flex;
+      font-size: 16px;
+      font-weight: 500;
+      justify-content: center;
+      margin-top: 1px;
+      text-align: center;
+      width: 32px;
+    }
+    .compsQuantity-value {
+      align-items: center;
+      color: #cfcfcf;
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 300;
+      text-align: center;
     }
   }
-  .carrier_champion {
-    width: 20%;
-    display: flex;
-    .carrier_champion_element {
-      margin: 5px;
+  .carrier_champion-wrapper {
+      width: 30%;
+      p {
+        margin: 0;
+      }
+    .carrier_champion {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      
+      .carrier_champion_element {
+        margin: 5px;
+      }
+      
     }
-    justify-content: space-evenly;
   }
+  
 }
