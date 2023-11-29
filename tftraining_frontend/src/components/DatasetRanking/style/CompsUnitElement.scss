@@ -76,9 +76,17 @@
       align-items: center;
       
       .carrier_champion_element {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin: 5px;
       }
-      
+      .carrier_champion_items {
+        margin-top: 2px;
+        display: flex;
+        justify-content: center;
+      }
     }
   }
   

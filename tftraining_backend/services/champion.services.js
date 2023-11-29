@@ -34,8 +34,8 @@ class ChampionService extends Service {
 
   getListTraitsByNameAPI = async(name_api) => {
     const champion = await Champion.find({ name_api: name_api, del_flag: 0 });
-    const listTrait =  await Trait.find({ champions: champion._id });
-    return listTrait;
+    const championRs = await Trait.find({ champions: champion[0]._id })
+    return championRs;
   }
 
   addNewChampion = async (data) => {

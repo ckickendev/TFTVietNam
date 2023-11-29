@@ -9,6 +9,8 @@ export const COLOR = {
 };
 
 export const SIZE = {
+  WIDTH_TOOLTIP_BG_CHAMPION: "256px",
+  HEIGHT_TOOLTIP_BG_CHAMPION: "152px",
   SIZE_IMAGE_CHANGE_CHAMPION: "28px",
   WIDTH_ICON: "28px",
   HEIGHT_ICON: "28px",

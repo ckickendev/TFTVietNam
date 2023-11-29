@@ -100,6 +100,8 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
             loadingStore.setIsLoading(false);
             console.log("comps", comps);
 
+            comps.sort((a: any, b: any) => a.qtt.avgPlace - b.qtt.avgPlace);
+
             setTeamComps(comps);
         };
         loadCompsData();

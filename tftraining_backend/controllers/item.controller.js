@@ -34,7 +34,6 @@ class ItemController extends Controller {
   };
 
   getItemByItemNameAPI = async (req, res, next) => {
-    console.log("req.params.nameAPI", req.params.nameAPI);
     try {
       const item = await itemService.getItemByItemNameAPI(req.params.nameAPI);
       res.status(200).json({

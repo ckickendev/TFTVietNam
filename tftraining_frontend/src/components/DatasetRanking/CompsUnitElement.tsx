@@ -2,6 +2,7 @@ import React from 'react'
 import { IComps } from './CompsRanking'
 import "./style/CompsUnitElement.scss"
 import { ChampionTooltip } from '../CommonComponent/Tooltip/ChampionTooltip'
+import { ItemTooltip } from '../CommonComponent/Tooltip/ItemTooltip'
 
 
 export const CompsUnitElement = (props: { team: IComps }) => {
@@ -59,10 +60,19 @@ export const CompsUnitElement = (props: { team: IComps }) => {
         <p>Carrier</p>
         <div className='carrier_champion'>
           {props.team.builds.map((element: any, index: number) => {
+            console.log("element here", element);
+
             const isFullStar = props?.team?.stars?.includes(element.unit)
+            const name = element.unit.split("_");
             return <div className='carrier_champion_element' key={index}>
               <ChampionTooltip size={38} nameAPI={element.unit} isFullStar={isFullStar} />
-              <p className='championsList championsList--Name'>{props.team.championsListName[index]}</p>
+              <div className='carrier_champion_items'>
+                {element.buildName.map((item: any) => {
+                  return <ItemTooltip nameAPI={item} size={18} />
+                })}
+              </div>
+
+              <p className='championsList championsList--Name'>{name[1]}</p>
             </div>
           })}
         </div>
