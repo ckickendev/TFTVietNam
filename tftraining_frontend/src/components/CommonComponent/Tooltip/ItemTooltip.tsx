@@ -36,7 +36,7 @@ export const ItemTooltip = ({ id, nameAPI, size }: any) => {
                         {item?.property?.map((e) => {
                             return <CustomPropertyComponent type={e['type']} value={e['value']} />
                         })}
-                        <Typography marginTop={2} fontWeight={400} fontSize={10} color={COLOR.BLACK_BACKGROUND}>{item?.effect}</Typography>
+                        <Typography marginTop={2} fontWeight={400} fontSize={10} color={COLOR.BLACK_BACKGROUND}>{item?.effect || nameAPI }</Typography>
                     </div>
 
                 </React.Fragment>
@@ -50,6 +50,7 @@ export const ItemTooltip = ({ id, nameAPI, size }: any) => {
                     height={size || 28}
                 />
             </div>
+
         </HtmlTooltip>
     )
 }

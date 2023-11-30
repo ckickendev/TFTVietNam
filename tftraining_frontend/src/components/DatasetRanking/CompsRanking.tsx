@@ -28,7 +28,7 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
             const dataQtt = await responseQtt.json();
             console.log("dataqtt", dataQtt);
 
-            const totalData = dataQtt?.filter_adjustment?.new_sample_size
+            const totalData = dataQtt?.filter_adjustment?.sample_size || dataQtt?.filter_adjustment?.new_sample_size; 
 
             const teamCompsQttRes = dataQtt?.results?.map((element: any) => {
                 const placeArr = element?.places;
@@ -45,6 +45,8 @@ export const CompsRanking = observer(({ loadingStore, authStore }: any) => {
                     })
                     avgPlace = avgPlace / totalMatch
                 }
+                console.log("totalData", totalData);
+                
                 return {
                     avgPlace: avgPlace.toFixed(2),
                     pickRate: (totalMatch / totalData * 100).toFixed(2),

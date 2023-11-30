@@ -150,12 +150,6 @@ export const HomepageContent = () => {
                 </li>
                 <li
                   className="HomePageTabItem nav-item"
-                  onClick={() => updateStatus(4)}
-                >
-                  <a className={getClassStatus(4)}>Augments</a>
-                </li>
-                <li
-                  className="HomePageTabItem nav-item"
                   onClick={() => updateStatus(5)}
                 >
                   <a className={getClassStatus(5)}>Items</a>

@@ -94,10 +94,10 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     <DropdownItem linkHref={`${ROOT_URL}`}>
                       Hyper Roll
                     </DropdownItem>
-                    <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
+                    <DropdownItem linkHref={`${ROOT_URL}`}>
                       Double up
                     </DropdownItem>
-                    <DropdownItem linkHref={`${ROOT_URL}/double-up-comps`}>
+                    <DropdownItem linkHref={`${ROOT_URL}`}>
                       PBE Comps
                     </DropdownItem>
                   </div>
@@ -130,72 +130,6 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     <DropdownItem linkHref={`${ROOT_URL}/units`}>Units</DropdownItem>
                     <DropdownItem linkHref={`${ROOT_URL}/traits`}>Traits</DropdownItem>
                     <DropdownItem linkHref={`${ROOT_URL}/auguments`}>Auguments</DropdownItem>
-                  </div>
-                </div>
-                <div className="nav-item dropdown">
-                  <a
-                    id="basic-nav-dropdown"
-                    aria-expanded="false"
-                    role="button"
-                    className="nav-link"
-                    tabIndex={0}
-                    href={`${ROOT_URL}`}
-                  >
-                    <div style={{ display: "inline-block" }}>Players</div>
-                  </a>
-                  <div
-                    data-bs-popper="static"
-                    className="dropdown-menu"
-                    aria-labelledby="basic-nav-dropdown"
-                  >
-                    <DropdownItem title="Rising" />
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>
-                      <p>One Tricks</p>
-                      <img
-                        className="PatreonFeatureNav"
-                        alt="Patreon Feature"
-                      />
-                    </DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>
-                      <p>Hyper Roll One Tricks</p>
-                      <img
-                        className="PatreonFeatureNav"
-                        alt="Patreon Feature"
-                      />
-                    </DropdownItem>
-                  </div>
-                </div>
-                <div className="nav-item dropdown">
-                  <a
-                    id="basic-nav-dropdown"
-                    aria-expanded="false"
-                    role="button"
-                    className="nav-link"
-                    tabIndex={0}
-                    href={`${ROOT_URL}`}
-                  >
-                    <div style={{ display: "inline-block" }}>Tools</div>
-                  </a>
-                  <div
-                    data-bs-popper="static"
-                    className="dropdown-menu"
-                    aria-labelledby="basic-nav-dropdown"
-                  >
-                    <DropdownItem>In-Game App</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>Loaded Dice</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>Tome of Traits</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>Twitch Extension</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem> Win Chance</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>Set 8.5 Update</DropdownItem>
-                    <hr className="dropdown-divider" />
-                    <DropdownItem>Vod Library</DropdownItem>
                   </div>
                 </div>
               </div>

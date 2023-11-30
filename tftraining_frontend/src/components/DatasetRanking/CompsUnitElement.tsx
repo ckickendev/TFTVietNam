@@ -60,8 +60,6 @@ export const CompsUnitElement = (props: { team: IComps }) => {
         <p>Carrier</p>
         <div className='carrier_champion'>
           {props.team.builds.map((element: any, index: number) => {
-            console.log("element here", element);
-
             const isFullStar = props?.team?.stars?.includes(element.unit)
             const name = element.unit.split("_");
             return <div className='carrier_champion_element' key={index}>
