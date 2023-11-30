@@ -108,17 +108,14 @@ class TraitController extends Controller {
   initController() {
     this._router.get(
       `${this._rootPath}/get-all`,
-      AdminMiddleware,
       this.getAllTraits
     );
     this._router.get(
       `${this._rootPath}/find/:id`,
-      AdminMiddleware,
       this.getTraitById
     );
     this._router.get(
       `${this._rootPath}/getTraitByNameAPI/:name_api`,
-      AdminMiddleware,
       this.getTraitByNameAPI
     );
     this._router.post(

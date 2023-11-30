@@ -115,27 +115,22 @@ class ChampionController extends Controller {
   initController() {
     this._router.get(
       `${this._rootPath}/get-all`,
-      AdminMiddleware,
       this.getAllChampion
     );
     this._router.get(
       `${this._rootPath}/find/:championId`,
-      AdminMiddleware,
       this.getChampionById
     );
     this._router.get(
       `${this._rootPath}/getListTraits/:championId`,
-      AdminMiddleware,
       this.getListTraisByChampionId
     );
     this._router.get(
       `${this._rootPath}/getChampionByNameApi/:championNameApi`,
-      AdminMiddleware,
       this.getChampionByNameApi
     );
     this._router.get(
       `${this._rootPath}/getListTraitsByNameAPI/:championNameApi`,
-      AdminMiddleware,
       this.getListTraitsByNameAPI
     );
     this._router.post(

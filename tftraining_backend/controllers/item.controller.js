@@ -92,17 +92,14 @@ class ItemController extends Controller {
   initController() {
     this._router.get(
       `${this._rootPath}/get-all`,
-      AdminMiddleware,
       this.getAllItems
     );
     this._router.get(
       `${this._rootPath}/find/:id`,
-      AdminMiddleware,
       this.findItemById
     );
     this._router.get(
       `${this._rootPath}/getItemByItemNameAPI/:nameAPI`,
-      AdminMiddleware,
       this.getItemByItemNameAPI
     );
     this._router.post(
