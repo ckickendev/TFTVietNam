@@ -72,7 +72,7 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     className="nav-link"
                     href={`${ROOT_URL}/comps`}
                   >
-                    Comps
+                    Teams fight
                   </a>
                 </div>
                 <div className="nav-item dropdown">
@@ -111,14 +111,8 @@ export const NavBarComponent = observer(({ authStore }: any) => {
                     tabIndex={0}
                     href={`${ROOT_URL}`}
                   >
-                    <div style={{ display: "inline-block" }}>
-                      Stats
-                      <span
-                        className="NewHighlight"
-                        style={{ marginRight: "-20px" }}
-                      >
-                        New!
-                      </span>
+                    <div style={{ display: "inline-block", marginRight: '10px' }}>
+                      Data
                     </div>
                   </a>
                   <div
@@ -162,33 +156,6 @@ export const NavBarComponent = observer(({ authStore }: any) => {
             </div>
           </div>
         </nav>
-      </div>
-
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          borderTop: "1px solid rgb(17, 17, 17)",
-          backgroundColor: "rgba(203, 180, 108, 0.7)",
-          color: "rgb(34, 34, 34)",
-          padding: "4px",
-          fontWeight: 600,
-        }}
-      >
-        Looking for comps to play on PBE? Take a look at our{" "}
-        <a
-          href={`${ROOT_URL}/new-set`}
-          style={{ textDecoration: "underline", color: "rgb(34, 34, 34)" }}
-        >
-          Set 8.5 PBE Comps Tier List
-        </a>
-        , and check out the
-        <a
-          href={`${ROOT_URL}/new-set`}
-          style={{ textDecoration: "underline", color: "rgb(34, 34, 34)" }}
-        >
-          new changes here
-        </a>
       </div>
     </>
   );
