@@ -5,7 +5,7 @@ const {
   ItemController,
   TraitController,
 } = require("./controllers");
-const AppServer = require("./appServer");
+const AppServer = require("./functions/appServer");
 
 const app = new AppServer([
   new UserController(),

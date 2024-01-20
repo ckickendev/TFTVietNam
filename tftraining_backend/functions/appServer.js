@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { ConsoleLogger } = require("./core");
+const { ConsoleLogger } = require("../core");
 const { default: mongoose } = require("mongoose");
 const bodyParser = require("body-parser");
 require("dotenv").config();
